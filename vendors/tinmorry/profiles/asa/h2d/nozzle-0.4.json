@@ -1,0 +1,40 @@
+{
+  "compatible_printers": [
+    "Bambu Lab H2D 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "fan_cooling_layer_time": [
+    "30"
+  ],
+  "fan_max_speed": [
+    "50"
+  ],
+  "fan_min_speed": [
+    "20"
+  ],
+  "filament_extruder_variant": [
+    "Direct Drive Standard",
+    "Direct Drive High Flow"
+  ],
+  "filament_id": "PFTINa3e2ab29",
+  "filament_settings_id": [
+    "TINMORRY ASA @Bambu Lab H2D 0.4 nozzle"
+  ],
+  "filament_type": [
+    "ASA"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic ASA @BBL H2D",
+  "name": "TINMORRY ASA @Bambu Lab H2D 0.4 nozzle",
+  "nozzle_temperature": [
+    "265",
+    "nil"
+  ],
+  "slow_down_layer_time": [
+    "12"
+  ],
+  "version": "2.2.0.4"
+}

@@ -1,0 +1,23 @@
+{
+  "compatible_printers": [
+    "Bambu Lab P1P 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_flow_ratio": [
+    "0.97"
+  ],
+  "filament_id": "PFTINf45c32d2",
+  "filament_settings_id": [
+    "TINMORRY PLA @Bambu Lab P1P 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PLA"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic PLA @BBL P1P",
+  "name": "TINMORRY PLA @Bambu Lab P1P 0.4 nozzle",
+  "version": "1.10.0.32"
+}

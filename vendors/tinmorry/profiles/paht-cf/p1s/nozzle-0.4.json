@@ -1,0 +1,29 @@
+{
+  "compatible_printers": [
+    "Bambu Lab P1S 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "fan_max_speed": [
+    "40"
+  ],
+  "fan_min_speed": [
+    "20"
+  ],
+  "filament_id": "PFTIN38844d9c",
+  "filament_max_volumetric_speed": [
+    "7"
+  ],
+  "filament_settings_id": [
+    "TINMORRY PAHT CF @Bambu Lab P1S 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PAHT-CF"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic PA-CF",
+  "name": "TINMORRY PAHT CF @Bambu Lab P1S 0.4 nozzle",
+  "version": "1.8.0.25"
+}

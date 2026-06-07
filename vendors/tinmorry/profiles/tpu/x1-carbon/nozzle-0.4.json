@@ -1,0 +1,29 @@
+{
+  "compatible_printers": [
+    "Bambu Lab X1 Carbon 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_flow_ratio": [
+    "0.97"
+  ],
+  "filament_id": "PFTIN9663bf88",
+  "filament_retraction_length": [
+    "1.4"
+  ],
+  "filament_settings_id": [
+    "TINMORRY TPU @Bambu Lab X1 Carbon 0.4 nozzle"
+  ],
+  "filament_type": [
+    "TPU"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Bambu TPU 95A @BBL X1C",
+  "name": "TINMORRY TPU @Bambu Lab X1 Carbon 0.4 nozzle",
+  "nozzle_temperature": [
+    "220"
+  ],
+  "version": "1.10.0.32"
+}

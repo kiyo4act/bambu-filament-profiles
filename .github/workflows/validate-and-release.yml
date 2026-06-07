@@ -1,0 +1,57 @@
+name: Validate and release
+
+on:
+  push:
+    branches:
+      - main
+      - agent/update/**
+    tags:
+      - v*
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm run build:bbsflmt
+      - run: npm run verify
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bambu-filament-profiles-dist
+          path: dist/
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build:bbsflmt
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            dist/bbsflmt/**/*.bbsflmt \
+            dist/all-bbsflmt.zip \
+            dist/all-json.zip \
+            dist/manifest.json \
+            --title "${GITHUB_REF_NAME}" \
+            --notes-file dist/release-notes.md
+

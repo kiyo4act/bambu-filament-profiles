@@ -1,0 +1,38 @@
+{
+  "compatible_printers": [
+    "Bambu Lab H2S 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_extruder_variant": [
+    "Direct Drive Standard",
+    "Direct Drive High Flow"
+  ],
+  "filament_flow_ratio": [
+    "0.96",
+    "nil"
+  ],
+  "filament_id": "PFTIN0cc43960",
+  "filament_settings_id": [
+    "TINMORRY PLA Matte @Bambu Lab H2S 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PLA"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic PLA @BBL H2S",
+  "name": "TINMORRY PLA Matte @Bambu Lab H2S 0.4 nozzle",
+  "nozzle_temperature": [
+    "210",
+    "nil"
+  ],
+  "textured_plate_temp": [
+    "65"
+  ],
+  "textured_plate_temp_initial_layer": [
+    "65"
+  ],
+  "version": "2.2.0.4"
+}

@@ -1,0 +1,41 @@
+{
+  "compatible_printers": [
+    "Bambu Lab X1 Carbon 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "fan_max_speed": [
+    "40"
+  ],
+  "fan_min_speed": [
+    "20"
+  ],
+  "filament_extruder_variant": [
+    "Direct Drive Standard"
+  ],
+  "filament_flow_ratio": [
+    "0.97"
+  ],
+  "filament_id": "PFTINa3e2ab29",
+  "filament_max_volumetric_speed": [
+    "15"
+  ],
+  "filament_settings_id": [
+    "TINMORRY ASA @Bambu Lab X1 Carbon 0.4 nozzle"
+  ],
+  "filament_type": [
+    "ASA"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic ASA",
+  "name": "TINMORRY ASA @Bambu Lab X1 Carbon 0.4 nozzle",
+  "nozzle_temperature_initial_layer": [
+    "270"
+  ],
+  "nozzle_temperature_range_low": [
+    "250"
+  ],
+  "version": "1.9.0.23"
+}

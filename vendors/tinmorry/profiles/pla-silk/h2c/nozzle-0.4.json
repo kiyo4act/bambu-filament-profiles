@@ -1,0 +1,47 @@
+{
+  "compatible_printers": [
+    "Bambu Lab H2C 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_extruder_variant": [
+    "Direct Drive Standard",
+    "Direct Drive High Flow"
+  ],
+  "filament_flow_ratio": [
+    "0.97",
+    "nil"
+  ],
+  "filament_id": "PFTIN9bdd31e2",
+  "filament_retraction_length": [
+    "0.8",
+    "nil"
+  ],
+  "filament_settings_id": [
+    "TINMORRY PLA Silk @Bambu Lab H2C 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PLA"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "hot_plate_temp": [
+    "65"
+  ],
+  "hot_plate_temp_initial_layer": [
+    "65"
+  ],
+  "inherits": "Generic PLA Silk @BBL H2C 0.4 nozzle",
+  "name": "TINMORRY PLA Silk @Bambu Lab H2C 0.4 nozzle",
+  "slow_down_layer_time": [
+    "10"
+  ],
+  "textured_plate_temp": [
+    "65"
+  ],
+  "textured_plate_temp_initial_layer": [
+    "65"
+  ],
+  "version": "2.4.0.10"
+}

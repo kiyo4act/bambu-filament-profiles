@@ -1,0 +1,33 @@
+{
+  "compatible_printers": [
+    "Bambu Lab H2S 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "fan_cooling_layer_time": [
+    "10"
+  ],
+  "fan_min_speed": [
+    "50"
+  ],
+  "filament_extruder_variant": [
+    "Direct Drive Standard",
+    "Direct Drive High Flow"
+  ],
+  "filament_id": "PFTIN5d6707c2",
+  "filament_settings_id": [
+    "TINMORRY PET CF @Bambu Lab H2S 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PET-CF"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Bambu PET-CF @BBL H2S",
+  "name": "TINMORRY PET CF @Bambu Lab H2S 0.4 nozzle",
+  "slow_down_layer_time": [
+    "5"
+  ],
+  "version": "2.2.0.4"
+}

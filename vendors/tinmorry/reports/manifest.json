@@ -1,0 +1,2628 @@
+{
+  "vendor": "TINMORRY",
+  "generatedAt": "2026-06-07T07:19:45.750Z",
+  "rawProfileCount": 116,
+  "candidateCount": 158,
+  "selectedCount": 154,
+  "rejectedCount": 4,
+  "upstreamHeads": {
+    "tinmorry-bambu-studio": {
+      "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+      "branch": "main",
+      "commit": "2a0cf3bd8b2499ff574447a6d8c06972c542d964"
+    },
+    "tinmorry-json-legacy": {
+      "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+      "branch": "main",
+      "commit": "1262d0567e3c81a0db45e7d3c09c9f3f20638b53"
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "Kept unresolved inherits from legacy JSON: ABS-pro(X1C P1S-Bambu-TINMORRY).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: ABS-pro(X1C P1S-Bambu-TINMORRY).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: ABS-pro(X1C P1S-Bambu-TINMORRY).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: ABS-pro(X1C P1S-Bambu-TINMORRY).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: ABS(H2C-Bambu-TINMORRY).json -> Generic ABS @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: ASA-CF(H2S-Bambu-TINMORRY).json -> TINMORRY ASA-CF Generic @Bambu Lab H2S 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: ASA(H2D-Bambu-TINMORRY).json -> Generic ASA @BBL H2D",
+    "Kept unresolved inherits from legacy JSON: ASA(H2S-Bambu-TINMORRY).json -> Generic ASA @BBL H2S 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: ASA(P1S,X1C-Bambu-TINMORRY).json -> Generic ASA",
+    "Kept unresolved inherits from legacy JSON: ASA(P1S,X1C-Bambu-TINMORRY).json -> Generic ASA",
+    "Kept unresolved inherits from legacy JSON: ASA(P2S-Bambu-TINMORRY).json -> Generic ASA @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: Galaxy PETG(P2S-Bambu-TINMORRY).json -> Generic PETG @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: Galaxy PLA(A1-Bambu-TINMORRY).json -> Generic PLA @BBL A1",
+    "Kept unresolved inherits from legacy JSON: Galaxy PLA(P2S-Bambu-TINMORRY).json -> Generic PLA @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: Matte PLA(P2S-Bambu-TINMORRY).json -> Generic PLA @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (A1 mini).json -> Generic PETG @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (A1).json -> Generic PETG @BBL A1",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (H2S-Bambu-TINMORRY).json -> Generic PETG @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (P1S P1P X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (P1S P1P X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (P1S P1P X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: Metallic PETG (P1S P1P X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PA-CF(P1S.X1C-Bambu-TINMORRY).json -> Generic PA-CF",
+    "Kept unresolved inherits from legacy JSON: PA-CF(P1S.X1C-Bambu-TINMORRY).json -> Generic PA-CF",
+    "Kept unresolved inherits from legacy JSON: PAHT-CF(P1S.X1C-Bambu-TINMORRY).json -> Generic PA-CF",
+    "Kept unresolved inherits from legacy JSON: PAHT-CF(P1S.X1C-Bambu-TINMORRY).json -> Generic PA-CF",
+    "Kept unresolved inherits from legacy JSON: PC-GF(A1-Bambu-TINMORRY).json -> Generic PC @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PC-GF(P1P-Bambu-TINMORRY).json -> Generic PC @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PC-GF(P1S-Bambu-TINMORRY).json -> Generic PC @BBL P1S",
+    "Kept unresolved inherits from legacy JSON: PC-GF(X1C-Bambu-TINMORRY).json -> Generic PC",
+    "Kept unresolved inherits from legacy JSON: PET CF   GF(H2S-Bambu-TINMORRY).json -> Bambu PET-CF @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PET CF   GF(H2S-Bambu-TINMORRY).json -> Bambu PET-CF @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PET-CF (X1 X1C P1S P1P).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: PET-CF (X1 X1C P1S P1P).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: PET-CF (X1 X1C P1S P1P).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: PET-CF (X1 X1C P1S P1P).json -> Generic ABS",
+    "Kept unresolved inherits from legacy JSON: PET-GF(A1-Bambu-TINMORRY).json -> Bambu PET-CF @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PET-GF(P1P-Bambu-TINMORRY).json -> Bambu PET-CF @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PET-GF(X1C,P1S-Bambu-TINMORRY).json -> Bambu PET-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PET-GF(X1C,P1S-Bambu-TINMORRY).json -> Bambu PET-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PETG  CF(A1-Bambu-TINMORRY).json -> Generic PETG-CF @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PETG  CF(A1mini-Bambu-TINMORRY).json -> Generic PETG-CF @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PETG  CF(P1P-Bambu-TINMORRY).json -> Generic PETG-CF @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG CF(X1C P1S X1-Bambu-TINMORRY).json -> Generic PETG-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PETG CF(X1C P1S X1-Bambu-TINMORRY).json -> Generic PETG-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PETG CF(X1C P1S X1-Bambu-TINMORRY).json -> Generic PETG-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PETG GF(A1-Bambu-TINMORRY).json -> Generic PETG @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PETG GF(A1mini-Bambu-TINMORRY).json -> Generic PETG @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG-CF(H2C-Bambu-TINMORRY).json -> Generic PETG-CF @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: PETG-CF(H2D-Bambu-TINMORRY).json -> Generic PETG-CF @BBL H2D",
+    "Kept unresolved inherits from legacy JSON: PETG-CF(H2S-Bambu-TINMORRY).json -> Generic PETG-CF @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PETG-CF(P2S-Bambu-TINMORRY).json -> Generic PETG-CF @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: PETG-CF(X1E-Bambu-TINMORRY).json -> Generic PETG-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PETG-ECO (A1-Bambu-TINMORRY).json -> Generic PETG @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PETG-ECO(A1mini-bambu-TINMORRY).json -> Generic PETG @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PETG-ECO(H2C-Bambu-TINMORRY).json -> Generic PETG @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: PETG-ECO(H2D-Bambu-TINMORRY).json -> Generic PETG @BBL H2D",
+    "Kept unresolved inherits from legacy JSON: PETG-ECO(H2S-Bambu-TINMORRY).json -> Generic PETG @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PETG-ECO(P2S-Bambu-TINMORRY).json -> Generic PETG @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: PETG-GF(H2C-Bambu-TINMORRY).json -> Generic PETG-CF @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: PETG-GF(H2D-Bambu-TINMORRY).json -> Generic PETG-CF @BBL H2D",
+    "Kept unresolved inherits from legacy JSON: PETG-GF(H2S-Bambu-TINMORRY).json -> Generic PETG-CF @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PETG-GF(P1S0.6-Bambu-TINMORRY).json -> Generic PETG-CF @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: PETG-GF(P2S-Bambu-TINMORRY).json -> Generic PETG-CF @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: PETG-HS(A1-Bambu-TINMORRY).json -> Generic PETG @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PETG-HS(X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG-HS(X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG-HS(X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG-HS(X1C-Bambu-TINMORRY).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PETG-Marble(A1-Bambu-TINMORRY).json -> Generic PETG @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PETG-Marble(A1mini-Bambu-TINMORRY).json -> Generic PETG @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PETG-Marble(H2C-Bambu-TINMORRY).json -> Generic PETG @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: PETG-Marble(H2D-Bambu-TINMORRY).json -> Generic PETG @BBL H2D",
+    "Kept unresolved inherits from legacy JSON: PETG-Marble(H2S-Bambu-TINMORRY).json -> Generic PETG @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PETG-Metallic(H2C-Bambu-TINMORRY).json -> Generic PETG @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: PETG-Metallic(P2S-Bambu-TINMORRY).json -> Generic PETG @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(A1-Bambu-TINMORRY).json -> Generic PLA @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(A1mini-Bambu-TINMORRY).json -> Generic PLA @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(H2S-Bambu-TINMORRY).json -> Generic PLA @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(P1P-Bambu-TINMORRY).json -> Generic PLA @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA",
+    "Kept unresolved inherits from legacy JSON: PLA Matte(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA",
+    "Kept unresolved inherits from legacy JSON: PLA Silk (A1-Bambu-TINMORRY).json -> Generic PLA Silk @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PLA Silk(A1mini-Bambu-TINMORRY).json -> Generic PLA Silk @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PLA Silk(P1P-Bambu-TINMORRY).json -> Generic PLA Silk @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PLA Silk(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA Silk",
+    "Kept unresolved inherits from legacy JSON: PLA Silk(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA Silk",
+    "Kept unresolved inherits from legacy JSON: PLA Silk(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA Silk",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(A1-Bambu-TINMORRY).json -> Generic PLA-CF @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(A1mini-Bambu-TINMORRY).json -> Generic PLA-CF @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(H2D-Bambu-TINMORRY).json -> Generic PLA-CF @BBL H2D",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(P1P-Bambu-TINMORRY).json -> Generic PLA-CF @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA-CF",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA-CF",
+    "Kept unresolved inherits from legacy JSON: PLA-CF(P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA-CF",
+    "Kept unresolved inherits from legacy JSON: PLA-Silk(H2C-Bambu-TINMORRY).json -> Generic PLA Silk @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: PLA( P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA",
+    "Kept unresolved inherits from legacy JSON: PLA( P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA",
+    "Kept unresolved inherits from legacy JSON: PLA( P1S X1 X1C-Bambu-TINMORRY).json -> Generic PLA",
+    "Kept unresolved inherits from legacy JSON: PLA(A1-Bambu-TINMORRY).json -> Generic PLA @BBL A1",
+    "Kept unresolved inherits from legacy JSON: PLA(A1mini-Bambu-TINMORRY).json -> Generic PLA @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: PLA(P1P-Bambu-TINMORRY).json -> Generic PLA @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: PP-CF (P1S  P1P  X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PP-CF (P1S  P1P  X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PP-CF (P1S  P1P  X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: PP-CF (P1S  P1P  X1C).json -> Generic PETG",
+    "Kept unresolved inherits from legacy JSON: Silk PLA(H2S-Bambu-TINMORRY).json -> Generic PLA Silk @BBL H2S",
+    "Kept unresolved inherits from legacy JSON: Sparkly  PETG(P2S-Bambu-TINMORRY).json -> Generic PETG @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: TPU-95A(H2C-Bambu-TINMORRY).json -> Generic TPU @BBL H2C 0.4 nozzle",
+    "Kept unresolved inherits from legacy JSON: TPU-GF(P1S,X1C-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: TPU-GF(P1S,X1C-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: TPU-GF(P2S-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL P2S",
+    "Kept unresolved inherits from legacy JSON: TPU-GF(X1E-Bambu-TINMORRY).json -> Generic TPU",
+    "Kept unresolved inherits from legacy JSON: TPU(A1-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL A1",
+    "Kept unresolved inherits from legacy JSON: TPU(A1mini-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL A1M",
+    "Kept unresolved inherits from legacy JSON: TPU(P1P-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL P1P",
+    "Kept unresolved inherits from legacy JSON: TPU(P1S X1 X1C-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: TPU(P1S X1 X1C-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: TPU(P1S X1 X1C-Bambu-TINMORRY).json -> Bambu TPU 95A @BBL X1C",
+    "Kept unresolved inherits from legacy JSON: TPU95A(H2D-Bambu-TINMORRY).json -> Generic TPU @BBL H2D"
+  ],
+  "conflicts": [
+    "Preferred path-matched duplicate tinmorry-bambu-studio:P2S/TINMORRY TPU 95A.bbsflmt over tinmorry-bambu-studio:X2D/0.4mm/TINMORRY TPU 95A.bbsflmt for TINMORRY TPU 95A @Bambu Lab P2S 0.4 nozzle",
+    "Preferred tinmorry-bambu-studio over tinmorry-json-legacy for TINMORRY ASA CF @Bambu Lab H2S 0.4 nozzle",
+    "Preferred tinmorry-bambu-studio over tinmorry-json-legacy for TINMORRY PETG GF @Bambu Lab P2S 0.4 nozzle",
+    "Preferred tinmorry-bambu-studio over tinmorry-json-legacy for TINMORRY PETG Metallic @Bambu Lab P2S 0.4 nozzle"
+  ],
+  "outputs": [
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/abs-pro/h2c/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ABS(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/abs-pro/h2d/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2D/TINMORRY ABS pro.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY ABS pro @Bambu Lab H2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/abs-pro/p1p/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ABS-pro(X1C P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/abs-pro/p1s/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ABS-pro(X1C P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/abs-pro/p2s/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "P2S/TINMORRY ABS Pro.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY ABS Pro @Bambu Lab P2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/abs-pro/x1/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ABS-pro(X1C P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/abs-pro/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ABS-pro(X1C P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ABS Pro @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/abs-pro/x2d/nozzle-0.4.json",
+      "family": "TINMORRY ABS Pro",
+      "type": "ABS",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY ABS Pro.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY ABS Pro @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY ASA @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/asa/h2d/nozzle-0.4.json",
+      "family": "TINMORRY ASA",
+      "type": "ASA",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ASA(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ASA @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/asa/h2s/nozzle-0.4.json",
+      "family": "TINMORRY ASA",
+      "type": "ASA",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ASA(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ASA @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/asa/p1s/nozzle-0.4.json",
+      "family": "TINMORRY ASA",
+      "type": "ASA",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ASA(P1S,X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ASA @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/asa/p2s/nozzle-0.4.json",
+      "family": "TINMORRY ASA",
+      "type": "ASA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ASA(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ASA @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/asa/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY ASA",
+      "type": "ASA",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "ASA(P1S,X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY ASA Basic @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/asa-basic/x2d/nozzle-0.4.json",
+      "family": "TINMORRY ASA Basic",
+      "type": "ASA",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY ASA basic.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY ASA basic @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY ASA CF @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/asa-cf/h2d/nozzle-0.4.json",
+      "family": "TINMORRY ASA CF",
+      "type": "ASA-CF",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2D/TINMORRY ASA CF.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY ASA CF @Bambu Lab H2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY ASA CF @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/asa-cf/h2s/nozzle-0.4.json",
+      "family": "TINMORRY ASA CF",
+      "type": "ASA-CF",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2S/TINMORRY ASA CF.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY ASA CF @Bambu Lab H2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY Galaxy PETG @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/galaxy-petg/p2s/nozzle-0.4.json",
+      "family": "TINMORRY Galaxy PETG",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Galaxy PETG(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY Galaxy PLA @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/galaxy-pla/a1/nozzle-0.4.json",
+      "family": "TINMORRY Galaxy PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Galaxy PLA(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY Galaxy PLA @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/galaxy-pla/p2s/nozzle-0.4.json",
+      "family": "TINMORRY Galaxy PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Galaxy PLA(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PA CF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pa-cf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PA CF",
+      "type": "PA-CF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PA-CF(P1S.X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PA CF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pa-cf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PA CF",
+      "type": "PA-CF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PA-CF(P1S.X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PAHT CF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/paht-cf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PAHT CF",
+      "type": "PAHT-CF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PAHT-CF(P1S.X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PAHT CF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/paht-cf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PAHT CF",
+      "type": "PAHT-CF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PAHT-CF(P1S.X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PC GF @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/pc-gf/a1/nozzle-0.4.json",
+      "family": "TINMORRY PC GF",
+      "type": "PC-GF",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PC-GF(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PC GF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pc-gf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PC GF",
+      "type": "PC-GF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PC-GF(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PC GF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pc-gf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PC GF",
+      "type": "PC-GF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PC-GF(P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PC GF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pc-gf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PC GF",
+      "type": "PC-GF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PC-GF(X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET CF @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/pet-cf/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PET CF",
+      "type": "PET-CF",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET CF   GF(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET CF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pet-cf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PET CF",
+      "type": "PET-CF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-CF (X1 X1C P1S P1P).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET CF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pet-cf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PET CF",
+      "type": "PET-CF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-CF (X1 X1C P1S P1P).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET CF @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/pet-cf/x1/nozzle-0.4.json",
+      "family": "TINMORRY PET CF",
+      "type": "PET-CF",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-CF (X1 X1C P1S P1P).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET CF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pet-cf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PET CF",
+      "type": "PET-CF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-CF (X1 X1C P1S P1P).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET GF @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/pet-gf/a1/nozzle-0.4.json",
+      "family": "TINMORRY PET GF",
+      "type": "PET-GF",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-GF(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET GF @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/pet-gf/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PET GF",
+      "type": "PET-GF",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET CF   GF(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET GF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pet-gf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PET GF",
+      "type": "PET-GF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-GF(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET GF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pet-gf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PET GF",
+      "type": "PET-GF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-GF(X1C,P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PET GF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pet-gf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PET GF",
+      "type": "PET-GF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PET-GF(X1C,P1S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/petg-cf/a1/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG  CF(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/petg-cf/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG  CF(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-cf/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-CF(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/petg-cf/h2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-CF(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/petg-cf/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-CF(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/petg-cf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG  CF(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/petg-cf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG CF(X1C P1S X1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-cf/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-CF(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/petg-cf/x1/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG CF(X1C P1S X1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/petg-cf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG CF(X1C P1S X1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab X1E 0.4 nozzle",
+      "path": "profiles/petg-cf/x1e/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab X1E 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-CF(X1E-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG CF @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/petg-cf/x2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG CF",
+      "type": "PETG-CF",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG CF.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG CF @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/petg-eco/a1/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-ECO (A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/petg-eco/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-ECO(A1mini-bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-eco/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-ECO(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/petg-eco/h2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-ECO(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/petg-eco/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-ECO(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/petg-eco/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/petg-eco/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-eco/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-ECO(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/petg-eco/x1/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/petg-eco/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -ECO(P1P P1S X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/petg-eco/x2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG ECO.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG ECO @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/petg-gf/a1/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG GF(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/petg-gf/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG GF(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-gf/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-GF(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/petg-gf/h2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-GF(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/petg-gf/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-GF(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/petg-gf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/petg-gf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab P1S 0.6 nozzle",
+      "path": "profiles/petg-gf/p1s/nozzle-0.6.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab P1S 0.6 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-GF(P1S0.6-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-gf/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG GF.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG GF @Bambu Lab P2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/petg-gf/x1/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/petg-gf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG GF(P1P P1S X1 X1C-Bambu-TINMORRY.json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG GF @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/petg-gf/x2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG GF",
+      "type": "PETG-GF",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG GF.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG GF @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG HS @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/petg-hs/a1/nozzle-0.4.json",
+      "family": "TINMORRY PETG HS",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-HS(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG HS @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/petg-hs/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PETG HS",
+      "type": "PETG",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-HS(X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG HS @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/petg-hs/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PETG HS",
+      "type": "PETG",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-HS(X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG HS @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/petg-hs/x1/nozzle-0.4.json",
+      "family": "TINMORRY PETG HS",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-HS(X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG HS @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/petg-hs/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PETG HS",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-HS(X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/petg-marble/a1/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-Marble(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/petg-marble/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-Marble(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-marble/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-Marble(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/petg-marble/h2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-Marble(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/petg-marble/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-Marble(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/petg-marble/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/petg-marble/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-marble/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG Marble.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG Marble @Bambu Lab P2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/petg-marble/x1/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/petg-marble/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG -Marble(X1C P1S P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Marble @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/petg-marble/x2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG Marble",
+      "type": "PETG",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG Marble.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG Marble @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG Matte @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/petg-matte/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PETG Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "A1mini/TINMORRY PETG Matte.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG Matte @Bambu Lab A1 mini 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/petg-metallic/a1/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (A1).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/petg-metallic/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (A1 mini).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-metallic/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PETG-Metallic(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/petg-metallic/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/petg-metallic/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (P1S P1P X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/petg-metallic/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (P1S P1P X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-metallic/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG Metallic.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG Metallic @Bambu Lab P2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/petg-metallic/x1/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (P1S P1P X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/petg-metallic/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Metallic PETG (P1S P1P X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/petg-metallic/x2d/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG Metallic.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG Metallic @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PLA @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/pla/a1/nozzle-0.4.json",
+      "family": "TINMORRY PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/pla/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pla/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pla/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA( P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/pla/x1/nozzle-0.4.json",
+      "family": "TINMORRY PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA( P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pla/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PLA",
+      "type": "PLA",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA( P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/pla-cf/a1/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/pla-cf/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/pla-cf/h2d/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pla-cf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pla-cf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/pla-cf/x1/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pla-cf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-CF(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/pla-matte/a1/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/pla-matte/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/pla-matte/h2d/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2D/TINMORRY PLA Matte，.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PLA Matteï¼ @Bambu Lab H2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/pla-matte/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pla-matte/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pla-matte/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-matte/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Matte PLA(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/pla-matte/x1/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pla-matte/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Matte(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Matte @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/pla-matte/x2d/nozzle-0.4.json",
+      "family": "TINMORRY PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PLA matte.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PLA matte @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PLA Rapid @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-rapid/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PLA Rapid",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2C/TINMORRY PLA Rapid.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PLA Rapid @Bambu Lab H2C 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PLA Rapid @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/pla-rapid/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PLA Rapid",
+      "type": "PLA",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2S/TINMORRY PLA Rapid.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PLA Rapid @Bambu Lab H2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/pla-silk/a1/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Silk (A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/pla-silk/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Silk(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-silk/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA-Silk(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/pla-silk/h2s/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Silk PLA(H2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pla-silk/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Silk(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pla-silk/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Silk(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/pla-silk/x1/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Silk(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pla-silk/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PLA Silk(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PP CF @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/pp-cf/p1p/nozzle-0.4.json",
+      "family": "TINMORRY PP CF",
+      "type": "PP-CF",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PP-CF (P1S  P1P  X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PP CF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/pp-cf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY PP CF",
+      "type": "PP-CF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PP-CF (P1S  P1P  X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PP CF @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pp-cf/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PP CF",
+      "type": "PP-CF",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "P2S/TINMORRY PP-CF `.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PP-CF ` @Bambu Lab P2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY PP CF @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/pp-cf/x1/nozzle-0.4.json",
+      "family": "TINMORRY PP CF",
+      "type": "PP-CF",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PP-CF (P1S  P1P  X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY PP CF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/pp-cf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY PP CF",
+      "type": "PP-CF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "PP-CF (P1S  P1P  X1C).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY Sparkly PETG @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/sparkly-petg/p2s/nozzle-0.4.json",
+      "family": "TINMORRY Sparkly PETG",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "Sparkly  PETG(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY Sparkly PETG @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/sparkly-petg/x2d/nozzle-0.4.json",
+      "family": "TINMORRY Sparkly PETG",
+      "type": "PETG",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY PETG Sparkly.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY PETG Sparkly @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY TPU @Bambu Lab A1 0.4 nozzle",
+      "path": "profiles/tpu/a1/nozzle-0.4.json",
+      "family": "TINMORRY TPU",
+      "type": "TPU",
+      "printer": "Bambu Lab A1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU(A1-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/tpu/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY TPU",
+      "type": "TPU",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU(A1mini-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU @Bambu Lab P1P 0.4 nozzle",
+      "path": "profiles/tpu/p1p/nozzle-0.4.json",
+      "family": "TINMORRY TPU",
+      "type": "TPU",
+      "printer": "Bambu Lab P1P 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU(P1P-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/tpu/p1s/nozzle-0.4.json",
+      "family": "TINMORRY TPU",
+      "type": "TPU",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU @Bambu Lab X1 0.4 nozzle",
+      "path": "profiles/tpu/x1/nozzle-0.4.json",
+      "family": "TINMORRY TPU",
+      "type": "TPU",
+      "printer": "Bambu Lab X1 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/tpu/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY TPU",
+      "type": "TPU",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU(P1S X1 X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/tpu-95a/h2c/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU-95A(H2C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab H2D 0.4 nozzle",
+      "path": "profiles/tpu-95a/h2d/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab H2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU95A(H2D-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab H2S 0.4 nozzle",
+      "path": "profiles/tpu-95a/h2s/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab H2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "H2S/TINMORRY TPU 95A.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY TPU 95A @Bambu Lab H2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/tpu-95a/p2s/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "P2S/TINMORRY TPU 95A.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY TPU 95A @Bambu Lab P2S 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/tpu-95a/x2d/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-bambu-studio",
+        "label": "TINMORRY BambuStudio .bbsflmt repository",
+        "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+        "path": "X2D/0.4mm/TINMORRY TPU 95A.bbsflmt",
+        "innerPath": "TINMORRY/TINMORRY TPU 95A @Bambu Lab X2D 0.4 nozzle.json",
+        "format": "bbsflmt",
+        "priority": 100
+      }
+    },
+    {
+      "name": "TINMORRY TPU GF @Bambu Lab P1S 0.4 nozzle",
+      "path": "profiles/tpu-gf/p1s/nozzle-0.4.json",
+      "family": "TINMORRY TPU GF",
+      "type": "TPU-GF",
+      "printer": "Bambu Lab P1S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU-GF(P1S,X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU GF @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/tpu-gf/p2s/nozzle-0.4.json",
+      "family": "TINMORRY TPU GF",
+      "type": "TPU-GF",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU-GF(P2S-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU GF @Bambu Lab X1 Carbon 0.4 nozzle",
+      "path": "profiles/tpu-gf/x1-carbon/nozzle-0.4.json",
+      "family": "TINMORRY TPU GF",
+      "type": "TPU-GF",
+      "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU-GF(P1S,X1C-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    },
+    {
+      "name": "TINMORRY TPU GF @Bambu Lab X1E 0.4 nozzle",
+      "path": "profiles/tpu-gf/x1e/nozzle-0.4.json",
+      "family": "TINMORRY TPU GF",
+      "type": "TPU-GF",
+      "printer": "Bambu Lab X1E 0.4 nozzle",
+      "source": {
+        "sourceId": "tinmorry-json-legacy",
+        "label": "TINMORRY legacy JSON repository",
+        "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",
+        "path": "TPU-GF(X1E-Bambu-TINMORRY).json",
+        "innerPath": "",
+        "format": "json",
+        "priority": 50
+      }
+    }
+  ]
+}

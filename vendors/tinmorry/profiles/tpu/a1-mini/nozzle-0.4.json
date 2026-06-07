@@ -1,0 +1,38 @@
+{
+  "compatible_printers": [
+    "Bambu Lab A1 mini 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_flow_ratio": [
+    "0.98"
+  ],
+  "filament_id": "PFTIN9663bf88",
+  "filament_retraction_length": [
+    "1.4"
+  ],
+  "filament_settings_id": [
+    "TINMORRY TPU @Bambu Lab A1 mini 0.4 nozzle"
+  ],
+  "filament_type": [
+    "TPU"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Bambu TPU 95A @BBL A1M",
+  "name": "TINMORRY TPU @Bambu Lab A1 mini 0.4 nozzle",
+  "nozzle_temperature": [
+    "215"
+  ],
+  "nozzle_temperature_initial_layer": [
+    "220"
+  ],
+  "textured_plate_temp": [
+    "35"
+  ],
+  "textured_plate_temp_initial_layer": [
+    "35"
+  ],
+  "version": "1.10.0.32"
+}

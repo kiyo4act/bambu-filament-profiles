@@ -1,0 +1,23 @@
+{
+  "name": "bambu-filament-profiles",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bambu Studio filament profile source repository with generated .bbsflmt releases.",
+  "scripts": {
+    "vendor:status": "node scripts/bambu-profiles.mjs vendor:status",
+    "vendor:update": "node scripts/bambu-profiles.mjs vendor:update",
+    "vendor:ingest": "node scripts/bambu-profiles.mjs vendor:ingest",
+    "verify": "node scripts/bambu-profiles.mjs verify",
+    "build:bbsflmt": "node scripts/bambu-profiles.mjs build:bbsflmt",
+    "generate:readme": "node scripts/bambu-profiles.mjs generate:readme",
+    "ci": "npm run verify && npm run build:bbsflmt && npm run verify"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "yaml": "^2.7.0"
+  }
+}

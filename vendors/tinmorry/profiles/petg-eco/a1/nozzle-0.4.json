@@ -1,0 +1,32 @@
+{
+  "compatible_printers": [
+    "Bambu Lab A1 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_flow_ratio": [
+    "0.96"
+  ],
+  "filament_id": "PFTIN4e583fb4",
+  "filament_max_volumetric_speed": [
+    "12"
+  ],
+  "filament_settings_id": [
+    "TINMORRY PETG ECO @Bambu Lab A1 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PETG"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic PETG @BBL A1",
+  "name": "TINMORRY PETG ECO @Bambu Lab A1 0.4 nozzle",
+  "nozzle_temperature": [
+    "245"
+  ],
+  "nozzle_temperature_initial_layer": [
+    "240"
+  ],
+  "version": "1.8.0.13"
+}

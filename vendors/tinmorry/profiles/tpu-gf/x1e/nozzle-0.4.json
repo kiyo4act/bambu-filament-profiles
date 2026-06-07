@@ -1,0 +1,44 @@
+{
+  "compatible_printers": [
+    "Bambu Lab X1E 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "filament_extruder_variant": [
+    "Direct Drive Standard"
+  ],
+  "filament_id": "PFTIN0282f6d2",
+  "filament_max_volumetric_speed": [
+    "10"
+  ],
+  "filament_retraction_length": [
+    "1.4"
+  ],
+  "filament_settings_id": [
+    "TINMORRY TPU GF @Bambu Lab X1E 0.4 nozzle"
+  ],
+  "filament_type": [
+    "TPU-GF"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Generic TPU",
+  "name": "TINMORRY TPU GF @Bambu Lab X1E 0.4 nozzle",
+  "nozzle_temperature": [
+    "225"
+  ],
+  "nozzle_temperature_initial_layer": [
+    "225"
+  ],
+  "slow_down_layer_time": [
+    "12"
+  ],
+  "textured_plate_temp": [
+    "45"
+  ],
+  "textured_plate_temp_initial_layer": [
+    "45"
+  ],
+  "version": "2.1.0.18"
+}

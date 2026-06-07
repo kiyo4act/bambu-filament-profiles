@@ -1,0 +1,35 @@
+{
+  "compatible_printers": [
+    "Bambu Lab X1 Carbon 0.4 nozzle"
+  ],
+  "compatible_printers_condition": "",
+  "fan_cooling_layer_time": [
+    "10"
+  ],
+  "fan_max_speed": [
+    "50"
+  ],
+  "fan_min_speed": [
+    "30"
+  ],
+  "filament_extruder_variant": [
+    "Direct Drive Standard"
+  ],
+  "filament_id": "PFTINbbabc361",
+  "filament_settings_id": [
+    "TINMORRY PET GF @Bambu Lab X1 Carbon 0.4 nozzle"
+  ],
+  "filament_type": [
+    "PET-GF"
+  ],
+  "filament_vendor": [
+    "TINMORRY"
+  ],
+  "from": "User",
+  "inherits": "Bambu PET-CF @BBL X1C",
+  "name": "TINMORRY PET GF @Bambu Lab X1 Carbon 0.4 nozzle",
+  "slow_down_layer_time": [
+    "5"
+  ],
+  "version": "1.10.0.32"
+}

@@ -1,0 +1,43 @@
+name: Candidate release
+
+on:
+  workflow_dispatch:
+    inputs:
+      vendor:
+        description: Vendor key
+        required: true
+        default: tinmorry
+
+permissions:
+  contents: write
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm run build:bbsflmt
+      - run: npm run verify
+      - name: Create candidate prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VENDOR: ${{ inputs.vendor }}
+          TAG: candidate-${{ inputs.vendor }}-${{ github.run_number }}
+        run: |
+          git tag "${TAG}"
+          git push origin "${TAG}"
+          gh release create "${TAG}" \
+            dist/bbsflmt/**/*.bbsflmt \
+            dist/all-bbsflmt.zip \
+            dist/all-json.zip \
+            dist/manifest.json \
+            --title "Candidate ${VENDOR} ${GITHUB_RUN_NUMBER}" \
+            --notes-file dist/release-notes.md \
+            --prerelease
+

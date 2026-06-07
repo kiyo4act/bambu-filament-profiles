@@ -1,0 +1,25 @@
+vendor: TINMORRY
+bundleVersion: 02.06.01.50
+defaults:
+  nozzle: "0.4"
+materialRules:
+  abs:
+    defaultFamily: TINMORRY ABS Pro
+  petCfGf:
+    splitInto:
+      - TINMORRY PET CF
+      - TINMORRY PET GF
+printerAliases:
+  x1c: Bambu Lab X1 Carbon
+  x1: Bambu Lab X1
+  x1e: Bambu Lab X1E
+  x2d: Bambu Lab X2D
+  p1p: Bambu Lab P1P
+  p1s: Bambu Lab P1S
+  p2s: Bambu Lab P2S
+  a1: Bambu Lab A1
+  a1mini: Bambu Lab A1 mini
+  h2c: Bambu Lab H2C
+  h2d: Bambu Lab H2D
+  h2s: Bambu Lab H2S
+
