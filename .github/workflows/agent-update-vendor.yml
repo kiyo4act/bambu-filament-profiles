@@ -1,0 +1,64 @@
+name: Agent update vendor
+
+on:
+  workflow_dispatch:
+    inputs:
+      vendor:
+        description: Vendor key
+        required: true
+        default: tinmorry
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Update, validate, and build
+        env:
+          VENDOR: ${{ github.event.inputs.vendor }}
+        run: |
+          npm run vendor:update -- --vendor "$VENDOR"
+          npm run verify
+          npm run build:bbsflmt
+          npm run verify
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VENDOR: ${{ github.event.inputs.vendor }}
+          BRANCH_NAME: agent/update/${{ github.event.inputs.vendor }}-${{ github.run_number }}
+        run: |
+          if git diff --quiet; then
+            echo "No changes to propose."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH_NAME"
+          git add README.md vendors package-lock.json package.json
+          git commit -m "Update $VENDOR filament profiles"
+          git push -u origin "$BRANCH_NAME"
+          cat > pr-body.md <<BODY
+          Automated upstream update for $VENDOR.
+
+          Validation passed and .bbsflmt artifacts were generated during this workflow run.
+
+          Manual gate:
+          1. Run the Candidate release workflow on this branch.
+          2. Import the generated .bbsflmt files in Bambu Studio.
+          3. Merge after the candidate is acceptable.
+          BODY
+          gh pr create \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --title "Update $VENDOR filament profiles" \
+            --body-file pr-body.md
+

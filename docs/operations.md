@@ -4,6 +4,14 @@ This repository is an update workflow, not just a profile dump.
 
 ## Normal Upstream Update
 
+Preferred agent entry points:
+
+- Status only: run the `Watch upstreams` workflow with a vendor key.
+- Update PR: run the `Agent update vendor` workflow with a vendor key.
+- Candidate assets: run the `Candidate release` workflow from the update branch.
+
+Manual local equivalent:
+
 1. Start from `main`.
 2. Create a short-lived branch such as `agent/update/tinmorry-2026-06-07`.
 3. Run:
@@ -60,4 +68,3 @@ Automation cannot fully prove:
 - the profile prints well
 
 Candidate releases keep that human import test explicit.
-
