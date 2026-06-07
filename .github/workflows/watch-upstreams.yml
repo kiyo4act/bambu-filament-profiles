@@ -9,8 +9,7 @@ on:
         default: tinmorry
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
   watch:
@@ -23,49 +22,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Check upstream status
-        id: status
         env:
           VENDOR: ${{ github.event.inputs.vendor }}
         run: |
-          set +e
-          npm run vendor:status -- --vendor "${VENDOR}" --exit-code
-          code=$?
-          set -e
-          if [ "$code" = "0" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          elif [ "$code" = "2" ]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            exit "$code"
-          fi
-      - name: Update vendor profiles
-        if: steps.status.outputs.changed == 'true'
-        env:
-          VENDOR: ${{ github.event.inputs.vendor }}
-        run: |
-          npm run vendor:update -- --vendor "${VENDOR}"
-          npm run verify
-          npm run build:bbsflmt
-          npm run verify
-      - name: Create update PR
-        if: steps.status.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          VENDOR: ${{ github.event.inputs.vendor }}
-          BRANCH: agent/update/${{ github.event.inputs.vendor }}-${{ github.run_number }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "${BRANCH}"
-          git add README.md vendors package-lock.json package.json
-          git commit -m "Update ${VENDOR} filament profiles"
-          git push origin "${BRANCH}"
-          gh pr create \
-            --base main \
-            --head "${BRANCH}" \
-            --title "Update ${VENDOR} filament profiles" \
-            --body "Automated upstream update for ${VENDOR}.
-
-Validation passed and dist artifacts were generated in the workflow run.
-
-Manual gate: create a candidate prerelease from this branch and import the generated .bbsflmt files in Bambu Studio before merging."
+          npm run vendor:status -- --vendor "${VENDOR}"
