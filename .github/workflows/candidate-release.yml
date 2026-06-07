@@ -33,11 +33,9 @@ jobs:
           git tag "${TAG}"
           git push origin "${TAG}"
           gh release create "${TAG}" \
-            dist/bbsflmt/**/*.bbsflmt \
             dist/all-bbsflmt.zip \
             dist/all-json.zip \
             dist/manifest.json \
             --title "Candidate ${VENDOR} ${GITHUB_RUN_NUMBER}" \
             --notes-file dist/release-notes.md \
             --prerelease
-

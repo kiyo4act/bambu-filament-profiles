@@ -48,10 +48,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            dist/bbsflmt/**/*.bbsflmt \
             dist/all-bbsflmt.zip \
             dist/all-json.zip \
             dist/manifest.json \
             --title "${GITHUB_REF_NAME}" \
             --notes-file dist/release-notes.md
-

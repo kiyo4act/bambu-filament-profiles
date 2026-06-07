@@ -899,7 +899,17 @@ function listMarkdown(title, items, emptyText) {
 }
 
 async function writeReleaseNotes(manifest) {
-  const lines = ['# Release Artifacts', ''];
+  const totals = releaseTotals(manifest);
+  const lines = [
+    '# Release Artifacts',
+    '',
+    `Expected Bambu Studio import count: ${totals.profiles} configs`,
+    `Material bundles generated: ${totals.materials}`,
+    `Vendors included: ${totals.vendors}`,
+    '',
+    'Download `all-bbsflmt.zip` for Bambu Studio import testing. Individual `.bbsflmt` files are kept inside that archive, not uploaded as separate release assets.',
+    '',
+  ];
   for (const vendor of manifest.vendors) {
     lines.push(`## ${vendor.vendor}`, '');
     for (const material of vendor.materials) {
@@ -908,6 +918,15 @@ async function writeReleaseNotes(manifest) {
     lines.push('');
   }
   await fs.writeFile(path.join(distRoot, 'release-notes.md'), lines.join('\n'), 'utf8');
+}
+
+function releaseTotals(manifest) {
+  const materials = manifest.vendors.flatMap((vendor) => vendor.materials ?? []);
+  return {
+    vendors: manifest.vendors.length,
+    materials: materials.length,
+    profiles: materials.reduce((sum, material) => sum + (material.profiles?.length ?? 0), 0),
+  };
 }
 
 async function writeAggregateZip(fileName, sourceDir) {

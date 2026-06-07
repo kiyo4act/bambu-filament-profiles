@@ -48,6 +48,8 @@ This repository is built for ongoing maintenance by a coding agent:
 
 ## Basic Workflow
 
+For Bambu Studio import testing, download `all-bbsflmt.zip` from a prerelease or release, extract it locally, then import the contained `.bbsflmt` files. Release notes show the expected Bambu Studio import count before the material list.
+
 ```powershell
 npm ci
 npm run vendor:status -- --vendor tinmorry
@@ -57,4 +59,3 @@ npm run build:bbsflmt
 ```
 
 See [operations](docs/operations.md) and [vendor onboarding](docs/vendor-onboarding.md) for the agent workflow.
-

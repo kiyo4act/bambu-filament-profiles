@@ -32,7 +32,7 @@ Manual local equivalent:
    - conflict and warning summary
    - candidate release link once available
 6. Build a candidate prerelease from the PR branch.
-7. Import candidate `.bbsflmt` files in Bambu Studio.
+7. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
 8. Merge to `main` only after the candidate is acceptable.
 9. Create a stable release from `main`.
 
@@ -60,6 +60,7 @@ Automation can:
 - detect structural conflicts
 - build candidate `.bbsflmt` assets
 - open PRs and prereleases
+- show the expected Bambu Studio import count in release notes
 
 Automation cannot fully prove:
 

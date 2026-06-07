@@ -27,6 +27,8 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 - Vendor-specific normalization rules live in `vendors/<vendor>/normalization.yml`.
 - Manual/user-supplied files enter through `incoming/<vendor>/`.
 - Generated `.bbsflmt` files go under `dist/` and GitHub Release assets, not `main`.
+- GitHub Releases upload aggregate archives and manifest only: `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
+- Release notes must include the expected Bambu Studio import count before the material list.
 - Reports under `vendors/<vendor>/reports/` are committed because they explain update decisions.
 
 ## TINMORRY Rules
@@ -42,4 +44,3 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 ## Human Gate
 
 Automated checks validate structure, naming, and bundle integrity. They do not prove that Bambu Studio imports every bundle correctly or that the profile prints well. Candidate releases are for human import testing before merging into `main`.
-
