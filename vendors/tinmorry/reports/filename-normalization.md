@@ -93,6 +93,7 @@ Source filenames are not normalized in place. Committed JSON paths are normalize
 | TINMORRY PETG Marble @Bambu Lab X1 Carbon 0.4 nozzle | profiles/petg-marble/x1-carbon/nozzle-0.4.json | 135 |
 | TINMORRY PETG Marble @Bambu Lab X2D 0.4 nozzle | profiles/petg-marble/x2d/nozzle-0.4.json | 146 |
 | TINMORRY PETG Matte @Bambu Lab A1 mini 0.4 nozzle | profiles/petg-matte/a1-mini/nozzle-0.4.json | 145 |
+| TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle | profiles/petg-matte/p2s/nozzle-0.4.json | 145 |
 | TINMORRY PETG Metallic @Bambu Lab A1 0.4 nozzle | profiles/petg-metallic/a1/nozzle-0.4.json | 135 |
 | TINMORRY PETG Metallic @Bambu Lab A1 mini 0.4 nozzle | profiles/petg-metallic/a1-mini/nozzle-0.4.json | 135 |
 | TINMORRY PETG Metallic @Bambu Lab H2C 0.4 nozzle | profiles/petg-metallic/h2c/nozzle-0.4.json | 139 |
