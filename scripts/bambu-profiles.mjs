@@ -17,6 +17,7 @@ const workRoot = path.join(repoRoot, '.work');
 const vendorsRoot = path.join(repoRoot, 'vendors');
 const distRoot = path.join(repoRoot, 'dist');
 const gitBin = process.env.GIT ?? 'git';
+const profileCandidateFormats = new Set(['json', 'bbsflmt', 'zip']);
 
 const command = process.argv[2];
 const args = parseArgs(process.argv.slice(3));
@@ -61,7 +62,7 @@ function usage() {
   node scripts/bambu-profiles.mjs vendor:diff --vendor <vendor>
   node scripts/bambu-profiles.mjs vendor:propose --vendor <vendor>
   node scripts/bambu-profiles.mjs vendor:ingest --vendor <vendor> [--from incoming|<path>]
-  node scripts/bambu-profiles.mjs vendor:lock-inputs --vendor <vendor>
+  node scripts/bambu-profiles.mjs vendor:lock-inputs --vendor <vendor> [--defer-artifact-candidates|--lock-artifact-candidates]
   node scripts/bambu-profiles.mjs profiles:expand-inherits --vendor <vendor> [--system-root <path>]
   node scripts/bambu-profiles.mjs reports:vendor-state --vendor <vendor>
   node scripts/bambu-profiles.mjs verify
@@ -156,6 +157,7 @@ async function vendorCollect(options) {
     collectionRoot: path.relative(repoRoot, collectionRoot).replaceAll(path.sep, '/'),
     sources: {},
     inputs: [],
+    artifactCandidates: [],
     bundleErrors: [],
   };
 
@@ -176,7 +178,7 @@ async function vendorCollect(options) {
         priority: Number(source.priority ?? 0),
         formats: source.formats ?? ['json', 'bbsflmt', 'zip'],
       };
-      const profiles = await readProfilesFromDirectory(sourceDir, {
+      const inputs = await readDirectoryInputs(sourceDir, {
         vendor: config.vendor,
         sourceId: source.id,
         sourceLabel: source.label ?? source.id,
@@ -184,8 +186,9 @@ async function vendorCollect(options) {
         sourcePriority: Number(source.priority ?? 0),
         sourceCommit: commit,
         allowedFormats: new Set(source.formats ?? ['json', 'bbsflmt', 'zip']),
-      });
-      await appendCollectedInputs(manifest, profiles, collectionRoot);
+      }, { includeArtifactCandidates: true });
+      await appendCollectedInputs(manifest, inputs.profiles, collectionRoot);
+      await appendArtifactCandidates(manifest, inputs.artifactCandidates, collectionRoot);
     }
   }
 
@@ -242,7 +245,7 @@ async function vendorCollect(options) {
   await writeJson(collectionManifestPath(vendorKey), manifest);
   await writeCollectionReport(manifest);
   console.log(
-    `OK: collected ${manifest.inputs.length} JSON profile(s) for ${config.vendor} into ${path.relative(repoRoot, collectionRoot)}.`,
+    `OK: collected ${manifest.inputs.length} JSON profile(s) and ${manifest.artifactCandidates.length} artifact candidate(s) for ${config.vendor} into ${path.relative(repoRoot, collectionRoot)}.`,
   );
 }
 
@@ -257,7 +260,15 @@ async function vendorDiff(options) {
     (inputLock?.inputs ?? []).map((item) => [inputIdentity(item), item]),
   );
   const currentInputs = new Map(manifest.inputs.map((item) => [inputIdentity(item), item]));
+  const previousArtifactCandidates = new Map(
+    (inputLock?.reviewedArtifactCandidates ?? inputLock?.artifactCandidates ?? [])
+      .map((item) => [artifactCandidateIdentity(item), item]),
+  );
+  const currentArtifactCandidates = new Map(
+    (manifest.artifactCandidates ?? []).map((item) => [artifactCandidateIdentity(item), item]),
+  );
   const inputDiffs = [];
+  const artifactCandidateDiffs = [];
 
   for (const input of manifest.inputs) {
     const previous = previousInputs.get(inputIdentity(input));
@@ -288,6 +299,45 @@ async function vendorDiff(options) {
         profileName: previous.profileName,
         previousHash: previous.profileHash,
         currentHash: null,
+      });
+    }
+  }
+
+  for (const candidate of manifest.artifactCandidates ?? []) {
+    const previous = previousArtifactCandidates.get(artifactCandidateIdentity(candidate));
+    let status = 'added';
+    if (previous) {
+      status = artifactCandidateReviewHash(previous) === artifactCandidateReviewHash(candidate) ? 'unchanged' : 'changed';
+    } else if (!inputLock) {
+      status = 'untracked';
+    }
+    artifactCandidateDiffs.push({
+      status,
+      identity: artifactCandidateIdentity(candidate),
+      sourceId: candidate.sourceId,
+      relativePath: candidate.relativePath,
+      innerPath: candidate.innerPath,
+      candidateType: candidate.candidateType,
+      profileName: candidate.profileName,
+      previousHash: previous ? artifactCandidateReviewHash(previous) : null,
+      currentHash: artifactCandidateReviewHash(candidate),
+      promoteFromPath: candidate.promoteFromPath,
+    });
+  }
+
+  for (const previous of inputLock?.reviewedArtifactCandidates ?? inputLock?.artifactCandidates ?? []) {
+    if (!currentArtifactCandidates.has(artifactCandidateIdentity(previous))) {
+      artifactCandidateDiffs.push({
+        status: 'removed',
+        identity: artifactCandidateIdentity(previous),
+        sourceId: previous.sourceId,
+        relativePath: previous.relativePath,
+        innerPath: previous.innerPath,
+        candidateType: previous.candidateType,
+        profileName: previous.profileName,
+        previousHash: artifactCandidateReviewHash(previous),
+        currentHash: null,
+        promoteFromPath: previous.promoteFromPath ?? '',
       });
     }
   }
@@ -323,6 +373,12 @@ async function vendorDiff(options) {
         'en',
       ),
     ),
+    artifactCandidates: artifactCandidateDiffs.sort((a, b) =>
+      `${a.status}:${a.sourceId}:${a.relativePath}:${a.innerPath}:${a.candidateType}`.localeCompare(
+        `${b.status}:${b.sourceId}:${b.relativePath}:${b.innerPath}:${b.candidateType}`,
+        'en',
+      ),
+    ),
   };
 
   const reportsDir = collectionReportsRoot(vendorKey);
@@ -342,9 +398,15 @@ async function vendorPropose(options) {
       .filter((item) => ['added', 'changed', 'untracked'].includes(item.status ?? 'untracked'))
       .map(inputIdentity),
   );
+  const changedArtifactCandidateKeys = new Set(
+    (diff?.artifactCandidates ?? manifest.artifactCandidates ?? [])
+      .filter((item) => ['added', 'changed', 'untracked'].includes(item.status ?? 'untracked'))
+      .map(artifactCandidateIdentity),
+  );
   const existingProfiles = (await readAllNormalizedProfiles()).filter((item) => item.vendor === manifest.vendor);
   const knownFamilies = new Set(existingProfiles.map((item) => item.profile.name.split(' @')[0]));
   const proposals = [];
+  const artifactProposals = [];
   const decisions = [];
 
   for (const input of manifest.inputs) {
@@ -382,6 +444,7 @@ async function vendorPropose(options) {
     proposals.push(proposal);
     for (const issue of issues) {
       decisions.push({
+        kind: 'input',
         issue,
         sourceId: input.sourceId,
         relativePath: input.relativePath,
@@ -392,13 +455,65 @@ async function vendorPropose(options) {
     }
   }
 
+  for (const candidate of manifest.artifactCandidates ?? []) {
+    if (!changedArtifactCandidateKeys.has(artifactCandidateIdentity(candidate))) continue;
+    const text = normalizeText(
+      [
+        candidate.profileName,
+        candidate.filamentSettingsId,
+        candidate.relativePath,
+        candidate.innerPath,
+        candidate.inherits,
+        candidate.compatiblePrinters.join(' '),
+        candidate.filamentType,
+      ].join(' '),
+    );
+    const material = materialObservationFor(text);
+    const printers = printerNamesFromText(text).map((printer) => ({
+      printer,
+      nozzle: nozzleFor(text, {}),
+    }));
+    const familySuggestion = familySuggestionFor(manifest.vendor, material);
+    const issues = artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies);
+    const artifactProposal = {
+      sourceId: candidate.sourceId,
+      relativePath: candidate.relativePath,
+      innerPath: candidate.innerPath,
+      candidateType: candidate.candidateType,
+      profileName: candidate.profileName,
+      observedMaterial: material,
+      suggestedFamily: familySuggestion,
+      observedPrinters: printers,
+      promoteFromPath: candidate.promoteFromPath,
+      notes: candidate.notes ?? [],
+      issues,
+    };
+    artifactProposals.push(artifactProposal);
+    for (const issue of issues) {
+      decisions.push({
+        kind: 'artifact-candidate',
+        issue,
+        sourceId: candidate.sourceId,
+        relativePath: candidate.relativePath,
+        innerPath: candidate.innerPath,
+        profileName: candidate.profileName,
+        suggestedFamily: familySuggestion,
+        candidateType: candidate.candidateType,
+        promoteFromPath: candidate.promoteFromPath,
+      });
+    }
+  }
+
   const result = {
     vendor: manifest.vendor,
     generatedAt: new Date().toISOString(),
     changedInputCount: proposals.length,
+    changedArtifactCandidateCount: artifactProposals.length,
     proposalCount: proposals.length,
+    artifactProposalCount: artifactProposals.length,
     decisionRequestCount: decisions.length,
     proposals,
+    artifactProposals,
     decisions,
   };
 
@@ -415,6 +530,20 @@ async function vendorLockInputs(options) {
   const vendorKey = requireVendor(options);
   const config = await readVendorConfig(vendorKey);
   const manifest = await readCollectionManifest(vendorKey);
+  const artifactCandidates = manifest.artifactCandidates ?? [];
+  const deferArtifactCandidates = Boolean(options.deferArtifactCandidates);
+  const lockArtifactCandidates = Boolean(options.lockArtifactCandidates);
+
+  if (artifactCandidates.length && !deferArtifactCandidates && !lockArtifactCandidates) {
+    const error = new Error(
+      `${manifest.vendor} has ${artifactCandidates.length} artifact candidate(s); review them before locking inputs, or rerun with --defer-artifact-candidates to lock normal inputs only.`,
+    );
+    error.details = artifactCandidates.map((candidate) =>
+      `- ${candidate.sourceId}: ${candidate.relativePath}${candidate.innerPath ? ` :: ${candidate.innerPath}` : ''}`,
+    ).join('\n');
+    throw error;
+  }
+
   const lock = {
     vendor: manifest.vendor,
     acceptedAt: new Date().toISOString(),
@@ -434,8 +563,34 @@ async function vendorLockInputs(options) {
       extractedPath: input.extractedPath,
     })),
   };
+
+  if (lockArtifactCandidates) {
+    lock.reviewedArtifactCandidates = artifactCandidates.map((candidate) => ({
+      identity: artifactCandidateIdentity(candidate),
+      sourceId: candidate.sourceId,
+      sourceRepo: candidate.sourceRepo,
+      sourceCommit: candidate.sourceCommit,
+      format: candidate.format,
+      candidateType: candidate.candidateType,
+      relativePath: candidate.relativePath,
+      innerPath: candidate.innerPath,
+      sourceFileHash: candidate.sourceFileHash,
+      profileHash: candidate.profileHash,
+      bundleHash: candidate.bundleHash,
+      reviewHash: artifactCandidateReviewHash(candidate),
+      profileName: candidate.profileName,
+      extractedPath: candidate.extractedPath,
+      promoteFromPath: candidate.promoteFromPath,
+    }));
+  }
+
   await writeJson(path.join(config.dir, 'input-lock.json'), lock);
-  console.log(`OK: locked ${lock.inputs.length} accepted input(s) for ${manifest.vendor}.`);
+  const artifactMessage = lockArtifactCandidates
+    ? ` and ${lock.reviewedArtifactCandidates.length} reviewed artifact candidate(s)`
+    : deferArtifactCandidates && artifactCandidates.length
+      ? `; deferred ${artifactCandidates.length} artifact candidate(s)`
+      : '';
+  console.log(`OK: locked ${lock.inputs.length} accepted input(s)${artifactMessage} for ${manifest.vendor}.`);
 }
 
 async function profilesExpandInherits(options) {
@@ -842,16 +997,25 @@ function finalizeProfile(inputProfile, options) {
 }
 
 async function readProfilesFromDirectory(root, sourceMeta) {
+  return (await readDirectoryInputs(root, sourceMeta)).profiles;
+}
+
+async function readDirectoryInputs(root, sourceMeta, options = {}) {
   const files = await walkFiles(root).catch(() => []);
-  const out = [];
+  const profiles = [];
+  const artifactCandidates = [];
   for (const filePath of files) {
-    const suffix = path.extname(filePath).toLowerCase();
-    const format = suffix === '.bbsflmt' ? 'bbsflmt' : suffix.slice(1);
-    if (!sourceMeta.allowedFormats.has(format)) continue;
+    const format = formatForPath(filePath);
     if (format === 'json') {
+      if (!sourceMeta.allowedFormats.has(format)) {
+        if (options.includeArtifactCandidates) {
+          artifactCandidates.push(...(await probeArtifactCandidates(filePath, root, sourceMeta, format)));
+        }
+        continue;
+      }
       const bytes = await fs.readFile(filePath);
       const profile = JSON.parse(bytes.toString('utf8'));
-      out.push({
+      profiles.push({
         ...sourceMeta,
         format,
         filePath,
@@ -861,41 +1025,48 @@ async function readProfilesFromDirectory(root, sourceMeta) {
         profile,
       });
     } else if (format === 'bbsflmt' || format === 'zip') {
-      out.push(...(await readBundleProfiles(filePath, root, sourceMeta, format)));
+      if (!sourceMeta.allowedFormats.has(format)) {
+        if (options.includeArtifactCandidates) {
+          artifactCandidates.push(...(await probeArtifactCandidates(filePath, root, sourceMeta, format)));
+        }
+        continue;
+      }
+      profiles.push(...(await readBundleProfiles(filePath, root, sourceMeta, format)));
+    } else if (options.includeArtifactCandidates && profileCandidateFormats.has(format)) {
+      artifactCandidates.push(...(await probeArtifactCandidates(filePath, root, sourceMeta, format)));
     }
   }
-  return out;
+  return { profiles, artifactCandidates };
+}
+
+function formatForPath(filePath) {
+  const suffix = path.extname(filePath).toLowerCase();
+  return suffix === '.bbsflmt' ? 'bbsflmt' : suffix.slice(1);
 }
 
 async function readBundleProfiles(filePath, root, sourceMeta, format) {
   const bytes = new Uint8Array(await fs.readFile(filePath));
   const sourceFileHash = hash(Buffer.from(bytes));
-  const entries = unzipSync(bytes);
-  const names = Object.keys(entries).sort((a, b) => a.localeCompare(b, 'en'));
-  const bundleBytes = entries['bundle_structure.json'];
-  const bundle = bundleBytes ? JSON.parse(strFromU8(bundleBytes)) : null;
   const relativePath = path.relative(root, filePath).replaceAll(path.sep, '/');
+  const parsed = parseBundleProfiles(bytes);
   const out = [];
 
-  for (const name of names) {
-    if (!name.toLowerCase().endsWith('.json')) continue;
-    if (name === 'bundle_structure.json') continue;
-    const profile = JSON.parse(strFromU8(entries[name]));
+  for (const item of parsed.profiles) {
     out.push({
       ...sourceMeta,
       format,
       filePath,
       relativePath,
-      innerPath: name,
-      bundle,
-      bundleHash: bundle ? stableHash(bundle) : null,
+      innerPath: item.innerPath,
+      bundle: item.bundle,
+      bundleHash: item.bundleHash,
       sourceFileHash,
-      profileHash: stableHash(profile),
-      profile,
+      profileHash: item.profileHash,
+      profile: item.profile,
     });
   }
 
-  if (!bundle) {
+  if (!parsed.bundle) {
     out.push({
       ...sourceMeta,
       format,
@@ -911,6 +1082,195 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
     });
   }
   return out;
+}
+
+async function probeArtifactCandidates(filePath, root, sourceMeta, format) {
+  const bytes = new Uint8Array(await fs.readFile(filePath));
+  const sourceFileHash = hash(Buffer.from(bytes));
+  const relativePath = path.relative(root, filePath).replaceAll(path.sep, '/');
+  const base = {
+    ...sourceMeta,
+    format,
+    filePath,
+    relativePath,
+    sourceFileHash,
+  };
+
+  try {
+    if (format === 'json') {
+      const profile = JSON.parse(Buffer.from(bytes).toString('utf8'));
+      return [artifactCandidateFromProfile(base, {
+        candidateType: 'raw-json',
+        innerPath: '',
+        profile,
+        notes: ['format is not allowed by this source'],
+      })];
+    }
+    if (format === 'bbsflmt') {
+      return bundleArtifactCandidates(base, bytes, {
+        candidateType: 'direct-bbsflmt-bundle',
+        innerPrefix: '',
+        notes: ['format is not allowed by this source'],
+      });
+    }
+    if (format === 'zip') {
+      return zipArtifactCandidates(base, bytes);
+    }
+  } catch (error) {
+    return [artifactCandidateWithoutProfile(base, {
+      candidateType: `unreadable-${format}`,
+      innerPath: '',
+      notes: [`format is not allowed by this source`, error.message],
+    })];
+  }
+  return [];
+}
+
+function zipArtifactCandidates(base, bytes) {
+  const entries = unzipSync(bytes);
+  const names = Object.keys(entries).sort((a, b) => a.localeCompare(b, 'en'));
+  const out = [];
+  const notes = ['format is not allowed by this source'];
+  const hasDirectBundle = Boolean(entries['bundle_structure.json']);
+
+  if (hasDirectBundle) {
+    out.push(...bundleArtifactCandidates(base, bytes, {
+      candidateType: 'direct-bundle-zip',
+      innerPrefix: '',
+      notes,
+    }));
+  }
+
+  for (const name of names) {
+    if (name === 'bundle_structure.json') continue;
+    const lower = name.toLowerCase();
+    if (lower.endsWith('.bbsflmt')) {
+      out.push(...bundleArtifactCandidates(base, entries[name], {
+        candidateType: 'nested-bbsflmt-in-zip',
+        innerPrefix: name,
+        notes,
+      }));
+      continue;
+    }
+    if (!hasDirectBundle && lower.endsWith('.json')) {
+      try {
+        const profile = JSON.parse(strFromU8(entries[name]));
+        out.push(artifactCandidateFromProfile(base, {
+          candidateType: 'raw-json-in-zip',
+          innerPath: name,
+          profile,
+          notes,
+        }));
+      } catch (error) {
+        out.push(artifactCandidateWithoutProfile(base, {
+          candidateType: 'unreadable-json-in-zip',
+          innerPath: name,
+          notes: [...notes, error.message],
+        }));
+      }
+    }
+  }
+
+  if (!out.length) {
+    out.push(artifactCandidateWithoutProfile(base, {
+      candidateType: 'unknown-zip',
+      innerPath: '',
+      notes: [...notes, 'zip does not contain direct bundle JSON, raw JSON, or a nested .bbsflmt at probe depth 2'],
+    }));
+  }
+  return out;
+}
+
+function bundleArtifactCandidates(base, bytes, options) {
+  try {
+    const parsed = parseBundleProfiles(bytes);
+    if (!parsed.profiles.length) {
+      return [artifactCandidateWithoutProfile(base, {
+        candidateType: options.candidateType,
+        innerPath: options.innerPrefix ?? '',
+        notes: [...options.notes, parsed.bundle ? 'bundle has no profile JSON entries' : 'missing bundle_structure.json'],
+      })];
+    }
+    return parsed.profiles.map((item) =>
+      artifactCandidateFromProfile(base, {
+        candidateType: options.candidateType,
+        innerPath: options.innerPrefix ? `${options.innerPrefix}::${item.innerPath}` : item.innerPath,
+        profile: item.profile,
+        bundle: item.bundle,
+        bundleHash: item.bundleHash,
+        notes: options.notes,
+      }),
+    );
+  } catch (error) {
+    return [artifactCandidateWithoutProfile(base, {
+      candidateType: options.candidateType,
+      innerPath: options.innerPrefix ?? '',
+      notes: [...options.notes, error.message],
+    })];
+  }
+}
+
+function parseBundleProfiles(bytes) {
+  const entries = unzipSync(bytes);
+  const names = Object.keys(entries).sort((a, b) => a.localeCompare(b, 'en'));
+  const bundleBytes = entries['bundle_structure.json'];
+  const bundle = bundleBytes ? JSON.parse(strFromU8(bundleBytes)) : null;
+  const bundleHash = bundle ? stableHash(bundle) : null;
+  const profiles = [];
+  for (const name of names) {
+    if (!name.toLowerCase().endsWith('.json')) continue;
+    if (name === 'bundle_structure.json') continue;
+    const profile = JSON.parse(strFromU8(entries[name]));
+    profiles.push({
+      innerPath: name,
+      bundle,
+      bundleHash,
+      profile,
+      profileHash: stableHash(profile),
+    });
+  }
+  return { bundle, bundleHash, profiles };
+}
+
+function artifactCandidateFromProfile(base, options) {
+  const profile = options.profile;
+  return {
+    ...base,
+    candidateType: options.candidateType,
+    innerPath: options.innerPath ?? '',
+    bundle: options.bundle ?? null,
+    bundleHash: options.bundleHash ?? null,
+    profile,
+    profileHash: stableHash(profile),
+    profileName: profile.name ?? '',
+    filamentSettingsId: arrayFirst(profile.filament_settings_id) ?? '',
+    filamentVendor: Array.isArray(profile.filament_vendor) ? profile.filament_vendor : [],
+    filamentType: arrayFirst(profile.filament_type) ?? '',
+    compatiblePrinters: Array.isArray(profile.compatible_printers) ? profile.compatible_printers : [],
+    inherits: profile.inherits ?? '',
+    keyCount: Object.keys(profile).length,
+    notes: options.notes ?? [],
+  };
+}
+
+function artifactCandidateWithoutProfile(base, options) {
+  return {
+    ...base,
+    candidateType: options.candidateType,
+    innerPath: options.innerPath ?? '',
+    bundle: null,
+    bundleHash: null,
+    profile: null,
+    profileHash: null,
+    profileName: '',
+    filamentSettingsId: '',
+    filamentVendor: [],
+    filamentType: '',
+    compatiblePrinters: [],
+    inherits: '',
+    keyCount: 0,
+    notes: options.notes ?? [],
+  };
 }
 
 function collectionRootFor(vendorKey) {
@@ -1003,6 +1363,64 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
   );
 }
 
+async function appendArtifactCandidates(manifest, rawCandidates, collectionRoot) {
+  for (const raw of rawCandidates) {
+    const profileHash = raw.profileHash ?? null;
+    const candidateHash = hash(
+      `${raw.sourceId}:${raw.relativePath}:${raw.innerPath ?? ''}:${raw.candidateType}:${raw.sourceFileHash}:${profileHash ?? ''}`,
+    ).slice(0, 12);
+    let extractedPath = '';
+    let promoteFromPath = '';
+
+    if (raw.profile) {
+      const candidateDir = path
+        .join('candidate-profiles', slug(raw.sourceId), candidateHash)
+        .replaceAll(path.sep, '/');
+      const candidateFileName = `${
+        safeFileName(raw.profile.name ?? raw.innerPath ?? raw.relativePath) || `candidate-${candidateHash}`
+      }.json`;
+      extractedPath = path.join(candidateDir, candidateFileName).replaceAll(path.sep, '/');
+      await writeJson(path.join(collectionRoot, extractedPath), raw.profile);
+      promoteFromPath = path.relative(repoRoot, path.join(collectionRoot, candidateDir)).replaceAll(path.sep, '/');
+    }
+
+    const candidate = {
+      identity: artifactCandidateIdentity(raw),
+      sourceId: raw.sourceId,
+      sourceLabel: raw.sourceLabel,
+      sourceRepo: raw.sourceRepo,
+      sourceCommit: raw.sourceCommit ?? '',
+      sourcePriority: raw.sourcePriority,
+      format: raw.format,
+      candidateType: raw.candidateType,
+      relativePath: raw.relativePath,
+      innerPath: raw.innerPath ?? '',
+      sourceFileHash: raw.sourceFileHash ?? '',
+      profileHash,
+      bundleHash: raw.bundleHash ?? null,
+      reviewHash: artifactCandidateReviewHash(raw),
+      extractedPath,
+      promoteFromPath,
+      profileName: raw.profileName ?? '',
+      filamentSettingsId: raw.filamentSettingsId ?? '',
+      filamentVendor: raw.filamentVendor ?? [],
+      filamentType: raw.filamentType ?? '',
+      compatiblePrinters: raw.compatiblePrinters ?? [],
+      inherits: raw.inherits ?? '',
+      keyCount: raw.keyCount ?? 0,
+      notes: raw.notes ?? [],
+    };
+    manifest.artifactCandidates.push(candidate);
+  }
+
+  manifest.artifactCandidates.sort((a, b) =>
+    `${a.sourceId}:${a.relativePath}:${a.innerPath}:${a.candidateType}`.localeCompare(
+      `${b.sourceId}:${b.relativePath}:${b.innerPath}:${b.candidateType}`,
+      'en',
+    ),
+  );
+}
+
 async function incomingRootsFor(vendorKey) {
   const root = path.join(repoRoot, 'incoming');
   if (!(await exists(root))) return [];
@@ -1016,6 +1434,20 @@ function inputIdentity(item) {
   return `${item.sourceId}:${item.relativePath}:${item.innerPath ?? ''}`;
 }
 
+function artifactCandidateIdentity(item) {
+  return item.identity ?? `${item.sourceId}:${item.relativePath}:${item.innerPath ?? ''}:${item.candidateType ?? ''}`;
+}
+
+function artifactCandidateReviewHash(item) {
+  return item.reviewHash ?? stableHash({
+    bundleHash: item.bundleHash ?? null,
+    candidateType: item.candidateType ?? '',
+    innerPath: item.innerPath ?? '',
+    profileHash: item.profileHash ?? null,
+    sourceFileHash: item.sourceFileHash ?? '',
+  });
+}
+
 async function writeCollectionReport(manifest) {
   const reportsDir = collectionReportsRoot(manifest.vendorKey);
   await fs.mkdir(reportsDir, { recursive: true });
@@ -1024,6 +1456,7 @@ async function writeCollectionReport(manifest) {
     '',
     `Vendor: ${manifest.vendor}`,
     `Inputs: ${manifest.inputs.length}`,
+    `Artifact candidates: ${(manifest.artifactCandidates ?? []).length}`,
     `Bundle errors: ${manifest.bundleErrors.length}`,
     '',
     '| Source | Format | Path | Inner path | Profile name | Hash | Extracted JSON |',
@@ -1043,10 +1476,41 @@ async function writeCollectionReport(manifest) {
     lines.push('');
   }
   await fs.writeFile(path.join(reportsDir, 'input-manifest.md'), lines.join('\n'), 'utf8');
+  await writeJson(path.join(reportsDir, 'artifact-candidates.json'), manifest.artifactCandidates ?? []);
+  await fs.writeFile(
+    path.join(reportsDir, 'artifact-candidates.md'),
+    artifactCandidatesMarkdown(manifest.artifactCandidates ?? []),
+    'utf8',
+  );
+}
+
+function artifactCandidatesMarkdown(candidates) {
+  const lines = [
+    '# Artifact Candidates',
+    '',
+    'These files matched a profile-like extension but were not allowed by the source `formats`. AI should review them before promoting any extracted JSON.',
+    '',
+  ];
+  if (!candidates.length) {
+    lines.push('No artifact candidates found.', '');
+    return lines.join('\n');
+  }
+  lines.push(
+    '| Source | Type | Format | Path | Inner path | Profile | Hash | Promote path | Notes |',
+    '|---|---|---|---|---|---|---|---|---|',
+  );
+  for (const candidate of candidates) {
+    lines.push(
+      `| ${md(candidate.sourceId)} | ${md(candidate.candidateType)} | ${md(candidate.format)} | ${md(candidate.relativePath)} | ${md(candidate.innerPath)} | ${md(candidate.profileName)} | ${md(String(candidate.profileHash ?? candidate.sourceFileHash ?? '').slice(0, 12))} | ${md(candidate.promoteFromPath)} | ${md((candidate.notes ?? []).join('<br>'))} |`,
+    );
+  }
+  lines.push('');
+  return lines.join('\n');
 }
 
 function diffMarkdown(result) {
   const counts = countBy(result.inputs, 'status');
+  const candidateCounts = countBy(result.artifactCandidates ?? [], 'status');
   const lines = [
     '# Input Diff',
     '',
@@ -1057,6 +1521,12 @@ function diffMarkdown(result) {
     `Unchanged: ${counts.unchanged ?? 0}`,
     `Removed: ${counts.removed ?? 0}`,
     `Untracked: ${counts.untracked ?? 0}`,
+    `Artifact candidates: ${(result.artifactCandidates ?? []).length}`,
+    `Artifact candidates added: ${candidateCounts.added ?? 0}`,
+    `Artifact candidates changed: ${candidateCounts.changed ?? 0}`,
+    `Artifact candidates unchanged: ${candidateCounts.unchanged ?? 0}`,
+    `Artifact candidates removed: ${candidateCounts.removed ?? 0}`,
+    `Artifact candidates untracked: ${candidateCounts.untracked ?? 0}`,
     '',
     '## Sources',
     '',
@@ -1075,6 +1545,18 @@ function diffMarkdown(result) {
     );
   }
   lines.push('');
+  lines.push(
+    '## Artifact Candidates',
+    '',
+    '| Status | Source | Type | Path | Inner path | Profile name | Promote path |',
+    '|---|---|---|---|---|---|---|',
+  );
+  for (const candidate of result.artifactCandidates ?? []) {
+    lines.push(
+      `| ${candidate.status} | ${md(candidate.sourceId)} | ${md(candidate.candidateType)} | ${md(candidate.relativePath)} | ${md(candidate.innerPath)} | ${md(candidate.profileName)} | ${md(candidate.promoteFromPath)} |`,
+    );
+  }
+  lines.push('');
   return lines.join('\n');
 }
 
@@ -1084,6 +1566,7 @@ function proposalMarkdown(result) {
     '',
     `Vendor: ${result.vendor}`,
     `Changed inputs considered: ${result.changedInputCount}`,
+    `Artifact candidates considered: ${result.changedArtifactCandidateCount ?? 0}`,
     `Decision requests: ${result.decisionRequestCount}`,
     '',
     '| Source | Profile | Suggested family | Printers | Issues |',
@@ -1092,6 +1575,18 @@ function proposalMarkdown(result) {
   for (const proposal of result.proposals) {
     lines.push(
       `| ${md(`${proposal.sourceId}:${proposal.relativePath}:${proposal.innerPath}`)} | ${md(proposal.profileName)} | ${md(proposal.suggestedFamily)} | ${md(proposal.observedPrinters.map((item) => `${item.printer} ${item.nozzle}`).join('<br>'))} | ${md(proposal.issues.join('<br>'))} |`,
+    );
+  }
+  lines.push(
+    '',
+    '## Artifact Candidates',
+    '',
+    '| Source | Type | Profile | Suggested family | Printers | Promote path | Issues |',
+    '|---|---|---|---|---|---|---|',
+  );
+  for (const proposal of result.artifactProposals ?? []) {
+    lines.push(
+      `| ${md(`${proposal.sourceId}:${proposal.relativePath}:${proposal.innerPath}`)} | ${md(proposal.candidateType)} | ${md(proposal.profileName)} | ${md(proposal.suggestedFamily)} | ${md(proposal.observedPrinters.map((item) => `${item.printer} ${item.nozzle}`).join('<br>'))} | ${md(proposal.promoteFromPath)} | ${md(proposal.issues.join('<br>'))} |`,
     );
   }
   lines.push('');
@@ -1107,12 +1602,12 @@ function decisionRequestsMarkdown(result) {
   lines.push(
     'AI should review these items and ask the user before writing normalized JSON for any decision that is not already covered by an approved prior judgment.',
     '',
-    '| Issue | Source | Profile | Suggested family |',
-    '|---|---|---|---|',
+    '| Kind | Issue | Source | Profile | Suggested family | Promote path |',
+    '|---|---|---|---|---|---|',
   );
   for (const decision of result.decisions) {
     lines.push(
-      `| ${md(decision.issue)} | ${md(`${decision.sourceId}:${decision.relativePath}:${decision.innerPath}`)} | ${md(decision.profileName)} | ${md(decision.suggestedFamily)} |`,
+      `| ${md(decision.kind ?? 'input')} | ${md(decision.issue)} | ${md(`${decision.sourceId}:${decision.relativePath}:${decision.innerPath}`)} | ${md(decision.profileName)} | ${md(decision.suggestedFamily)} | ${md(decision.promoteFromPath ?? '')} |`,
     );
   }
   lines.push('');
@@ -1172,6 +1667,32 @@ function proposalIssuesFor(input, material, printers, familySuggestion, knownFam
     issues.push('PET CF GF appears; propose split/handling and confirm with user');
   }
   if (!printers.length && !input.compatiblePrinters.length) {
+    issues.push('printer/nozzle is unclear');
+  }
+  if (familySuggestion && !knownFamilies.has(familySuggestion)) {
+    issues.push('suggested family is new to the repository');
+  }
+  return unique(issues);
+}
+
+function artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies) {
+  const issues = ['unsupported artifact candidate requires AI review before promotion'];
+  if (!candidate.profileHash) {
+    issues.push('candidate does not contain a readable profile');
+  }
+  if (candidate.profileHash && !candidate.promoteFromPath) {
+    issues.push('candidate profile has no promoteFromPath');
+  }
+  if (!material.base.length && candidate.profileHash) {
+    issues.push('material family is unclear');
+  }
+  if (material.hasPet && material.hasPetg) {
+    issues.push('PET and PETG both appear; AI must keep them separate');
+  }
+  if (material.hasPet && material.hasCf && material.hasGf && !material.hasPetg) {
+    issues.push('PET CF GF appears; propose split/handling and confirm with user');
+  }
+  if (!printers.length && !(candidate.compatiblePrinters ?? []).length && candidate.profileHash) {
     issues.push('printer/nozzle is unclear');
   }
   if (familySuggestion && !knownFamilies.has(familySuggestion)) {
@@ -1489,6 +2010,7 @@ async function verifyAll() {
 function validateProfiles(profiles) {
   const errors = [];
   const byName = new Map();
+  const byFamilyId = new Map();
   for (const item of profiles) {
     const profile = item.profile;
     const label = item.relativePathFromRepo;
@@ -1518,6 +2040,10 @@ function validateProfiles(profiles) {
     if (/(^| )PET\s+(CF\s*GF|GF\s*CF|CF\/GF|GF\/CF)( |$)/i.test(profile.name ?? '')) {
       errors.push(`${label}: PET CF GF style family must be split or explicitly resolved before commit`);
     }
+    const filamentIdError = validateFilamentId(profile, label);
+    if (filamentIdError) errors.push(filamentIdError);
+    const familyIdError = validateFamilyFilamentIdConsistency(byFamilyId, profile, label);
+    if (familyIdError) errors.push(familyIdError);
     const pathPrinterError = validatePathPrinterConsistency(item);
     if (pathPrinterError) errors.push(pathPrinterError);
     const previous = byName.get(profile.name);
@@ -1547,15 +2073,47 @@ function validatePathPrinterConsistency(item) {
   return '';
 }
 
+function validateFilamentId(profile, label, vendorOverride = '') {
+  if (!profile.filament_id) return `${label}: missing filament_id`;
+  const vendor = profile.filament_vendor?.[0] ?? vendorOverride;
+  const familyName = familyNameForProfile(profile);
+  if (!vendor || !familyName) return '';
+  const expected = filamentIdForFamily(vendor, familyName);
+  if (profile.filament_id !== expected) {
+    return `${label}: filament_id ${profile.filament_id} does not match expected ${expected} for ${vendor} family ${familyName}`;
+  }
+  return '';
+}
+
+function validateFamilyFilamentIdConsistency(byFamilyId, profile, label, vendorOverride = '') {
+  const vendor = profile.filament_vendor?.[0] ?? vendorOverride;
+  const familyName = familyNameForProfile(profile);
+  if (!vendor || !familyName || !profile.filament_id) return '';
+  const key = `${vendor}:${familyName}`;
+  const previous = byFamilyId.get(key);
+  if (previous && previous.id !== profile.filament_id) {
+    return `${label}: filament_id ${profile.filament_id} differs from ${previous.id} used by ${previous.label} for ${vendor} family ${familyName}`;
+  }
+  if (!previous) byFamilyId.set(key, { id: profile.filament_id, label });
+  return '';
+}
+
+function familyNameForProfile(profile) {
+  return String(profile.name ?? '').split(' @')[0];
+}
+
 function validateBundleBytes(bytes, label) {
   const entries = unzipSync(bytes);
   const bundleBytes = entries['bundle_structure.json'];
   if (!bundleBytes) throw new Error(`${label}: missing bundle_structure.json`);
   const bundle = JSON.parse(strFromU8(bundleBytes));
-  const paths = (bundle.filament_vendor ?? []).flatMap((item) => item.filament_path ?? []);
+  const paths = (bundle.filament_vendor ?? []).flatMap((item) =>
+    (item.filament_path ?? []).map((bundlePath) => ({ bundlePath, vendor: item.vendor ?? '' })),
+  );
   if (!paths.length) throw new Error(`${label}: bundle has no filament paths`);
   const names = new Set();
-  for (const bundlePath of paths) {
+  const byFamilyId = new Map();
+  for (const { bundlePath, vendor } of paths) {
     const entry = entries[bundlePath];
     if (!entry) throw new Error(`${label}: bundle path missing from zip: ${bundlePath}`);
     const profile = JSON.parse(strFromU8(entry));
@@ -1564,6 +2122,10 @@ function validateBundleBytes(bytes, label) {
     if (!Array.isArray(profile.filament_settings_id) || profile.filament_settings_id[0] !== profile.name) {
       throw new Error(`${label}: profile name/id mismatch: ${bundlePath}`);
     }
+    const filamentIdError = validateFilamentId(profile, `${label}: ${bundlePath}`, vendor);
+    if (filamentIdError) throw new Error(filamentIdError);
+    const familyIdError = validateFamilyFilamentIdConsistency(byFamilyId, profile, `${label}: ${bundlePath}`, vendor);
+    if (familyIdError) throw new Error(familyIdError);
   }
 }
 
@@ -1915,7 +2477,9 @@ function printerKeyFor(printerName) {
 }
 
 function filamentIdForFamily(vendor, familyName) {
-  return `PF${slug(vendor).slice(0, 3).toUpperCase()}${hash(`${vendor}:${familyName}`).slice(0, 8)}`;
+  const vendorKey = slug(vendor);
+  const seed = vendorKey === 'tinmorry' ? familyName : `${vendor}:${familyName}`;
+  return `PF${vendorKey.slice(0, 3).toUpperCase()}${hash(seed).slice(0, 8)}`;
 }
 
 function sourceSummary(raw) {
