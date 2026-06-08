@@ -15,15 +15,16 @@ This repository is an AI-led local update workflow, not an automatic upstream co
 3. AI collects and expands inputs into `.work/`, without touching committed profiles:
 
    ```powershell
-   npm run vendor:collect -- --vendor tinmorry --from all
+   npm run vendor:collect -- --vendor tinmorry --from upstream
    npm run vendor:diff -- --vendor tinmorry
    npm run vendor:propose -- --vendor tinmorry
    ```
 
-4. AI reviews `.work/extracted/<vendor>/reports/`, especially `diff.md`, `proposal-summary.md`, and `decision-requests.md`.
-5. If a new material/printer/inherits decision is needed, AI asks you before changing normalized JSON.
-6. After the decision is accepted, AI updates `vendors/<vendor>/profiles/`, expands inherited profiles, and records the reasoning in vendor reports or a decision log.
-7. AI runs:
+4. AI reviews `.work/extracted/<vendor>/reports/`, especially `diff.md`, `proposal-summary.md`, `artifact-candidates.md`, and `decision-requests.md`.
+5. If `artifact-candidates.md` contains any new, changed, or untracked candidate, AI stops before `vendor:lock-inputs`, commit, push, or PR creation and asks whether to adopt, reject, or defer each candidate. If the candidate is deferred, AI may lock normal inputs only with `--defer-artifact-candidates`.
+6. If a new material/printer/inherits decision is needed, AI asks you before changing normalized JSON.
+7. After the decision is accepted, AI updates `vendors/<vendor>/profiles/`, expands inherited profiles, and records the reasoning in vendor reports or a decision log.
+8. AI runs:
 
    ```powershell
    npm run profiles:expand-inherits -- --vendor tinmorry
@@ -34,10 +35,19 @@ This repository is an AI-led local update workflow, not an automatic upstream co
    npm run generate:readme
    ```
 
-8. AI commits and pushes the normalized JSON state to an update branch such as `agent/update/tinmorry-YYYYMMDD-HHMM`. GitHub Actions automatically creates a candidate prerelease with `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
-9. AI creates a normal GitHub PR from the update branch to `main`. The PR body should say that the candidate prerelease must be import-tested in Bambu Studio before merge.
-10. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
-11. Merge to `main` only after the candidate is acceptable. A profile-changing `main` push automatically creates the stable release.
+   Use `npm run vendor:lock-inputs -- --vendor tinmorry --defer-artifact-candidates` only after the user explicitly defers artifact candidates for a later review.
+
+9. AI commits and pushes the normalized JSON state to an update branch such as `agent/update/tinmorry-YYYYMMDD-HHMM`. GitHub Actions automatically creates a candidate prerelease with `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
+10. AI creates a normal GitHub PR from the update branch to `main`. The PR body should say that the candidate prerelease must be import-tested in Bambu Studio before merge.
+11. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
+12. Merge to `main` only after the candidate is acceptable. A profile-changing `main` push automatically creates the stable release.
+
+## Artifact Candidate Adoption
+
+- Treat zip files that contain `.bbsflmt` files as artifact candidates, not normal `zip` source inputs.
+- Do not add `zip` to a vendor source `formats` list only to adopt a nested `.bbsflmt` from a distribution zip.
+- Adopt a reviewed nested `.bbsflmt` by promoting the extracted candidate profile into normalized JSON and recording the reviewed artifact candidate in the input lock.
+- Add `zip` to source `formats` only when the zip itself is a valid Bambu bundle with `bundle_structure.json`.
 
 ## Manual Profile Addition
 
@@ -58,6 +68,7 @@ This repository is an AI-led local update workflow, not an automatic upstream co
    ```
 
 5. AI locks the accepted input hashes, verifies, builds aggregate release artifacts locally, commits, pushes an `agent/update/**` branch, and creates a GitHub PR.
+6. After accepted incoming files are verified and committed, AI moves processed input files out of `incoming/` into `.work/archived-incoming/<vendor>/<timestamp>/`. Leave only `incoming/.gitkeep` unless new manual inputs are intentionally waiting for review.
 
 ## What Actions Do
 
