@@ -787,9 +787,10 @@ async function normalizeAndWriteVendor(config, rawProfiles, { upstreamHeads }) {
     rejected: [],
   };
   const candidates = [];
+  const filamentIdLocks = await readFilamentIdLocks();
 
   for (const raw of rawProfiles) {
-    const normalized = normalizeRawProfile(config, raw, reports);
+    const normalized = normalizeRawProfile(config, raw, reports, { filamentIdLocks });
     candidates.push(...normalized);
   }
 
@@ -797,6 +798,8 @@ async function normalizeAndWriteVendor(config, rawProfiles, { upstreamHeads }) {
   const profileItems = [...selected.values()].sort((a, b) =>
     a.outputName.localeCompare(b.outputName, 'en'),
   );
+
+  applyFamilyFilamentIds(profileItems, { filamentIdLocks, reports });
 
   await writeVendorReports(config, reports, {
     rawCount: rawProfiles.length,
@@ -813,6 +816,8 @@ async function normalizeAndWriteVendor(config, rawProfiles, { upstreamHeads }) {
     throw error;
   }
 
+  await writeVendorFilamentIdLocks(config, profileItems);
+
   const profilesDir = path.join(config.dir, 'profiles');
   await fs.rm(profilesDir, { recursive: true, force: true });
   for (const item of profileItems) {
@@ -822,7 +827,7 @@ async function normalizeAndWriteVendor(config, rawProfiles, { upstreamHeads }) {
   return { profileCount: profileItems.length };
 }
 
-function normalizeRawProfile(config, raw, reports) {
+function normalizeRawProfile(config, raw, reports, options = {}) {
   const sourceText = normalizeText(
     [
       raw.profile.name,
@@ -882,6 +887,7 @@ function normalizeRawProfile(config, raw, reports) {
         sourceFormat: raw.format,
         reports,
         raw,
+        filamentIdLocks: options.filamentIdLocks,
       });
 
       const item = {
@@ -900,6 +906,7 @@ function normalizeRawProfile(config, raw, reports) {
         priority: raw.sourcePriority,
         pathPrinterMatch: sourcePathMatchesPrinter(raw, printerKey),
         source: sourceSummary(raw),
+        sourceFilamentId: raw.profile.filament_id ?? '',
         profile,
         profileHash: stableHash(profile),
       };
@@ -969,13 +976,91 @@ function compareCandidatePrecedence(a, b) {
   return `${a.source.sourceId}:${a.source.path}`.localeCompare(`${b.source.sourceId}:${b.source.path}`, 'en');
 }
 
+function applyFamilyFilamentIds(profileItems, { filamentIdLocks, reports }) {
+  const byFamily = new Map();
+  for (const item of profileItems) {
+    const key = `${item.vendor}:${item.familyName}`;
+    if (!byFamily.has(key)) byFamily.set(key, []);
+    byFamily.get(key).push(item);
+  }
+
+  for (const [key, items] of byFamily) {
+    const [vendor, familyName] = key.split(':');
+    const decision = resolveFilamentId({
+      vendor,
+      familyName,
+      sourceFilamentIds: items.map((item) => item.sourceFilamentId),
+      filamentIdLocks,
+    });
+    const sourceIds = unique(items.map((item) => item.sourceFilamentId).filter(Boolean));
+    const compatibleSourceIds = sourceIds.filter(isCompatibleFilamentIdFormat);
+    const incompatibleSourceIds = sourceIds.filter((id) => !isCompatibleFilamentIdFormat(id));
+
+    if (compatibleSourceIds.length > 1 && decision.reason !== 'lock') {
+      reports.warnings.push(
+        `${key}: mixed source filament_id values (${compatibleSourceIds.join(', ')}) were normalized to ${decision.filament_id}`,
+      );
+    }
+    if (incompatibleSourceIds.length) {
+      reports.warnings.push(
+        `${key}: ignored incompatible source filament_id values (${incompatibleSourceIds.join(', ')}) and normalized to ${decision.filament_id}`,
+      );
+    }
+
+    for (const item of items) {
+      item.profile.filament_id = decision.filament_id;
+      item.profile = sortObject(item.profile);
+      item.profileHash = stableHash(item.profile);
+      item.filamentIdDecision = decision;
+    }
+  }
+}
+
+function resolveFilamentId({ vendor, familyName, sourceFilamentId = '', sourceFilamentIds = [], filamentIdLocks }) {
+  const lock = filamentIdLocks?.get(`${vendor}:${familyName}`);
+  if (lock?.filament_id && isCompatibleFilamentIdFormat(lock.filament_id)) {
+    return { filament_id: lock.filament_id, reason: 'lock', lock_source: lock.source ?? '' };
+  }
+
+  const sourceIds = unique([sourceFilamentId, ...sourceFilamentIds].filter(isCompatibleFilamentIdFormat));
+  if (sourceIds.length === 1) {
+    return { filament_id: sourceIds[0], reason: 'source-preserved' };
+  }
+  if (sourceIds.length > 1) {
+    const fallback = filamentIdForFamily(vendor, familyName);
+    const chosen = chooseMixedSourceFilamentId(sourceFilamentIds, fallback);
+    return { filament_id: chosen, reason: 'source-mixed-normalized' };
+  }
+
+  return { filament_id: filamentIdForFamily(vendor, familyName), reason: 'bambu-studio-md5' };
+}
+
+function chooseMixedSourceFilamentId(sourceFilamentIds, fallback) {
+  const counts = new Map();
+  for (const id of sourceFilamentIds.filter(isCompatibleFilamentIdFormat)) {
+    counts.set(id, (counts.get(id) ?? 0) + 1);
+  }
+  const ranked = [...counts.entries()].sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    if (a[0] === fallback) return -1;
+    if (b[0] === fallback) return 1;
+    return a[0].localeCompare(b[0], 'en');
+  });
+  return ranked[0]?.[0] ?? fallback;
+}
+
 function finalizeProfile(inputProfile, options) {
   const profile = { ...inputProfile };
   profile.name = options.outputName;
   profile.filament_settings_id = [options.outputName];
   profile.filament_vendor = [options.vendor];
   profile.filament_type = [options.materialType];
-  profile.filament_id = profile.filament_id || filamentIdForFamily(options.vendor, options.familyName);
+  profile.filament_id = resolveFilamentId({
+    vendor: options.vendor,
+    familyName: options.familyName,
+    sourceFilamentId: profile.filament_id,
+    filamentIdLocks: options.filamentIdLocks,
+  }).filament_id;
   profile.compatible_printers = [options.compatiblePrinter];
   profile.compatible_printers_condition = '';
   profile.from = 'User';
@@ -2021,6 +2106,7 @@ function validateProfiles(profiles, options = {}) {
   const errors = [];
   const byName = new Map();
   const byFamilyId = new Map();
+  errors.push(...validateFilamentIdLockCoverage(profiles, options.filamentIdLocks));
   for (const item of profiles) {
     const profile = item.profile;
     const label = item.relativePathFromRepo;
@@ -2113,6 +2199,9 @@ function validatePathPrinterConsistency(item) {
 
 function validateFilamentId(profile, label, vendorOverride = '', options = {}) {
   if (!profile.filament_id) return `${label}: missing filament_id`;
+  if (!isCompatibleFilamentIdFormat(profile.filament_id)) {
+    return `${label}: filament_id ${profile.filament_id} is not a supported Bambu-compatible ID format`;
+  }
   const vendor = profile.filament_vendor?.[0] ?? vendorOverride;
   const familyName = familyNameForProfile(profile);
   if (!vendor || !familyName) return '';
@@ -2125,6 +2214,46 @@ function validateFilamentId(profile, label, vendorOverride = '', options = {}) {
     return `${label}: filament_id ${profile.filament_id} does not match expected ${expected} for ${vendor} family ${familyName}`;
   }
   return '';
+}
+
+function validateFilamentIdLockCoverage(profiles, filamentIdLocks) {
+  if (!filamentIdLocks) return [];
+  const errors = [];
+  const byFamily = new Map();
+  for (const item of profiles) {
+    const vendor = item.profile.filament_vendor?.[0] ?? item.vendor;
+    const familyName = familyNameForProfile(item.profile);
+    if (!vendor || !familyName) continue;
+    const key = `${vendor}:${familyName}`;
+    if (!byFamily.has(key)) byFamily.set(key, []);
+    byFamily.get(key).push(item);
+  }
+
+  for (const [key, items] of byFamily) {
+    const [vendor, familyName] = key.split(':');
+    const lock = filamentIdLocks.get(key);
+    if (!lock) {
+      errors.push(`missing filament_id lock for ${vendor} family ${familyName}`);
+      continue;
+    }
+    if (!isCompatibleFilamentIdFormat(lock.filament_id)) {
+      errors.push(`${path.relative(repoRoot, lock.lockPath).replaceAll(path.sep, '/')}: ${key} has unsupported filament_id ${lock.filament_id}`);
+    }
+    if (Number.isInteger(lock.profile_count) && lock.profile_count !== items.length) {
+      errors.push(
+        `${path.relative(repoRoot, lock.lockPath).replaceAll(path.sep, '/')}: ${key} profile_count ${lock.profile_count} does not match ${items.length} committed profiles`,
+      );
+    }
+    if (lock.strategy === 'bambu-studio-md5') {
+      const expected = filamentIdForFamily(vendor, familyName);
+      if (lock.filament_id !== expected) {
+        errors.push(
+          `${path.relative(repoRoot, lock.lockPath).replaceAll(path.sep, '/')}: ${key} Bambu Studio MD5 lock ${lock.filament_id} does not match expected ${expected}`,
+        );
+      }
+    }
+  }
+  return errors;
 }
 
 function validateFamilyFilamentIdConsistency(byFamilyId, profile, label, vendorOverride = '') {
@@ -2295,11 +2424,57 @@ async function readFilamentIdLocks() {
         family: item.family,
         filament_id: item.filament_id,
         source: item.source ?? '',
+        strategy: item.strategy ?? '',
+        profile_count: item.profile_count,
         lockPath,
       });
     }
   }
   return locks;
+}
+
+async function writeVendorFilamentIdLocks(config, profileItems) {
+  const lockPath = path.join(config.dir, 'filament-id-lock.json');
+  const existing = await readJsonIfExists(lockPath);
+  const familyItems = Array.isArray(existing?.families)
+    ? existing.families
+    : Object.entries(existing?.families ?? {}).map(([family, filament_id]) => ({ family, filament_id }));
+  const byFamily = new Map(familyItems.map((item) => [item.family, { ...item }]));
+  const currentByFamily = new Map();
+
+  for (const item of profileItems) {
+    if (!currentByFamily.has(item.familyName)) currentByFamily.set(item.familyName, []);
+    currentByFamily.get(item.familyName).push(item);
+  }
+
+  for (const [family, items] of currentByFamily) {
+    const decision = items[0].filamentIdDecision ?? { reason: 'source-preserved' };
+    const filamentId = items[0].profile.filament_id;
+    const previous = byFamily.get(family) ?? {};
+    byFamily.set(family, {
+      ...previous,
+      family,
+      filament_id: filamentId,
+      profile_count: items.length,
+      strategy: decision.reason,
+      source: filamentIdLockSource(decision),
+    });
+  }
+
+  await writeJson(lockPath, {
+    vendor: config.vendor,
+    generatedAt: new Date().toISOString(),
+    purpose: 'Lock stable Bambu-compatible filament_id values so future normalization and releases overwrite imported profiles instead of creating duplicates.',
+    families: [...byFamily.values()].sort((a, b) => a.family.localeCompare(b.family, 'en')),
+  });
+}
+
+function filamentIdLockSource(decision) {
+  if (decision.reason === 'lock') return decision.lock_source || 'preserved from existing filament-id lock';
+  if (decision.reason === 'source-preserved') return 'preserved from accepted source profiles';
+  if (decision.reason === 'source-mixed-normalized') return 'normalized from mixed source filament_id values by deterministic family rule';
+  if (decision.reason === 'bambu-studio-md5') return 'generated with Bambu Studio new-filament MD5 rule';
+  return 'resolved by normalization workflow';
 }
 
 async function writeVendorReports(config, reports, summary) {
@@ -2597,9 +2772,15 @@ function printerKeyFor(printerName) {
 }
 
 function filamentIdForFamily(vendor, familyName) {
-  const vendorKey = slug(vendor);
-  const seed = vendorKey === 'tinmorry' ? familyName : `${vendor}:${familyName}`;
-  return `PF${vendorKey.slice(0, 3).toUpperCase()}${hash(seed).slice(0, 8)}`;
+  return `P${md5(familyName).slice(0, 7)}`;
+}
+
+function isCompatibleFilamentIdFormat(filamentId) {
+  return /^P[0-9a-f]{7}$/.test(String(filamentId ?? '')) || /^G[A-Z0-9]{4}$/.test(String(filamentId ?? ''));
+}
+
+function md5(text) {
+  return crypto.createHash('md5').update(String(text)).digest('hex');
 }
 
 function userBaseInfoForProfile(profile, vendor) {
