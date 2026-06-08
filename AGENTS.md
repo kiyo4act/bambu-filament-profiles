@@ -13,6 +13,7 @@ This repository manages Bambu Studio filament profiles as reviewable JSON source
 
 ## Standard Commands
 
+- For vendor profile update work, first read `skills/bambu-filament-vendor-update/SKILL.md` and follow it together with this guide.
 - `npm run vendor:status -- --vendor tinmorry`
 - `npm run vendor:collect -- --vendor tinmorry --from all`
 - `npm run vendor:diff -- --vendor tinmorry`
