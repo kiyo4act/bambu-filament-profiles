@@ -41,6 +41,12 @@ This repository is an AI-led local update workflow, not an automatic upstream co
 10. AI creates a normal GitHub PR from the update branch to `main`. The PR body should say that the candidate prerelease must be import-tested in Bambu Studio before merge.
 11. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
 12. Merge to `main` only after the candidate is acceptable. A profile-changing `main` push automatically creates the stable release.
+## Artifact Candidate Adoption
+
+- Treat zip files that contain `.bbsflmt` files as artifact candidates, not normal `zip` source inputs.
+- Do not add `zip` to a vendor source `formats` list only to adopt a nested `.bbsflmt` from a distribution zip.
+- Adopt a reviewed nested `.bbsflmt` by promoting the extracted candidate profile into normalized JSON and recording the reviewed artifact candidate in the input lock.
+- Add `zip` to source `formats` only when the zip itself is a valid Bambu bundle with `bundle_structure.json`.
 
 ## Manual Profile Addition
 
