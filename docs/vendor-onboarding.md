@@ -13,7 +13,7 @@ Do not create vendor-specific material/printer rewrite tables as the default. Th
 ## Adding A Vendor
 
 1. Create `vendors/<vendor>/sources.yml`.
-2. Put sample files under `incoming/<vendor>/` if there is no upstream yet.
+2. Put sample files directly under `incoming/` if there is no upstream yet. Use `--vendor <vendor>` when collecting them.
 3. Run collection and proposal commands:
 
    ```powershell

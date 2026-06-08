@@ -187,8 +187,8 @@ async function vendorCollect(options) {
   }
 
   if (collectIncoming) {
-    const incomingRoot = path.join(repoRoot, 'incoming', vendorKey);
-    if (await exists(incomingRoot)) {
+    const incomingRoots = await incomingRootsFor(vendorKey);
+    if (incomingRoots.length) {
       manifest.sources.incoming = {
         id: 'incoming',
         label: 'Manual incoming files',
@@ -198,16 +198,18 @@ async function vendorCollect(options) {
         priority: 200,
         formats: ['json', 'bbsflmt', 'zip'],
       };
-      const profiles = await readProfilesFromDirectory(incomingRoot, {
-        vendor: config.vendor,
-        sourceId: 'incoming',
-        sourceLabel: 'Manual incoming files',
-        sourceRepo: 'incoming',
-        sourcePriority: 200,
-        sourceCommit: '',
-        allowedFormats: new Set(['json', 'bbsflmt', 'zip']),
-      });
-      await appendCollectedInputs(manifest, profiles, collectionRoot);
+      for (const incomingRoot of incomingRoots) {
+        const profiles = await readProfilesFromDirectory(incomingRoot, {
+          vendor: config.vendor,
+          sourceId: 'incoming',
+          sourceLabel: `Manual incoming files: ${path.relative(repoRoot, incomingRoot).replaceAll(path.sep, '/')}`,
+          sourceRepo: 'incoming',
+          sourcePriority: 200,
+          sourceCommit: '',
+          allowedFormats: new Set(['json', 'bbsflmt', 'zip']),
+        });
+        await appendCollectedInputs(manifest, profiles, collectionRoot);
+      }
     }
   }
 
@@ -991,6 +993,15 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
       'en',
     ),
   );
+}
+
+async function incomingRootsFor(vendorKey) {
+  const root = path.join(repoRoot, 'incoming');
+  if (!(await exists(root))) return [];
+  const roots = [root];
+  const vendorRoot = path.join(root, vendorKey);
+  if (await exists(vendorRoot)) roots.push(vendorRoot);
+  return roots;
 }
 
 function inputIdentity(item) {

@@ -1,6 +1,9 @@
 node_modules/
 .work/
 dist/
+.ai/
+incoming/**
+!incoming/
+!incoming/.gitkeep
 npm-debug.log*
 *.tmp
-

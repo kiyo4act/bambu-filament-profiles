@@ -40,7 +40,7 @@ This repository is an AI-led local update workflow, not an automatic upstream co
 
 ## Manual Profile Addition
 
-1. Put files under `incoming/<vendor>/`. JSON, `.bbsflmt`, and zip files are supported.
+1. Put files directly under `incoming/`. JSON, `.bbsflmt`, and zip files are supported. You do not need to create a vendor subfolder; specify the vendor with `--vendor`.
 2. Ask AI to ingest the incoming files.
 3. AI runs:
 

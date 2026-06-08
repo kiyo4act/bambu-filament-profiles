@@ -66,7 +66,7 @@ jobs:
         shell: bash
         run: |
           CHANGED="$(git diff --name-only "${{ github.event.before }}" HEAD || true)"
-          if echo "${CHANGED}" | grep -E '^vendors/.*/profiles/' >/dev/null; then
+          if echo "${CHANGED}" | grep -E '^vendors/.*/profiles/' >/dev/null && find vendors -path '*/profiles/*.json' -type f | grep -q .; then
             echo "release=true" >> "$GITHUB_OUTPUT"
           else
             echo "release=false" >> "$GITHUB_OUTPUT"

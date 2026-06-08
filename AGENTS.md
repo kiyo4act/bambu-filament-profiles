@@ -5,7 +5,7 @@ This repository manages Bambu Studio filament profiles as reviewable JSON source
 ## Goal
 
 - Keep normalized Bambu Studio filament JSON in `vendors/<vendor>/profiles/`.
-- Treat upstream repositories, `.bbsflmt`, zip files, and `incoming/<vendor>/` files as inputs only.
+- Treat upstream repositories, `.bbsflmt`, zip files, and files dropped directly into `incoming/` as inputs only.
 - Expand `.bbsflmt` to JSON before review. Do not treat `.bbsflmt` as source of truth.
 - Let the local AI workflow collect inputs, inspect diffs, propose normalization decisions, ask the user when a new decision is needed, then commit normalized JSON.
 - Let GitHub Actions validate and package committed JSON only.
@@ -30,7 +30,7 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 - Vendor source definitions live in `vendors/<vendor>/sources.yml`.
 - Do not add vendor-specific automatic normalization rule files for material spelling, printer spelling, or exception handling.
 - Prior decisions belong in decision logs and reports as context for AI review, not as code that silently rewrites future inputs.
-- Manual/user-supplied files enter through `incoming/<vendor>/`.
+- Manual/user-supplied files enter through `incoming/`; pass `--vendor <vendor>` to tell the AI which vendor context to use. `incoming/<vendor>/` is accepted only as a backward-compatible fallback.
 - `vendor:collect`, `vendor:diff`, and `vendor:propose` write to `.work/extracted/<vendor>/`; those reports are review material, not committed source by default.
 - After AI/user acceptance and normalized JSON updates, `vendor:lock-inputs` may commit the accepted input hashes so unchanged inputs are not re-reviewed next time.
 - Generated `.bbsflmt` files go under `dist/` and GitHub Release assets, not `main`.
