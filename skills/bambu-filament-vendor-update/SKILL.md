@@ -65,5 +65,6 @@ Use `--defer-artifact-candidates` only after the user explicitly defers artifact
 1. Stage only relevant profile, report, lock, README, and workflow files.
 2. Commit and push an `agent/update/**` branch.
 3. Create a GitHub PR to `main`.
-4. Confirm the PR check passes and candidate prerelease assets exist.
-5. Tell the user to import-test `all-bbsflmt.zip` before merge.
+4. Run `npm run pr:mergeability` and resolve any `CONFLICTING` or `DIRTY` result before reporting the PR as ready.
+5. Confirm the PR check passes and candidate prerelease assets exist.
+6. Tell the user to import-test `all-bbsflmt.zip` before merge.
