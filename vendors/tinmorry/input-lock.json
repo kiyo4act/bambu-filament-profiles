@@ -1,6 +1,6 @@
 {
   "vendor": "TINMORRY",
-  "acceptedAt": "2026-06-08T10:33:02.607Z",
+  "acceptedAt": "2026-06-08T10:55:09.641Z",
   "sources": {
     "tinmorry-bambu-studio": {
       "id": "tinmorry-bambu-studio",
@@ -1649,6 +1649,25 @@
       "bundleHash": null,
       "profileName": "TPU95A(H2D-Bambu-TINMORRY)",
       "extractedPath": "profiles/tinmorry-json-legacy/418295dde4b8/TPU95A(H2D-Bambu-TINMORRY).json"
+    }
+  ],
+  "reviewedArtifactCandidates": [
+    {
+      "identity": "tinmorry-bambu-studio:P2S/P2S-PETG-Matte.zip:P2S-PETG-Matte/TINMORRY PETG Matte.bbsflmt::TINMORRY/TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle.json:nested-bbsflmt-in-zip",
+      "sourceId": "tinmorry-bambu-studio",
+      "sourceRepo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
+      "sourceCommit": "2a0cf3bd8b2499ff574447a6d8c06972c542d964",
+      "format": "zip",
+      "candidateType": "nested-bbsflmt-in-zip",
+      "relativePath": "P2S/P2S-PETG-Matte.zip",
+      "innerPath": "P2S-PETG-Matte/TINMORRY PETG Matte.bbsflmt::TINMORRY/TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle.json",
+      "sourceFileHash": "edffdf781d8a8c8fedf0d945ec952d915777909c",
+      "profileHash": "4552bbe367c9d1ecab2aca1fc08e390210fa28c6",
+      "bundleHash": "8b9750b1e18b50cd11ff8e90df3397afe3d8b39d",
+      "reviewHash": "df06363cd1035cf5a261a1789851dafc9fce0596",
+      "profileName": "TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle",
+      "extractedPath": "candidate-profiles/tinmorry-bambu-studio/a8a27fbdce90/TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle.json",
+      "promoteFromPath": ".work/extracted/tinmorry/candidate-profiles/tinmorry-bambu-studio/a8a27fbdce90"
     }
   ]
 }
