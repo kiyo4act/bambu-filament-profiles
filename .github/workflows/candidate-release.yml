@@ -3,7 +3,9 @@ name: Candidate release
 on:
   push:
     branches:
-      - main
+      - agent/update/**
+      - agent/ingest/**
+      - candidate/**
   workflow_dispatch:
     inputs:
       vendor:
@@ -36,13 +38,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VENDOR: ${{ github.event.inputs.vendor || 'tinmorry' }}
         run: |
-          TAG="candidate-${VENDOR}-${GITHUB_RUN_NUMBER}-${GITHUB_RUN_ATTEMPT}"
+          STAMP="$(TZ=Asia/Tokyo date +'%Y%m%d-%H%M')"
+          SHORT_SHA="$(git rev-parse --short=7 HEAD)"
+          TAG="candidate-${STAMP}-${SHORT_SHA}"
           git tag "${TAG}"
           git push origin "${TAG}"
           gh release create "${TAG}" \
             dist/all-bbsflmt.zip \
             dist/all-json.zip \
             dist/manifest.json \
-            --title "Candidate ${VENDOR} ${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}" \
+            --title "Candidate ${STAMP} ${SHORT_SHA}" \
             --notes-file dist/release-notes.md \
             --prerelease

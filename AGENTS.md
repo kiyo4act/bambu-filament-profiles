@@ -51,6 +51,9 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 
 - Actions do not fetch upstreams, normalize, or create update PRs.
 - `watch-upstreams` is detection-only and writes a summary.
-- Pushing to `main` automatically creates a candidate prerelease with aggregate user-facing assets.
+- Pushing an update branch such as `agent/update/**` automatically creates a candidate prerelease with aggregate user-facing assets.
+- Candidate prerelease tags use `candidate-YYYYMMDD-HHMM-<short_sha>` in Asia/Tokyo time.
+- After human testing accepts the candidate, merge the update branch to `main`; a profile-changing `main` push automatically creates a stable release.
+- Stable release tags use `vYYYYMMDD-HHMM-<short_sha>` in Asia/Tokyo time.
 - Candidate and stable release workflows only run `verify`, `build:bbsflmt`, and upload aggregate user-facing assets.
 - Main merges remain human-gated because Bambu Studio UI visibility and print behavior cannot be fully proven by JSON validation.

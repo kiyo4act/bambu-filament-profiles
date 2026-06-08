@@ -52,3 +52,48 @@ jobs:
             dist/manifest.json \
             --title "${GITHUB_REF_NAME}" \
             --notes-file dist/release-notes.md
+
+  stable-release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check profile changes
+        id: changes
+        shell: bash
+        run: |
+          CHANGED="$(git diff --name-only "${{ github.event.before }}" HEAD || true)"
+          if echo "${CHANGED}" | grep -E '^vendors/.*/profiles/' >/dev/null; then
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.changes.outputs.release == 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        if: steps.changes.outputs.release == 'true'
+      - run: npm run build:bbsflmt
+        if: steps.changes.outputs.release == 'true'
+      - name: Create stable release
+        if: steps.changes.outputs.release == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          STAMP="$(TZ=Asia/Tokyo date +'%Y%m%d-%H%M')"
+          SHORT_SHA="$(git rev-parse --short=7 HEAD)"
+          TAG="v${STAMP}-${SHORT_SHA}"
+          git tag "${TAG}"
+          git push origin "${TAG}"
+          gh release create "${TAG}" \
+            dist/all-bbsflmt.zip \
+            dist/all-json.zip \
+            dist/manifest.json \
+            --title "Release ${STAMP} ${SHORT_SHA}" \
+            --notes-file dist/release-notes.md
