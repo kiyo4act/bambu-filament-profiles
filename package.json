@@ -16,6 +16,7 @@
     "verify": "node scripts/bambu-profiles.mjs verify",
     "build:bbsflmt": "node scripts/bambu-profiles.mjs build:bbsflmt",
     "generate:readme": "node scripts/bambu-profiles.mjs generate:readme",
+    "pr:mergeability": "node scripts/check-pr-mergeability.mjs",
     "ci": "npm run verify && npm run build:bbsflmt && npm run verify"
   },
   "engines": {

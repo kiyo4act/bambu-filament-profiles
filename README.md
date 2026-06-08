@@ -42,7 +42,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | TINMORRY | TINMORRY PETG GF | PETG-GF | 12 | dist/bbsflmt/tinmorry/TINMORRY PETG GF.bbsflmt |
 | TINMORRY | TINMORRY PETG HS | PETG | 5 | dist/bbsflmt/tinmorry/TINMORRY PETG HS.bbsflmt |
 | TINMORRY | TINMORRY PETG Marble | PETG | 11 | dist/bbsflmt/tinmorry/TINMORRY PETG Marble.bbsflmt |
-| TINMORRY | TINMORRY PETG Matte | PETG | 1 | dist/bbsflmt/tinmorry/TINMORRY PETG Matte.bbsflmt |
+| TINMORRY | TINMORRY PETG Matte | PETG | 2 | dist/bbsflmt/tinmorry/TINMORRY PETG Matte.bbsflmt |
 | TINMORRY | TINMORRY PETG Metallic | PETG | 10 | dist/bbsflmt/tinmorry/TINMORRY PETG Metallic.bbsflmt |
 | TINMORRY | TINMORRY PLA | PLA | 6 | dist/bbsflmt/tinmorry/TINMORRY PLA.bbsflmt |
 | TINMORRY | TINMORRY PLA CF | PLA-CF | 7 | dist/bbsflmt/tinmorry/TINMORRY PLA CF.bbsflmt |
