@@ -1,7 +1,7 @@
 {
   "vendor": "TINMORRY",
-  "generatedAt": "2026-06-08T05:11:20.622Z",
-  "normalizedProfileCount": 154,
+  "generatedAt": "2026-06-08T13:22:01.740Z",
+  "normalizedProfileCount": 155,
   "materialCount": 28,
   "printerCounts": {
     "Bambu Lab A1": 14,
@@ -11,7 +11,7 @@
     "Bambu Lab H2S": 13,
     "Bambu Lab P1P": 16,
     "Bambu Lab P1S": 21,
-    "Bambu Lab P2S": 14,
+    "Bambu Lab P2S": 15,
     "Bambu Lab X1": 14,
     "Bambu Lab X1 Carbon": 20,
     "Bambu Lab X1E": 2,
@@ -730,6 +730,14 @@
       "family": "TINMORRY PETG Matte",
       "type": "PETG",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "keyCount": 145
+    },
+    {
+      "name": "TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-matte/p2s/nozzle-0.4.json",
+      "family": "TINMORRY PETG Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
       "keyCount": 145
     },
     {
