@@ -49,6 +49,7 @@ jobs:
           gh release create "${GITHUB_REF_NAME}" \
             dist/all-bbsflmt.zip \
             dist/all-json.zip \
+            dist/all-user-base.zip \
             dist/manifest.json \
             --title "${GITHUB_REF_NAME}" \
             --notes-file dist/release-notes.md
@@ -95,6 +96,7 @@ jobs:
           gh release create "${TAG}" \
             dist/all-bbsflmt.zip \
             dist/all-json.zip \
+            dist/all-user-base.zip \
             dist/manifest.json \
             --title "Release ${STAMP} ${SHORT_SHA}" \
             --notes-file dist/release-notes.md

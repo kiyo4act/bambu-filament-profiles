@@ -1906,6 +1906,7 @@ function nozzleFor(text, config) {
 async function buildBbsflmt() {
   const profiles = await readAllNormalizedProfiles();
   const errors = validateProfiles(profiles);
+  errors.push(...(await validateLockedArtifactCandidates(profiles)));
   if (errors.length) {
     throw new Error(`Cannot build bundles because profile validation failed:\n${errors.map((e) => `- ${e}`).join('\n')}`);
   }
@@ -1978,16 +1979,19 @@ async function buildBbsflmt() {
     });
   }
 
+  await writeUserBaseProfiles(profiles);
   await writeJson(path.join(distRoot, 'manifest.json'), manifest);
   await writeReleaseNotes(manifest);
   await writeAggregateZip('all-bbsflmt.zip', path.join(distRoot, 'bbsflmt'));
   await writeAggregateZip('all-json.zip', path.join(distRoot, 'json'));
+  await writeAggregateZip('all-user-base.zip', path.join(distRoot, 'user-base'));
   console.log(`OK: built ${manifest.vendors.reduce((sum, vendor) => sum + vendor.materials.length, 0)} .bbsflmt bundles.`);
 }
 
 async function verifyAll() {
   const profiles = await readAllNormalizedProfiles();
   const errors = validateProfiles(profiles);
+  errors.push(...(await validateLockedArtifactCandidates(profiles)));
   if (await exists(path.join(distRoot, 'bbsflmt'))) {
     const bundleFiles = (await walkFiles(path.join(distRoot, 'bbsflmt'))).filter((file) =>
       file.toLowerCase().endsWith('.bbsflmt'),
@@ -2001,6 +2005,7 @@ async function verifyAll() {
       }
     }
   }
+  errors.push(...(await validateUserBaseDist(profiles)));
   if (errors.length) {
     throw new Error(`Verification failed:\n${errors.map((item) => `- ${item}`).join('\n')}`);
   }
@@ -2051,6 +2056,34 @@ function validateProfiles(profiles) {
       errors.push(`${label}: duplicate profile name with different content: ${profile.name}`);
     }
     if (!previous) byName.set(profile.name, item);
+  }
+  return errors;
+}
+
+async function validateLockedArtifactCandidates(profiles) {
+  const errors = [];
+  const profilesByVendor = new Map();
+  for (const item of profiles) {
+    const vendorKey = slug(item.vendor);
+    if (!profilesByVendor.has(vendorKey)) profilesByVendor.set(vendorKey, new Map());
+    profilesByVendor.get(vendorKey).set(item.profile.name, item);
+  }
+
+  for (const vendorDir of await listDirs(vendorsRoot)) {
+    const lockPath = path.join(vendorDir, 'input-lock.json');
+    const lock = await readJsonIfExists(lockPath);
+    if (!lock) continue;
+    const vendorKey = slug(lock.vendor ?? path.basename(vendorDir));
+    const vendorProfiles = profilesByVendor.get(vendorKey) ?? new Map();
+    for (const candidate of lock.reviewedArtifactCandidates ?? []) {
+      if (!candidate.profileName) continue;
+      if (!vendorProfiles.has(candidate.profileName)) {
+        const label = path.relative(repoRoot, lockPath).replaceAll(path.sep, '/');
+        errors.push(
+          `${label}: reviewed artifact candidate is missing from normalized profiles: ${candidate.profileName} (${candidate.identity ?? 'unknown identity'})`,
+        );
+      }
+    }
   }
   return errors;
 }
@@ -2127,6 +2160,53 @@ function validateBundleBytes(bytes, label) {
     const familyIdError = validateFamilyFilamentIdConsistency(byFamilyId, profile, `${label}: ${bundlePath}`, vendor);
     if (familyIdError) throw new Error(familyIdError);
   }
+}
+
+async function writeUserBaseProfiles(profiles) {
+  const baseDir = path.join(distRoot, 'user-base', 'filament', 'base');
+  await fs.mkdir(baseDir, { recursive: true });
+  for (const item of profiles.sort((a, b) => a.profile.name.localeCompare(b.profile.name, 'en'))) {
+    const profileName = item.profile.name;
+    const baseName = safeFileName(profileName);
+    await writeJson(path.join(baseDir, `${baseName}.json`), item.profile);
+    await fs.writeFile(path.join(baseDir, `${baseName}.info`), userBaseInfoForProfile(item.profile, item.vendor), 'utf8');
+  }
+}
+
+async function validateUserBaseDist(profiles) {
+  const baseDir = path.join(distRoot, 'user-base', 'filament', 'base');
+  if (!(await exists(baseDir))) return [];
+  const errors = [];
+  const expectedFiles = new Set();
+  for (const item of profiles) {
+    const baseName = safeFileName(item.profile.name);
+    const jsonPath = path.join(baseDir, `${baseName}.json`);
+    const infoPath = path.join(baseDir, `${baseName}.info`);
+    expectedFiles.add(path.relative(baseDir, jsonPath).replaceAll(path.sep, '/'));
+    expectedFiles.add(path.relative(baseDir, infoPath).replaceAll(path.sep, '/'));
+    if (!(await exists(jsonPath))) {
+      errors.push(`dist/user-base: missing JSON for ${item.profile.name}`);
+    } else {
+      const generated = JSON.parse(await fs.readFile(jsonPath, 'utf8'));
+      if (stableHash(generated) !== stableHash(item.profile)) {
+        errors.push(`dist/user-base: generated JSON differs from source profile: ${item.profile.name}`);
+      }
+    }
+    if (!(await exists(infoPath))) {
+      errors.push(`dist/user-base: missing .info for ${item.profile.name}`);
+    } else {
+      const expectedInfo = userBaseInfoForProfile(item.profile, item.vendor);
+      const actualInfo = await fs.readFile(infoPath, 'utf8');
+      if (actualInfo !== expectedInfo) {
+        errors.push(`dist/user-base: .info differs from expected setting_id metadata: ${item.profile.name}`);
+      }
+    }
+  }
+  for (const file of await walkFiles(baseDir)) {
+    const relative = path.relative(baseDir, file).replaceAll(path.sep, '/');
+    if (!expectedFiles.has(relative)) errors.push(`dist/user-base: unexpected file ${relative}`);
+  }
+  return errors;
 }
 
 async function generateReadme() {
@@ -2316,6 +2396,7 @@ async function writeReleaseNotes(manifest) {
   lines.push(
     '',
     'Download `all-bbsflmt.zip` for Bambu Studio import testing. Individual `.bbsflmt` files are kept inside that archive, not uploaded as separate release assets.',
+    'Download `all-user-base.zip` for printer/AMS sync testing with Bambu Studio user-profile metadata. It contains `filament/base/*.json` and matching `.info` files with stable `setting_id` values.',
     '',
   );
   for (const vendor of manifest.vendors) {
@@ -2480,6 +2561,21 @@ function filamentIdForFamily(vendor, familyName) {
   const vendorKey = slug(vendor);
   const seed = vendorKey === 'tinmorry' ? familyName : `${vendor}:${familyName}`;
   return `PF${vendorKey.slice(0, 3).toUpperCase()}${hash(seed).slice(0, 8)}`;
+}
+
+function userBaseInfoForProfile(profile, vendor) {
+  return [
+    'sync_info = ',
+    'user_id = ',
+    `setting_id = ${settingIdForUserBaseProfile(profile, vendor)}`,
+    'base_id = ',
+    'updated_time = 0',
+    '',
+  ].join('\n');
+}
+
+function settingIdForUserBaseProfile(profile, vendor) {
+  return `PFU${slug(vendor).slice(0, 3).toUpperCase()}${hash(profile.name).slice(0, 14)}`;
 }
 
 function sourceSummary(raw) {
