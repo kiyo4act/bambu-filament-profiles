@@ -34,7 +34,7 @@ This repository is an AI-led local update workflow, not an automatic upstream co
    npm run generate:readme
    ```
 
-8. AI commits and pushes the normalized JSON state. A candidate prerelease can then be built from the branch or tag.
+8. AI commits and pushes the normalized JSON state to `main`. GitHub Actions automatically creates a candidate prerelease with `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
 9. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
 10. Merge to `main` only after the candidate is acceptable.
 
@@ -60,6 +60,7 @@ Actions can:
 - run `verify`
 - build `.bbsflmt` bundles from committed JSON
 - upload `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`
+- create a candidate prerelease automatically on `main` push
 - show expected import counts in release notes
 - detect upstream HEAD changes and write a summary
 

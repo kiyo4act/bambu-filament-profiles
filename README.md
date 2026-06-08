@@ -49,7 +49,7 @@ This repository is built for ongoing maintenance by a coding agent:
 
 ## Basic Workflow
 
-For Bambu Studio import testing, download `all-bbsflmt.zip` from a prerelease or release, extract it locally, then import the contained `.bbsflmt` files. Release notes show the expected Bambu Studio import count before the material list.
+For Bambu Studio import testing, download `all-bbsflmt.zip` from the latest prerelease or release, extract it locally, then import the contained `.bbsflmt` files. Pushing accepted JSON to `main` automatically creates a candidate prerelease. Release notes show the expected Bambu Studio import count before the material list.
 
 ```powershell
 npm ci

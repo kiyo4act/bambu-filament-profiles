@@ -51,5 +51,6 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 
 - Actions do not fetch upstreams, normalize, or create update PRs.
 - `watch-upstreams` is detection-only and writes a summary.
-- Candidate and release workflows only run `verify`, `build:bbsflmt`, and upload aggregate user-facing assets.
+- Pushing to `main` automatically creates a candidate prerelease with aggregate user-facing assets.
+- Candidate and stable release workflows only run `verify`, `build:bbsflmt`, and upload aggregate user-facing assets.
 - Main merges remain human-gated because Bambu Studio UI visibility and print behavior cannot be fully proven by JSON validation.

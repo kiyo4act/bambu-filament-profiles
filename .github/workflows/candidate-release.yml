@@ -1,6 +1,9 @@
 name: Candidate release
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       vendor:
@@ -10,6 +13,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: candidate-release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   candidate:
@@ -27,15 +34,15 @@ jobs:
       - name: Create candidate prerelease
         env:
           GH_TOKEN: ${{ github.token }}
-          VENDOR: ${{ inputs.vendor }}
-          TAG: candidate-${{ inputs.vendor }}-${{ github.run_number }}
+          VENDOR: ${{ github.event.inputs.vendor || 'tinmorry' }}
         run: |
+          TAG="candidate-${VENDOR}-${GITHUB_RUN_NUMBER}-${GITHUB_RUN_ATTEMPT}"
           git tag "${TAG}"
           git push origin "${TAG}"
           gh release create "${TAG}" \
             dist/all-bbsflmt.zip \
             dist/all-json.zip \
             dist/manifest.json \
-            --title "Candidate ${VENDOR} ${GITHUB_RUN_NUMBER}" \
+            --title "Candidate ${VENDOR} ${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}" \
             --notes-file dist/release-notes.md \
             --prerelease
