@@ -1,35 +1,42 @@
 # Vendor Onboarding
 
-Each vendor gets a directory under `vendors/<vendor>/`.
+Each vendor gets a directory under `vendors/<vendor>/`. New vendors start with observation, not hard-coded normalization rules.
 
 ## Required Files
 
-- `sources.yml`: upstream repositories and input priorities.
-- `normalization.yml`: vendor name, material rules, printer aliases, and exceptions.
-- `profiles/`: normalized Bambu Studio JSON source files.
-- `reports/`: generated reports explaining the latest import.
+- `sources.yml`: upstream repositories, branches, formats, and priority.
+- `profiles/`: normalized Bambu Studio JSON source files after AI/user review.
+- `reports/` or `decision-log.md`: committed reasoning when a normalization decision should be remembered.
 
-## Adding a Vendor
+Do not create vendor-specific material/printer rewrite tables as the default. The update workflow should compare input diffs, show proposals, and ask about new decisions.
+
+## Adding A Vendor
 
 1. Create `vendors/<vendor>/sources.yml`.
-2. Create `vendors/<vendor>/normalization.yml`.
-3. Put sample inputs under `incoming/<vendor>/`.
-4. Run:
+2. Put sample files under `incoming/<vendor>/` if there is no upstream yet.
+3. Run collection and proposal commands:
 
    ```powershell
-   npm run vendor:ingest -- --vendor <vendor> --from incoming
+   npm run vendor:collect -- --vendor <vendor> --from all
+   npm run vendor:diff -- --vendor <vendor>
+   npm run vendor:propose -- --vendor <vendor>
    ```
 
-5. Add material rules until `npm run verify` passes.
-6. Commit the normalized profiles and reports.
+4. Review `.work/extracted/<vendor>/reports/`.
+5. Ask the user about entries in `decision-requests.md`.
+6. Write normalized JSON only after the decision is clear.
+7. Expand inherited presets and verify:
+
+   ```powershell
+   npm run profiles:expand-inherits -- --vendor <vendor>
+   npm run vendor:lock-inputs -- --vendor <vendor>
+   npm run verify
+   npm run build:bbsflmt
+   npm run verify
+   ```
 
 ## Source Priority
 
-Higher `priority` wins when two sources describe the same vendor/material/printer/nozzle profile.
+Higher `priority` indicates which source should be preferred when the AI/user decision says two sources describe the same vendor/material/printer/nozzle profile.
 
-Use this for vendors that publish multiple repositories, for example:
-
-- newer `.bbsflmt` export repository: high priority
-- older JSON repository: lower priority fallback
-- local `incoming/` files: highest priority when intentionally overriding
-
+Use priority as evidence, not as silent authority. If two changed inputs conflict, record the conflict and ask unless a prior decision log already covers the same case.

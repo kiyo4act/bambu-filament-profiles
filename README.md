@@ -6,8 +6,9 @@ This repository is built for ongoing maintenance by a coding agent:
 
 - JSON under `vendors/<vendor>/profiles/` is the source of truth.
 - `.bbsflmt` files are generated artifacts for GitHub Releases.
-- Upstream repositories can be monitored and converted into PRs.
-- User-made or third-party profiles can be dropped into `incoming/<vendor>/` and normalized.
+- Upstream repositories can be monitored, collected, diffed, and reviewed locally by AI.
+- User-made or third-party profiles can be dropped into `incoming/<vendor>/` and reviewed through the same diff/proposal workflow.
+- GitHub Actions package committed JSON into user-facing archives; they do not decide normalization.
 
 ## Current Vendors
 
@@ -53,7 +54,10 @@ For Bambu Studio import testing, download `all-bbsflmt.zip` from a prerelease or
 ```powershell
 npm ci
 npm run vendor:status -- --vendor tinmorry
-npm run vendor:update -- --vendor tinmorry
+npm run vendor:collect -- --vendor tinmorry --from all
+npm run vendor:diff -- --vendor tinmorry
+npm run vendor:propose -- --vendor tinmorry
+npm run vendor:lock-inputs -- --vendor tinmorry
 npm run verify
 npm run build:bbsflmt
 ```

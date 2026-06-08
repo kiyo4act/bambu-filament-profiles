@@ -24,5 +24,14 @@ jobs:
       - name: Check upstream status
         env:
           VENDOR: ${{ github.event.inputs.vendor }}
+        run: npm run vendor:status -- --vendor "${VENDOR}" --json | tee upstream-status.json
+      - name: Write summary
+        shell: bash
         run: |
-          npm run vendor:status -- --vendor "${VENDOR}"
+          echo "## Upstream status" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "This workflow only detects upstream changes. Profile collection, normalization, and commits are done by the local AI workflow." >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat upstream-status.json >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

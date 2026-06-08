@@ -24,10 +24,18 @@ const args = parseArgs(process.argv.slice(3));
 try {
   if (command === 'vendor:status') {
     await vendorStatus(args);
-  } else if (command === 'vendor:update') {
-    await vendorUpdate(args);
-  } else if (command === 'vendor:ingest') {
-    await vendorIngest(args);
+  } else if (command === 'vendor:collect') {
+    await vendorCollect(args);
+  } else if (command === 'vendor:diff') {
+    await vendorDiff(args);
+  } else if (command === 'vendor:propose') {
+    await vendorPropose(args);
+  } else if (command === 'vendor:lock-inputs') {
+    await vendorLockInputs(args);
+  } else if (command === 'profiles:expand-inherits') {
+    await profilesExpandInherits(args);
+  } else if (command === 'reports:vendor-state') {
+    await reportsVendorState(args);
   } else if (command === 'verify') {
     await verifyAll();
   } else if (command === 'build:bbsflmt') {
@@ -47,8 +55,12 @@ try {
 function usage() {
   console.log(`Usage:
   node scripts/bambu-profiles.mjs vendor:status --vendor <vendor> [--json] [--exit-code]
-  node scripts/bambu-profiles.mjs vendor:update --vendor <vendor>
-  node scripts/bambu-profiles.mjs vendor:ingest --vendor <vendor> [--from incoming|<path>]
+  node scripts/bambu-profiles.mjs vendor:collect --vendor <vendor> [--from upstream|incoming|all|<path>]
+  node scripts/bambu-profiles.mjs vendor:diff --vendor <vendor>
+  node scripts/bambu-profiles.mjs vendor:propose --vendor <vendor>
+  node scripts/bambu-profiles.mjs vendor:lock-inputs --vendor <vendor>
+  node scripts/bambu-profiles.mjs profiles:expand-inherits --vendor <vendor> [--system-root <path>]
+  node scripts/bambu-profiles.mjs reports:vendor-state --vendor <vendor>
   node scripts/bambu-profiles.mjs verify
   node scripts/bambu-profiles.mjs build:bbsflmt
   node scripts/bambu-profiles.mjs generate:readme`);
@@ -124,6 +136,407 @@ async function vendorStatus(options) {
     error.exitCode = 2;
     throw error;
   }
+}
+
+async function vendorCollect(options) {
+  const vendorKey = requireVendor(options);
+  const config = await readVendorConfig(vendorKey);
+  const from = options.from ?? 'all';
+  const collectionRoot = collectionRootFor(vendorKey);
+  await fs.rm(collectionRoot, { recursive: true, force: true });
+  await fs.mkdir(collectionRoot, { recursive: true });
+
+  const manifest = {
+    vendor: config.vendor,
+    vendorKey,
+    generatedAt: new Date().toISOString(),
+    collectionRoot: path.relative(repoRoot, collectionRoot).replaceAll(path.sep, '/'),
+    sources: {},
+    inputs: [],
+    bundleErrors: [],
+  };
+
+  const collectUpstream = from === 'all' || from === 'upstream';
+  const collectIncoming = from === 'all' || from === 'incoming';
+  const collectCustom = !['all', 'upstream', 'incoming'].includes(from);
+
+  if (collectUpstream) {
+    for (const source of config.sources.sources ?? []) {
+      const sourceDir = await cloneSource(vendorKey, source);
+      const commit = (await git(['rev-parse', 'HEAD'], sourceDir)).stdout.trim();
+      manifest.sources[source.id] = {
+        id: source.id,
+        label: source.label ?? source.id,
+        repo: source.repo,
+        branch: source.branch ?? 'main',
+        commit,
+        priority: Number(source.priority ?? 0),
+        formats: source.formats ?? ['json', 'bbsflmt', 'zip'],
+      };
+      const profiles = await readProfilesFromDirectory(sourceDir, {
+        vendor: config.vendor,
+        sourceId: source.id,
+        sourceLabel: source.label ?? source.id,
+        sourceRepo: source.repo,
+        sourcePriority: Number(source.priority ?? 0),
+        sourceCommit: commit,
+        allowedFormats: new Set(source.formats ?? ['json', 'bbsflmt', 'zip']),
+      });
+      await appendCollectedInputs(manifest, profiles, collectionRoot);
+    }
+  }
+
+  if (collectIncoming) {
+    const incomingRoot = path.join(repoRoot, 'incoming', vendorKey);
+    if (await exists(incomingRoot)) {
+      manifest.sources.incoming = {
+        id: 'incoming',
+        label: 'Manual incoming files',
+        repo: 'incoming',
+        branch: '',
+        commit: '',
+        priority: 200,
+        formats: ['json', 'bbsflmt', 'zip'],
+      };
+      const profiles = await readProfilesFromDirectory(incomingRoot, {
+        vendor: config.vendor,
+        sourceId: 'incoming',
+        sourceLabel: 'Manual incoming files',
+        sourceRepo: 'incoming',
+        sourcePriority: 200,
+        sourceCommit: '',
+        allowedFormats: new Set(['json', 'bbsflmt', 'zip']),
+      });
+      await appendCollectedInputs(manifest, profiles, collectionRoot);
+    }
+  }
+
+  if (collectCustom) {
+    const customRoot = path.resolve(repoRoot, from);
+    manifest.sources.manual = {
+      id: 'manual',
+      label: `Manual path: ${from}`,
+      repo: from,
+      branch: '',
+      commit: '',
+      priority: 200,
+      formats: ['json', 'bbsflmt', 'zip'],
+    };
+    const profiles = await readProfilesFromDirectory(customRoot, {
+      vendor: config.vendor,
+      sourceId: 'manual',
+      sourceLabel: `Manual path: ${from}`,
+      sourceRepo: from,
+      sourcePriority: 200,
+      sourceCommit: '',
+      allowedFormats: new Set(['json', 'bbsflmt', 'zip']),
+    });
+    await appendCollectedInputs(manifest, profiles, collectionRoot);
+  }
+
+  await writeJson(collectionManifestPath(vendorKey), manifest);
+  await writeCollectionReport(manifest);
+  console.log(
+    `OK: collected ${manifest.inputs.length} JSON profile(s) for ${config.vendor} into ${path.relative(repoRoot, collectionRoot)}.`,
+  );
+}
+
+async function vendorDiff(options) {
+  const vendorKey = requireVendor(options);
+  const config = await readVendorConfig(vendorKey);
+  const manifest = await readCollectionManifest(vendorKey);
+  const inputLock = await readJsonIfExists(path.join(config.dir, 'input-lock.json'));
+  const upstreamLock = await readJsonIfExists(path.join(config.dir, 'upstream-lock.json'));
+
+  const previousInputs = new Map(
+    (inputLock?.inputs ?? []).map((item) => [inputIdentity(item), item]),
+  );
+  const currentInputs = new Map(manifest.inputs.map((item) => [inputIdentity(item), item]));
+  const inputDiffs = [];
+
+  for (const input of manifest.inputs) {
+    const previous = previousInputs.get(inputIdentity(input));
+    let status = 'added';
+    if (previous) {
+      status = previous.profileHash === input.profileHash ? 'unchanged' : 'changed';
+    } else if (!inputLock) {
+      status = 'untracked';
+    }
+    inputDiffs.push({
+      status,
+      sourceId: input.sourceId,
+      relativePath: input.relativePath,
+      innerPath: input.innerPath,
+      profileName: input.profileName,
+      previousHash: previous?.profileHash ?? null,
+      currentHash: input.profileHash,
+    });
+  }
+
+  for (const previous of inputLock?.inputs ?? []) {
+    if (!currentInputs.has(inputIdentity(previous))) {
+      inputDiffs.push({
+        status: 'removed',
+        sourceId: previous.sourceId,
+        relativePath: previous.relativePath,
+        innerPath: previous.innerPath,
+        profileName: previous.profileName,
+        previousHash: previous.profileHash,
+        currentHash: null,
+      });
+    }
+  }
+
+  const sourceDiffs = Object.values(manifest.sources).map((source) => {
+    const locked = upstreamLock?.sources?.[source.id] ?? null;
+    return {
+      id: source.id,
+      repo: source.repo,
+      branch: source.branch,
+      lockedCommit: locked?.commit ?? null,
+      currentCommit: source.commit || null,
+      status: locked?.commit && source.commit
+        ? locked.commit === source.commit
+          ? 'unchanged'
+          : 'changed'
+        : 'untracked',
+    };
+  });
+
+  const result = {
+    vendor: manifest.vendor,
+    generatedAt: new Date().toISOString(),
+    basis: {
+      manifest: path.relative(repoRoot, collectionManifestPath(vendorKey)).replaceAll(path.sep, '/'),
+      inputLock: inputLock ? path.relative(repoRoot, path.join(config.dir, 'input-lock.json')).replaceAll(path.sep, '/') : null,
+      upstreamLock: upstreamLock ? path.relative(repoRoot, path.join(config.dir, 'upstream-lock.json')).replaceAll(path.sep, '/') : null,
+    },
+    sources: sourceDiffs,
+    inputs: inputDiffs.sort((a, b) =>
+      `${a.status}:${a.sourceId}:${a.relativePath}:${a.innerPath}`.localeCompare(
+        `${b.status}:${b.sourceId}:${b.relativePath}:${b.innerPath}`,
+        'en',
+      ),
+    ),
+  };
+
+  const reportsDir = collectionReportsRoot(vendorKey);
+  await fs.mkdir(reportsDir, { recursive: true });
+  await writeJson(path.join(reportsDir, 'diff.json'), result);
+  await fs.writeFile(path.join(reportsDir, 'diff.md'), diffMarkdown(result), 'utf8');
+  console.log(`OK: wrote diff report for ${manifest.vendor} to ${path.relative(repoRoot, reportsDir)}.`);
+}
+
+async function vendorPropose(options) {
+  const vendorKey = requireVendor(options);
+  const manifest = await readCollectionManifest(vendorKey);
+  const reportsDir = collectionReportsRoot(vendorKey);
+  const diff = await readJsonIfExists(path.join(reportsDir, 'diff.json'));
+  const changedKeys = new Set(
+    (diff?.inputs ?? manifest.inputs)
+      .filter((item) => ['added', 'changed', 'untracked'].includes(item.status ?? 'untracked'))
+      .map(inputIdentity),
+  );
+  const existingProfiles = (await readAllNormalizedProfiles()).filter((item) => item.vendor === manifest.vendor);
+  const knownFamilies = new Set(existingProfiles.map((item) => item.profile.name.split(' @')[0]));
+  const proposals = [];
+  const decisions = [];
+
+  for (const input of manifest.inputs) {
+    if (!changedKeys.has(inputIdentity(input))) continue;
+    const text = normalizeText(
+      [
+        input.profileName,
+        input.filamentSettingsId,
+        input.relativePath,
+        input.innerPath,
+        input.inherits,
+        input.compatiblePrinters.join(' '),
+        input.filamentType,
+      ].join(' '),
+    );
+    const material = materialObservationFor(text);
+    const printers = printerNamesFromText(text).map((printer) => ({
+      printer,
+      nozzle: nozzleFor(text, {}),
+    }));
+    const familySuggestion = familySuggestionFor(manifest.vendor, material);
+    const issues = proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies);
+    const proposal = {
+      sourceId: input.sourceId,
+      relativePath: input.relativePath,
+      innerPath: input.innerPath,
+      profileName: input.profileName,
+      observedMaterial: material,
+      suggestedFamily: familySuggestion,
+      observedPrinters: printers,
+      hasVendor: input.filamentVendor.includes(manifest.vendor),
+      inherits: input.inherits,
+      issues,
+    };
+    proposals.push(proposal);
+    for (const issue of issues) {
+      decisions.push({
+        issue,
+        sourceId: input.sourceId,
+        relativePath: input.relativePath,
+        innerPath: input.innerPath,
+        profileName: input.profileName,
+        suggestedFamily: familySuggestion,
+      });
+    }
+  }
+
+  const result = {
+    vendor: manifest.vendor,
+    generatedAt: new Date().toISOString(),
+    changedInputCount: proposals.length,
+    proposalCount: proposals.length,
+    decisionRequestCount: decisions.length,
+    proposals,
+    decisions,
+  };
+
+  await fs.mkdir(reportsDir, { recursive: true });
+  await writeJson(path.join(reportsDir, 'proposals.json'), result);
+  await fs.writeFile(path.join(reportsDir, 'proposal-summary.md'), proposalMarkdown(result), 'utf8');
+  await fs.writeFile(path.join(reportsDir, 'decision-requests.md'), decisionRequestsMarkdown(result), 'utf8');
+  console.log(
+    `OK: wrote ${proposals.length} proposal(s) and ${decisions.length} decision request(s) for ${manifest.vendor}.`,
+  );
+}
+
+async function vendorLockInputs(options) {
+  const vendorKey = requireVendor(options);
+  const config = await readVendorConfig(vendorKey);
+  const manifest = await readCollectionManifest(vendorKey);
+  const lock = {
+    vendor: manifest.vendor,
+    acceptedAt: new Date().toISOString(),
+    sources: manifest.sources,
+    inputs: manifest.inputs.map((input) => ({
+      identity: inputIdentity(input),
+      sourceId: input.sourceId,
+      sourceRepo: input.sourceRepo,
+      sourceCommit: input.sourceCommit,
+      format: input.format,
+      relativePath: input.relativePath,
+      innerPath: input.innerPath,
+      sourceFileHash: input.sourceFileHash,
+      profileHash: input.profileHash,
+      bundleHash: input.bundleHash,
+      profileName: input.profileName,
+      extractedPath: input.extractedPath,
+    })),
+  };
+  await writeJson(path.join(config.dir, 'input-lock.json'), lock);
+  console.log(`OK: locked ${lock.inputs.length} accepted input(s) for ${manifest.vendor}.`);
+}
+
+async function profilesExpandInherits(options) {
+  const vendorKey = requireVendor(options);
+  const config = await readVendorConfig(vendorKey);
+  const systemRoot = path.resolve(
+    options.systemRoot ??
+      path.join(process.env.APPDATA ?? '', 'BambuStudioBeta', 'system', 'BBL', 'filament'),
+  );
+  const systemPresets = await loadPresetMap(systemRoot);
+  if (!systemPresets.size) {
+    throw new Error(`No Bambu Studio system filament presets found under ${systemRoot}`);
+  }
+
+  const profileFiles = (await walkFiles(path.join(config.dir, 'profiles')).catch(() => []))
+    .filter((file) => file.toLowerCase().endsWith('.json'))
+    .sort((a, b) => a.localeCompare(b, 'en'));
+  const localPresets = new Map();
+  for (const filePath of profileFiles) {
+    const profile = JSON.parse(await fs.readFile(filePath, 'utf8'));
+    if (profile.name) localPresets.set(profile.name, { filePath, profile });
+  }
+  const allPresets = new Map([...systemPresets, ...localPresets]);
+  const cache = new Map();
+  const unresolved = [];
+  let expandedCount = 0;
+
+  for (const filePath of profileFiles) {
+    const profile = JSON.parse(await fs.readFile(filePath, 'utf8'));
+    if (!profile.inherits) continue;
+    const expanded = expandPresetForFile(profile, filePath, allPresets, cache, [], unresolved);
+    expanded.inherits = '';
+    delete expanded.instantiation;
+    delete expanded.is_custom_defined;
+    delete expanded.setting_id;
+    delete expanded.type;
+    await writeJson(filePath, sortDeep(expanded));
+    expandedCount += 1;
+  }
+
+  if (unresolved.length) {
+    const error = new Error(`Failed to resolve ${unresolved.length} inherited preset(s).`);
+    error.details = unresolved.map((item) => `- ${item.filePath}: ${item.parentName}`).join('\n');
+    throw error;
+  }
+  console.log(
+    `OK: expanded ${expandedCount} inherited profile(s) for ${config.vendor} using ${systemPresets.size} Bambu Studio system presets.`,
+  );
+}
+
+async function reportsVendorState(options) {
+  const vendorKey = requireVendor(options);
+  const config = await readVendorConfig(vendorKey);
+  const profiles = (await readAllNormalizedProfiles()).filter((item) => slug(item.vendor) === vendorKey);
+  const errors = validateProfiles(profiles);
+  const materials = new Map();
+  const printers = new Map();
+  for (const item of profiles) {
+    const family = item.profile.name.split(' @')[0];
+    if (!materials.has(family)) materials.set(family, []);
+    materials.get(family).push(item);
+    const printer = String(item.profile.compatible_printers?.[0] ?? '').replace(/\s+\d+(?:\.\d+)?\s+nozzle$/i, '').trim();
+    if (printer) printers.set(printer, (printers.get(printer) ?? 0) + 1);
+  }
+
+  const report = {
+    vendor: config.vendor,
+    generatedAt: new Date().toISOString(),
+    normalizedProfileCount: profiles.length,
+    materialCount: materials.size,
+    printerCounts: Object.fromEntries([...printers.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en'))),
+    unresolvedInheritsCount: profiles.filter((item) => item.profile.inherits).length,
+    validationErrors: errors,
+    outputs: profiles.map((item) => ({
+      name: item.profile.name,
+      path: item.relativePathFromVendor,
+      family: item.profile.name.split(' @')[0],
+      type: item.profile.filament_type?.[0] ?? '',
+      printer: item.profile.compatible_printers?.[0] ?? '',
+      keyCount: Object.keys(item.profile).length,
+    })),
+  };
+
+  const reportsDir = path.join(config.dir, 'reports');
+  await fs.rm(reportsDir, { recursive: true, force: true });
+  await fs.mkdir(reportsDir, { recursive: true });
+  await writeJson(path.join(reportsDir, 'manifest.json'), report);
+  await fs.writeFile(path.join(reportsDir, 'classification.md'), vendorStateClassificationMarkdown(report), 'utf8');
+  await fs.writeFile(path.join(reportsDir, 'filename-normalization.md'), vendorStateFilenamesMarkdown(report), 'utf8');
+  await fs.writeFile(
+    path.join(reportsDir, 'conflicts.md'),
+    listMarkdown('Committed State Conflicts', errors, 'No committed-state conflicts.'),
+    'utf8',
+  );
+  await fs.writeFile(
+    path.join(reportsDir, 'warnings.md'),
+    listMarkdown(
+      'Committed State Warnings',
+      report.unresolvedInheritsCount
+        ? [`${report.unresolvedInheritsCount} profile(s) still have non-empty inherits.`]
+        : [],
+      'No unresolved inherited presets remain.',
+    ),
+    'utf8',
+  );
+  console.log(`OK: wrote committed-state reports for ${config.vendor} with ${profiles.length} profile(s).`);
 }
 
 async function vendorUpdate(options) {
@@ -426,12 +839,15 @@ async function readProfilesFromDirectory(root, sourceMeta) {
     const format = suffix === '.bbsflmt' ? 'bbsflmt' : suffix.slice(1);
     if (!sourceMeta.allowedFormats.has(format)) continue;
     if (format === 'json') {
-      const profile = JSON.parse(await fs.readFile(filePath, 'utf8'));
+      const bytes = await fs.readFile(filePath);
+      const profile = JSON.parse(bytes.toString('utf8'));
       out.push({
         ...sourceMeta,
         format,
         filePath,
         relativePath: path.relative(root, filePath).replaceAll(path.sep, '/'),
+        sourceFileHash: hash(bytes),
+        profileHash: stableHash(profile),
         profile,
       });
     } else if (format === 'bbsflmt' || format === 'zip') {
@@ -443,6 +859,7 @@ async function readProfilesFromDirectory(root, sourceMeta) {
 
 async function readBundleProfiles(filePath, root, sourceMeta, format) {
   const bytes = new Uint8Array(await fs.readFile(filePath));
+  const sourceFileHash = hash(Buffer.from(bytes));
   const entries = unzipSync(bytes);
   const names = Object.keys(entries).sort((a, b) => a.localeCompare(b, 'en'));
   const bundleBytes = entries['bundle_structure.json'];
@@ -461,6 +878,9 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
       relativePath,
       innerPath: name,
       bundle,
+      bundleHash: bundle ? stableHash(bundle) : null,
+      sourceFileHash,
+      profileHash: stableHash(profile),
       profile,
     });
   }
@@ -473,11 +893,326 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
       relativePath,
       innerPath: '',
       bundle: null,
+      bundleHash: null,
+      sourceFileHash,
+      profileHash: stableHash({ name: `INVALID BUNDLE ${relativePath}` }),
       profile: { name: `INVALID BUNDLE ${relativePath}` },
       bundleError: 'missing bundle_structure.json',
     });
   }
   return out;
+}
+
+function collectionRootFor(vendorKey) {
+  return path.join(workRoot, 'extracted', vendorKey);
+}
+
+function collectionManifestPath(vendorKey) {
+  return path.join(collectionRootFor(vendorKey), 'manifest.json');
+}
+
+function collectionReportsRoot(vendorKey) {
+  return path.join(collectionRootFor(vendorKey), 'reports');
+}
+
+async function readCollectionManifest(vendorKey) {
+  const manifestPath = collectionManifestPath(vendorKey);
+  const manifest = await readJsonIfExists(manifestPath);
+  if (!manifest) {
+    throw new Error(
+      `No collection manifest found for ${vendorKey}. Run vendor:collect before vendor:diff or vendor:propose.`,
+    );
+  }
+  return manifest;
+}
+
+async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
+  const writtenBundles = new Set();
+  for (const raw of rawProfiles) {
+    const profileHash = raw.profileHash ?? stableHash(raw.profile);
+    const sourceKey = `${raw.sourceId}:${raw.relativePath}:${raw.innerPath ?? ''}`;
+    const extractedRelativePath = path
+      .join(
+        'profiles',
+        slug(raw.sourceId),
+        hash(sourceKey).slice(0, 12),
+        `${safeFileName(raw.profile.name ?? raw.innerPath ?? raw.relativePath) || `profile-${profileHash.slice(0, 8)}`}.json`,
+      )
+      .replaceAll(path.sep, '/');
+    await writeJson(path.join(collectionRoot, extractedRelativePath), raw.profile);
+
+    if (raw.bundle) {
+      const bundleKey = `${raw.sourceId}:${raw.relativePath}`;
+      if (!writtenBundles.has(bundleKey)) {
+        writtenBundles.add(bundleKey);
+        const bundleRelativePath = path
+          .join('bundles', slug(raw.sourceId), `${hash(bundleKey).slice(0, 12)}-bundle_structure.json`)
+          .replaceAll(path.sep, '/');
+        await writeJson(path.join(collectionRoot, bundleRelativePath), raw.bundle);
+      }
+    }
+
+    if (raw.bundleError) {
+      manifest.bundleErrors.push({
+        sourceId: raw.sourceId,
+        relativePath: raw.relativePath,
+        error: raw.bundleError,
+      });
+    }
+
+    manifest.inputs.push({
+      identity: inputIdentity(raw),
+      sourceId: raw.sourceId,
+      sourceLabel: raw.sourceLabel,
+      sourceRepo: raw.sourceRepo,
+      sourceCommit: raw.sourceCommit ?? '',
+      sourcePriority: raw.sourcePriority,
+      format: raw.format,
+      relativePath: raw.relativePath,
+      innerPath: raw.innerPath ?? '',
+      sourceFileHash: raw.sourceFileHash ?? '',
+      profileHash,
+      bundleHash: raw.bundleHash ?? null,
+      extractedPath: extractedRelativePath,
+      profileName: raw.profile.name ?? '',
+      filamentSettingsId: arrayFirst(raw.profile.filament_settings_id) ?? '',
+      filamentVendor: Array.isArray(raw.profile.filament_vendor) ? raw.profile.filament_vendor : [],
+      filamentType: arrayFirst(raw.profile.filament_type) ?? '',
+      compatiblePrinters: Array.isArray(raw.profile.compatible_printers)
+        ? raw.profile.compatible_printers
+        : [],
+      inherits: raw.profile.inherits ?? '',
+      keyCount: Object.keys(raw.profile).length,
+    });
+  }
+  manifest.inputs.sort((a, b) =>
+    `${a.sourceId}:${a.relativePath}:${a.innerPath}`.localeCompare(
+      `${b.sourceId}:${b.relativePath}:${b.innerPath}`,
+      'en',
+    ),
+  );
+}
+
+function inputIdentity(item) {
+  return `${item.sourceId}:${item.relativePath}:${item.innerPath ?? ''}`;
+}
+
+async function writeCollectionReport(manifest) {
+  const reportsDir = collectionReportsRoot(manifest.vendorKey);
+  await fs.mkdir(reportsDir, { recursive: true });
+  const lines = [
+    '# Input Collection',
+    '',
+    `Vendor: ${manifest.vendor}`,
+    `Inputs: ${manifest.inputs.length}`,
+    `Bundle errors: ${manifest.bundleErrors.length}`,
+    '',
+    '| Source | Format | Path | Inner path | Profile name | Hash | Extracted JSON |',
+    '|---|---|---|---|---|---|---|',
+  ];
+  for (const input of manifest.inputs) {
+    lines.push(
+      `| ${md(input.sourceId)} | ${md(input.format)} | ${md(input.relativePath)} | ${md(input.innerPath)} | ${md(input.profileName)} | ${input.profileHash.slice(0, 12)} | ${md(input.extractedPath)} |`,
+    );
+  }
+  lines.push('');
+  if (manifest.bundleErrors.length) {
+    lines.push('## Bundle Errors', '');
+    for (const error of manifest.bundleErrors) {
+      lines.push(`- ${error.sourceId}:${error.relativePath}: ${error.error}`);
+    }
+    lines.push('');
+  }
+  await fs.writeFile(path.join(reportsDir, 'input-manifest.md'), lines.join('\n'), 'utf8');
+}
+
+function diffMarkdown(result) {
+  const counts = countBy(result.inputs, 'status');
+  const lines = [
+    '# Input Diff',
+    '',
+    `Vendor: ${result.vendor}`,
+    `Inputs: ${result.inputs.length}`,
+    `Added: ${counts.added ?? 0}`,
+    `Changed: ${counts.changed ?? 0}`,
+    `Unchanged: ${counts.unchanged ?? 0}`,
+    `Removed: ${counts.removed ?? 0}`,
+    `Untracked: ${counts.untracked ?? 0}`,
+    '',
+    '## Sources',
+    '',
+    '| Source | Status | Locked commit | Current commit |',
+    '|---|---|---|---|',
+  ];
+  for (const source of result.sources) {
+    lines.push(
+      `| ${md(source.id)} | ${source.status} | ${md(source.lockedCommit ?? '')} | ${md(source.currentCommit ?? '')} |`,
+    );
+  }
+  lines.push('', '## Inputs', '', '| Status | Source | Path | Inner path | Profile name |', '|---|---|---|---|---|');
+  for (const input of result.inputs) {
+    lines.push(
+      `| ${input.status} | ${md(input.sourceId)} | ${md(input.relativePath)} | ${md(input.innerPath)} | ${md(input.profileName)} |`,
+    );
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
+function proposalMarkdown(result) {
+  const lines = [
+    '# Normalization Proposal Inputs',
+    '',
+    `Vendor: ${result.vendor}`,
+    `Changed inputs considered: ${result.changedInputCount}`,
+    `Decision requests: ${result.decisionRequestCount}`,
+    '',
+    '| Source | Profile | Suggested family | Printers | Issues |',
+    '|---|---|---|---|---|',
+  ];
+  for (const proposal of result.proposals) {
+    lines.push(
+      `| ${md(`${proposal.sourceId}:${proposal.relativePath}:${proposal.innerPath}`)} | ${md(proposal.profileName)} | ${md(proposal.suggestedFamily)} | ${md(proposal.observedPrinters.map((item) => `${item.printer} ${item.nozzle}`).join('<br>'))} | ${md(proposal.issues.join('<br>'))} |`,
+    );
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
+function decisionRequestsMarkdown(result) {
+  const lines = ['# Decision Requests', ''];
+  if (!result.decisions.length) {
+    lines.push('No new decisions are required for the changed inputs.', '');
+    return lines.join('\n');
+  }
+  lines.push(
+    'AI should review these items and ask the user before writing normalized JSON for any decision that is not already covered by an approved prior judgment.',
+    '',
+    '| Issue | Source | Profile | Suggested family |',
+    '|---|---|---|---|',
+  );
+  for (const decision of result.decisions) {
+    lines.push(
+      `| ${md(decision.issue)} | ${md(`${decision.sourceId}:${decision.relativePath}:${decision.innerPath}`)} | ${md(decision.profileName)} | ${md(decision.suggestedFamily)} |`,
+    );
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
+function materialObservationFor(text) {
+  const base = [];
+  if (text.includes('PETG')) base.push('PETG');
+  if (hasToken(text, 'PET') || text.includes('PET-') || text.includes('PET ')) base.push('PET');
+  for (const token of ['PLA', 'ABS', 'ASA', 'PAHT', 'PA', 'PC', 'PP', 'TPU']) {
+    if (hasToken(text, token) || text.includes(`${token}-`)) base.push(token);
+  }
+  return {
+    base: unique(base),
+    modifiers: unique(
+      ['CF', 'GF', 'HF', 'HS', 'ECO', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', '95A']
+        .filter((token) => hasToken(text, token) || text.includes(token)),
+    ),
+    hasPetg: text.includes('PETG'),
+    hasPet: hasToken(text, 'PET') || text.includes('PET-') || text.includes('PET '),
+    hasCf: hasToken(text, 'CF'),
+    hasGf: hasToken(text, 'GF'),
+  };
+}
+
+function familySuggestionFor(vendor, material) {
+  if (!material.base.length) return '';
+  const primary = material.base[0];
+  const suffix = [];
+  if (material.modifiers.includes('CF')) suffix.push('CF');
+  if (material.modifiers.includes('GF')) suffix.push('GF');
+  for (const token of ['ECO', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', '95A']) {
+    if (material.modifiers.includes(token)) suffix.push(titleMaterialModifier(token));
+  }
+  return `${vendor} ${[primary, ...suffix].join(' ')}`.trim();
+}
+
+function proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies) {
+  const issues = [];
+  if (!input.filamentVendor.length) {
+    issues.push('missing filament_vendor; AI should set the visible vendor after review');
+  }
+  if (input.inherits) {
+    issues.push('inherits is present; AI should expand against Bambu Studio system presets before committing');
+  }
+  if (!material.base.length) {
+    issues.push('material family is unclear');
+  }
+  if (material.hasPet && material.hasPetg) {
+    issues.push('PET and PETG both appear; AI must keep them separate');
+  }
+  if (material.hasPet && material.hasCf && material.hasGf && !material.hasPetg) {
+    issues.push('PET CF GF appears; propose split/handling and confirm with user');
+  }
+  if (!printers.length && !input.compatiblePrinters.length) {
+    issues.push('printer/nozzle is unclear');
+  }
+  if (familySuggestion && !knownFamilies.has(familySuggestion)) {
+    issues.push('suggested family is new to the repository');
+  }
+  return unique(issues);
+}
+
+function titleMaterialModifier(token) {
+  const map = {
+    ECO: 'ECO',
+    MATTE: 'Matte',
+    SILK: 'Silk',
+    MARBLE: 'Marble',
+    METALLIC: 'Metallic',
+    GALAXY: 'Galaxy',
+    SPARKLY: 'Sparkly',
+    RAPID: 'Rapid',
+    '95A': '95A',
+  };
+  return map[token] ?? token;
+}
+
+function countBy(items, key) {
+  const counts = {};
+  for (const item of items) counts[item[key]] = (counts[item[key]] ?? 0) + 1;
+  return counts;
+}
+
+async function loadPresetMap(root) {
+  const presets = new Map();
+  const files = (await walkFiles(root).catch(() => [])).filter((file) => file.toLowerCase().endsWith('.json'));
+  for (const filePath of files) {
+    try {
+      const profile = JSON.parse(await fs.readFile(filePath, 'utf8'));
+      if (profile.name) presets.set(profile.name, { filePath, profile });
+    } catch {
+      // Ignore unrelated or invalid system files; verification catches committed JSON separately.
+    }
+  }
+  return presets;
+}
+
+function expandPresetForFile(profile, filePath, allPresets, cache, stack, unresolved) {
+  const cacheKey = `${filePath}:${profile.name ?? ''}`;
+  if (cache.has(cacheKey)) return cache.get(cacheKey);
+  if (stack.includes(cacheKey)) {
+    throw new Error(`Cyclic inherits chain: ${[...stack, cacheKey].join(' -> ')}`);
+  }
+
+  let expandedParent = {};
+  const parentName = profile.inherits ?? '';
+  if (parentName) {
+    const parent = allPresets.get(parentName);
+    if (!parent) {
+      unresolved.push({ filePath, parentName });
+    } else {
+      expandedParent = expandPresetForFile(parent.profile, parent.filePath, allPresets, cache, [...stack, cacheKey], unresolved);
+    }
+  }
+  const expanded = sortDeep({ ...expandedParent, ...profile });
+  cache.set(cacheKey, expanded);
+  return expanded;
 }
 
 function materialFamiliesFor(text, vendor) {
@@ -739,12 +1474,20 @@ function validateProfiles(profiles) {
     if (!Array.isArray(profile.compatible_printers) || profile.compatible_printers.length !== 1) {
       errors.push(`${label}: compatible_printers must contain exactly one printer/nozzle`);
     }
+    if (profile.inherits) {
+      errors.push(`${label}: inherits must be expanded and then cleared`);
+    }
     if (profile.name?.includes('PETG') && profile.filament_type?.[0]?.startsWith('PET-')) {
       errors.push(`${label}: PETG profile has PET filament_type`);
     }
     if (/(^| )PET( |$)/.test(profile.name ?? '') && !profile.name.includes('PETG') && profile.filament_type?.[0]?.startsWith('PETG')) {
       errors.push(`${label}: PET profile has PETG filament_type`);
     }
+    if (/(^| )PET\s+(CF\s*GF|GF\s*CF|CF\/GF|GF\/CF)( |$)/i.test(profile.name ?? '')) {
+      errors.push(`${label}: PET CF GF style family must be split or explicitly resolved before commit`);
+    }
+    const pathPrinterError = validatePathPrinterConsistency(item);
+    if (pathPrinterError) errors.push(pathPrinterError);
     const previous = byName.get(profile.name);
     if (previous && stableHash(previous.profile) !== stableHash(profile)) {
       errors.push(`${label}: duplicate profile name with different content: ${profile.name}`);
@@ -752,6 +1495,24 @@ function validateProfiles(profiles) {
     if (!previous) byName.set(profile.name, item);
   }
   return errors;
+}
+
+function validatePathPrinterConsistency(item) {
+  const parts = item.relativePathFromVendor.split('/');
+  if (parts.length < 4 || parts[0] !== 'profiles') return '';
+  const pathPrinterKey = parts[2];
+  const nozzleFile = parts[3];
+  const compatible = item.profile.compatible_printers?.[0] ?? '';
+  const printerName = compatible.replace(/\s+\d+(?:\.\d+)?\s+nozzle$/i, '').trim();
+  const compatiblePrinterKey = printerKeyFor(printerName);
+  if (compatiblePrinterKey && pathPrinterKey !== compatiblePrinterKey) {
+    return `${item.relativePathFromRepo}: path printer ${pathPrinterKey} does not match compatible_printers ${compatible}`;
+  }
+  const nozzleMatch = nozzleFile.match(/^nozzle-(\d+(?:\.\d+)?)\.json$/i);
+  if (nozzleMatch && !compatible.includes(`${nozzleMatch[1]} nozzle`)) {
+    return `${item.relativePathFromRepo}: path nozzle ${nozzleMatch[1]} does not match compatible_printers ${compatible}`;
+  }
+  return '';
 }
 
 function validateBundleBytes(bytes, label) {
@@ -778,7 +1539,7 @@ async function generateReadme() {
   const profiles = await readAllNormalizedProfiles().catch(() => []);
   const lines = [];
   if (!profiles.length) {
-    lines.push('No profiles have been generated yet. Run `npm run vendor:update -- --vendor tinmorry`.');
+    lines.push('No normalized profiles are committed yet. Use `vendor:collect`, `vendor:diff`, and `vendor:propose` to prepare an AI-reviewed update.');
   } else {
     const byVendorFamily = new Map();
     for (const item of profiles) {
@@ -874,6 +1635,28 @@ function classificationMarkdown(items) {
   return lines.join('\n');
 }
 
+function vendorStateClassificationMarkdown(report) {
+  const byFamily = new Map();
+  for (const item of report.outputs) {
+    if (!byFamily.has(item.family)) byFamily.set(item.family, []);
+    byFamily.get(item.family).push(item);
+  }
+  const lines = [
+    '# Committed Profile Classification',
+    '',
+    'This report describes the normalized JSON currently committed under `vendors/<vendor>/profiles/`. Input diff and proposal reports are generated under `.work/extracted/<vendor>/reports/` during AI review.',
+    '',
+    '| Material | Type | Profiles | Printers |',
+    '|---|---|---:|---|',
+  ];
+  for (const [family, items] of [...byFamily.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en'))) {
+    const printers = items.map((item) => item.printer).sort((a, b) => a.localeCompare(b, 'en'));
+    lines.push(`| ${md(family)} | ${md(items[0].type)} | ${items.length} | ${md(printers.join('<br>'))} |`);
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
 function filenamesMarkdown(items) {
   const lines = [
     '# Filename Normalization Report',
@@ -890,6 +1673,22 @@ function filenamesMarkdown(items) {
   return lines.join('\n');
 }
 
+function vendorStateFilenamesMarkdown(report) {
+  const lines = [
+    '# Committed Profile Paths',
+    '',
+    'Source filenames are not normalized in place. Committed JSON paths are normalized after AI/user review.',
+    '',
+    '| Profile name | Path | Key count |',
+    '|---|---|---:|',
+  ];
+  for (const item of report.outputs.sort((a, b) => a.name.localeCompare(b.name, 'en'))) {
+    lines.push(`| ${md(item.name)} | ${md(item.path)} | ${item.keyCount} |`);
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
 function listMarkdown(title, items, emptyText) {
   const lines = [`# ${title}`, ''];
   if (!items.length) lines.push(emptyText);
@@ -900,6 +1699,7 @@ function listMarkdown(title, items, emptyText) {
 
 async function writeReleaseNotes(manifest) {
   const totals = releaseTotals(manifest);
+  const breakdown = releaseBreakdown(manifest);
   const lines = [
     '# Release Artifacts',
     '',
@@ -907,9 +1707,23 @@ async function writeReleaseNotes(manifest) {
     `Material bundles generated: ${totals.materials}`,
     `Vendors included: ${totals.vendors}`,
     '',
+    '## Counts',
+    '',
+    '| Vendor | Materials | Profiles |',
+    '|---|---:|---:|',
+  ];
+  for (const vendor of breakdown.vendors) {
+    lines.push(`| ${vendor.vendor} | ${vendor.materials} | ${vendor.profiles} |`);
+  }
+  lines.push('', '| Printer | Profiles |', '|---|---:|');
+  for (const printer of breakdown.printers) {
+    lines.push(`| ${printer.printer} | ${printer.profiles} |`);
+  }
+  lines.push(
+    '',
     'Download `all-bbsflmt.zip` for Bambu Studio import testing. Individual `.bbsflmt` files are kept inside that archive, not uploaded as separate release assets.',
     '',
-  ];
+  );
   for (const vendor of manifest.vendors) {
     lines.push(`## ${vendor.vendor}`, '');
     for (const material of vendor.materials) {
@@ -929,6 +1743,28 @@ function releaseTotals(manifest) {
   };
 }
 
+function releaseBreakdown(manifest) {
+  const vendors = manifest.vendors.map((vendor) => ({
+    vendor: vendor.vendor,
+    materials: vendor.materials.length,
+    profiles: vendor.materials.reduce((sum, material) => sum + (material.profiles?.length ?? 0), 0),
+  }));
+  const printerCounts = new Map();
+  for (const vendor of manifest.vendors) {
+    for (const material of vendor.materials ?? []) {
+      for (const profile of material.profiles ?? []) {
+        const printer = String(profile.printer ?? '').replace(/\s+\d+(?:\.\d+)?\s+nozzle$/i, '').trim();
+        if (!printer) continue;
+        printerCounts.set(printer, (printerCounts.get(printer) ?? 0) + 1);
+      }
+    }
+  }
+  const printers = [...printerCounts.entries()]
+    .map(([printer, profiles]) => ({ printer, profiles }))
+    .sort((a, b) => a.printer.localeCompare(b.printer, 'en'));
+  return { vendors, printers };
+}
+
 async function writeAggregateZip(fileName, sourceDir) {
   const files = await walkFiles(sourceDir).catch(() => []);
   const entries = {};
@@ -942,7 +1778,10 @@ async function writeAggregateZip(fileName, sourceDir) {
 async function readVendorConfig(vendorKey) {
   const dir = path.join(vendorsRoot, vendorKey);
   const sources = YAML.parse(await fs.readFile(path.join(dir, 'sources.yml'), 'utf8'));
-  const normalization = YAML.parse(await fs.readFile(path.join(dir, 'normalization.yml'), 'utf8'));
+  const normalizationPath = path.join(dir, 'normalization.yml');
+  const normalization = (await exists(normalizationPath))
+    ? YAML.parse(await fs.readFile(normalizationPath, 'utf8'))
+    : {};
   return {
     key: vendorKey,
     dir,
@@ -1070,7 +1909,8 @@ function stableHash(value) {
 }
 
 function hash(text) {
-  return crypto.createHash('sha1').update(String(text)).digest('hex');
+  const data = text instanceof Uint8Array ? text : String(text);
+  return crypto.createHash('sha1').update(data).digest('hex');
 }
 
 function sortObject(obj) {
@@ -1087,6 +1927,10 @@ function sortDeep(value) {
 
 function unique(values) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function arrayFirst(value) {
+  return Array.isArray(value) ? value[0] : value;
 }
 
 function uniquePrinterNozzles(items) {

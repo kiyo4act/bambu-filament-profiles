@@ -1,71 +1,76 @@
 # Operations Runbook
 
-This repository is an update workflow, not just a profile dump.
+This repository is an AI-led local update workflow, not an automatic upstream converter.
 
 ## Normal Upstream Update
 
-Preferred agent entry points:
-
-- Status only: run the `Watch upstreams` workflow with a vendor key.
-- Update PR: run the `Agent update vendor` workflow with a vendor key.
-- Candidate assets: run the `Candidate release` workflow from the update branch.
-
-Manual local equivalent:
-
-1. Start from `main`.
-2. Create a short-lived branch such as `agent/update/tinmorry-2026-06-07`.
-3. Run:
+1. Ask AI to update a vendor, for example TINMORRY.
+2. AI starts from local `main` and checks upstream state:
 
    ```powershell
    npm ci
    npm run vendor:status -- --vendor tinmorry
-   npm run vendor:update -- --vendor tinmorry
+   ```
+
+3. AI collects and expands inputs into `.work/`, without touching committed profiles:
+
+   ```powershell
+   npm run vendor:collect -- --vendor tinmorry --from all
+   npm run vendor:diff -- --vendor tinmorry
+   npm run vendor:propose -- --vendor tinmorry
+   ```
+
+4. AI reviews `.work/extracted/<vendor>/reports/`, especially `diff.md`, `proposal-summary.md`, and `decision-requests.md`.
+5. If a new material/printer/inherits decision is needed, AI asks you before changing normalized JSON.
+6. After the decision is accepted, AI edits `vendors/<vendor>/profiles/`, expands inherited profiles, and records the reasoning in vendor reports or a decision log.
+7. AI runs:
+
+   ```powershell
+   npm run profiles:expand-inherits -- --vendor tinmorry
+   npm run vendor:lock-inputs -- --vendor tinmorry
    npm run verify
    npm run build:bbsflmt
+   npm run verify
    npm run generate:readme
    ```
 
-4. Commit changed profiles, reports, lock files, and README.
-5. Open a PR with:
-   - upstream commits used
-   - added/changed/removed profile counts
-   - conflict and warning summary
-   - candidate release link once available
-6. Build a candidate prerelease from the PR branch.
-7. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
-8. Merge to `main` only after the candidate is acceptable.
-9. Create a stable release from `main`.
+8. AI commits and pushes the normalized JSON state. A candidate prerelease can then be built from the branch or tag.
+9. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
+10. Merge to `main` only after the candidate is acceptable.
 
 ## Manual Profile Addition
 
-1. Put files under `incoming/<vendor>/`.
-2. Run:
+1. Put files under `incoming/<vendor>/`. JSON, `.bbsflmt`, and zip files are supported.
+2. Ask AI to ingest the incoming files.
+3. AI runs:
 
    ```powershell
-   npm run vendor:ingest -- --vendor <vendor> --from incoming
-   npm run verify
-   npm run build:bbsflmt
+   npm run vendor:collect -- --vendor <vendor> --from incoming
+   npm run vendor:diff -- --vendor <vendor>
+   npm run vendor:propose -- --vendor <vendor>
    ```
 
-3. Review `vendors/<vendor>/reports/`.
-4. Commit normalized JSON, reports, and README updates.
+4. AI asks about any new decision requests, then updates committed JSON.
+5. AI locks the accepted input hashes, verifies, and builds aggregate release artifacts locally.
 
-## What Automation Can and Cannot Do
+## What Actions Do
 
-Automation can:
+Actions can:
 
-- detect upstream HEAD changes
-- unpack `.bbsflmt`
-- normalize names, vendors, printers, nozzles, and material families
-- detect structural conflicts
-- build candidate `.bbsflmt` assets
-- open PRs and prereleases
-- show the expected Bambu Studio import count in release notes
+- run `verify`
+- build `.bbsflmt` bundles from committed JSON
+- upload `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`
+- show expected import counts in release notes
+- detect upstream HEAD changes and write a summary
 
-Automation cannot fully prove:
+Actions do not:
 
-- Bambu Studio accepts every generated bundle in every version
-- a profile appears exactly where expected in every printer UI
-- the profile prints well
+- fetch upstream profile contents for normalization
+- decide material grouping
+- rewrite JSON
+- create update PRs automatically
+- merge to `main`
 
-Candidate releases keep that human import test explicit.
+## Human Gate
+
+Automation can validate JSON shape and bundle structure. It cannot prove that every Bambu Studio version shows every vendor/material in the printer UI, or that a profile prints well. Candidate releases exist so you can import-test before accepting the update.
