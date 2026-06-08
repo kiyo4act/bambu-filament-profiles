@@ -8,6 +8,7 @@ This repository manages Bambu Studio filament profiles as reviewable JSON source
 - Treat upstream repositories, `.bbsflmt`, zip files, and files dropped directly into `incoming/` as inputs only.
 - Expand `.bbsflmt` to JSON before review. Do not treat `.bbsflmt` as source of truth.
 - Let the local AI workflow collect inputs, inspect diffs, propose normalization decisions, ask the user when a new decision is needed, then commit normalized JSON.
+- After local verification, default to pushing an `agent/update/**` branch so GitHub Actions creates a candidate prerelease, then create a GitHub PR for human import testing and merge review. Ask before deviating from this default.
 - Let GitHub Actions validate and package committed JSON only.
 
 ## Standard Commands
@@ -16,13 +17,14 @@ This repository manages Bambu Studio filament profiles as reviewable JSON source
 - `npm run vendor:collect -- --vendor tinmorry --from all`
 - `npm run vendor:diff -- --vendor tinmorry`
 - `npm run vendor:propose -- --vendor tinmorry`
+- `npm run vendor:ingest -- --vendor tinmorry --from incoming`
 - `npm run vendor:lock-inputs -- --vendor tinmorry`
 - `npm run profiles:expand-inherits -- --vendor tinmorry`
 - `npm run verify`
 - `npm run build:bbsflmt`
 - `npm run generate:readme`
 
-Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt` when release artifacts or bundle validation matter.
+Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt` when release artifacts or bundle validation matter. For profile updates, the default completion path is verify, build, verify, commit, push an update branch, then create a PR.
 
 ## Repository Contract
 
@@ -32,6 +34,7 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 - Prior decisions belong in decision logs and reports as context for AI review, not as code that silently rewrites future inputs.
 - Manual/user-supplied files enter through `incoming/`; pass `--vendor <vendor>` to tell the AI which vendor context to use. `incoming/<vendor>/` is accepted only as a backward-compatible fallback.
 - `vendor:collect`, `vendor:diff`, and `vendor:propose` write to `.work/extracted/<vendor>/`; those reports are review material, not committed source by default.
+- `vendor:ingest` writes accepted incoming profiles into committed normalized JSON after AI/user review.
 - After AI/user acceptance and normalized JSON updates, `vendor:lock-inputs` may commit the accepted input hashes so unchanged inputs are not re-reviewed next time.
 - Generated `.bbsflmt` files go under `dist/` and GitHub Release assets, not `main`.
 - GitHub Releases upload aggregate archives and manifest only: `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
@@ -49,7 +52,7 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 
 ## Automation Boundary
 
-- Actions do not fetch upstreams, normalize, or create update PRs.
+- Actions do not fetch upstreams, normalize, or create update PRs. The local AI workflow creates the PR after pushing an update branch.
 - `watch-upstreams` is detection-only and writes a summary.
 - Pushing an update branch such as `agent/update/**` automatically creates a candidate prerelease with aggregate user-facing assets.
 - Candidate prerelease tags use `candidate-YYYYMMDD-HHMM-<short_sha>` in Asia/Tokyo time.

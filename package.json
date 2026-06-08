@@ -9,6 +9,7 @@
     "vendor:collect": "node scripts/bambu-profiles.mjs vendor:collect",
     "vendor:diff": "node scripts/bambu-profiles.mjs vendor:diff",
     "vendor:propose": "node scripts/bambu-profiles.mjs vendor:propose",
+    "vendor:ingest": "node scripts/bambu-profiles.mjs vendor:ingest",
     "vendor:lock-inputs": "node scripts/bambu-profiles.mjs vendor:lock-inputs",
     "profiles:expand-inherits": "node scripts/bambu-profiles.mjs profiles:expand-inherits",
     "reports:vendor-state": "node scripts/bambu-profiles.mjs reports:vendor-state",

@@ -30,6 +30,8 @@ try {
     await vendorDiff(args);
   } else if (command === 'vendor:propose') {
     await vendorPropose(args);
+  } else if (command === 'vendor:ingest') {
+    await vendorIngest(args);
   } else if (command === 'vendor:lock-inputs') {
     await vendorLockInputs(args);
   } else if (command === 'profiles:expand-inherits') {
@@ -58,6 +60,7 @@ function usage() {
   node scripts/bambu-profiles.mjs vendor:collect --vendor <vendor> [--from upstream|incoming|all|<path>]
   node scripts/bambu-profiles.mjs vendor:diff --vendor <vendor>
   node scripts/bambu-profiles.mjs vendor:propose --vendor <vendor>
+  node scripts/bambu-profiles.mjs vendor:ingest --vendor <vendor> [--from incoming|<path>]
   node scripts/bambu-profiles.mjs vendor:lock-inputs --vendor <vendor>
   node scripts/bambu-profiles.mjs profiles:expand-inherits --vendor <vendor> [--system-root <path>]
   node scripts/bambu-profiles.mjs reports:vendor-state --vendor <vendor>
@@ -581,19 +584,24 @@ async function vendorIngest(options) {
   const vendorKey = requireVendor(options);
   const config = await readVendorConfig(vendorKey);
   const from = options.from ?? 'incoming';
-  const incomingRoot =
-    from === 'incoming' ? path.join(repoRoot, 'incoming', vendorKey) : path.resolve(repoRoot, from);
-
-  const incomingProfiles = await readProfilesFromDirectory(incomingRoot, {
-    vendor: config.vendor,
-    sourceId: 'incoming',
-    sourceLabel: 'Manual incoming files',
-    sourceRepo: 'incoming',
-    sourcePriority: 200,
-    allowedFormats: new Set(['json', 'bbsflmt', 'zip']),
-  });
+  const inputRoots = from === 'incoming' ? await incomingRootsFor(vendorKey) : [path.resolve(repoRoot, from)];
+  const incomingProfiles = [];
+  for (const inputRoot of inputRoots) {
+    incomingProfiles.push(
+      ...(await readProfilesFromDirectory(inputRoot, {
+        vendor: config.vendor,
+        sourceId: from === 'incoming' ? 'incoming' : 'manual',
+        sourceLabel: from === 'incoming'
+          ? `Manual incoming files: ${path.relative(repoRoot, inputRoot).replaceAll(path.sep, '/')}`
+          : `Manual path: ${from}`,
+        sourceRepo: from === 'incoming' ? 'incoming' : from,
+        sourcePriority: 200,
+        allowedFormats: new Set(['json', 'bbsflmt', 'zip']),
+      })),
+    );
+  }
   if (!incomingProfiles.length) {
-    throw new Error(`No profiles found under ${incomingRoot}`);
+    throw new Error(`No profiles found for ${config.vendor} from ${from}`);
   }
 
   const existingProfiles = await readProfilesFromDirectory(path.join(config.dir, 'profiles'), {
@@ -1118,12 +1126,13 @@ function materialObservationFor(text) {
   for (const token of ['PLA', 'ABS', 'ASA', 'PAHT', 'PA', 'PC', 'PP', 'TPU']) {
     if (hasToken(text, token) || text.includes(`${token}-`)) base.push(token);
   }
+  const modifiers = ['CF', 'GF', 'HF', 'HS', 'ECO', 'BASIC', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', 'WOOD', '95A']
+    .filter((token) => hasToken(text, token) || text.includes(token));
+  if (text.includes('+')) modifiers.push('PLUS');
+  if (/\b2\.0\b/.test(text)) modifiers.push('2.0');
   return {
     base: unique(base),
-    modifiers: unique(
-      ['CF', 'GF', 'HF', 'HS', 'ECO', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', '95A']
-        .filter((token) => hasToken(text, token) || text.includes(token)),
-    ),
+    modifiers: unique(modifiers),
     hasPetg: text.includes('PETG'),
     hasPet: hasToken(text, 'PET') || text.includes('PET-') || text.includes('PET '),
     hasCf: hasToken(text, 'CF'),
@@ -1137,8 +1146,10 @@ function familySuggestionFor(vendor, material) {
   const suffix = [];
   if (material.modifiers.includes('CF')) suffix.push('CF');
   if (material.modifiers.includes('GF')) suffix.push('GF');
-  for (const token of ['ECO', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', '95A']) {
-    if (material.modifiers.includes(token)) suffix.push(titleMaterialModifier(token));
+  if (material.modifiers.includes('PLUS')) suffix.push('+');
+  if (material.modifiers.includes('2.0')) suffix.push('2.0');
+  for (const token of ['HS', 'ECO', 'BASIC', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', 'WOOD', '95A']) {
+    if (material.modifiers.includes(token)) suffix.push(titleMaterialModifier(vendor, token));
   }
   return `${vendor} ${[primary, ...suffix].join(' ')}`.trim();
 }
@@ -1169,9 +1180,11 @@ function proposalIssuesFor(input, material, printers, familySuggestion, knownFam
   return unique(issues);
 }
 
-function titleMaterialModifier(token) {
+function titleMaterialModifier(vendor, token) {
   const map = {
+    BASIC: slug(vendor) === 'sunlu' ? 'BASIC' : 'Basic',
     ECO: 'ECO',
+    HS: 'HS',
     MATTE: 'Matte',
     SILK: 'Silk',
     MARBLE: 'Marble',
@@ -1179,6 +1192,7 @@ function titleMaterialModifier(token) {
     GALAXY: 'Galaxy',
     SPARKLY: 'Sparkly',
     RAPID: 'Rapid',
+    WOOD: 'Wood',
     '95A': '95A',
   };
   return map[token] ?? token;
@@ -1229,6 +1243,8 @@ function expandPresetForFile(profile, filePath, allPresets, cache, stack, unreso
 function materialFamiliesFor(text, vendor) {
   const prefix = `${vendor} `;
   if (text.includes('PETG')) {
+    if (hasToken(text, 'HS') && text.includes('MATTE')) return [`${prefix}PETG HS Matte`];
+    if (text.includes('BASIC')) return [`${prefix}PETG ${titleMaterialModifier(vendor, 'BASIC')}`];
     if (text.includes('ECO')) return [`${prefix}PETG ECO`];
     if (text.includes('MARBLE')) return [`${prefix}PETG Marble`];
     if (text.includes('METALLIC')) return [`${prefix}PETG Metallic`];
@@ -1250,8 +1266,13 @@ function materialFamiliesFor(text, vendor) {
   }
   if (text.includes('PLA')) {
     if (hasToken(text, 'CF')) return [`${prefix}PLA CF`];
+    if (text.includes('+') && /\b2\.0\b/.test(text)) return [`${prefix}PLA + 2.0`];
+    if (text.includes('+') && text.includes('SILK')) return [`${prefix}PLA + Silk`];
+    if (text.includes('+')) return [`${prefix}PLA +`];
     if (text.includes('MATTE')) return [`${prefix}PLA Matte`];
     if (text.includes('SILK')) return [`${prefix}PLA Silk`];
+    if (text.includes('MARBLE')) return [`${prefix}PLA Marble`];
+    if (text.includes('WOOD')) return [`${prefix}PLA Wood`];
     if (text.includes('GALAXY')) return [`${prefix}Galaxy PLA`];
     if (text.includes('RAPID')) return [`${prefix}PLA Rapid`];
     return [`${prefix}PLA`];
@@ -1262,7 +1283,7 @@ function materialFamiliesFor(text, vendor) {
   }
   if (text.includes('ASA')) {
     if (hasToken(text, 'CF')) return [`${prefix}ASA CF`];
-    if (text.includes('BASIC')) return [`${prefix}ASA Basic`];
+    if (text.includes('BASIC')) return [`${prefix}ASA ${titleMaterialModifier(vendor, 'BASIC')}`];
     return [`${prefix}ASA`];
   }
   if (text.includes('PAHT')) return [`${prefix}PAHT CF`];
@@ -1960,6 +1981,7 @@ function slug(value) {
   return String(value)
     .normalize('NFKC')
     .toLowerCase()
+    .replace(/\+/g, ' plus ')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
