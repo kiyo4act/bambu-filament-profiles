@@ -9,6 +9,7 @@ This repository is built for ongoing maintenance by a coding agent:
 - Upstream repositories can be monitored, collected, diffed, and reviewed locally by AI.
 - User-made or third-party profiles can be dropped directly into `incoming/` and reviewed through the same diff/proposal workflow by passing `--vendor <vendor>`.
 - GitHub Actions package committed JSON into user-facing archives; they do not decide normalization.
+- Update branches under `agent/update/**` create candidate prereleases automatically; the agent then opens a PR for human import testing and merge review.
 
 ## Current Vendors
 
@@ -16,6 +17,15 @@ This repository is built for ongoing maintenance by a coding agent:
 
 | Vendor | Material | Type | Profiles | Release artifact |
 |---|---|---:|---:|---|
+| SUNLU | SUNLU ASA BASIC | ASA | 7 | dist/bbsflmt/sunlu/SUNLU ASA BASIC.bbsflmt |
+| SUNLU | SUNLU PETG BASIC | PETG | 8 | dist/bbsflmt/sunlu/SUNLU PETG BASIC.bbsflmt |
+| SUNLU | SUNLU PETG HS Matte | PETG | 6 | dist/bbsflmt/sunlu/SUNLU PETG HS Matte.bbsflmt |
+| SUNLU | SUNLU PLA + | PLA | 6 | dist/bbsflmt/sunlu/SUNLU PLA +.bbsflmt |
+| SUNLU | SUNLU PLA + 2.0 | PLA | 8 | dist/bbsflmt/sunlu/SUNLU PLA + 2.0.bbsflmt |
+| SUNLU | SUNLU PLA + Silk | PLA | 8 | dist/bbsflmt/sunlu/SUNLU PLA + Silk.bbsflmt |
+| SUNLU | SUNLU PLA Marble | PLA | 6 | dist/bbsflmt/sunlu/SUNLU PLA Marble.bbsflmt |
+| SUNLU | SUNLU PLA Matte | PLA | 8 | dist/bbsflmt/sunlu/SUNLU PLA Matte.bbsflmt |
+| SUNLU | SUNLU PLA Wood | PLA | 6 | dist/bbsflmt/sunlu/SUNLU PLA Wood.bbsflmt |
 | TINMORRY | TINMORRY ABS Pro | ABS | 8 | dist/bbsflmt/tinmorry/TINMORRY ABS Pro.bbsflmt |
 | TINMORRY | TINMORRY ASA | ASA | 5 | dist/bbsflmt/tinmorry/TINMORRY ASA.bbsflmt |
 | TINMORRY | TINMORRY ASA Basic | ASA | 1 | dist/bbsflmt/tinmorry/TINMORRY ASA Basic.bbsflmt |
@@ -60,6 +70,14 @@ npm run vendor:propose -- --vendor tinmorry
 npm run vendor:lock-inputs -- --vendor tinmorry
 npm run verify
 npm run build:bbsflmt
+npm run verify
+npm run generate:readme
+```
+
+For manual files dropped into `incoming/`, run the same collect/diff/propose review with `--from incoming`, then write accepted profiles with:
+
+```powershell
+npm run vendor:ingest -- --vendor <vendor> --from incoming
 ```
 
 See [operations](docs/operations.md) and [vendor onboarding](docs/vendor-onboarding.md) for the agent workflow.

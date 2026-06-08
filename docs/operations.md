@@ -22,7 +22,7 @@ This repository is an AI-led local update workflow, not an automatic upstream co
 
 4. AI reviews `.work/extracted/<vendor>/reports/`, especially `diff.md`, `proposal-summary.md`, and `decision-requests.md`.
 5. If a new material/printer/inherits decision is needed, AI asks you before changing normalized JSON.
-6. After the decision is accepted, AI edits `vendors/<vendor>/profiles/`, expands inherited profiles, and records the reasoning in vendor reports or a decision log.
+6. After the decision is accepted, AI updates `vendors/<vendor>/profiles/`, expands inherited profiles, and records the reasoning in vendor reports or a decision log.
 7. AI runs:
 
    ```powershell
@@ -35,8 +35,9 @@ This repository is an AI-led local update workflow, not an automatic upstream co
    ```
 
 8. AI commits and pushes the normalized JSON state to an update branch such as `agent/update/tinmorry-YYYYMMDD-HHMM`. GitHub Actions automatically creates a candidate prerelease with `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
-9. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
-10. Merge to `main` only after the candidate is acceptable. A profile-changing `main` push automatically creates the stable release.
+9. AI creates a normal GitHub PR from the update branch to `main`. The PR body should say that the candidate prerelease must be import-tested in Bambu Studio before merge.
+10. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
+11. Merge to `main` only after the candidate is acceptable. A profile-changing `main` push automatically creates the stable release.
 
 ## Manual Profile Addition
 
@@ -50,8 +51,13 @@ This repository is an AI-led local update workflow, not an automatic upstream co
    npm run vendor:propose -- --vendor <vendor>
    ```
 
-4. AI asks about any new decision requests, then updates committed JSON.
-5. AI locks the accepted input hashes, verifies, and builds aggregate release artifacts locally.
+4. AI asks about any new decision requests, then updates committed JSON:
+
+   ```powershell
+   npm run vendor:ingest -- --vendor <vendor> --from incoming
+   ```
+
+5. AI locks the accepted input hashes, verifies, builds aggregate release artifacts locally, commits, pushes an `agent/update/**` branch, and creates a GitHub PR.
 
 ## What Actions Do
 

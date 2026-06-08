@@ -1,0 +1,518 @@
+{
+  "vendor": "SUNLU",
+  "generatedAt": "2026-06-08T07:46:50.810Z",
+  "normalizedProfileCount": 63,
+  "materialCount": 9,
+  "printerCounts": {
+    "Bambu Lab H2C": 31,
+    "Bambu Lab P2S": 32
+  },
+  "unresolvedInheritsCount": 0,
+  "validationErrors": [],
+  "outputs": [
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab H2C 0.2 nozzle",
+      "path": "profiles/asa-basic/h2c/nozzle-0.2.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab H2C 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/asa-basic/h2c/nozzle-0.6.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/asa-basic/h2c/nozzle-0.8.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab P2S 0.2 nozzle",
+      "path": "profiles/asa-basic/p2s/nozzle-0.2.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab P2S 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/asa-basic/p2s/nozzle-0.4.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/asa-basic/p2s/nozzle-0.6.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU ASA BASIC @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/asa-basic/p2s/nozzle-0.8.json",
+      "family": "SUNLU ASA BASIC",
+      "type": "ASA",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab H2C 0.2 nozzle",
+      "path": "profiles/petg-basic/h2c/nozzle-0.2.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-basic/h2c/nozzle-0.4.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/petg-basic/h2c/nozzle-0.6.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/petg-basic/h2c/nozzle-0.8.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab P2S 0.2 nozzle",
+      "path": "profiles/petg-basic/p2s/nozzle-0.2.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-basic/p2s/nozzle-0.4.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/petg-basic/p2s/nozzle-0.6.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG BASIC @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/petg-basic/p2s/nozzle-0.8.json",
+      "family": "SUNLU PETG BASIC",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG HS Matte @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-hs-matte/h2c/nozzle-0.4.json",
+      "family": "SUNLU PETG HS Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG HS Matte @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/petg-hs-matte/h2c/nozzle-0.6.json",
+      "family": "SUNLU PETG HS Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG HS Matte @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/petg-hs-matte/h2c/nozzle-0.8.json",
+      "family": "SUNLU PETG HS Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG HS Matte @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/petg-hs-matte/p2s/nozzle-0.4.json",
+      "family": "SUNLU PETG HS Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG HS Matte @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/petg-hs-matte/p2s/nozzle-0.6.json",
+      "family": "SUNLU PETG HS Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PETG HS Matte @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/petg-hs-matte/p2s/nozzle-0.8.json",
+      "family": "SUNLU PETG HS Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + @Bambu Lab H2C 0.2 nozzle",
+      "path": "profiles/pla-plus/h2c/nozzle-0.2.json",
+      "family": "SUNLU PLA +",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-plus/h2c/nozzle-0.4.json",
+      "family": "SUNLU PLA +",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/pla-plus/h2c/nozzle-0.6.json",
+      "family": "SUNLU PLA +",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + @Bambu Lab P2S 0.2 nozzle",
+      "path": "profiles/pla-plus/p2s/nozzle-0.2.json",
+      "family": "SUNLU PLA +",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-plus/p2s/nozzle-0.4.json",
+      "family": "SUNLU PLA +",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/pla-plus/p2s/nozzle-0.6.json",
+      "family": "SUNLU PLA +",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab H2C 0.2 nozzle",
+      "path": "profiles/pla-plus-2-0/h2c/nozzle-0.2.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-plus-2-0/h2c/nozzle-0.4.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/pla-plus-2-0/h2c/nozzle-0.6.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/pla-plus-2-0/h2c/nozzle-0.8.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab P2S 0.2 nozzle",
+      "path": "profiles/pla-plus-2-0/p2s/nozzle-0.2.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-plus-2-0/p2s/nozzle-0.4.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/pla-plus-2-0/p2s/nozzle-0.6.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + 2.0 @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/pla-plus-2-0/p2s/nozzle-0.8.json",
+      "family": "SUNLU PLA + 2.0",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab H2C 0.2 nozzle",
+      "path": "profiles/pla-plus-silk/h2c/nozzle-0.2.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-plus-silk/h2c/nozzle-0.4.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/pla-plus-silk/h2c/nozzle-0.6.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/pla-plus-silk/h2c/nozzle-0.8.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab P2S 0.2 nozzle",
+      "path": "profiles/pla-plus-silk/p2s/nozzle-0.2.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-plus-silk/p2s/nozzle-0.4.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/pla-plus-silk/p2s/nozzle-0.6.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA + Silk @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/pla-plus-silk/p2s/nozzle-0.8.json",
+      "family": "SUNLU PLA + Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Marble @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-marble/h2c/nozzle-0.4.json",
+      "family": "SUNLU PLA Marble",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Marble @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/pla-marble/h2c/nozzle-0.6.json",
+      "family": "SUNLU PLA Marble",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Marble @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/pla-marble/h2c/nozzle-0.8.json",
+      "family": "SUNLU PLA Marble",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Marble @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-marble/p2s/nozzle-0.4.json",
+      "family": "SUNLU PLA Marble",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Marble @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/pla-marble/p2s/nozzle-0.6.json",
+      "family": "SUNLU PLA Marble",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Marble @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/pla-marble/p2s/nozzle-0.8.json",
+      "family": "SUNLU PLA Marble",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab H2C 0.2 nozzle",
+      "path": "profiles/pla-matte/h2c/nozzle-0.2.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-matte/h2c/nozzle-0.4.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/pla-matte/h2c/nozzle-0.6.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/pla-matte/h2c/nozzle-0.8.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab P2S 0.2 nozzle",
+      "path": "profiles/pla-matte/p2s/nozzle-0.2.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.2 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-matte/p2s/nozzle-0.4.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/pla-matte/p2s/nozzle-0.6.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Matte @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/pla-matte/p2s/nozzle-0.8.json",
+      "family": "SUNLU PLA Matte",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Wood @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-wood/h2c/nozzle-0.4.json",
+      "family": "SUNLU PLA Wood",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Wood @Bambu Lab H2C 0.6 nozzle",
+      "path": "profiles/pla-wood/h2c/nozzle-0.6.json",
+      "family": "SUNLU PLA Wood",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Wood @Bambu Lab H2C 0.8 nozzle",
+      "path": "profiles/pla-wood/h2c/nozzle-0.8.json",
+      "family": "SUNLU PLA Wood",
+      "type": "PLA",
+      "printer": "Bambu Lab H2C 0.8 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Wood @Bambu Lab P2S 0.4 nozzle",
+      "path": "profiles/pla-wood/p2s/nozzle-0.4.json",
+      "family": "SUNLU PLA Wood",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.4 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Wood @Bambu Lab P2S 0.6 nozzle",
+      "path": "profiles/pla-wood/p2s/nozzle-0.6.json",
+      "family": "SUNLU PLA Wood",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.6 nozzle",
+      "keyCount": 146
+    },
+    {
+      "name": "SUNLU PLA Wood @Bambu Lab P2S 0.8 nozzle",
+      "path": "profiles/pla-wood/p2s/nozzle-0.8.json",
+      "family": "SUNLU PLA Wood",
+      "type": "PLA",
+      "printer": "Bambu Lab P2S 0.8 nozzle",
+      "keyCount": 146
+    }
+  ]
+}
