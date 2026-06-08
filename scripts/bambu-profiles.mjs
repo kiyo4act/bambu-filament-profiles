@@ -975,7 +975,7 @@ function finalizeProfile(inputProfile, options) {
   profile.filament_settings_id = [options.outputName];
   profile.filament_vendor = [options.vendor];
   profile.filament_type = [options.materialType];
-  profile.filament_id = filamentIdForFamily(options.vendor, options.familyName);
+  profile.filament_id = profile.filament_id || filamentIdForFamily(options.vendor, options.familyName);
   profile.compatible_printers = [options.compatiblePrinter];
   profile.compatible_printers_condition = '';
   profile.from = 'User';
@@ -1905,7 +1905,8 @@ function nozzleFor(text, config) {
 
 async function buildBbsflmt() {
   const profiles = await readAllNormalizedProfiles();
-  const errors = validateProfiles(profiles);
+  const filamentIdLocks = await readFilamentIdLocks();
+  const errors = validateProfiles(profiles, { filamentIdLocks, requireFilamentIdLocks: true });
   errors.push(...(await validateLockedArtifactCandidates(profiles)));
   if (errors.length) {
     throw new Error(`Cannot build bundles because profile validation failed:\n${errors.map((e) => `- ${e}`).join('\n')}`);
@@ -1960,7 +1961,7 @@ async function buildBbsflmt() {
     const outPath = path.join(distRoot, 'bbsflmt', vendorKey, `${safeFileName(familyName)}.bbsflmt`);
     await fs.mkdir(path.dirname(outPath), { recursive: true });
     await fs.writeFile(outPath, Buffer.from(bundleBytes));
-    validateBundleBytes(bundleBytes, outPath);
+    validateBundleBytes(bundleBytes, outPath, { filamentIdLocks, requireFilamentIdLocks: true });
 
     let vendorManifest = manifest.vendors.find((item) => item.vendor === vendor);
     if (!vendorManifest) {
@@ -1990,7 +1991,8 @@ async function buildBbsflmt() {
 
 async function verifyAll() {
   const profiles = await readAllNormalizedProfiles();
-  const errors = validateProfiles(profiles);
+  const filamentIdLocks = await readFilamentIdLocks();
+  const errors = validateProfiles(profiles, { filamentIdLocks, requireFilamentIdLocks: true });
   errors.push(...(await validateLockedArtifactCandidates(profiles)));
   if (await exists(path.join(distRoot, 'bbsflmt'))) {
     const bundleFiles = (await walkFiles(path.join(distRoot, 'bbsflmt'))).filter((file) =>
@@ -1999,7 +2001,10 @@ async function verifyAll() {
     if (!bundleFiles.length) errors.push('dist/bbsflmt exists but contains no .bbsflmt files.');
     for (const bundleFile of bundleFiles) {
       try {
-        validateBundleBytes(new Uint8Array(await fs.readFile(bundleFile)), bundleFile);
+        validateBundleBytes(new Uint8Array(await fs.readFile(bundleFile)), bundleFile, {
+          filamentIdLocks,
+          requireFilamentIdLocks: true,
+        });
       } catch (error) {
         errors.push(error.message);
       }
@@ -2012,7 +2017,7 @@ async function verifyAll() {
   console.log(`OK: verified ${profiles.length} normalized profile JSON files.`);
 }
 
-function validateProfiles(profiles) {
+function validateProfiles(profiles, options = {}) {
   const errors = [];
   const byName = new Map();
   const byFamilyId = new Map();
@@ -2045,7 +2050,7 @@ function validateProfiles(profiles) {
     if (/(^| )PET\s+(CF\s*GF|GF\s*CF|CF\/GF|GF\/CF)( |$)/i.test(profile.name ?? '')) {
       errors.push(`${label}: PET CF GF style family must be split or explicitly resolved before commit`);
     }
-    const filamentIdError = validateFilamentId(profile, label);
+    const filamentIdError = validateFilamentId(profile, label, '', options);
     if (filamentIdError) errors.push(filamentIdError);
     const familyIdError = validateFamilyFilamentIdConsistency(byFamilyId, profile, label);
     if (familyIdError) errors.push(familyIdError);
@@ -2106,12 +2111,16 @@ function validatePathPrinterConsistency(item) {
   return '';
 }
 
-function validateFilamentId(profile, label, vendorOverride = '') {
+function validateFilamentId(profile, label, vendorOverride = '', options = {}) {
   if (!profile.filament_id) return `${label}: missing filament_id`;
   const vendor = profile.filament_vendor?.[0] ?? vendorOverride;
   const familyName = familyNameForProfile(profile);
   if (!vendor || !familyName) return '';
-  const expected = filamentIdForFamily(vendor, familyName);
+  const lockKey = `${vendor}:${familyName}`;
+  const expected = options.filamentIdLocks?.get(lockKey)?.filament_id ?? '';
+  if (!expected) {
+    return options.requireFilamentIdLocks ? `${label}: missing filament_id lock for ${vendor} family ${familyName}` : '';
+  }
   if (profile.filament_id !== expected) {
     return `${label}: filament_id ${profile.filament_id} does not match expected ${expected} for ${vendor} family ${familyName}`;
   }
@@ -2135,7 +2144,7 @@ function familyNameForProfile(profile) {
   return String(profile.name ?? '').split(' @')[0];
 }
 
-function validateBundleBytes(bytes, label) {
+function validateBundleBytes(bytes, label, options = {}) {
   const entries = unzipSync(bytes);
   const bundleBytes = entries['bundle_structure.json'];
   if (!bundleBytes) throw new Error(`${label}: missing bundle_structure.json`);
@@ -2155,7 +2164,7 @@ function validateBundleBytes(bytes, label) {
     if (!Array.isArray(profile.filament_settings_id) || profile.filament_settings_id[0] !== profile.name) {
       throw new Error(`${label}: profile name/id mismatch: ${bundlePath}`);
     }
-    const filamentIdError = validateFilamentId(profile, `${label}: ${bundlePath}`, vendor);
+    const filamentIdError = validateFilamentId(profile, `${label}: ${bundlePath}`, vendor, options);
     if (filamentIdError) throw new Error(filamentIdError);
     const familyIdError = validateFamilyFilamentIdConsistency(byFamilyId, profile, `${label}: ${bundlePath}`, vendor);
     if (familyIdError) throw new Error(familyIdError);
@@ -2261,6 +2270,36 @@ async function readAllNormalizedProfiles() {
     }
   }
   return profiles.sort((a, b) => a.profile.name.localeCompare(b.profile.name, 'en'));
+}
+
+async function readFilamentIdLocks() {
+  const locks = new Map();
+  for (const vendorDir of await listDirs(vendorsRoot)) {
+    const lockPath = path.join(vendorDir, 'filament-id-lock.json');
+    const lock = await readJsonIfExists(lockPath);
+    if (!lock) continue;
+    const vendor = lock.vendor ?? path.basename(vendorDir).toUpperCase();
+    const families = Array.isArray(lock.families)
+      ? lock.families
+      : Object.entries(lock.families ?? {}).map(([family, filament_id]) => ({ family, filament_id }));
+    for (const item of families) {
+      if (!item.family || !item.filament_id) {
+        throw new Error(`${path.relative(repoRoot, lockPath)}: filament ID lock entries require family and filament_id`);
+      }
+      const key = `${vendor}:${item.family}`;
+      if (locks.has(key)) {
+        throw new Error(`${path.relative(repoRoot, lockPath)}: duplicate filament ID lock for ${key}`);
+      }
+      locks.set(key, {
+        vendor,
+        family: item.family,
+        filament_id: item.filament_id,
+        source: item.source ?? '',
+        lockPath,
+      });
+    }
+  }
+  return locks;
 }
 
 async function writeVendorReports(config, reports, summary) {

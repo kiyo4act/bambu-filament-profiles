@@ -1,0 +1,61 @@
+{
+  "vendor": "SUNLU",
+  "generatedAt": "2026-06-08T14:44:44.268Z",
+  "purpose": "Lock preserved upstream filament_id values so normalization and release builds cannot regenerate incompatible IDs.",
+  "families": [
+    {
+      "family": "SUNLU ASA BASIC",
+      "filament_id": "Pd802ea9",
+      "profile_count": 7,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "SUNLU PETG BASIC",
+      "filament_id": "Pfc46fd5",
+      "profile_count": 8,
+      "source": "preserved from working SUNLU backup profile"
+    },
+    {
+      "family": "SUNLU PETG HS Matte",
+      "filament_id": "Pa6bbc12",
+      "profile_count": 6,
+      "source": "preserved from SUNLU PETG HS Matte - Balanced backup profile"
+    },
+    {
+      "family": "SUNLU PLA +",
+      "filament_id": "P60ec010",
+      "profile_count": 6,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "SUNLU PLA + 2.0",
+      "filament_id": "P39abc79",
+      "profile_count": 8,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "SUNLU PLA + Silk",
+      "filament_id": "P169a944",
+      "profile_count": 8,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "SUNLU PLA Marble",
+      "filament_id": "P3d936f0",
+      "profile_count": 6,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "SUNLU PLA Matte",
+      "filament_id": "Pd340619",
+      "profile_count": 8,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "SUNLU PLA Wood",
+      "filament_id": "P6629445",
+      "profile_count": 6,
+      "source": "preserved from accepted source profiles"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "vendor": "TINMORRY",
+  "generatedAt": "2026-06-08T14:44:44.291Z",
+  "purpose": "Lock preserved upstream filament_id values so normalization and release builds cannot regenerate incompatible IDs.",
+  "families": [
+    {
+      "family": "TINMORRY ABS Pro",
+      "filament_id": "PFTIN7d35b3af",
+      "profile_count": 8,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY ASA",
+      "filament_id": "PFTIN973989aa",
+      "profile_count": 5,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY ASA Basic",
+      "filament_id": "PFTIN20671547",
+      "profile_count": 1,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY ASA CF",
+      "filament_id": "PFTINbef8e8e0",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY Galaxy PETG",
+      "filament_id": "PFTINd74d4ed4",
+      "profile_count": 1,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY Galaxy PLA",
+      "filament_id": "PFTIN925122f7",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PA CF",
+      "filament_id": "PFTINd7c96ce8",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PAHT CF",
+      "filament_id": "PFTINea218dce",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PC GF",
+      "filament_id": "PFTIN6f5e6a04",
+      "profile_count": 4,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PET CF",
+      "filament_id": "PFTIN1cacf0ab",
+      "profile_count": 5,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PET GF",
+      "filament_id": "PFTIN53b323cf",
+      "profile_count": 5,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG CF",
+      "filament_id": "PFTINd85d1af5",
+      "profile_count": 12,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG ECO",
+      "filament_id": "PFTIN49e68e98",
+      "profile_count": 11,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG GF",
+      "filament_id": "PFTIN09e092ce",
+      "profile_count": 12,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG HS",
+      "filament_id": "PFTIN1d9491bb",
+      "profile_count": 5,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG Marble",
+      "filament_id": "PFTIN5c8e3f1b",
+      "profile_count": 11,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG Matte",
+      "filament_id": "PFTINd39b2918",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PETG Metallic",
+      "filament_id": "PFTIN62b00d17",
+      "profile_count": 10,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PLA",
+      "filament_id": "PFTINcfa47da2",
+      "profile_count": 6,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PLA CF",
+      "filament_id": "PFTINfee2645a",
+      "profile_count": 7,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PLA Matte",
+      "filament_id": "PFTIN8df728af",
+      "profile_count": 10,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PLA Rapid",
+      "filament_id": "PFTIN71924d24",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PLA Silk",
+      "filament_id": "PFTIN5e8fdd7b",
+      "profile_count": 8,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY PP CF",
+      "filament_id": "PFTIN0ef3c8ad",
+      "profile_count": 5,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY Sparkly PETG",
+      "filament_id": "PFTINf7f79dfc",
+      "profile_count": 2,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY TPU",
+      "filament_id": "PFTINf74d7319",
+      "profile_count": 6,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY TPU 95A",
+      "filament_id": "PFTIN6e975659",
+      "profile_count": 5,
+      "source": "preserved from accepted source profiles"
+    },
+    {
+      "family": "TINMORRY TPU GF",
+      "filament_id": "PFTIN4c529b88",
+      "profile_count": 4,
+      "source": "preserved from accepted source profiles"
+    }
+  ]
+}
