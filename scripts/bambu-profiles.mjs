@@ -260,6 +260,12 @@ async function vendorDiff(options) {
     (inputLock?.inputs ?? []).map((item) => [inputIdentity(item), item]),
   );
   const currentInputs = new Map(manifest.inputs.map((item) => [inputIdentity(item), item]));
+  const missingPreviousInputs = (inputLock?.inputs ?? []).filter(
+    (item) => !currentInputs.has(inputIdentity(item)),
+  );
+  const missingPreviousByProfileHash = groupInputsByHash(missingPreviousInputs, (item) => item.profileHash);
+  const missingPreviousBySettingsHash = groupInputsByHash(missingPreviousInputs, inputSettingsHash);
+  const matchedMovedPreviousInputs = new Set();
   const previousArtifactCandidates = new Map(
     (inputLock?.reviewedArtifactCandidates ?? inputLock?.artifactCandidates ?? [])
       .map((item) => [artifactCandidateIdentity(item), item]),
@@ -271,12 +277,29 @@ async function vendorDiff(options) {
   const artifactCandidateDiffs = [];
 
   for (const input of manifest.inputs) {
-    const previous = previousInputs.get(inputIdentity(input));
+    let previous = previousInputs.get(inputIdentity(input));
     let status = 'added';
     if (previous) {
-      status = previous.profileHash === input.profileHash ? 'unchanged' : 'changed';
+      status = previous.profileHash === input.profileHash
+        ? 'unchanged'
+        : inputSettingsHash(previous) && inputSettingsHash(previous) === inputSettingsHash(input)
+          ? 'metadata-only-changed'
+          : 'changed';
     } else if (!inputLock) {
       status = 'untracked';
+    } else {
+      previous = matchPreviousInputByHash(missingPreviousByProfileHash, input.profileHash, input, matchedMovedPreviousInputs);
+      if (previous) {
+        status = 'moved-unchanged';
+      } else {
+        previous = matchPreviousInputByHash(missingPreviousBySettingsHash, inputSettingsHash(input), input, matchedMovedPreviousInputs);
+        if (previous) {
+          status = 'moved-metadata-only';
+        }
+      }
+      if (previous) {
+        matchedMovedPreviousInputs.add(inputIdentity(previous));
+      }
     }
     inputDiffs.push({
       status,
@@ -286,10 +309,14 @@ async function vendorDiff(options) {
       profileName: input.profileName,
       previousHash: previous?.profileHash ?? null,
       currentHash: input.profileHash,
+      previousIdentity: previous && inputIdentity(previous) !== inputIdentity(input) ? inputIdentity(previous) : null,
+      previousRelativePath: previous && inputIdentity(previous) !== inputIdentity(input) ? previous.relativePath : null,
+      previousInnerPath: previous && inputIdentity(previous) !== inputIdentity(input) ? previous.innerPath : null,
     });
   }
 
   for (const previous of inputLock?.inputs ?? []) {
+    if (matchedMovedPreviousInputs.has(inputIdentity(previous))) continue;
     if (!currentInputs.has(inputIdentity(previous))) {
       inputDiffs.push({
         status: 'removed',
@@ -422,12 +449,20 @@ async function vendorPropose(options) {
         input.filamentType,
       ].join(' '),
     );
-    const material = materialObservationFor(text);
+    const sourceFamilyName = sourceFamilyNameFromParts(
+      manifest.vendor,
+      input.profileName,
+      input.filamentSettingsId,
+      input.innerPath,
+    );
+    const material = materialObservationFor(normalizeText(sourceFamilyName || text));
     const printers = printerNamesFromText(text).map((printer) => ({
       printer,
       nozzle: nozzleFor(text, {}),
     }));
-    const familySuggestion = familySuggestionFor(manifest.vendor, material);
+    const familySuggestion = sourceFamilyName
+      ? `${manifest.vendor} ${sourceFamilyName}`
+      : familySuggestionFor(manifest.vendor, material);
     const issues = proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies);
     const proposal = {
       sourceId: input.sourceId,
@@ -468,12 +503,20 @@ async function vendorPropose(options) {
         candidate.filamentType,
       ].join(' '),
     );
-    const material = materialObservationFor(text);
+    const sourceFamilyName = sourceFamilyNameFromParts(
+      manifest.vendor,
+      candidate.profileName,
+      candidate.filamentSettingsId,
+      candidate.innerPath,
+    );
+    const material = materialObservationFor(normalizeText(sourceFamilyName || text));
     const printers = printerNamesFromText(text).map((printer) => ({
       printer,
       nozzle: nozzleFor(text, {}),
     }));
-    const familySuggestion = familySuggestionFor(manifest.vendor, material);
+    const familySuggestion = sourceFamilyName
+      ? `${manifest.vendor} ${sourceFamilyName}`
+      : familySuggestionFor(manifest.vendor, material);
     const issues = artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies);
     const artifactProposal = {
       sourceId: candidate.sourceId,
@@ -559,7 +602,15 @@ async function vendorLockInputs(options) {
       sourceFileHash: input.sourceFileHash,
       profileHash: input.profileHash,
       bundleHash: input.bundleHash,
+      settingsHash: input.settingsHash,
       profileName: input.profileName,
+      filamentSettingsId: input.filamentSettingsId,
+      filamentVendor: input.filamentVendor,
+      filamentType: input.filamentType,
+      compatiblePrinters: input.compatiblePrinters,
+      observedPrinters: input.observedPrinters,
+      inherits: input.inherits,
+      keyCount: input.keyCount,
       extractedPath: input.extractedPath,
     })),
   };
@@ -836,7 +887,15 @@ function normalizeRawProfile(config, raw, reports, options = {}) {
       raw.innerPath,
     ].join(' '),
   );
-  const families = materialFamiliesFor(sourceText, config.vendor);
+  const sourceFamilyName = sourceFamilyNameFromParts(
+    config.vendor,
+    raw.profile.name,
+    arrayFirst(raw.profile.filament_settings_id),
+    raw.innerPath,
+  );
+  const families = sourceFamilyName
+    ? [`${config.vendor} ${sourceFamilyName}`]
+    : materialFamiliesFor(sourceText, config.vendor);
   const printerNozzles = printerNozzlesFor(raw, sourceText, config);
 
   if (!families.length) {
@@ -905,6 +964,7 @@ function normalizeRawProfile(config, raw, reports, options = {}) {
         outputRelativePath,
         priority: raw.sourcePriority,
         pathPrinterMatch: sourcePathMatchesPrinter(raw, printerKey),
+        sourceKeyCount: Object.keys(raw.profile ?? {}).length,
         source: sourceSummary(raw),
         sourceFilamentId: raw.profile.filament_id ?? '',
         profile,
@@ -953,6 +1013,16 @@ function selectCandidates(candidates, reports) {
         reports.rejected.push({ ...rejected, rejectedReason: 'same-priority-path-mismatch' });
         continue;
       }
+      if (previous.sourceKeyCount !== candidate.sourceKeyCount) {
+        const kept = previous.sourceKeyCount > candidate.sourceKeyCount ? previous : candidate;
+        const rejected = previous.sourceKeyCount > candidate.sourceKeyCount ? candidate : previous;
+        selected.set(candidate.key, kept);
+        reports.conflicts.push(
+          `Preferred more specific duplicate ${kept.source.sourceId}:${kept.source.path} over ${rejected.source.sourceId}:${rejected.source.path} for ${kept.outputName}`,
+        );
+        reports.rejected.push({ ...rejected, rejectedReason: 'same-priority-more-specific' });
+        continue;
+      }
       reports.errors.push(
         `Same-priority conflict for ${candidate.outputName}: ${previous.source.sourceId}:${previous.source.path} vs ${candidate.source.sourceId}:${candidate.source.path}`,
       );
@@ -971,6 +1041,7 @@ function selectCandidates(candidates, reports) {
 function compareCandidatePrecedence(a, b) {
   if (b.priority !== a.priority) return b.priority - a.priority;
   if (b.pathPrinterMatch !== a.pathPrinterMatch) return Number(b.pathPrinterMatch) - Number(a.pathPrinterMatch);
+  if (b.sourceKeyCount !== a.sourceKeyCount) return b.sourceKeyCount - a.sourceKeyCount;
   const byName = a.outputName.localeCompare(b.outputName, 'en');
   if (byName) return byName;
   return `${a.source.sourceId}:${a.source.path}`.localeCompare(`${b.source.sourceId}:${b.source.path}`, 'en');
@@ -1100,6 +1171,7 @@ async function readDirectoryInputs(root, sourceMeta, options = {}) {
       }
       const bytes = await fs.readFile(filePath);
       const profile = JSON.parse(bytes.toString('utf8'));
+      if (!isFilamentProfile(profile)) continue;
       profiles.push({
         ...sourceMeta,
         format,
@@ -1151,7 +1223,7 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
     });
   }
 
-  if (!parsed.bundle) {
+  if (!parsed.bundle && !parsed.profiles.length) {
     out.push({
       ...sourceMeta,
       format,
@@ -1306,6 +1378,7 @@ function parseBundleProfiles(bytes) {
     if (!name.toLowerCase().endsWith('.json')) continue;
     if (name === 'bundle_structure.json') continue;
     const profile = JSON.parse(strFromU8(entries[name]));
+    if (!isFilamentProfile(profile)) continue;
     profiles.push({
       innerPath: name,
       bundle,
@@ -1315,6 +1388,10 @@ function parseBundleProfiles(bytes) {
     });
   }
   return { bundle, bundleHash, profiles };
+}
+
+function isFilamentProfile(profile) {
+  return Boolean(profile?.filament_settings_id);
 }
 
 function artifactCandidateFromProfile(base, options) {
@@ -1385,6 +1462,14 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
   const writtenBundles = new Set();
   for (const raw of rawProfiles) {
     const profileHash = raw.profileHash ?? stableHash(raw.profile);
+    const observedPrinters = unique(printerNamesFromText(normalizeText([
+      raw.profile.name,
+      arrayFirst(raw.profile.filament_settings_id),
+      raw.relativePath,
+      raw.innerPath,
+      raw.profile.inherits,
+      Array.isArray(raw.profile.compatible_printers) ? raw.profile.compatible_printers.join(' ') : '',
+    ].join(' '))));
     const sourceKey = `${raw.sourceId}:${raw.relativePath}:${raw.innerPath ?? ''}`;
     const extractedRelativePath = path
       .join(
@@ -1428,6 +1513,7 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
       sourceFileHash: raw.sourceFileHash ?? '',
       profileHash,
       bundleHash: raw.bundleHash ?? null,
+      settingsHash: profileSettingsHash(raw.profile),
       extractedPath: extractedRelativePath,
       profileName: raw.profile.name ?? '',
       filamentSettingsId: arrayFirst(raw.profile.filament_settings_id) ?? '',
@@ -1436,6 +1522,7 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
       compatiblePrinters: Array.isArray(raw.profile.compatible_printers)
         ? raw.profile.compatible_printers
         : [],
+      observedPrinters,
       inherits: raw.profile.inherits ?? '',
       keyCount: Object.keys(raw.profile).length,
     });
@@ -1517,6 +1604,33 @@ async function incomingRootsFor(vendorKey) {
 
 function inputIdentity(item) {
   return `${item.sourceId}:${item.relativePath}:${item.innerPath ?? ''}`;
+}
+
+function inputSettingsHash(item) {
+  return item.settingsHash ?? null;
+}
+
+function groupInputsByHash(inputs, getHash) {
+  const groups = new Map();
+  for (const input of inputs) {
+    const key = getHash(input);
+    if (!key) continue;
+    const items = groups.get(key) ?? [];
+    items.push(input);
+    groups.set(key, items);
+  }
+  return groups;
+}
+
+function matchPreviousInputByHash(index, hashValue, currentInput, matchedPreviousInputs) {
+  if (!hashValue) return null;
+  const candidates = (index.get(hashValue) ?? []).filter((item) =>
+    !matchedPreviousInputs.has(inputIdentity(item)),
+  );
+  if (!candidates.length) return null;
+  const sameName = candidates.filter((item) => item.profileName === currentInput.profileName);
+  if (sameName.length === 1) return sameName[0];
+  return candidates.length === 1 ? candidates[0] : null;
 }
 
 function artifactCandidateIdentity(item) {
@@ -1603,7 +1717,10 @@ function diffMarkdown(result) {
     `Inputs: ${result.inputs.length}`,
     `Added: ${counts.added ?? 0}`,
     `Changed: ${counts.changed ?? 0}`,
+    `Metadata-only changed: ${counts['metadata-only-changed'] ?? 0}`,
     `Unchanged: ${counts.unchanged ?? 0}`,
+    `Moved unchanged: ${counts['moved-unchanged'] ?? 0}`,
+    `Moved metadata-only: ${counts['moved-metadata-only'] ?? 0}`,
     `Removed: ${counts.removed ?? 0}`,
     `Untracked: ${counts.untracked ?? 0}`,
     `Artifact candidates: ${(result.artifactCandidates ?? []).length}`,
@@ -1623,10 +1740,13 @@ function diffMarkdown(result) {
       `| ${md(source.id)} | ${source.status} | ${md(source.lockedCommit ?? '')} | ${md(source.currentCommit ?? '')} |`,
     );
   }
-  lines.push('', '## Inputs', '', '| Status | Source | Path | Inner path | Profile name |', '|---|---|---|---|---|');
+  lines.push('', '## Inputs', '', '| Status | Source | Path | Inner path | Profile name | Previous path |', '|---|---|---|---|---|---|');
   for (const input of result.inputs) {
+    const previousPath = input.previousRelativePath
+      ? `${input.previousRelativePath}${input.previousInnerPath ? ` :: ${input.previousInnerPath}` : ''}`
+      : '';
     lines.push(
-      `| ${input.status} | ${md(input.sourceId)} | ${md(input.relativePath)} | ${md(input.innerPath)} | ${md(input.profileName)} |`,
+      `| ${input.status} | ${md(input.sourceId)} | ${md(input.relativePath)} | ${md(input.innerPath)} | ${md(input.profileName)} | ${md(previousPath)} |`,
     );
   }
   lines.push('');
@@ -1703,7 +1823,7 @@ function materialObservationFor(text) {
   const base = [];
   if (text.includes('PETG')) base.push('PETG');
   if (hasToken(text, 'PET') || text.includes('PET-') || text.includes('PET ')) base.push('PET');
-  for (const token of ['PLA', 'ABS', 'ASA', 'PAHT', 'PA', 'PC', 'PP', 'TPU']) {
+  for (const token of ['PLA', 'ABS', 'ASA', 'PAHT', 'PA12', 'PA6', 'PA', 'PC', 'PEBA', 'PP', 'TPE', 'TPU']) {
     if (hasToken(text, token) || text.includes(`${token}-`)) base.push(token);
   }
   const modifiers = ['CF', 'GF', 'HF', 'HS', 'ECO', 'BASIC', 'MATTE', 'SILK', 'MARBLE', 'METALLIC', 'GALAXY', 'SPARKLY', 'RAPID', 'WOOD', '95A']
@@ -1910,28 +2030,103 @@ function materialFamiliesFor(text, vendor) {
   return [];
 }
 
+function sourceFamilyNameFromParts(vendor, ...values) {
+  for (const value of values) {
+    const familyName = sourceFamilyNameFromText(vendor, value);
+    if (familyName) return familyName;
+  }
+  return '';
+}
+
+function sourceFamilyNameFromText(vendor, value) {
+  const fileName = String(value ?? '').split(/[\\/]/).pop().replace(/\.json$/i, '');
+  const match = fileName.match(new RegExp(`${escapeRegex(vendor)}\\s+(.+?)\\s+Filament$`, 'i'));
+  if (!match) return '';
+  return normalizeSourceFamilyName(match[1]);
+}
+
+function normalizeSourceFamilyName(familyName) {
+  const upperTokens = new Set([
+    'ABS',
+    'ASA',
+    'CF',
+    'ESD',
+    'FR',
+    'GF',
+    'HS',
+    'HT',
+    'LW',
+    'PA',
+    'PA6',
+    'PA12',
+    'PAHT',
+    'PC',
+    'PEBA',
+    'PET',
+    'PETG',
+    'PLA',
+    'PP',
+    'ST',
+    'TPE',
+    'TPU',
+    'UV',
+  ]);
+  return familyName
+    .normalize('NFKC')
+    .replace(/\s*-\s*/g, '-')
+    .replace(/\s*\+\s*/g, '+')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(/([+\-\s]+)/)
+    .map((part) => {
+      if (!part || part === '-' || part === '+') return part;
+      if (/^\s+$/.test(part)) return ' ';
+      const upper = part.toUpperCase();
+      if (upperTokens.has(upper) || /^[0-9]+[A-Z]$/.test(upper)) return upper;
+      return `${part.slice(0, 1).toUpperCase()}${part.slice(1).toLowerCase()}`;
+    })
+    .join('');
+}
+
 function materialTypeForFamily(familyName, vendor) {
   const material = familyName.replace(new RegExp(`^${escapeRegex(vendor)}\\s+`, 'i'), '').toUpperCase();
   if (material.startsWith('PETG CF')) return 'PETG-CF';
+  if (material.startsWith('PETG-CF')) return 'PETG-CF';
   if (material.startsWith('PETG GF')) return 'PETG-GF';
+  if (material.startsWith('PETG-GF')) return 'PETG-GF';
   if (material.startsWith('PETG')) return 'PETG';
   if (material.startsWith('GALAXY PETG')) return 'PETG';
   if (material.startsWith('SPARKLY PETG')) return 'PETG';
   if (material.startsWith('PET CF')) return 'PET-CF';
+  if (material.startsWith('PET-CF')) return 'PET-CF';
   if (material.startsWith('PET GF')) return 'PET-GF';
+  if (material.startsWith('PET-GF')) return 'PET-GF';
   if (material.startsWith('PET')) return 'PET';
   if (material.startsWith('PLA CF')) return 'PLA-CF';
+  if (material.startsWith('PLA-CF')) return 'PLA-CF';
   if (material.startsWith('PLA')) return 'PLA';
   if (material.startsWith('GALAXY PLA')) return 'PLA';
-  if (material.startsWith('ABS CF')) return 'ABS-GF';
+  if (material.startsWith('MARBLE PLA')) return 'PLA';
+  if (material.startsWith('UV ROCK PLA')) return 'PLA';
+  if (material.startsWith('ABS CF') || material.startsWith('ABS-CF')) return 'ABS-GF';
   if (material.startsWith('ABS')) return 'ABS';
   if (material.startsWith('ASA CF')) return 'ASA-CF';
+  if (material.startsWith('ASA-CF')) return 'ASA-CF';
   if (material.startsWith('ASA')) return 'ASA';
   if (material.startsWith('PAHT')) return 'PAHT-CF';
-  if (material.startsWith('PA CF')) return 'PA-CF';
+  if (material.startsWith('PA12') && material.includes('CF')) return 'PA-CF';
+  if (material.startsWith('PA6') && material.includes('CF')) return 'PA-CF';
+  if (material.startsWith('PA CF') || material.startsWith('PA-CF')) return 'PA-CF';
+  if (material.startsWith('PA')) return 'PA';
   if (material.startsWith('PC GF')) return 'PC-GF';
+  if (material.startsWith('PC-GF')) return 'PC-GF';
+  if (material.startsWith('PC')) return 'PC';
+  if (material.startsWith('PEBA')) return 'TPU';
   if (material.startsWith('PP CF')) return 'PP-CF';
+  if (material.startsWith('PP-CF')) return 'PP-CF';
+  if (material.startsWith('TPE')) return 'TPU';
   if (material.startsWith('TPU GF')) return 'TPU-GF';
+  if (material.startsWith('TPU-GF')) return 'TPU-GF';
   if (material.startsWith('TPU')) return 'TPU';
   return material.split(/\s+/)[0];
 }
@@ -2811,13 +3006,29 @@ function sourceSummary(raw) {
 }
 
 function sourcePathMatchesPrinter(raw, printerKey) {
-  const pathText = normalizeText(raw.relativePath);
+  const pathText = normalizeText(`${raw.relativePath} ${raw.innerPath ?? ''}`);
   const pathPrinters = printerNamesFromText(pathText).map(printerKeyFor);
   return pathPrinters.includes(printerKey);
 }
 
 function stableHash(value) {
   return hash(JSON.stringify(sortDeep(value)));
+}
+
+function profileSettingsHash(profile) {
+  return stableHash(omitProfileMetadata(profile, new Set(['filament_id', 'filament_vendor'])));
+}
+
+function omitProfileMetadata(value, keysToOmit) {
+  if (Array.isArray(value)) return value.map((item) => omitProfileMetadata(item, keysToOmit));
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([key]) => !keysToOmit.has(key))
+        .map(([key, item]) => [key, omitProfileMetadata(item, keysToOmit)]),
+    );
+  }
+  return value;
 }
 
 function hash(text) {

@@ -1,0 +1,78 @@
+# Conflicts
+
+- Preferred more specific duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PLA-Lite @Bambu Lab X1 0.4 nozzle
+- Preferred more specific duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PLA-Magic @Bambu Lab A1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Basic @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Basic @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Basic @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG Basic @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Luminous @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Matte @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Matte @Bambu Lab X1 0.4 nozzle
+- Preferred more specific duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Luminous @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Luminous @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-CF @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-CF @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-CF @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Matte @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Matte @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS @Bambu Lab X1 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-CF @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-GF @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS+ @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS+ @Bambu Lab X1 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS+ @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS+ @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-ESD @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-ESD @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-ESD @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-ESD @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-ESD @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-FR @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-FR @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PA-CF @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-ESD @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-ESD @Bambu Lab X1 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-FR @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN ABS-FR @Bambu Lab X1 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG Basic @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Basic @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PA12+CF @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-LW @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-LW @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-LW @Bambu Lab X1 Carbon 0.8 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-ESD @Bambu Lab P1P 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-ESD @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-85A @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-85A @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-85A @Bambu Lab X1 Carbon 0.8 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-90A @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-90A @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PEBA-90A @Bambu Lab X1 Carbon 0.8 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Matte @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG-Matte @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG+HS @Bambu Lab X1 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PETG+HS @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPU-85A @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPU-85A @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPU-85A @Bambu Lab X1 Carbon 0.8 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPU-90A @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPU-90A @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPU-90A @Bambu Lab X1 Carbon 0.8 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPE-83A @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPE-83A @Bambu Lab X1 Carbon 0.6 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN TPE-83A @Bambu Lab X1 Carbon 0.8 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PLA+ @Bambu Lab X1 Carbon 0.4 nozzle
+- Preferred path-matched duplicate incoming:HS-Parameters-for-Bambu-Lab-20260511.zip over incoming:HS-Parameters-for-Bambu-Lab-20260511.zip for eSUN PLA+ @Bambu Lab X1 Carbon 0.6 nozzle

@@ -1,0 +1,469 @@
+{
+  "vendor": "eSUN",
+  "generatedAt": "2026-06-09T02:13:35.907Z",
+  "purpose": "Lock stable Bambu-compatible filament_id values so future normalization and releases overwrite imported profiles instead of creating duplicates.",
+  "families": [
+    {
+      "family": "eSUN ABS",
+      "filament_id": "Pa3cfed1",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS-CF",
+      "filament_id": "P45781e5",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS-ESD",
+      "filament_id": "Pcda9bba",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS-FR",
+      "filament_id": "Pbd983ee",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS-GF",
+      "filament_id": "P17efb89",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS-HT",
+      "filament_id": "Pf5eea6c",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS+",
+      "filament_id": "Pae5f45a",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS+CF",
+      "filament_id": "P9d883e9",
+      "profile_count": 2,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS+GF",
+      "filament_id": "P4641062",
+      "profile_count": 2,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ABS+HS",
+      "filament_id": "P0cbed1f",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ASA-LW",
+      "filament_id": "P29259e3",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN ASA+",
+      "filament_id": "Pc532e02",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN Marble PLA",
+      "filament_id": "P1b8497f",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PA",
+      "filament_id": "P1abff2a",
+      "profile_count": 8,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PA-CF",
+      "filament_id": "Pd51a4aa",
+      "profile_count": 13,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PA12-CF",
+      "filament_id": "P4146656",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PA12+CF",
+      "filament_id": "Pcdc7480",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PA6-CF",
+      "filament_id": "Pa1a7f5a",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PC",
+      "filament_id": "P6f8e596",
+      "profile_count": 7,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PC-ESD",
+      "filament_id": "P806aca3",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PC-HT",
+      "filament_id": "Pc9520f6",
+      "profile_count": 2,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PEBA",
+      "filament_id": "P17f6c02",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PEBA-85A",
+      "filament_id": "Pd47173a",
+      "profile_count": 15,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PEBA-90A",
+      "filament_id": "P9ce764a",
+      "profile_count": 15,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PEBA-LW",
+      "filament_id": "Pf83eb43",
+      "profile_count": 15,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PET-CF",
+      "filament_id": "P4eb44eb",
+      "profile_count": 7,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG",
+      "filament_id": "P6f4add0",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG Basic",
+      "filament_id": "Pe2d24e4",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG Luminous",
+      "filament_id": "P401dbd3",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG-Basic",
+      "filament_id": "P014d719",
+      "profile_count": 10,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG-CF",
+      "filament_id": "P8d70e29",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG-ESD",
+      "filament_id": "P1869e80",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG-Luminous",
+      "filament_id": "Pe9f7d5f",
+      "profile_count": 8,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG-Matte",
+      "filament_id": "P4845e61",
+      "profile_count": 10,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PETG+HS",
+      "filament_id": "Pf028d41",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA Magic",
+      "filament_id": "Pfcaaa53",
+      "profile_count": 2,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA Metal",
+      "filament_id": "P8fe0a26",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Basic",
+      "filament_id": "P8dc1bea",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-CF",
+      "filament_id": "Pfab9f1c",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Clear",
+      "filament_id": "Pbb2f354",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-HS",
+      "filament_id": "P3c1f2ca",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Lite",
+      "filament_id": "Pf606b95",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Luminous",
+      "filament_id": "P9226ed5",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-LW",
+      "filament_id": "Pb255b93",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Magic",
+      "filament_id": "P4f9a108",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Marble",
+      "filament_id": "P5437822",
+      "profile_count": 10,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Matte",
+      "filament_id": "Pb6bd59d",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Metal",
+      "filament_id": "P2fbf73b",
+      "profile_count": 10,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Silk",
+      "filament_id": "P443d8a1",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-ST",
+      "filament_id": "P326b151",
+      "profile_count": 8,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Twinking",
+      "filament_id": "P63e28b8",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Twinkle",
+      "filament_id": "P4cbfd5a",
+      "profile_count": 6,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Twinkling",
+      "filament_id": "P4063e6b",
+      "profile_count": 4,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-UV Rock",
+      "filament_id": "P13eba3e",
+      "profile_count": 5,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA-Wood",
+      "filament_id": "P613cca6",
+      "profile_count": 12,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA+",
+      "filament_id": "Pdac2ff3",
+      "profile_count": 15,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN PLA+HS",
+      "filament_id": "P92ebb3e",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPE-83A",
+      "filament_id": "P35595fc",
+      "profile_count": 15,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU",
+      "filament_id": "P0a9f50f",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU-64D",
+      "filament_id": "Peda6566",
+      "profile_count": 13,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU-80A",
+      "filament_id": "Pe0389ad",
+      "profile_count": 1,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU-85A",
+      "filament_id": "P484c18f",
+      "profile_count": 13,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU-90A",
+      "filament_id": "P9055f32",
+      "profile_count": 15,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU-95A",
+      "filament_id": "Pb9fa383",
+      "profile_count": 13,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN TPU-LW",
+      "filament_id": "P7e49fe6",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "eSUN UV Rock PLA",
+      "filament_id": "P6781971",
+      "profile_count": 6,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    }
+  ]
+}
