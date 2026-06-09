@@ -37,7 +37,7 @@ This repository is an AI-led local update workflow, not an automatic upstream co
 
    Use `npm run vendor:lock-inputs -- --vendor tinmorry --defer-artifact-candidates` only after the user explicitly defers artifact candidates for a later review.
 
-9. AI commits and pushes the normalized JSON state to an update branch such as `agent/update/tinmorry-YYYYMMDD-HHMM`. GitHub Actions automatically creates a candidate prerelease with `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
+9. AI commits and pushes the normalized JSON state to an update branch such as `agent/update/tinmorry-YYYYMMDD-HHMM`. GitHub Actions automatically creates a candidate prerelease with `all-bbsflmt.zip`, `all-json.zip`, `all-user-base.zip`, and `manifest.json`.
 10. AI creates a normal GitHub PR from the update branch to `main`. The PR body should say that the candidate prerelease must be import-tested in Bambu Studio before merge.
 11. AI checks PR mergeability and reports conflicts before saying the PR is ready:
 
@@ -45,7 +45,7 @@ This repository is an AI-led local update workflow, not an automatic upstream co
    npm run pr:mergeability
    ```
 
-12. Download `all-bbsflmt.zip` from the candidate prerelease, extract it locally, and import the contained `.bbsflmt` files in Bambu Studio.
+12. Download `all-bbsflmt.zip` from the candidate prerelease and extract it locally. The archive is organized as `vendor/printer/material.bbsflmt`; import only the printer folders needed for the machines being tested. Nozzle variants for the same printer and material are bundled together.
 13. Merge to `main` only after the candidate is acceptable and the PR has no conflicts. A profile-changing `main` push automatically creates the stable release.
 
 ## Artifact Candidate Adoption
@@ -81,8 +81,8 @@ This repository is an AI-led local update workflow, not an automatic upstream co
 Actions can:
 
 - run `verify`
-- build `.bbsflmt` bundles from committed JSON
-- upload `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`
+- build machine-scoped `.bbsflmt` bundles from committed JSON
+- upload `all-bbsflmt.zip`, `all-json.zip`, `all-user-base.zip`, and `manifest.json`
 - create a candidate prerelease automatically on update branch push
 - create a stable release automatically on profile-changing `main` push
 - show expected import counts in release notes

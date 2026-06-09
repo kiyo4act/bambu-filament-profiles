@@ -5,7 +5,7 @@ Reviewable Bambu Studio filament profiles with generated `.bbsflmt` release bund
 This repository is built for ongoing maintenance by a coding agent:
 
 - JSON under `vendors/<vendor>/profiles/` is the source of truth.
-- `.bbsflmt` files are generated artifacts for GitHub Releases.
+- `.bbsflmt` files are generated as vendor/printer/material-scoped artifacts for GitHub Releases, with nozzle variants for the same printer and material bundled together.
 - Upstream repositories can be monitored, collected, diffed, and reviewed locally by AI.
 - User-made or third-party profiles can be dropped directly into `incoming/` and reviewed through the same diff/proposal workflow by passing `--vendor <vendor>`.
 - GitHub Actions package committed JSON into user-facing archives; they do not decide normalization.
@@ -15,183 +15,1196 @@ This repository is built for ongoing maintenance by a coding agent:
 
 <!-- PROFILE_TABLE_START -->
 
-| Vendor | Material | Type | Profiles | Release artifact |
-|---|---|---:|---:|---|
-| eSUN | eSUN ABS | ABS | 11 | dist/bbsflmt/esun/eSUN ABS.bbsflmt |
-| eSUN | eSUN ABS-CF | ABS-GF | 9 | dist/bbsflmt/esun/eSUN ABS-CF.bbsflmt |
-| eSUN | eSUN ABS-ESD | ABS | 11 | dist/bbsflmt/esun/eSUN ABS-ESD.bbsflmt |
-| eSUN | eSUN ABS-FR | ABS | 11 | dist/bbsflmt/esun/eSUN ABS-FR.bbsflmt |
-| eSUN | eSUN ABS-GF | ABS | 9 | dist/bbsflmt/esun/eSUN ABS-GF.bbsflmt |
-| eSUN | eSUN ABS-HT | ABS | 1 | dist/bbsflmt/esun/eSUN ABS-HT.bbsflmt |
-| eSUN | eSUN ABS+ | ABS | 11 | dist/bbsflmt/esun/eSUN ABS+.bbsflmt |
-| eSUN | eSUN ABS+CF | ABS | 2 | dist/bbsflmt/esun/eSUN ABS+CF.bbsflmt |
-| eSUN | eSUN ABS+GF | ABS | 2 | dist/bbsflmt/esun/eSUN ABS+GF.bbsflmt |
-| eSUN | eSUN ABS+HS | ABS | 11 | dist/bbsflmt/esun/eSUN ABS+HS.bbsflmt |
-| eSUN | eSUN ASA-LW | ASA | 9 | dist/bbsflmt/esun/eSUN ASA-LW.bbsflmt |
-| eSUN | eSUN ASA+ | ASA | 9 | dist/bbsflmt/esun/eSUN ASA+.bbsflmt |
-| eSUN | eSUN Marble PLA | PLA | 1 | dist/bbsflmt/esun/eSUN Marble PLA.bbsflmt |
-| eSUN | eSUN PA | PA | 8 | dist/bbsflmt/esun/eSUN PA.bbsflmt |
-| eSUN | eSUN PA-CF | PA-CF | 13 | dist/bbsflmt/esun/eSUN PA-CF.bbsflmt |
-| eSUN | eSUN PA12-CF | PA-CF | 1 | dist/bbsflmt/esun/eSUN PA12-CF.bbsflmt |
-| eSUN | eSUN PA12+CF | PA-CF | 12 | dist/bbsflmt/esun/eSUN PA12+CF.bbsflmt |
-| eSUN | eSUN PA6-CF | PA-CF | 9 | dist/bbsflmt/esun/eSUN PA6-CF.bbsflmt |
-| eSUN | eSUN PC | PC | 7 | dist/bbsflmt/esun/eSUN PC.bbsflmt |
-| eSUN | eSUN PC-ESD | PC | 9 | dist/bbsflmt/esun/eSUN PC-ESD.bbsflmt |
-| eSUN | eSUN PC-HT | PC | 2 | dist/bbsflmt/esun/eSUN PC-HT.bbsflmt |
-| eSUN | eSUN PEBA | TPU | 1 | dist/bbsflmt/esun/eSUN PEBA.bbsflmt |
-| eSUN | eSUN PEBA-85A | TPU | 15 | dist/bbsflmt/esun/eSUN PEBA-85A.bbsflmt |
-| eSUN | eSUN PEBA-90A | TPU | 15 | dist/bbsflmt/esun/eSUN PEBA-90A.bbsflmt |
-| eSUN | eSUN PEBA-LW | TPU | 15 | dist/bbsflmt/esun/eSUN PEBA-LW.bbsflmt |
-| eSUN | eSUN PET-CF | PET-CF | 7 | dist/bbsflmt/esun/eSUN PET-CF.bbsflmt |
-| eSUN | eSUN PETG | PETG | 11 | dist/bbsflmt/esun/eSUN PETG.bbsflmt |
-| eSUN | eSUN PETG Basic | PETG | 1 | dist/bbsflmt/esun/eSUN PETG Basic.bbsflmt |
-| eSUN | eSUN PETG Luminous | PETG | 1 | dist/bbsflmt/esun/eSUN PETG Luminous.bbsflmt |
-| eSUN | eSUN PETG-Basic | PETG | 10 | dist/bbsflmt/esun/eSUN PETG-Basic.bbsflmt |
-| eSUN | eSUN PETG-CF | PETG-CF | 11 | dist/bbsflmt/esun/eSUN PETG-CF.bbsflmt |
-| eSUN | eSUN PETG-ESD | PETG | 11 | dist/bbsflmt/esun/eSUN PETG-ESD.bbsflmt |
-| eSUN | eSUN PETG-Luminous | PETG | 8 | dist/bbsflmt/esun/eSUN PETG-Luminous.bbsflmt |
-| eSUN | eSUN PETG-Matte | PETG | 10 | dist/bbsflmt/esun/eSUN PETG-Matte.bbsflmt |
-| eSUN | eSUN PETG+HS | PETG | 11 | dist/bbsflmt/esun/eSUN PETG+HS.bbsflmt |
-| eSUN | eSUN PLA Magic | PLA | 2 | dist/bbsflmt/esun/eSUN PLA Magic.bbsflmt |
-| eSUN | eSUN PLA Metal | PLA | 1 | dist/bbsflmt/esun/eSUN PLA Metal.bbsflmt |
-| eSUN | eSUN PLA-Basic | PLA | 11 | dist/bbsflmt/esun/eSUN PLA-Basic.bbsflmt |
-| eSUN | eSUN PLA-CF | PLA-CF | 12 | dist/bbsflmt/esun/eSUN PLA-CF.bbsflmt |
-| eSUN | eSUN PLA-Clear | PLA | 11 | dist/bbsflmt/esun/eSUN PLA-Clear.bbsflmt |
-| eSUN | eSUN PLA-HS | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-HS.bbsflmt |
-| eSUN | eSUN PLA-Lite | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Lite.bbsflmt |
-| eSUN | eSUN PLA-Luminous | PLA | 11 | dist/bbsflmt/esun/eSUN PLA-Luminous.bbsflmt |
-| eSUN | eSUN PLA-LW | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-LW.bbsflmt |
-| eSUN | eSUN PLA-Magic | PLA | 9 | dist/bbsflmt/esun/eSUN PLA-Magic.bbsflmt |
-| eSUN | eSUN PLA-Marble | PLA | 10 | dist/bbsflmt/esun/eSUN PLA-Marble.bbsflmt |
-| eSUN | eSUN PLA-Matte | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Matte.bbsflmt |
-| eSUN | eSUN PLA-Metal | PLA | 10 | dist/bbsflmt/esun/eSUN PLA-Metal.bbsflmt |
-| eSUN | eSUN PLA-Silk | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Silk.bbsflmt |
-| eSUN | eSUN PLA-ST | PLA | 8 | dist/bbsflmt/esun/eSUN PLA-ST.bbsflmt |
-| eSUN | eSUN PLA-Twinking | PLA | 1 | dist/bbsflmt/esun/eSUN PLA-Twinking.bbsflmt |
-| eSUN | eSUN PLA-Twinkle | PLA | 6 | dist/bbsflmt/esun/eSUN PLA-Twinkle.bbsflmt |
-| eSUN | eSUN PLA-Twinkling | PLA | 4 | dist/bbsflmt/esun/eSUN PLA-Twinkling.bbsflmt |
-| eSUN | eSUN PLA-UV Rock | PLA | 5 | dist/bbsflmt/esun/eSUN PLA-UV Rock.bbsflmt |
-| eSUN | eSUN PLA-Wood | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Wood.bbsflmt |
-| eSUN | eSUN PLA+ | PLA | 15 | dist/bbsflmt/esun/eSUN PLA+.bbsflmt |
-| eSUN | eSUN PLA+HS | PLA | 11 | dist/bbsflmt/esun/eSUN PLA+HS.bbsflmt |
-| eSUN | eSUN TPE-83A | TPU | 15 | dist/bbsflmt/esun/eSUN TPE-83A.bbsflmt |
-| eSUN | eSUN TPU | TPU | 1 | dist/bbsflmt/esun/eSUN TPU.bbsflmt |
-| eSUN | eSUN TPU-64D | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-64D.bbsflmt |
-| eSUN | eSUN TPU-80A | TPU | 1 | dist/bbsflmt/esun/eSUN TPU-80A.bbsflmt |
-| eSUN | eSUN TPU-85A | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-85A.bbsflmt |
-| eSUN | eSUN TPU-90A | TPU | 15 | dist/bbsflmt/esun/eSUN TPU-90A.bbsflmt |
-| eSUN | eSUN TPU-95A | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-95A.bbsflmt |
-| eSUN | eSUN TPU-LW | TPU | 11 | dist/bbsflmt/esun/eSUN TPU-LW.bbsflmt |
-| eSUN | eSUN UV Rock PLA | PLA | 6 | dist/bbsflmt/esun/eSUN UV Rock PLA.bbsflmt |
-| Polymaker | Polymaker ABS Max | ABS | 6 | dist/bbsflmt/polymaker/Polymaker ABS Max.bbsflmt |
-| Polymaker | Polymaker ABS Pro | ABS | 8 | dist/bbsflmt/polymaker/Polymaker ABS Pro.bbsflmt |
-| Polymaker | Polymaker ABS Pro Galaxy | ABS | 8 | dist/bbsflmt/polymaker/Polymaker ABS Pro Galaxy.bbsflmt |
-| Polymaker | Polymaker ASA | ASA | 3 | dist/bbsflmt/polymaker/Polymaker ASA.bbsflmt |
-| Polymaker | Polymaker Fiberon ASA-CF08 | ASA | 5 | dist/bbsflmt/polymaker/Polymaker Fiberon ASA-CF08.bbsflmt |
-| Polymaker | Polymaker Fiberon PA12-CF10 | PA-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA12-CF10.bbsflmt |
-| Polymaker | Polymaker Fiberon PA6-CF20 | PA6-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA6-CF20.bbsflmt |
-| Polymaker | Polymaker Fiberon PA6-GF25 | PA-GF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA6-GF25.bbsflmt |
-| Polymaker | Polymaker Fiberon PA612-CF15 | PA-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA612-CF15.bbsflmt |
-| Polymaker | Polymaker Fiberon PA612-ESD | PA-CF | 5 | dist/bbsflmt/polymaker/Polymaker Fiberon PA612-ESD.bbsflmt |
-| Polymaker | Polymaker Fiberon PET-CF17 | PET-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PET-CF17.bbsflmt |
-| Polymaker | Polymaker Fiberon PET-GF15 | PET-CF | 5 | dist/bbsflmt/polymaker/Polymaker Fiberon PET-GF15.bbsflmt |
-| Polymaker | Polymaker Fiberon PETG-ESD | PETG | 8 | dist/bbsflmt/polymaker/Polymaker Fiberon PETG-ESD.bbsflmt |
-| Polymaker | Polymaker Fiberon PETG-rCF08 | PETG-CF | 8 | dist/bbsflmt/polymaker/Polymaker Fiberon PETG-rCF08.bbsflmt |
-| Polymaker | Polymaker Fiberon PPS-CF10 | PPS-CF | 2 | dist/bbsflmt/polymaker/Polymaker Fiberon PPS-CF10.bbsflmt |
-| Polymaker | Polymaker Fiberon PPS-GF20 | PPS-CF | 3 | dist/bbsflmt/polymaker/Polymaker Fiberon PPS-GF20.bbsflmt |
-| Polymaker | Polymaker HT-PLA | PLA | 9 | dist/bbsflmt/polymaker/Polymaker HT-PLA.bbsflmt |
-| Polymaker | Polymaker HT-PLA-GF | PLA | 5 | dist/bbsflmt/polymaker/Polymaker HT-PLA-GF.bbsflmt |
-| Polymaker | Polymaker Panchroma CoPE | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma CoPE.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA | PLA | 11 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Celestial | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Celestial.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Galaxy | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Galaxy.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Glow | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Glow.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Luminous | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Luminous.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Marble | PLA | 10 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Marble.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Matte | PLA | 10 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Matte.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Metallic | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Metallic.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Neon | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Neon.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Satin | PLA | 11 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Satin.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Silk | PLA | 11 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Silk.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Starlight | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Starlight.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA Translucent | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Translucent.bbsflmt |
-| Polymaker | Polymaker Panchroma PLA UV Shift | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA UV Shift.bbsflmt |
-| Polymaker | Polymaker PETG | PETG | 11 | dist/bbsflmt/polymaker/Polymaker PETG.bbsflmt |
-| Polymaker | Polymaker PETG Galaxy | PETG | 11 | dist/bbsflmt/polymaker/Polymaker PETG Galaxy.bbsflmt |
-| Polymaker | Polymaker PLA | PLA | 5 | dist/bbsflmt/polymaker/Polymaker PLA.bbsflmt |
-| Polymaker | Polymaker PLA Pro | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PLA Pro.bbsflmt |
-| Polymaker | Polymaker PLA Pro Metallic | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PLA Pro Metallic.bbsflmt |
-| Polymaker | Polymaker PolyCast | PLA | 1 | dist/bbsflmt/polymaker/Polymaker PolyCast.bbsflmt |
-| Polymaker | Polymaker PolyFlex TPU95 | TPU | 5 | dist/bbsflmt/polymaker/Polymaker PolyFlex TPU95.bbsflmt |
-| Polymaker | Polymaker PolyFlex TPU95-HF | TPU | 2 | dist/bbsflmt/polymaker/Polymaker PolyFlex TPU95-HF.bbsflmt |
-| Polymaker | Polymaker PolyLite ABS | ABS | 2 | dist/bbsflmt/polymaker/Polymaker PolyLite ABS.bbsflmt |
-| Polymaker | Polymaker PolyLite CosPLA | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PolyLite CosPLA.bbsflmt |
-| Polymaker | Polymaker PolyLite LW-PLA | PLA | 2 | dist/bbsflmt/polymaker/Polymaker PolyLite LW-PLA.bbsflmt |
-| Polymaker | Polymaker PolyLite PC | PC | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PC.bbsflmt |
-| Polymaker | Polymaker PolyLite PETG | PETG | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PETG.bbsflmt |
-| Polymaker | Polymaker PolyLite PETG Translucent | PETG | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PETG Translucent.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Galaxy | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Galaxy.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Glow | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Glow.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Luminous | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Luminous.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Neon | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Neon.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Pro | PLA | 5 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Pro.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Pro Metallic | PLA | 5 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Starlight | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Starlight.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA Translucent | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Translucent.bbsflmt |
-| Polymaker | Polymaker PolyLite PLA-CF | PLA-CF | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA-CF.bbsflmt |
-| Polymaker | Polymaker PolyMax PC | PC | 1 | dist/bbsflmt/polymaker/Polymaker PolyMax PC.bbsflmt |
-| Polymaker | Polymaker PolyMax PETG | PETG | 1 | dist/bbsflmt/polymaker/Polymaker PolyMax PETG.bbsflmt |
-| Polymaker | Polymaker PolyMax PLA | PLA | 4 | dist/bbsflmt/polymaker/Polymaker PolyMax PLA.bbsflmt |
-| Polymaker | Polymaker PolySmooth | PVB | 1 | dist/bbsflmt/polymaker/Polymaker PolySmooth.bbsflmt |
-| Polymaker | Polymaker PolySupport | PLA | 1 | dist/bbsflmt/polymaker/Polymaker PolySupport.bbsflmt |
-| Polymaker | Polymaker PolySupport for PA12 | PA | 1 | dist/bbsflmt/polymaker/Polymaker PolySupport for PA12.bbsflmt |
-| Polymaker | Polymaker PolyTerra PLA | PLA | 10 | dist/bbsflmt/polymaker/Polymaker PolyTerra PLA.bbsflmt |
-| Polymaker | Polymaker PolyTerra PLA Marble | PLA | 10 | dist/bbsflmt/polymaker/Polymaker PolyTerra PLA Marble.bbsflmt |
-| Polymaker | Polymaker PolyTerra PLA+ | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PolyTerra PLA+.bbsflmt |
-| SUNLU | SUNLU ASA BASIC | ASA | 7 | dist/bbsflmt/sunlu/SUNLU ASA BASIC.bbsflmt |
-| SUNLU | SUNLU PETG BASIC | PETG | 8 | dist/bbsflmt/sunlu/SUNLU PETG BASIC.bbsflmt |
-| SUNLU | SUNLU PETG HS Matte | PETG | 6 | dist/bbsflmt/sunlu/SUNLU PETG HS Matte.bbsflmt |
-| SUNLU | SUNLU PLA + | PLA | 6 | dist/bbsflmt/sunlu/SUNLU PLA +.bbsflmt |
-| SUNLU | SUNLU PLA + 2.0 | PLA | 8 | dist/bbsflmt/sunlu/SUNLU PLA + 2.0.bbsflmt |
-| SUNLU | SUNLU PLA + Silk | PLA | 8 | dist/bbsflmt/sunlu/SUNLU PLA + Silk.bbsflmt |
-| SUNLU | SUNLU PLA Marble | PLA | 6 | dist/bbsflmt/sunlu/SUNLU PLA Marble.bbsflmt |
-| SUNLU | SUNLU PLA Matte | PLA | 8 | dist/bbsflmt/sunlu/SUNLU PLA Matte.bbsflmt |
-| SUNLU | SUNLU PLA Wood | PLA | 6 | dist/bbsflmt/sunlu/SUNLU PLA Wood.bbsflmt |
-| TINMORRY | TINMORRY ABS Pro | ABS | 8 | dist/bbsflmt/tinmorry/TINMORRY ABS Pro.bbsflmt |
-| TINMORRY | TINMORRY ASA | ASA | 5 | dist/bbsflmt/tinmorry/TINMORRY ASA.bbsflmt |
-| TINMORRY | TINMORRY ASA Basic | ASA | 1 | dist/bbsflmt/tinmorry/TINMORRY ASA Basic.bbsflmt |
-| TINMORRY | TINMORRY ASA CF | ASA-CF | 2 | dist/bbsflmt/tinmorry/TINMORRY ASA CF.bbsflmt |
-| TINMORRY | TINMORRY Galaxy PETG | PETG | 1 | dist/bbsflmt/tinmorry/TINMORRY Galaxy PETG.bbsflmt |
-| TINMORRY | TINMORRY Galaxy PLA | PLA | 2 | dist/bbsflmt/tinmorry/TINMORRY Galaxy PLA.bbsflmt |
-| TINMORRY | TINMORRY PA CF | PA-CF | 2 | dist/bbsflmt/tinmorry/TINMORRY PA CF.bbsflmt |
-| TINMORRY | TINMORRY PAHT CF | PAHT-CF | 2 | dist/bbsflmt/tinmorry/TINMORRY PAHT CF.bbsflmt |
-| TINMORRY | TINMORRY PC GF | PC-GF | 4 | dist/bbsflmt/tinmorry/TINMORRY PC GF.bbsflmt |
-| TINMORRY | TINMORRY PET CF | PET-CF | 5 | dist/bbsflmt/tinmorry/TINMORRY PET CF.bbsflmt |
-| TINMORRY | TINMORRY PET GF | PET-GF | 5 | dist/bbsflmt/tinmorry/TINMORRY PET GF.bbsflmt |
-| TINMORRY | TINMORRY PETG CF | PETG-CF | 12 | dist/bbsflmt/tinmorry/TINMORRY PETG CF.bbsflmt |
-| TINMORRY | TINMORRY PETG ECO | PETG | 11 | dist/bbsflmt/tinmorry/TINMORRY PETG ECO.bbsflmt |
-| TINMORRY | TINMORRY PETG GF | PETG-GF | 12 | dist/bbsflmt/tinmorry/TINMORRY PETG GF.bbsflmt |
-| TINMORRY | TINMORRY PETG HS | PETG | 5 | dist/bbsflmt/tinmorry/TINMORRY PETG HS.bbsflmt |
-| TINMORRY | TINMORRY PETG Marble | PETG | 11 | dist/bbsflmt/tinmorry/TINMORRY PETG Marble.bbsflmt |
-| TINMORRY | TINMORRY PETG Matte | PETG | 2 | dist/bbsflmt/tinmorry/TINMORRY PETG Matte.bbsflmt |
-| TINMORRY | TINMORRY PETG Metallic | PETG | 10 | dist/bbsflmt/tinmorry/TINMORRY PETG Metallic.bbsflmt |
-| TINMORRY | TINMORRY PLA | PLA | 6 | dist/bbsflmt/tinmorry/TINMORRY PLA.bbsflmt |
-| TINMORRY | TINMORRY PLA CF | PLA-CF | 7 | dist/bbsflmt/tinmorry/TINMORRY PLA CF.bbsflmt |
-| TINMORRY | TINMORRY PLA Matte | PLA | 10 | dist/bbsflmt/tinmorry/TINMORRY PLA Matte.bbsflmt |
-| TINMORRY | TINMORRY PLA Rapid | PLA | 2 | dist/bbsflmt/tinmorry/TINMORRY PLA Rapid.bbsflmt |
-| TINMORRY | TINMORRY PLA Silk | PLA | 8 | dist/bbsflmt/tinmorry/TINMORRY PLA Silk.bbsflmt |
-| TINMORRY | TINMORRY PP CF | PP-CF | 5 | dist/bbsflmt/tinmorry/TINMORRY PP CF.bbsflmt |
-| TINMORRY | TINMORRY Sparkly PETG | PETG | 2 | dist/bbsflmt/tinmorry/TINMORRY Sparkly PETG.bbsflmt |
-| TINMORRY | TINMORRY TPU | TPU | 6 | dist/bbsflmt/tinmorry/TINMORRY TPU.bbsflmt |
-| TINMORRY | TINMORRY TPU 95A | TPU | 5 | dist/bbsflmt/tinmorry/TINMORRY TPU 95A.bbsflmt |
-| TINMORRY | TINMORRY TPU GF | TPU-GF | 4 | dist/bbsflmt/tinmorry/TINMORRY TPU GF.bbsflmt |
+| Vendor | Printer | Nozzles | Material | Type | Profiles | Release artifact |
+|---|---|---|---|---|---:|---|
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/a1/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/a1/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/a1/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/a1/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/a1/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/a1/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/a1/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/a1/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/a1/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/a1/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/a1/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-ST | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Twinkle | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Twinkle.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/a1/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/a1/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/a1/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/a1/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/a1/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/a1/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab A1 | 0.4 | eSUN UV Rock PLA | PLA | 1 | dist/bbsflmt/esun/a1/eSUN UV Rock PLA.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/a1-mini/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/a1-mini/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/a1-mini/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/a1-mini/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/a1-mini/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/a1-mini/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-ST | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Twinkling | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Twinkling.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/a1-mini/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab A1 mini | 0.4 | eSUN UV Rock PLA | PLA | 1 | dist/bbsflmt/esun/a1-mini/eSUN UV Rock PLA.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/h2c/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS-CF | ABS-GF | 1 | dist/bbsflmt/esun/h2c/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/h2c/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/h2c/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS-GF | ABS | 1 | dist/bbsflmt/esun/h2c/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/h2c/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/h2c/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/h2c/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/h2c/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/h2c/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/h2c/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PA12-CF | PA-CF | 1 | dist/bbsflmt/esun/h2c/eSUN PA12-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/h2c/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/h2c/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PC-HT | PC | 1 | dist/bbsflmt/esun/h2c/eSUN PC-HT.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/h2c/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/h2c/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/h2c/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/h2c/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/h2c/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/h2c/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/h2c/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Twinking | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Twinking.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-UV Rock | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-UV Rock.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/h2c/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab H2C | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/h2c/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/h2d/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS-CF | ABS-GF | 1 | dist/bbsflmt/esun/h2d/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/h2d/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/h2d/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS-GF | ABS | 1 | dist/bbsflmt/esun/h2d/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/h2d/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/h2d/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/h2d/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/h2d/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/h2d/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/h2d/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PA12+CF | PA-CF | 1 | dist/bbsflmt/esun/h2d/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/h2d/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/h2d/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/h2d/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/h2d/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/h2d/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG Luminous | PETG | 1 | dist/bbsflmt/esun/h2d/eSUN PETG Luminous.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/h2d/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/h2d/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/h2d/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/h2d/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/h2d/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Twinkle | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Twinkle.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-UV Rock | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-UV Rock.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/h2d/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab H2D | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/h2d/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/h2s/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS-CF | ABS-GF | 1 | dist/bbsflmt/esun/h2s/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/h2s/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/h2s/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS-GF | ABS | 1 | dist/bbsflmt/esun/h2s/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/h2s/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/h2s/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/h2s/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/h2s/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/h2s/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/h2s/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PA12+CF | PA-CF | 1 | dist/bbsflmt/esun/h2s/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/h2s/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/h2s/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PC-HT | PC | 1 | dist/bbsflmt/esun/h2s/eSUN PC-HT.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PEBA | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN PEBA.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/h2s/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/h2s/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/h2s/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/h2s/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/h2s/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/h2s/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/h2s/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/h2s/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-ST | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Twinkle | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Twinkle.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-UV Rock | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-UV Rock.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/h2s/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab H2S | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/h2s/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/p1p/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS-CF | ABS-GF | 1 | dist/bbsflmt/esun/p1p/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/p1p/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/p1p/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS-GF | ABS | 1 | dist/bbsflmt/esun/p1p/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/p1p/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/p1p/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/p1p/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/p1p/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/p1p/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/p1p/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PA12+CF | PA-CF | 1 | dist/bbsflmt/esun/p1p/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/p1p/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/p1p/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/p1p/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/p1p/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/p1p/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/p1p/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/p1p/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/p1p/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/p1p/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/p1p/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/p1p/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Twinkle | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Twinkle.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/p1p/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab P1P | 0.4 | eSUN UV Rock PLA | PLA | 1 | dist/bbsflmt/esun/p1p/eSUN UV Rock PLA.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS-HT | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS-HT.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS+CF | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS+CF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS+GF | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS+GF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/p1s/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/p1s/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/p1s/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/p1s/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/p1s/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PA12+CF | PA-CF | 1 | dist/bbsflmt/esun/p1s/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/p1s/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/p1s/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/p1s/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN PEBA-85A | TPU | 3 | dist/bbsflmt/esun/p1s/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN PEBA-90A | TPU | 3 | dist/bbsflmt/esun/p1s/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN PEBA-LW | TPU | 3 | dist/bbsflmt/esun/p1s/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/p1s/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/p1s/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/p1s/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/p1s/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/p1s/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/p1s/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN PLA+ | PLA | 3 | dist/bbsflmt/esun/p1s/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN TPE-83A | TPU | 3 | dist/bbsflmt/esun/p1s/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/p1s/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN TPU-85A | TPU | 3 | dist/bbsflmt/esun/p1s/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4, 0.6, 0.8 | eSUN TPU-90A | TPU | 3 | dist/bbsflmt/esun/p1s/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/p1s/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/p1s/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab P1S | 0.4 | eSUN UV Rock PLA | PLA | 1 | dist/bbsflmt/esun/p1s/eSUN UV Rock PLA.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/p2s/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS-CF | ABS-GF | 1 | dist/bbsflmt/esun/p2s/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/p2s/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/p2s/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS-GF | ABS | 1 | dist/bbsflmt/esun/p2s/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/p2s/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/p2s/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/p2s/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/p2s/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/p2s/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/p2s/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PA12+CF | PA-CF | 1 | dist/bbsflmt/esun/p2s/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/p2s/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/p2s/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/p2s/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/p2s/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/p2s/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/p2s/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/p2s/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/p2s/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/p2s/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/p2s/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/p2s/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-ST | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Twinkling | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Twinkling.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-UV Rock | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-UV Rock.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/p2s/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab P2S | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/p2s/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS | ABS | 2 | dist/bbsflmt/esun/x1/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS-CF | ABS-GF | 2 | dist/bbsflmt/esun/x1/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS-ESD | ABS | 2 | dist/bbsflmt/esun/x1/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS-FR | ABS | 2 | dist/bbsflmt/esun/x1/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS-GF | ABS | 2 | dist/bbsflmt/esun/x1/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS+ | ABS | 2 | dist/bbsflmt/esun/x1/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6 | eSUN ABS+HS | ABS | 2 | dist/bbsflmt/esun/x1/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/x1/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/x1/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/x1/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6, 0.8 | eSUN PA-CF | PA-CF | 3 | dist/bbsflmt/esun/x1/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4, 0.6, 0.8 | eSUN PA12+CF | PA-CF | 3 | dist/bbsflmt/esun/x1/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/x1/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/x1/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/x1/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/x1/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/x1/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/x1/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/x1/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/x1/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG Basic | PETG | 1 | dist/bbsflmt/esun/x1/eSUN PETG Basic.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/x1/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/x1/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/x1/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/x1/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/x1/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA Magic | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA Magic.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/x1/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-ST | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Twinkling | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Twinkling.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/x1/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/x1/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/x1/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/x1/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/x1/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/x1/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/x1/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab X1 | 0.4 | eSUN UV Rock PLA | PLA | 1 | dist/bbsflmt/esun/x1/eSUN UV Rock PLA.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS | ABS | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS-CF | ABS-GF | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS-CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS-ESD | ABS | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS-FR | ABS | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS-GF | ABS | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS-GF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS+ | ABS | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN ABS+HS | ABS | 2 | dist/bbsflmt/esun/x1-carbon/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN Marble PLA | PLA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN Marble PLA.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PA | PA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PA.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN PA-CF | PA-CF | 3 | dist/bbsflmt/esun/x1-carbon/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN PA12+CF | PA-CF | 3 | dist/bbsflmt/esun/x1-carbon/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN PEBA-85A | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN PEBA-90A | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN PEBA-LW | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PET-CF | PET-CF | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PET-CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PLA Magic | PLA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PLA Magic.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PLA Metal | PLA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PLA Metal.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-CF | PLA-CF | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-HS | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-Lite | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-Luminous | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-LW | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-Matte | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-Silk | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-ST | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-Twinkle | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Twinkle.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA-Wood | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN PLA+ | PLA | 3 | dist/bbsflmt/esun/x1-carbon/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6 | eSUN PLA+HS | PLA | 2 | dist/bbsflmt/esun/x1-carbon/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN TPE-83A | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN TPU-64D | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN TPU-85A | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN TPU-90A | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4, 0.6, 0.8 | eSUN TPU-95A | TPU | 3 | dist/bbsflmt/esun/x1-carbon/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/x1-carbon/eSUN TPU-LW.bbsflmt |
+| eSUN | Bambu Lab X1 Carbon | 0.4 | eSUN UV Rock PLA | PLA | 1 | dist/bbsflmt/esun/x1-carbon/eSUN UV Rock PLA.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS-ESD | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS-ESD.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS-FR | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS-FR.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS+ | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS+.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS+CF | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS+CF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS+GF | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS+GF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ABS+HS | ABS | 1 | dist/bbsflmt/esun/x2d/eSUN ABS+HS.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ASA-LW | ASA | 1 | dist/bbsflmt/esun/x2d/eSUN ASA-LW.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN ASA+ | ASA | 1 | dist/bbsflmt/esun/x2d/eSUN ASA+.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PA-CF | PA-CF | 1 | dist/bbsflmt/esun/x2d/eSUN PA-CF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PA12+CF | PA-CF | 1 | dist/bbsflmt/esun/x2d/eSUN PA12+CF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PA6-CF | PA-CF | 1 | dist/bbsflmt/esun/x2d/eSUN PA6-CF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PC | PC | 1 | dist/bbsflmt/esun/x2d/eSUN PC.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PC-ESD | PC | 1 | dist/bbsflmt/esun/x2d/eSUN PC-ESD.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PEBA-85A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN PEBA-85A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PEBA-90A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN PEBA-90A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PEBA-LW | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN PEBA-LW.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG | PETG | 1 | dist/bbsflmt/esun/x2d/eSUN PETG.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG-Basic | PETG | 1 | dist/bbsflmt/esun/x2d/eSUN PETG-Basic.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG-CF | PETG-CF | 1 | dist/bbsflmt/esun/x2d/eSUN PETG-CF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG-ESD | PETG | 1 | dist/bbsflmt/esun/x2d/eSUN PETG-ESD.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG-Luminous | PETG | 1 | dist/bbsflmt/esun/x2d/eSUN PETG-Luminous.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG-Matte | PETG | 1 | dist/bbsflmt/esun/x2d/eSUN PETG-Matte.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PETG+HS | PETG | 1 | dist/bbsflmt/esun/x2d/eSUN PETG+HS.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Basic | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Basic.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-CF | PLA-CF | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-CF.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Clear | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Clear.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-HS | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-HS.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Lite | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Lite.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Luminous | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Luminous.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-LW | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-LW.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Magic | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Magic.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Marble | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Marble.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Matte | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Matte.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Metal | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Metal.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Silk | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Silk.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-ST | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-ST.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Twinkling | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Twinkling.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-UV Rock | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-UV Rock.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA-Wood | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA-Wood.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA+ | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA+.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN PLA+HS | PLA | 1 | dist/bbsflmt/esun/x2d/eSUN PLA+HS.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPE-83A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPE-83A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU-64D | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU-64D.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU-80A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU-80A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU-85A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU-85A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU-90A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU-90A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU-95A | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU-95A.bbsflmt |
+| eSUN | Bambu Lab X2D | 0.4 | eSUN TPU-LW | TPU | 1 | dist/bbsflmt/esun/x2d/eSUN TPU-LW.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/a1/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/a1/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab A1 | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab A1 mini | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/h2c/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/h2c/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon ASA-CF08.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PA612-ESD | PA-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PA612-ESD.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PET-GF15.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PPS-CF10 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PPS-CF10.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Fiberon PPS-GF20 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PPS-GF20.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker HT-PLA-GF.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PLA.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab H2C | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/h2d/Polymaker ABS Max.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/h2d/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/h2d/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker ASA | ASA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker ASA.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon ASA-CF08.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PA612-ESD | PA-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PA612-ESD.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PET-GF15.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Fiberon PPS-GF20 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PPS-GF20.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker HT-PLA-GF.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PLA.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyFlex TPU95-HF | TPU | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyFlex TPU95-HF.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab H2D | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyMax PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/h2s/Polymaker ABS Max.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon ASA-CF08.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PA612-ESD | PA-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA612-ESD.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PET-GF15.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PPS-CF10 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PPS-CF10.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Fiberon PPS-GF20 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PPS-GF20.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker HT-PLA-GF.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite LW-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite LW-PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyMax PLA.bbsflmt |
+| Polymaker | Bambu Lab H2S | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab P1P | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/p1p/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/p1s/Polymaker ABS Max.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/p1s/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/p1s/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyFlex TPU95.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab P1S | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker ASA | ASA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ASA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon ASA-CF08.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PA612-ESD | PA-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PA612-ESD.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PET-GF15.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker HT-PLA-GF.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite ABS | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite ABS.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyMax PLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab P2S | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/x1/Polymaker ABS Max.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/x1/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/x1/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x1/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x1/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyFlex TPU95.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X1 | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker ABS Max.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyFlex TPU95.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X1 Carbon | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/x1e/Polymaker ABS Max.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/x1e/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/x1e/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyFlex TPU95.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X1E | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyTerra PLA+.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker ASA | ASA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ASA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon ASA-CF08.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PA6-GF25 | PA-GF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PA612-CF15 | PA-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PA612-ESD | PA-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PA612-ESD.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PET-CF17 | PET-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PET-GF15.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker HT-PLA-GF.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PETG.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyCast | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyCast.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyFlex TPU95.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyFlex TPU95-HF | TPU | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyFlex TPU95-HF.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite ABS | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite ABS.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite LW-PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite LW-PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PC | PC | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PC.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PETG | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PETG.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PETG Translucent | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PETG Translucent.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Pro.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyLite PLA-CF | PLA-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA-CF.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyMax PC | PC | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PC.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyMax PETG | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PETG.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolySmooth | PVB | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolySmooth.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolySupport | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolySupport.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolySupport for PA12 | PA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolySupport for PA12.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Bambu Lab X2D | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyTerra PLA+.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.2, 0.6, 0.8 | SUNLU ASA BASIC | ASA | 3 | dist/bbsflmt/sunlu/h2c/SUNLU ASA BASIC.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.2, 0.4, 0.6, 0.8 | SUNLU PETG BASIC | PETG | 4 | dist/bbsflmt/sunlu/h2c/SUNLU PETG BASIC.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.4, 0.6, 0.8 | SUNLU PETG HS Matte | PETG | 3 | dist/bbsflmt/sunlu/h2c/SUNLU PETG HS Matte.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.2, 0.4, 0.6 | SUNLU PLA + | PLA | 3 | dist/bbsflmt/sunlu/h2c/SUNLU PLA +.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.2, 0.4, 0.6, 0.8 | SUNLU PLA + 2.0 | PLA | 4 | dist/bbsflmt/sunlu/h2c/SUNLU PLA + 2.0.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.2, 0.4, 0.6, 0.8 | SUNLU PLA + Silk | PLA | 4 | dist/bbsflmt/sunlu/h2c/SUNLU PLA + Silk.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.4, 0.6, 0.8 | SUNLU PLA Marble | PLA | 3 | dist/bbsflmt/sunlu/h2c/SUNLU PLA Marble.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.2, 0.4, 0.6, 0.8 | SUNLU PLA Matte | PLA | 4 | dist/bbsflmt/sunlu/h2c/SUNLU PLA Matte.bbsflmt |
+| SUNLU | Bambu Lab H2C | 0.4, 0.6, 0.8 | SUNLU PLA Wood | PLA | 3 | dist/bbsflmt/sunlu/h2c/SUNLU PLA Wood.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.2, 0.4, 0.6, 0.8 | SUNLU ASA BASIC | ASA | 4 | dist/bbsflmt/sunlu/p2s/SUNLU ASA BASIC.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.2, 0.4, 0.6, 0.8 | SUNLU PETG BASIC | PETG | 4 | dist/bbsflmt/sunlu/p2s/SUNLU PETG BASIC.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.4, 0.6, 0.8 | SUNLU PETG HS Matte | PETG | 3 | dist/bbsflmt/sunlu/p2s/SUNLU PETG HS Matte.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.2, 0.4, 0.6 | SUNLU PLA + | PLA | 3 | dist/bbsflmt/sunlu/p2s/SUNLU PLA +.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.2, 0.4, 0.6, 0.8 | SUNLU PLA + 2.0 | PLA | 4 | dist/bbsflmt/sunlu/p2s/SUNLU PLA + 2.0.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.2, 0.4, 0.6, 0.8 | SUNLU PLA + Silk | PLA | 4 | dist/bbsflmt/sunlu/p2s/SUNLU PLA + Silk.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.4, 0.6, 0.8 | SUNLU PLA Marble | PLA | 3 | dist/bbsflmt/sunlu/p2s/SUNLU PLA Marble.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.2, 0.4, 0.6, 0.8 | SUNLU PLA Matte | PLA | 4 | dist/bbsflmt/sunlu/p2s/SUNLU PLA Matte.bbsflmt |
+| SUNLU | Bambu Lab P2S | 0.4, 0.6, 0.8 | SUNLU PLA Wood | PLA | 3 | dist/bbsflmt/sunlu/p2s/SUNLU PLA Wood.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY Galaxy PLA | PLA | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY Galaxy PLA.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PC GF | PC-GF | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PC GF.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PET GF | PET-GF | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PET GF.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PETG HS | PETG | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PETG HS.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PLA | PLA | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PLA.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab A1 | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/a1/TINMORRY TPU.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PETG Matte | PETG | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PETG Matte.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PLA | PLA | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PLA.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab A1 mini | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY TPU.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PLA Rapid | PLA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA Rapid.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab H2C | 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY TPU 95A.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY ASA | ASA | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY ASA.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY ASA CF | ASA-CF | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY ASA CF.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab H2D | 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/h2d/TINMORRY TPU 95A.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY ASA | ASA | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY ASA.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY ASA CF | ASA-CF | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY ASA CF.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PET CF | PET-CF | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PET CF.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PET GF | PET-GF | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PET GF.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PLA Rapid | PLA | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PLA Rapid.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab H2S | 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/h2s/TINMORRY TPU 95A.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PC GF | PC-GF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PC GF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PET CF | PET-CF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PET CF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PET GF | PET-GF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PET GF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PETG HS | PETG | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PETG HS.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PLA | PLA | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PLA.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY PP CF | PP-CF | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY PP CF.bbsflmt |
+| TINMORRY | Bambu Lab P1P | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/p1p/TINMORRY TPU.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY ASA | ASA | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY ASA.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PA CF | PA-CF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PA CF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PAHT CF | PAHT-CF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PAHT CF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PC GF | PC-GF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PC GF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PET CF | PET-CF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PET CF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PET GF | PET-GF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PET GF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4, 0.6 | TINMORRY PETG GF | PETG-GF | 2 | dist/bbsflmt/tinmorry/p1s/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PETG HS | PETG | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PETG HS.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PLA | PLA | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PLA.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY PP CF | PP-CF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY PP CF.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY TPU.bbsflmt |
+| TINMORRY | Bambu Lab P1S | 0.4 | TINMORRY TPU GF | TPU-GF | 1 | dist/bbsflmt/tinmorry/p1s/TINMORRY TPU GF.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY ASA | ASA | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY ASA.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY Galaxy PETG | PETG | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY Galaxy PETG.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY Galaxy PLA | PLA | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY Galaxy PLA.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PETG Matte | PETG | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PETG Matte.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY PP CF | PP-CF | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY PP CF.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY Sparkly PETG | PETG | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY Sparkly PETG.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY TPU 95A.bbsflmt |
+| TINMORRY | Bambu Lab P2S | 0.4 | TINMORRY TPU GF | TPU-GF | 1 | dist/bbsflmt/tinmorry/p2s/TINMORRY TPU GF.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PET CF | PET-CF | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PET CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PETG HS | PETG | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PETG HS.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PLA | PLA | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PLA.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY PP CF | PP-CF | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY PP CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/x1/TINMORRY TPU.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY ASA | ASA | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY ASA.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PA CF | PA-CF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PA CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PAHT CF | PAHT-CF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PAHT CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PC GF | PC-GF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PC GF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PET CF | PET-CF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PET CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PET GF | PET-GF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PET GF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PETG HS | PETG | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PETG HS.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PLA | PLA | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PLA.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PLA CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PLA Silk.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY PP CF | PP-CF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY PP CF.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY TPU.bbsflmt |
+| TINMORRY | Bambu Lab X1 Carbon | 0.4 | TINMORRY TPU GF | TPU-GF | 1 | dist/bbsflmt/tinmorry/x1-carbon/TINMORRY TPU GF.bbsflmt |
+| TINMORRY | Bambu Lab X1E | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/x1e/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab X1E | 0.4 | TINMORRY TPU GF | TPU-GF | 1 | dist/bbsflmt/tinmorry/x1e/TINMORRY TPU GF.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY ABS Pro.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY ASA Basic | ASA | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY ASA Basic.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG CF.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG ECO.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG GF.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG Marble.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG Metallic.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PLA Matte.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY Sparkly PETG | PETG | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY Sparkly PETG.bbsflmt |
+| TINMORRY | Bambu Lab X2D | 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY TPU 95A.bbsflmt |
 
 <!-- PROFILE_TABLE_END -->
 
 ## Basic Workflow
 
-For Bambu Studio import testing, download `all-bbsflmt.zip` from the latest prerelease or release, extract it locally, then import the contained `.bbsflmt` files. Pushing an update branch creates a candidate prerelease named `candidate-YYYYMMDD-HHMM-<short_sha>`. After the candidate is accepted and merged to `main`, a profile-changing `main` push creates a stable release named `vYYYYMMDD-HHMM-<short_sha>`. Release notes show the expected Bambu Studio import count before the material list.
+For Bambu Studio import testing, download `all-bbsflmt.zip` from the latest prerelease or release, extract it locally, then import only the `vendor/printer` folders needed for your machines. Pushing an update branch creates a candidate prerelease named `candidate-YYYYMMDD-HHMM-<short_sha>`. After the candidate is accepted and merged to `main`, a profile-changing `main` push creates a stable release named `vYYYYMMDD-HHMM-<short_sha>`. Release notes show the expected Bambu Studio import count, printer counts, and machine-scoped bundle count.
 
 ```powershell
 npm ci

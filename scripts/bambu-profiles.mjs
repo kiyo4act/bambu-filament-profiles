@@ -2313,25 +2313,19 @@ async function buildBbsflmt() {
   const manifest = {
     generatedAt: new Date().toISOString(),
     bundleType: 'filament config bundle',
+    bundleGrouping: 'vendor-printer-material',
     vendors: [],
   };
 
-  const byVendorFamily = new Map();
-  for (const item of profiles) {
-    const familyName = item.profile.name.split(' @')[0];
-    const key = `${item.vendor}:${familyName}`;
-    if (!byVendorFamily.has(key)) byVendorFamily.set(key, []);
-    byVendorFamily.get(key).push(item);
-  }
-
-  for (const [key, items] of [...byVendorFamily.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en'))) {
-    const [vendor, familyName] = key.split(':');
+  const sortedGroups = bundleGroupsForProfiles(profiles);
+  for (const group of sortedGroups) {
+    const { vendor, familyName, printerNozzle, items } = group;
     const vendorKey = slug(vendor);
     const bundleProfiles = items.sort((a, b) => a.profile.name.localeCompare(b.profile.name, 'en'));
     const innerPaths = bundleProfiles.map((item) => `${vendor}/${item.profile.name}.json`);
     const bundleVersion = bundleProfiles[0]?.profile.version ?? '2.0.0.0';
     const bundle = {
-      bundle_id: `${hash(`${vendor}:${familyName}`).slice(0, 10)}_${familyName}_${hash(innerPaths.join('|')).slice(0, 10)}`,
+      bundle_id: `${hash(`${vendor}:${printerNozzle.printer}:${familyName}`).slice(0, 10)}_${familyName}_${hash(innerPaths.join('|')).slice(0, 10)}`,
       bundle_type: 'filament config bundle',
       filament_name: familyName,
       filament_vendor: [
@@ -2355,19 +2349,33 @@ async function buildBbsflmt() {
     }
 
     const bundleBytes = zipSync(zipEntries, { level: 9 });
-    const outPath = path.join(distRoot, 'bbsflmt', vendorKey, `${safeFileName(familyName)}.bbsflmt`);
+    const outPath = path.join(
+      distRoot,
+      'bbsflmt',
+      vendorKey,
+      printerNozzle.printerKey,
+      `${safeFileName(familyName)}.bbsflmt`,
+    );
     await fs.mkdir(path.dirname(outPath), { recursive: true });
     await fs.writeFile(outPath, Buffer.from(bundleBytes));
-    validateBundleBytes(bundleBytes, outPath, { filamentIdLocks, requireFilamentIdLocks: true });
+    validateBundleBytes(bundleBytes, outPath, {
+      filamentIdLocks,
+      requireFilamentIdLocks: true,
+      requireSinglePrinter: true,
+    });
 
     let vendorManifest = manifest.vendors.find((item) => item.vendor === vendor);
     if (!vendorManifest) {
-      vendorManifest = { vendor, materials: [] };
+      vendorManifest = { vendor, bundles: [] };
       manifest.vendors.push(vendorManifest);
     }
-    vendorManifest.materials.push({
-      name: familyName,
+    vendorManifest.bundles.push({
+      material: familyName,
       type: bundleProfiles[0]?.profile.filament_type?.[0] ?? '',
+      printer: printerNozzle.printer,
+      printerKey: printerNozzle.printerKey,
+      nozzles: unique(bundleProfiles.map((item) => printerNozzleForProfile(item.profile).nozzle).filter(Boolean)),
+      compatiblePrinters: unique(bundleProfiles.map((item) => item.profile.compatible_printers?.[0] ?? '').filter(Boolean)),
       artifact: path.relative(distRoot, outPath).replaceAll(path.sep, '/'),
       profiles: bundleProfiles.map((item) => ({
         name: item.profile.name,
@@ -2383,7 +2391,7 @@ async function buildBbsflmt() {
   await writeAggregateZip('all-bbsflmt.zip', path.join(distRoot, 'bbsflmt'));
   await writeAggregateZip('all-json.zip', path.join(distRoot, 'json'));
   await writeAggregateZip('all-user-base.zip', path.join(distRoot, 'user-base'));
-  console.log(`OK: built ${manifest.vendors.reduce((sum, vendor) => sum + vendor.materials.length, 0)} .bbsflmt bundles.`);
+  console.log(`OK: built ${manifest.vendors.reduce((sum, vendor) => sum + vendor.bundles.length, 0)} machine-scoped .bbsflmt bundles.`);
 }
 
 async function verifyAll() {
@@ -2401,6 +2409,7 @@ async function verifyAll() {
         validateBundleBytes(new Uint8Array(await fs.readFile(bundleFile)), bundleFile, {
           filamentIdLocks,
           requireFilamentIdLocks: true,
+          requireSinglePrinter: true,
         });
       } catch (error) {
         errors.push(error.message);
@@ -2585,6 +2594,57 @@ function familyNameForProfile(profile) {
   return String(profile.name ?? '').split(' @')[0];
 }
 
+function bundleGroupsForProfiles(profiles) {
+  const bundleGroups = new Map();
+  for (const item of profiles) {
+    const familyName = familyNameForProfile(item.profile);
+    const printerNozzle = printerNozzleForProfile(item.profile);
+    const key = [item.vendor, printerNozzle.printerKey, familyName].join('\u001f');
+    if (!bundleGroups.has(key)) {
+      bundleGroups.set(key, {
+        vendor: item.vendor,
+        familyName,
+        printerNozzle,
+        items: [],
+      });
+    }
+    bundleGroups.get(key).items.push(item);
+  }
+  return [...bundleGroups.values()].sort(compareBundleGroups);
+}
+
+function printerNozzleForProfile(profile) {
+  const compatiblePrinter = String(profile.compatible_printers?.[0] ?? '').trim();
+  const parsed = parseCompatiblePrinter(compatiblePrinter);
+  return {
+    printer: parsed.printer,
+    printerKey: printerKeyFor(parsed.printer),
+    nozzle: parsed.nozzle,
+  };
+}
+
+function parseCompatiblePrinter(compatiblePrinter) {
+  const match = compatiblePrinter.match(/^(.*?)\s+(\d+(?:\.\d+)?)\s+nozzle$/i);
+  if (match) {
+    return {
+      printer: match[1].trim(),
+      nozzle: match[2],
+    };
+  }
+  return {
+    printer: compatiblePrinter.trim(),
+    nozzle: '',
+  };
+}
+
+function compareBundleGroups(a, b) {
+  return (
+    a.vendor.localeCompare(b.vendor, 'en') ||
+    a.printerNozzle.printerKey.localeCompare(b.printerNozzle.printerKey, 'en') ||
+    a.familyName.localeCompare(b.familyName, 'en')
+  );
+}
+
 function validateBundleBytes(bytes, label, options = {}) {
   const entries = unzipSync(bytes);
   const bundleBytes = entries['bundle_structure.json'];
@@ -2595,6 +2655,7 @@ function validateBundleBytes(bytes, label, options = {}) {
   );
   if (!paths.length) throw new Error(`${label}: bundle has no filament paths`);
   const names = new Set();
+  const printerModels = new Set();
   const byFamilyId = new Map();
   for (const { bundlePath, vendor } of paths) {
     const entry = entries[bundlePath];
@@ -2609,6 +2670,14 @@ function validateBundleBytes(bytes, label, options = {}) {
     if (filamentIdError) throw new Error(filamentIdError);
     const familyIdError = validateFamilyFilamentIdConsistency(byFamilyId, profile, `${label}: ${bundlePath}`, vendor);
     if (familyIdError) throw new Error(familyIdError);
+    if (options.requireSinglePrinter) {
+      const compatiblePrinter = String(profile.compatible_printers?.[0] ?? '').trim();
+      if (!compatiblePrinter) throw new Error(`${label}: missing compatible_printers[0] in bundle profile: ${bundlePath}`);
+      printerModels.add(parseCompatiblePrinter(compatiblePrinter).printer);
+    }
+  }
+  if (options.requireSinglePrinter && printerModels.size > 1) {
+    throw new Error(`${label}: bundle contains multiple printer models: ${[...printerModels].join(', ')}`);
   }
 }
 
@@ -2665,20 +2734,20 @@ async function generateReadme() {
   if (!profiles.length) {
     lines.push('No normalized profiles are committed yet. Use `vendor:collect`, `vendor:diff`, and `vendor:propose` to prepare an AI-reviewed update.');
   } else {
-    const byVendorFamily = new Map();
-    for (const item of profiles) {
-      const family = item.profile.name.split(' @')[0];
-      const key = `${item.vendor}:${family}`;
-      if (!byVendorFamily.has(key)) byVendorFamily.set(key, []);
-      byVendorFamily.get(key).push(item);
-    }
-    lines.push('| Vendor | Material | Type | Profiles | Release artifact |');
-    lines.push('|---|---|---:|---:|---|');
-    for (const [key, items] of [...byVendorFamily.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en'))) {
-      const [vendor, family] = key.split(':');
-      const artifact = `dist/bbsflmt/${slug(vendor)}/${safeFileName(family)}.bbsflmt`;
+    lines.push('| Vendor | Printer | Nozzles | Material | Type | Profiles | Release artifact |');
+    lines.push('|---|---|---|---|---|---:|---|');
+    for (const group of bundleGroupsForProfiles(profiles)) {
+      const { vendor, familyName, printerNozzle, items } = group;
+      const nozzles = unique(items.map((item) => printerNozzleForProfile(item.profile).nozzle).filter(Boolean))
+        .sort((a, b) => Number(a) - Number(b));
+      const artifact = [
+        'dist/bbsflmt',
+        slug(vendor),
+        printerNozzle.printerKey,
+        `${safeFileName(familyName)}.bbsflmt`,
+      ].join('/');
       lines.push(
-        `| ${vendor} | ${family} | ${items[0].profile.filament_type?.[0] ?? ''} | ${items.length} | ${artifact} |`,
+        `| ${vendor} | ${printerNozzle.printer} | ${nozzles.join(', ')} | ${familyName} | ${items[0].profile.filament_type?.[0] ?? ''} | ${items.length} | ${artifact} |`,
       );
     }
   }
@@ -2904,31 +2973,43 @@ async function writeReleaseNotes(manifest) {
     '# Release Artifacts',
     '',
     `Expected Bambu Studio import count: ${totals.profiles} configs`,
-    `Material bundles generated: ${totals.materials}`,
+    `Machine material bundles generated: ${totals.bundles}`,
+    `Material families represented: ${totals.materials}`,
     `Vendors included: ${totals.vendors}`,
     '',
     '## Counts',
     '',
-    '| Vendor | Materials | Profiles |',
-    '|---|---:|---:|',
+    '| Vendor | Bundles | Materials | Profiles |',
+    '|---|---:|---:|---:|',
   ];
   for (const vendor of breakdown.vendors) {
-    lines.push(`| ${vendor.vendor} | ${vendor.materials} | ${vendor.profiles} |`);
+    lines.push(`| ${vendor.vendor} | ${vendor.bundles} | ${vendor.materials} | ${vendor.profiles} |`);
   }
-  lines.push('', '| Printer | Profiles |', '|---|---:|');
+  lines.push('', '| Printer | Bundles | Profiles |', '|---|---:|---:|');
   for (const printer of breakdown.printers) {
-    lines.push(`| ${printer.printer} | ${printer.profiles} |`);
+    lines.push(`| ${printer.printer} | ${printer.bundles} | ${printer.profiles} |`);
   }
   lines.push(
     '',
-    'Download `all-bbsflmt.zip` for Bambu Studio import testing. Individual `.bbsflmt` files are kept inside that archive, not uploaded as separate release assets.',
+    'Download `all-bbsflmt.zip` for Bambu Studio import testing. It is organized as `vendor/printer/material.bbsflmt`; import only the printer folders you need to avoid unnecessary user presets.',
     'Download `all-user-base.zip` for printer/AMS sync testing with Bambu Studio user-profile metadata. It contains `filament/base/*.json` and matching `.info` files with stable `setting_id` values.',
+    'Download `manifest.json` for the complete per-bundle file list.',
     '',
   );
   for (const vendor of manifest.vendors) {
     lines.push(`## ${vendor.vendor}`, '');
-    for (const material of vendor.materials) {
-      lines.push(`- ${material.name}: ${material.profiles.length} profile(s) -> \`${material.artifact}\``);
+    const bundlesByPrinter = new Map();
+    for (const bundle of vendor.bundles ?? []) {
+      const printer = bundle.printer ?? '';
+      if (!bundlesByPrinter.has(printer)) bundlesByPrinter.set(printer, []);
+      bundlesByPrinter.get(printer).push(bundle);
+    }
+    for (const [printer, bundles] of [...bundlesByPrinter.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en'))) {
+      lines.push(`### ${printer}`, '');
+      for (const bundle of bundles.sort((a, b) => a.material.localeCompare(b.material, 'en'))) {
+        lines.push(`- ${bundle.material}: ${bundle.profiles.length} profile(s) -> \`${bundle.artifact}\``);
+      }
+      lines.push('');
     }
     lines.push('');
   }
@@ -2936,32 +3017,41 @@ async function writeReleaseNotes(manifest) {
 }
 
 function releaseTotals(manifest) {
-  const materials = manifest.vendors.flatMap((vendor) => vendor.materials ?? []);
+  const bundles = manifest.vendors.flatMap((vendor) => vendor.bundles ?? []);
+  const materialFamilies = new Set(
+    manifest.vendors.flatMap((vendor) => (vendor.bundles ?? []).map((bundle) => `${vendor.vendor}:${bundle.material}`)),
+  );
   return {
     vendors: manifest.vendors.length,
-    materials: materials.length,
-    profiles: materials.reduce((sum, material) => sum + (material.profiles?.length ?? 0), 0),
+    bundles: bundles.length,
+    materials: materialFamilies.size,
+    profiles: bundles.reduce((sum, bundle) => sum + (bundle.profiles?.length ?? 0), 0),
   };
 }
 
 function releaseBreakdown(manifest) {
-  const vendors = manifest.vendors.map((vendor) => ({
-    vendor: vendor.vendor,
-    materials: vendor.materials.length,
-    profiles: vendor.materials.reduce((sum, material) => sum + (material.profiles?.length ?? 0), 0),
-  }));
+  const vendors = manifest.vendors.map((vendor) => {
+    const bundles = vendor.bundles ?? [];
+    return {
+      vendor: vendor.vendor,
+      bundles: bundles.length,
+      materials: new Set(bundles.map((bundle) => bundle.material)).size,
+      profiles: bundles.reduce((sum, bundle) => sum + (bundle.profiles?.length ?? 0), 0),
+    };
+  });
   const printerCounts = new Map();
   for (const vendor of manifest.vendors) {
-    for (const material of vendor.materials ?? []) {
-      for (const profile of material.profiles ?? []) {
-        const printer = String(profile.printer ?? '').replace(/\s+\d+(?:\.\d+)?\s+nozzle$/i, '').trim();
-        if (!printer) continue;
-        printerCounts.set(printer, (printerCounts.get(printer) ?? 0) + 1);
-      }
+    for (const bundle of vendor.bundles ?? []) {
+      const printer = bundle.printer ?? '';
+      if (!printer) continue;
+      const current = printerCounts.get(printer) ?? { bundles: 0, profiles: 0 };
+      current.bundles += 1;
+      current.profiles += bundle.profiles?.length ?? 0;
+      printerCounts.set(printer, current);
     }
   }
   const printers = [...printerCounts.entries()]
-    .map(([printer, profiles]) => ({ printer, profiles }))
+    .map(([printer, counts]) => ({ printer, ...counts }))
     .sort((a, b) => a.printer.localeCompare(b.printer, 'en'));
   return { vendors, printers };
 }
