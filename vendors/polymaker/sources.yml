@@ -1,0 +1,9 @@
+vendor: Polymaker
+sources:
+  - id: polymaker-preset-json
+    label: Polymaker preset repository
+    repo: https://github.com/Polymaker3D/Polymaker-Preset.git
+    branch: main
+    priority: 100
+    formats:
+      - json
