@@ -1,0 +1,546 @@
+{
+  "vendor": "Polymaker",
+  "generatedAt": "2026-06-09T15:22:45.426Z",
+  "purpose": "Lock stable Bambu-compatible filament_id values so future normalization and releases overwrite imported profiles instead of creating duplicates.",
+  "families": [
+    {
+      "family": "Polymaker ABS Max",
+      "filament_id": "Pc715aeb",
+      "profile_count": 6,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker ABS Pro",
+      "filament_id": "Pd52b70e",
+      "profile_count": 8,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker ABS Pro Galaxy",
+      "filament_id": "P0d401f5",
+      "profile_count": 8,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker ASA",
+      "filament_id": "P32adacf",
+      "profile_count": 3,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon ASA-CF08",
+      "filament_id": "P93436a4",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PA12-CF10",
+      "filament_id": "P44ea756",
+      "profile_count": 9,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PA6-CF20",
+      "filament_id": "P83b024e",
+      "profile_count": 9,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PA6-GF25",
+      "filament_id": "P25780fd",
+      "profile_count": 9,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PA612-CF15",
+      "filament_id": "P6fb68f1",
+      "profile_count": 9,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PA612-ESD",
+      "filament_id": "P2b609a9",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PET-CF17",
+      "filament_id": "Pfe7c6dd",
+      "profile_count": 9,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PET-GF15",
+      "filament_id": "Pd08cec3",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PETG-ESD",
+      "filament_id": "Pc26b6c1",
+      "profile_count": 8,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PETG-rCF08",
+      "filament_id": "P4fa3386",
+      "profile_count": 8,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PPS-CF10",
+      "filament_id": "P15f3c37",
+      "profile_count": 2,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Fiberon PPS-GF20",
+      "filament_id": "Pc561896",
+      "profile_count": 3,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker HT-PLA",
+      "filament_id": "P4eb43ae",
+      "profile_count": 9,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker HT-PLA-GF",
+      "filament_id": "P9bb058f",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma CoPE",
+      "filament_id": "Pe90ba42",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA",
+      "filament_id": "Pe3bff7b",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Celestial",
+      "filament_id": "Pb874e38",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Galaxy",
+      "filament_id": "Ped6bb9a",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Glow",
+      "filament_id": "Pd59f818",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Luminous",
+      "filament_id": "P872ad51",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Marble",
+      "filament_id": "Pea29799",
+      "profile_count": 10,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Matte",
+      "filament_id": "P1b4c510",
+      "profile_count": 10,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Metallic",
+      "filament_id": "P908e6c4",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Neon",
+      "filament_id": "Pcc34948",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Satin",
+      "filament_id": "P4ef99d3",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Silk",
+      "filament_id": "Pff998f0",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Starlight",
+      "filament_id": "P92e1411",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA Translucent",
+      "filament_id": "Pc1887ef",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Panchroma PLA UV Shift",
+      "filament_id": "P1bd923d",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PETG",
+      "filament_id": "Paa6475c",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PETG Galaxy",
+      "filament_id": "Pcbccd80",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PLA",
+      "filament_id": "Peadc77f",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PLA Pro",
+      "filament_id": "P6c058ec",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PLA Pro Metallic",
+      "filament_id": "P9348e9e",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyCast",
+      "filament_id": "P70194df",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyFlex TPU95",
+      "filament_id": "P55e018b",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyFlex TPU95-HF",
+      "filament_id": "Pb2de380",
+      "profile_count": 2,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite ABS",
+      "filament_id": "Pd85b2d1",
+      "profile_count": 2,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite CosPLA",
+      "filament_id": "P08af1e3",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite LW-PLA",
+      "filament_id": "P8e747a6",
+      "profile_count": 2,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PC",
+      "filament_id": "P4182601",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PETG",
+      "filament_id": "P55f6a43",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PETG Translucent",
+      "filament_id": "Pdef5466",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA",
+      "filament_id": "P29ee6b9",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Galaxy",
+      "filament_id": "Padd252b",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Glow",
+      "filament_id": "P72ff489",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Luminous",
+      "filament_id": "Pd05dbce",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Neon",
+      "filament_id": "P0fb66dd",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Pro",
+      "filament_id": "Pf87838f",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Pro Metallic",
+      "filament_id": "P376a789",
+      "profile_count": 5,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Starlight",
+      "filament_id": "P56c5c96",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA Translucent",
+      "filament_id": "P12a5e1a",
+      "profile_count": 12,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyLite PLA-CF",
+      "filament_id": "Pe56b69e",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker ABS Max",
+      "filament_id": "P5dde773",
+      "profile_count": 6,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker ABS Pro",
+      "filament_id": "Peede6ef",
+      "profile_count": 8,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker ABS Pro Galaxy",
+      "filament_id": "P9f36422",
+      "profile_count": 8,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker ASA",
+      "filament_id": "Pca90c97",
+      "profile_count": 3,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker HT-PLA",
+      "filament_id": "P34af882",
+      "profile_count": 9,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker HT-PLA-GF",
+      "filament_id": "Pd0c00a7",
+      "profile_count": 5,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker PETG",
+      "filament_id": "Pf7801c8",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker PETG Galaxy",
+      "filament_id": "P5769142",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker PLA",
+      "filament_id": "Pe56c186",
+      "profile_count": 5,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker PLA Pro",
+      "filament_id": "P35b2890",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker Polymaker PLA Pro Metallic",
+      "filament_id": "Pca6d47a",
+      "profile_count": 11,
+      "strategy": "bambu-studio-md5",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyMax PC",
+      "filament_id": "P365e8bf",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyMax PETG",
+      "filament_id": "P247d2f1",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyMax PLA",
+      "filament_id": "P8272d59",
+      "profile_count": 4,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolySmooth",
+      "filament_id": "P4373add",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolySupport",
+      "filament_id": "Pc279cfa",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolySupport for PA12",
+      "filament_id": "Pd63d11e",
+      "profile_count": 1,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyTerra PLA",
+      "filament_id": "Pef3a2a0",
+      "profile_count": 10,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyTerra PLA Marble",
+      "filament_id": "P770acef",
+      "profile_count": 10,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    },
+    {
+      "family": "Polymaker PolyTerra PLA+",
+      "filament_id": "P200df2f",
+      "profile_count": 11,
+      "strategy": "lock",
+      "source": "generated with Bambu Studio new-filament MD5 rule"
+    }
+  ]
+}

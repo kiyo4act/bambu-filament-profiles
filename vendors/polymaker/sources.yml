@@ -5,6 +5,7 @@ sources:
     repo: https://github.com/Polymaker3D/Polymaker-Preset.git
     branch: main
     priority: 100
+    familyPathSegment: 1
     formats:
       - json
     include:

@@ -26,6 +26,18 @@ try {
     profileFor('Fixture PLA @BBL X1', ['Bambu Lab X1 0.4 nozzle']),
   );
   await writeJson(
+    path.join(
+      sourceRepo,
+      'preset',
+      'Fixture Source Path Filter ABS',
+      'BBL',
+      'X1',
+      'BambuStudio',
+      'Fixture Source Path Filter ABS @BBL X1.json',
+    ),
+    profileFor('Fixture Source Path Filter ABS @BBL X1', ['Bambu Lab X1 0.4 nozzle'], 'ABS'),
+  );
+  await writeJson(
     path.join(sourceRepo, 'preset', 'Fixture PLA', 'BBL', 'X1', 'Orcaslicer', 'Fixture PLA @BBL X1.json'),
     profileFor('Fixture PLA @BBL X1 Orca', ['Bambu Lab X1 0.4 nozzle']),
   );
@@ -49,6 +61,7 @@ try {
       `    repo: ${sourceRepo.replaceAll('\\', '/')}`,
       '    branch: main',
       '    priority: 100',
+      '    familyPathSegment: 1',
       '    formats:',
       '      - json',
       '    include:',
@@ -63,8 +76,10 @@ try {
   await runBambuProfiles(['vendor:collect', '--vendor', vendorKey, '--from', 'upstream']);
 
   const manifest = await readJson(path.join(extractedRoot, 'manifest.json'));
-  assert.equal(manifest.inputs.length, 1, 'path filter should collect only the BambuStudio JSON');
+  assert.equal(manifest.inputs.length, 2, 'path filter should collect only the BambuStudio JSON files');
   assert.equal(manifest.inputs[0].relativePath, 'preset/Fixture PLA/BBL/X1/BambuStudio/Fixture PLA @BBL X1.json');
+  assert.equal(manifest.inputs[0].sourceFamilyName, 'Fixture PLA');
+  assert.equal(manifest.inputs[0].sourceFamilySource, 'path');
   assert.equal(manifest.artifactCandidates.length, 0, 'filtered profile-like files must not become artifact candidates');
   assert.equal(manifest.filteredOut.length, 2, 'path filter should report excluded filament JSON files');
   assert.ok(
@@ -79,6 +94,19 @@ try {
     !manifest.filteredOut.some((item) => item.relativePath === 'index.json'),
     'non-filament JSON should not be reported as a filtered profile-like file',
   );
+
+  await runBambuProfiles(['vendor:diff', '--vendor', vendorKey]);
+  await runBambuProfiles(['vendor:propose', '--vendor', vendorKey]);
+  const proposals = await readJson(path.join(extractedRoot, 'reports', 'proposals.json'));
+  assert.equal(proposals.proposals.length, 2);
+  assert.ok(
+    proposals.proposals.some((proposal) => proposal.suggestedFamily === 'Fixture Source Path Filter Fixture PLA'),
+  );
+  assert.ok(
+    proposals.proposals.some((proposal) => proposal.suggestedFamily === 'Fixture Source Path Filter ABS'),
+    'source family that already starts with vendor should not get a duplicate vendor prefix',
+  );
+  assert.equal(proposals.decisionRequestCount, 0);
 
   console.log('OK: source path filter fixture passed.');
 } finally {
@@ -116,12 +144,12 @@ async function writeJson(file, value) {
   await fs.writeFile(file, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-function profileFor(name, compatiblePrinters) {
+function profileFor(name, compatiblePrinters, filamentType = 'PLA') {
   return {
     name,
     filament_settings_id: [name],
     filament_vendor: ['Fixture'],
-    filament_type: ['PLA'],
+    filament_type: [filamentType],
     compatible_printers: compatiblePrinters,
     inherits: '',
   };

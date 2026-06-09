@@ -1,0 +1,11 @@
+{
+  "vendor": "Polymaker",
+  "updatedAt": "2026-06-09T15:22:45.899Z",
+  "sources": {
+    "polymaker-preset-json": {
+      "repo": "https://github.com/Polymaker3D/Polymaker-Preset.git",
+      "branch": "main",
+      "commit": "bb1e231726e2f5fc2bee8a3e7acee98fb8e6ea7e"
+    }
+  }
+}

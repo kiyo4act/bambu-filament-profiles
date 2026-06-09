@@ -61,7 +61,7 @@ function usage() {
   node scripts/bambu-profiles.mjs vendor:collect --vendor <vendor> [--from upstream|incoming|all|<path>]
   node scripts/bambu-profiles.mjs vendor:diff --vendor <vendor>
   node scripts/bambu-profiles.mjs vendor:propose --vendor <vendor>
-  node scripts/bambu-profiles.mjs vendor:ingest --vendor <vendor> [--from incoming|<path>]
+  node scripts/bambu-profiles.mjs vendor:ingest --vendor <vendor> [--from incoming|upstream|<path>]
   node scripts/bambu-profiles.mjs vendor:lock-inputs --vendor <vendor> [--defer-artifact-candidates|--lock-artifact-candidates]
   node scripts/bambu-profiles.mjs profiles:expand-inherits --vendor <vendor> [--system-root <path>]
   node scripts/bambu-profiles.mjs reports:vendor-state --vendor <vendor>
@@ -170,28 +170,10 @@ async function vendorCollect(options) {
     for (const source of config.sources.sources ?? []) {
       const sourceDir = await cloneSource(vendorKey, source);
       const commit = (await git(['rev-parse', 'HEAD'], sourceDir)).stdout.trim();
-      manifest.sources[source.id] = {
-        id: source.id,
-        label: source.label ?? source.id,
-        repo: source.repo,
-        branch: source.branch ?? 'main',
-        commit,
-        priority: Number(source.priority ?? 0),
-        formats: source.formats ?? ['json', 'bbsflmt', 'zip'],
-        include: pathPatterns(source.include),
-        exclude: pathPatterns(source.exclude),
-      };
-      const inputs = await readDirectoryInputs(sourceDir, {
-        vendor: config.vendor,
-        sourceId: source.id,
-        sourceLabel: source.label ?? source.id,
-        sourceRepo: source.repo,
-        sourcePriority: Number(source.priority ?? 0),
-        sourceCommit: commit,
-        allowedFormats: new Set(source.formats ?? ['json', 'bbsflmt', 'zip']),
-        pathInclude: pathPatterns(source.include),
-        pathExclude: pathPatterns(source.exclude),
-      }, { includeArtifactCandidates: true });
+      manifest.sources[source.id] = sourceManifestEntry(source, commit);
+      const inputs = await readDirectoryInputs(sourceDir, sourceMetaForSource(config, source, commit), {
+        includeArtifactCandidates: true,
+      });
       await appendCollectedInputs(manifest, inputs.profiles, collectionRoot);
       await appendArtifactCandidates(manifest, inputs.artifactCandidates, collectionRoot);
       appendFilteredOut(manifest, inputs.filteredOut);
@@ -461,15 +443,19 @@ async function vendorPropose(options) {
       input.filamentSettingsId,
       input.innerPath,
     );
-    const material = materialObservationFor(normalizeText(sourceFamilyName || text));
+    const trustedSourceFamily = input.sourceFamilySource === 'path';
+    const familyFromSource = input.sourceFamilyName || sourceFamilyName;
+    const material = materialObservationFor(normalizeText(familyFromSource || text));
     const printers = printerNamesFromText(text).map((printer) => ({
       printer,
       nozzle: nozzleFor(text, {}),
     }));
-    const familySuggestion = sourceFamilyName
-      ? `${manifest.vendor} ${sourceFamilyName}`
+    const familySuggestion = familyFromSource
+      ? familyNameFromSourceFamily(manifest.vendor, familyFromSource)
       : familySuggestionFor(manifest.vendor, material);
-    const issues = proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies);
+    const issues = proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies, {
+      trustedSourceFamily,
+    });
     const proposal = {
       sourceId: input.sourceId,
       relativePath: input.relativePath,
@@ -515,15 +501,19 @@ async function vendorPropose(options) {
       candidate.filamentSettingsId,
       candidate.innerPath,
     );
-    const material = materialObservationFor(normalizeText(sourceFamilyName || text));
+    const trustedSourceFamily = candidate.sourceFamilySource === 'path';
+    const familyFromSource = candidate.sourceFamilyName || sourceFamilyName;
+    const material = materialObservationFor(normalizeText(familyFromSource || text));
     const printers = printerNamesFromText(text).map((printer) => ({
       printer,
       nozzle: nozzleFor(text, {}),
     }));
-    const familySuggestion = sourceFamilyName
-      ? `${manifest.vendor} ${sourceFamilyName}`
+    const familySuggestion = familyFromSource
+      ? familyNameFromSourceFamily(manifest.vendor, familyFromSource)
       : familySuggestionFor(manifest.vendor, material);
-    const issues = artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies);
+    const issues = artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies, {
+      trustedSourceFamily,
+    });
     const artifactProposal = {
       sourceId: candidate.sourceId,
       relativePath: candidate.relativePath,
@@ -610,6 +600,8 @@ async function vendorLockInputs(options) {
       bundleHash: input.bundleHash,
       settingsHash: input.settingsHash,
       profileName: input.profileName,
+      sourceFamilyName: input.sourceFamilyName ?? '',
+      sourceFamilySource: input.sourceFamilySource ?? '',
       filamentSettingsId: input.filamentSettingsId,
       filamentVendor: input.filamentVendor,
       filamentType: input.filamentType,
@@ -636,6 +628,8 @@ async function vendorLockInputs(options) {
       bundleHash: candidate.bundleHash,
       reviewHash: artifactCandidateReviewHash(candidate),
       profileName: candidate.profileName,
+      sourceFamilyName: candidate.sourceFamilyName ?? '',
+      sourceFamilySource: candidate.sourceFamilySource ?? '',
       extractedPath: candidate.extractedPath,
       promoteFromPath: candidate.promoteFromPath,
     }));
@@ -759,28 +753,7 @@ async function reportsVendorState(options) {
 async function vendorUpdate(options) {
   const vendorKey = requireVendor(options);
   const config = await readVendorConfig(vendorKey);
-  const sourceProfiles = [];
-  const upstreamHeads = {};
-
-  for (const source of config.sources.sources ?? []) {
-    const sourceDir = await cloneSource(vendorKey, source);
-    const commit = await git(['rev-parse', 'HEAD'], sourceDir);
-    upstreamHeads[source.id] = {
-      repo: source.repo,
-      branch: source.branch ?? 'main',
-      commit: commit.stdout.trim(),
-    };
-    sourceProfiles.push(
-      ...(await readProfilesFromDirectory(sourceDir, {
-        vendor: config.vendor,
-        sourceId: source.id,
-        sourceLabel: source.label ?? source.id,
-        sourceRepo: source.repo,
-        sourcePriority: Number(source.priority ?? 0),
-        allowedFormats: new Set(source.formats ?? ['json', 'bbsflmt', 'zip']),
-      })),
-    );
-  }
+  const { sourceProfiles, upstreamHeads } = await readUpstreamSourceProfiles(config, vendorKey);
 
   const result = await normalizeAndWriteVendor(config, sourceProfiles, { upstreamHeads });
   await writeJson(path.join(config.dir, 'upstream-lock.json'), {
@@ -796,6 +769,21 @@ async function vendorIngest(options) {
   const vendorKey = requireVendor(options);
   const config = await readVendorConfig(vendorKey);
   const from = options.from ?? 'incoming';
+  if (from === 'upstream') {
+    const { sourceProfiles, upstreamHeads } = await readUpstreamSourceProfiles(config, vendorKey);
+    if (!sourceProfiles.length) {
+      throw new Error(`No upstream profiles found for ${config.vendor}`);
+    }
+    const result = await normalizeAndWriteVendor(config, sourceProfiles, { upstreamHeads });
+    await writeJson(path.join(config.dir, 'upstream-lock.json'), {
+      vendor: config.vendor,
+      updatedAt: new Date().toISOString(),
+      sources: upstreamHeads,
+    });
+    await generateReadme();
+    console.log(`OK: ${config.vendor} ingested from upstream with ${result.profileCount} normalized profiles.`);
+    return;
+  }
   const inputRoots = from === 'incoming' ? await incomingRootsFor(vendorKey) : [path.resolve(repoRoot, from)];
   const incomingProfiles = [];
   for (const inputRoot of inputRoots) {
@@ -893,14 +881,14 @@ function normalizeRawProfile(config, raw, reports, options = {}) {
       raw.innerPath,
     ].join(' '),
   );
-  const sourceFamilyName = sourceFamilyNameFromParts(
+  const sourceFamilyName = raw.sourceFamilyName || sourceFamilyNameFromParts(
     config.vendor,
     raw.profile.name,
     arrayFirst(raw.profile.filament_settings_id),
     raw.innerPath,
   );
   const families = sourceFamilyName
-    ? [`${config.vendor} ${sourceFamilyName}`]
+    ? [familyNameFromSourceFamily(config.vendor, sourceFamilyName)]
     : materialFamiliesFor(sourceText, config.vendor);
   const printerNozzles = printerNozzlesFor(raw, sourceText, config);
 
@@ -917,13 +905,17 @@ function normalizeRawProfile(config, raw, reports, options = {}) {
     innerPath: raw.innerPath ?? '',
     sourceName: raw.profile.name ?? '',
     inherits: raw.profile.inherits ?? '',
+    sourceFamilyName,
+    sourceFamilySource: raw.sourceFamilySource ?? '',
     families,
     printerNozzles,
   });
 
   const out = [];
   for (const familyName of families) {
-    const materialType = materialTypeForFamily(familyName, config.vendor);
+    const materialType = materialTypeForFamily(familyName, config.vendor, arrayFirst(raw.profile.filament_type), {
+      preferSourceFilamentType: raw.sourceFamilySource === 'path',
+    });
     if (sourceText.includes('PETG') && startsWithMaterial(familyName, config.vendor, 'PET ')) {
       reports.errors.push(`PETG source classified as PET: ${raw.relativePath} -> ${familyName}`);
     }
@@ -982,6 +974,8 @@ function normalizeRawProfile(config, raw, reports, options = {}) {
         sourcePath: raw.relativePath,
         innerPath: raw.innerPath ?? '',
         sourceName: raw.profile.name ?? '',
+        sourceFamilyName: raw.sourceFamilyName ?? '',
+        sourceFamilySource: raw.sourceFamilySource ?? '',
         outputName,
         outputRelativePath,
       });
@@ -1186,11 +1180,14 @@ async function readDirectoryInputs(root, sourceMeta, options = {}) {
       const bytes = await fs.readFile(filePath);
       const profile = JSON.parse(bytes.toString('utf8'));
       if (!isFilamentProfile(profile)) continue;
+      const sourceFamilyName = sourceFamilyNameFromPath(relativePath, sourceMeta);
       profiles.push({
         ...sourceMeta,
         format,
         filePath,
         relativePath,
+        sourceFamilyName,
+        sourceFamilySource: sourceFamilyName ? 'path' : '',
         sourceFileHash: hash(bytes),
         profileHash: stableHash(profile),
         profile,
@@ -1253,6 +1250,7 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
   const bytes = new Uint8Array(await fs.readFile(filePath));
   const sourceFileHash = hash(Buffer.from(bytes));
   const relativePath = path.relative(root, filePath).replaceAll(path.sep, '/');
+  const sourceFamilyName = sourceFamilyNameFromPath(relativePath, sourceMeta);
   const parsed = parseBundleProfiles(bytes);
   const out = [];
 
@@ -1263,6 +1261,8 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
       filePath,
       relativePath,
       innerPath: item.innerPath,
+      sourceFamilyName,
+      sourceFamilySource: sourceFamilyName ? 'path' : '',
       bundle: item.bundle,
       bundleHash: item.bundleHash,
       sourceFileHash,
@@ -1278,6 +1278,8 @@ async function readBundleProfiles(filePath, root, sourceMeta, format) {
       filePath,
       relativePath,
       innerPath: '',
+      sourceFamilyName,
+      sourceFamilySource: sourceFamilyName ? 'path' : '',
       bundle: null,
       bundleHash: null,
       sourceFileHash,
@@ -1564,6 +1566,8 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
       settingsHash: profileSettingsHash(raw.profile),
       extractedPath: extractedRelativePath,
       profileName: raw.profile.name ?? '',
+      sourceFamilyName: raw.sourceFamilyName ?? '',
+      sourceFamilySource: raw.sourceFamilySource ?? '',
       filamentSettingsId: arrayFirst(raw.profile.filament_settings_id) ?? '',
       filamentVendor: Array.isArray(raw.profile.filament_vendor) ? raw.profile.filament_vendor : [],
       filamentType: arrayFirst(raw.profile.filament_type) ?? '',
@@ -1622,6 +1626,8 @@ async function appendArtifactCandidates(manifest, rawCandidates, collectionRoot)
       extractedPath,
       promoteFromPath,
       profileName: raw.profileName ?? '',
+      sourceFamilyName: raw.sourceFamilyName ?? '',
+      sourceFamilySource: raw.sourceFamilySource ?? '',
       filamentSettingsId: raw.filamentSettingsId ?? '',
       filamentVendor: raw.filamentVendor ?? [],
       filamentType: raw.filamentType ?? '',
@@ -1954,7 +1960,7 @@ function familySuggestionFor(vendor, material) {
   return `${vendor} ${[primary, ...suffix].join(' ')}`.trim();
 }
 
-function proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies) {
+function proposalIssuesFor(input, material, printers, familySuggestion, knownFamilies, options = {}) {
   const issues = [];
   if (!input.filamentVendor.length) {
     issues.push('missing filament_vendor; AI should set the visible vendor after review');
@@ -1962,7 +1968,7 @@ function proposalIssuesFor(input, material, printers, familySuggestion, knownFam
   if (input.inherits) {
     issues.push('inherits is present; AI should expand against Bambu Studio system presets before committing');
   }
-  if (!material.base.length) {
+  if (!material.base.length && !options.trustedSourceFamily) {
     issues.push('material family is unclear');
   }
   if (material.hasPet && material.hasPetg) {
@@ -1974,13 +1980,13 @@ function proposalIssuesFor(input, material, printers, familySuggestion, knownFam
   if (!printers.length && !input.compatiblePrinters.length) {
     issues.push('printer/nozzle is unclear');
   }
-  if (familySuggestion && !knownFamilies.has(familySuggestion)) {
+  if (familySuggestion && !knownFamilies.has(familySuggestion) && !options.trustedSourceFamily) {
     issues.push('suggested family is new to the repository');
   }
   return unique(issues);
 }
 
-function artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies) {
+function artifactCandidateIssuesFor(candidate, material, printers, familySuggestion, knownFamilies, options = {}) {
   const issues = ['unsupported artifact candidate requires AI review before promotion'];
   if (!candidate.profileHash) {
     issues.push('candidate does not contain a readable profile');
@@ -1988,7 +1994,7 @@ function artifactCandidateIssuesFor(candidate, material, printers, familySuggest
   if (candidate.profileHash && !candidate.promoteFromPath) {
     issues.push('candidate profile has no promoteFromPath');
   }
-  if (!material.base.length && candidate.profileHash) {
+  if (!material.base.length && candidate.profileHash && !options.trustedSourceFamily) {
     issues.push('material family is unclear');
   }
   if (material.hasPet && material.hasPetg) {
@@ -2000,7 +2006,7 @@ function artifactCandidateIssuesFor(candidate, material, printers, familySuggest
   if (!printers.length && !(candidate.compatiblePrinters ?? []).length && candidate.profileHash) {
     issues.push('printer/nozzle is unclear');
   }
-  if (familySuggestion && !knownFamilies.has(familySuggestion)) {
+  if (familySuggestion && !knownFamilies.has(familySuggestion) && !options.trustedSourceFamily) {
     issues.push('suggested family is new to the repository');
   }
   return unique(issues);
@@ -2145,6 +2151,14 @@ function sourceFamilyNameFromText(vendor, value) {
   return normalizeSourceFamilyName(match[1]);
 }
 
+function familyNameFromSourceFamily(vendor, sourceFamilyName) {
+  const familyName = String(sourceFamilyName ?? '').trim();
+  if (!familyName) return '';
+  if (familyName.toLowerCase() === String(vendor).toLowerCase()) return familyName;
+  if (familyName.toLowerCase().startsWith(`${String(vendor).toLowerCase()} `)) return familyName;
+  return `${vendor} ${familyName}`;
+}
+
 function normalizeSourceFamilyName(familyName) {
   const upperTokens = new Set([
     'ABS',
@@ -2188,7 +2202,9 @@ function normalizeSourceFamilyName(familyName) {
     .join('');
 }
 
-function materialTypeForFamily(familyName, vendor) {
+function materialTypeForFamily(familyName, vendor, sourceFilamentType = '', options = {}) {
+  const fallback = String(sourceFilamentType ?? '').trim();
+  if (options.preferSourceFilamentType && fallback) return fallback;
   const material = familyName.replace(new RegExp(`^${escapeRegex(vendor)}\\s+`, 'i'), '').toUpperCase();
   if (material.startsWith('PETG CF')) return 'PETG-CF';
   if (material.startsWith('PETG-CF')) return 'PETG-CF';
@@ -2228,6 +2244,7 @@ function materialTypeForFamily(familyName, vendor) {
   if (material.startsWith('TPU GF')) return 'TPU-GF';
   if (material.startsWith('TPU-GF')) return 'TPU-GF';
   if (material.startsWith('TPU')) return 'TPU';
+  if (fallback) return fallback;
   return material.split(/\s+/)[0];
 }
 
@@ -2973,6 +2990,84 @@ async function readVendorConfig(vendorKey) {
     sources,
     normalization,
   };
+}
+
+async function readUpstreamSourceProfiles(config, vendorKey) {
+  const sourceProfiles = [];
+  const upstreamHeads = {};
+
+  for (const source of config.sources.sources ?? []) {
+    const sourceDir = await cloneSource(vendorKey, source);
+    const commit = (await git(['rev-parse', 'HEAD'], sourceDir)).stdout.trim();
+    upstreamHeads[source.id] = {
+      repo: source.repo,
+      branch: source.branch ?? 'main',
+      commit,
+    };
+    sourceProfiles.push(...(await readProfilesFromDirectory(
+      sourceDir,
+      sourceMetaForSource(config, source, commit),
+    )));
+  }
+
+  return { sourceProfiles, upstreamHeads };
+}
+
+function sourceManifestEntry(source, commit) {
+  return {
+    id: source.id,
+    label: source.label ?? source.id,
+    repo: source.repo,
+    branch: source.branch ?? 'main',
+    commit,
+    priority: Number(source.priority ?? 0),
+    formats: source.formats ?? ['json', 'bbsflmt', 'zip'],
+    include: pathPatterns(source.include),
+    exclude: pathPatterns(source.exclude),
+    familyPathSegment: sourceFamilyPathSegment(source),
+  };
+}
+
+function sourceMetaForSource(config, source, commit) {
+  return {
+    vendor: config.vendor,
+    sourceId: source.id,
+    sourceLabel: source.label ?? source.id,
+    sourceRepo: source.repo,
+    sourcePriority: Number(source.priority ?? 0),
+    sourceCommit: commit,
+    allowedFormats: new Set(source.formats ?? ['json', 'bbsflmt', 'zip']),
+    pathInclude: pathPatterns(source.include),
+    pathExclude: pathPatterns(source.exclude),
+    sourceFamilyPathSegment: sourceFamilyPathSegment(source),
+  };
+}
+
+function sourceFamilyPathSegment(source) {
+  if (source.familyPathSegment === undefined || source.familyPathSegment === null || source.familyPathSegment === '') {
+    return null;
+  }
+  const segment = Number(source.familyPathSegment);
+  if (!Number.isInteger(segment) || segment < 0) {
+    throw new Error(`${source.id} familyPathSegment must be a non-negative integer.`);
+  }
+  return segment;
+}
+
+function sourceFamilyNameFromPath(relativePath, sourceMeta) {
+  const segment = sourceMeta.sourceFamilyPathSegment;
+  if (segment === null || segment === undefined) return '';
+  const parts = String(relativePath ?? '').replaceAll('\\', '/').split('/');
+  return normalizeTrustedSourceFamilyName(parts[segment] ?? '');
+}
+
+function normalizeTrustedSourceFamilyName(value) {
+  return String(value ?? '')
+    .normalize('NFKC')
+    .replace(/\s*-\s*/g, '-')
+    .replace(/\s*\+\s*/g, '+')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 async function cloneSource(vendorKey, source) {
