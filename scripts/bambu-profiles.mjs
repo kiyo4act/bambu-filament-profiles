@@ -604,6 +604,13 @@ async function vendorLockInputs(options) {
       bundleHash: input.bundleHash,
       settingsHash: input.settingsHash,
       profileName: input.profileName,
+      filamentSettingsId: input.filamentSettingsId,
+      filamentVendor: input.filamentVendor,
+      filamentType: input.filamentType,
+      compatiblePrinters: input.compatiblePrinters,
+      observedPrinters: input.observedPrinters,
+      inherits: input.inherits,
+      keyCount: input.keyCount,
       extractedPath: input.extractedPath,
     })),
   };
@@ -1455,6 +1462,14 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
   const writtenBundles = new Set();
   for (const raw of rawProfiles) {
     const profileHash = raw.profileHash ?? stableHash(raw.profile);
+    const observedPrinters = unique(printerNamesFromText(normalizeText([
+      raw.profile.name,
+      arrayFirst(raw.profile.filament_settings_id),
+      raw.relativePath,
+      raw.innerPath,
+      raw.profile.inherits,
+      Array.isArray(raw.profile.compatible_printers) ? raw.profile.compatible_printers.join(' ') : '',
+    ].join(' '))));
     const sourceKey = `${raw.sourceId}:${raw.relativePath}:${raw.innerPath ?? ''}`;
     const extractedRelativePath = path
       .join(
@@ -1507,6 +1522,7 @@ async function appendCollectedInputs(manifest, rawProfiles, collectionRoot) {
       compatiblePrinters: Array.isArray(raw.profile.compatible_printers)
         ? raw.profile.compatible_printers
         : [],
+      observedPrinters,
       inherits: raw.profile.inherits ?? '',
       keyCount: Object.keys(raw.profile).length,
     });
