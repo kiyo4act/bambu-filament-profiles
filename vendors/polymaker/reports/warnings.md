@@ -1,0 +1,68 @@
+# Warnings
+
+- Polymaker:Polymaker ABS Max: ignored incompatible source filament_id values (PMAB02) and normalized to Pc715aeb
+- Polymaker:Polymaker ABS Pro: ignored incompatible source filament_id values (PMAB04) and normalized to Pd52b70e
+- Polymaker:Polymaker ABS Pro Galaxy: ignored incompatible source filament_id values (PMAB03) and normalized to P0d401f5
+- Polymaker:Polymaker ASA: ignored incompatible source filament_id values (PMAS02) and normalized to P32adacf
+- Polymaker:Polymaker Fiberon ASA-CF08: ignored incompatible source filament_id values (PMAS01) and normalized to P93436a4
+- Polymaker:Polymaker Fiberon PA12-CF10: ignored incompatible source filament_id values (PMPA01) and normalized to P44ea756
+- Polymaker:Polymaker Fiberon PA6-CF20: ignored incompatible source filament_id values (PMPA02) and normalized to P83b024e
+- Polymaker:Polymaker Fiberon PA6-GF25: ignored incompatible source filament_id values (PMPA03) and normalized to P25780fd
+- Polymaker:Polymaker Fiberon PA612-CF15: ignored incompatible source filament_id values (PMPA04) and normalized to P6fb68f1
+- Polymaker:Polymaker Fiberon PA612-ESD: ignored incompatible source filament_id values (PMPA05) and normalized to P2b609a9
+- Polymaker:Polymaker Fiberon PET-CF17: ignored incompatible source filament_id values (PMPE01) and normalized to Pfe7c6dd
+- Polymaker:Polymaker Fiberon PET-GF15: ignored incompatible source filament_id values (PMPE08) and normalized to Pd08cec3
+- Polymaker:Polymaker Fiberon PETG-ESD: ignored incompatible source filament_id values (PMPE02) and normalized to Pc26b6c1
+- Polymaker:Polymaker Fiberon PETG-rCF08: ignored incompatible source filament_id values (PMPE03) and normalized to P4fa3386
+- Polymaker:Polymaker Fiberon PPS-CF10: ignored incompatible source filament_id values (PMPP01) and normalized to P15f3c37
+- Polymaker:Polymaker Fiberon PPS-GF20: ignored incompatible source filament_id values (PMPP02) and normalized to Pc561896
+- Polymaker:Polymaker HT-PLA: ignored incompatible source filament_id values (PMHT01) and normalized to P4eb43ae
+- Polymaker:Polymaker HT-PLA-GF: ignored incompatible source filament_id values (PMHT02) and normalized to P9bb058f
+- Polymaker:Polymaker Panchroma CoPE: ignored incompatible source filament_id values (PMCO01) and normalized to Pe90ba42
+- Polymaker:Polymaker Panchroma PLA: ignored incompatible source filament_id values (PMPL01) and normalized to Pe3bff7b
+- Polymaker:Polymaker Panchroma PLA Celestial: ignored incompatible source filament_id values (PMPL02) and normalized to Pb874e38
+- Polymaker:Polymaker Panchroma PLA Galaxy: ignored incompatible source filament_id values (PMPL03) and normalized to Ped6bb9a
+- Polymaker:Polymaker Panchroma PLA Glow: ignored incompatible source filament_id values (PMPL04) and normalized to Pd59f818
+- Polymaker:Polymaker Panchroma PLA Luminous: ignored incompatible source filament_id values (PMPL05) and normalized to P872ad51
+- Polymaker:Polymaker Panchroma PLA Marble: ignored incompatible source filament_id values (PMPL06) and normalized to Pea29799
+- Polymaker:Polymaker Panchroma PLA Matte: ignored incompatible source filament_id values (PMPL07) and normalized to P1b4c510
+- Polymaker:Polymaker Panchroma PLA Metallic: ignored incompatible source filament_id values (PMPL08) and normalized to P908e6c4
+- Polymaker:Polymaker Panchroma PLA Neon: ignored incompatible source filament_id values (PMPL09) and normalized to Pcc34948
+- Polymaker:Polymaker Panchroma PLA Satin: ignored incompatible source filament_id values (PMPL10) and normalized to P4ef99d3
+- Polymaker:Polymaker Panchroma PLA Silk: ignored incompatible source filament_id values (PMPL11) and normalized to Pff998f0
+- Polymaker:Polymaker Panchroma PLA Starlight: ignored incompatible source filament_id values (PMPL12) and normalized to P92e1411
+- Polymaker:Polymaker Panchroma PLA Translucent: ignored incompatible source filament_id values (PMPL13) and normalized to Pc1887ef
+- Polymaker:Polymaker Panchroma PLA UV Shift: ignored incompatible source filament_id values (PMPL14) and normalized to P1bd923d
+- Polymaker:Polymaker PETG: ignored incompatible source filament_id values (PMPE06) and normalized to Paa6475c
+- Polymaker:Polymaker PETG Galaxy: ignored incompatible source filament_id values (PMPE07) and normalized to Pcbccd80
+- Polymaker:Polymaker PLA: ignored incompatible source filament_id values (PMPL24) and normalized to Peadc77f
+- Polymaker:Polymaker PLA Pro: ignored incompatible source filament_id values (PMPL25) and normalized to P6c058ec
+- Polymaker:Polymaker PLA Pro Metallic: ignored incompatible source filament_id values (PMPL26) and normalized to P9348e9e
+- Polymaker:Polymaker PolyCast: ignored incompatible source filament_id values (PMPL34) and normalized to P70194df
+- Polymaker:Polymaker PolyFlex TPU95: ignored incompatible source filament_id values (PMTP01) and normalized to P55e018b
+- Polymaker:Polymaker PolyFlex TPU95-HF: ignored incompatible source filament_id values (PMTP02) and normalized to Pb2de380
+- Polymaker:Polymaker PolyLite ABS: ignored incompatible source filament_id values (PMAB01) and normalized to Pd85b2d1
+- Polymaker:Polymaker PolyLite CosPLA: ignored incompatible source filament_id values (PMCO02) and normalized to P08af1e3
+- Polymaker:Polymaker PolyLite LW-PLA: ignored incompatible source filament_id values (PMPL30) and normalized to P8e747a6
+- Polymaker:Polymaker PolyLite PC: ignored incompatible source filament_id values (PMPC01) and normalized to P4182601
+- Polymaker:Polymaker PolyLite PETG: ignored incompatible source filament_id values (PMPE04) and normalized to P55f6a43
+- Polymaker:Polymaker PolyLite PETG Translucent: ignored incompatible source filament_id values (PMPE05) and normalized to Pdef5466
+- Polymaker:Polymaker PolyLite PLA: ignored incompatible source filament_id values (PMPL15) and normalized to P29ee6b9
+- Polymaker:Polymaker PolyLite PLA Galaxy: ignored incompatible source filament_id values (PMPL16) and normalized to Padd252b
+- Polymaker:Polymaker PolyLite PLA Glow: ignored incompatible source filament_id values (PMPL17) and normalized to P72ff489
+- Polymaker:Polymaker PolyLite PLA Luminous: ignored incompatible source filament_id values (PMPL18) and normalized to Pd05dbce
+- Polymaker:Polymaker PolyLite PLA Neon: ignored incompatible source filament_id values (PMPL19) and normalized to P0fb66dd
+- Polymaker:Polymaker PolyLite PLA Pro: ignored incompatible source filament_id values (PMPL20) and normalized to Pf87838f
+- Polymaker:Polymaker PolyLite PLA Pro Metallic: ignored incompatible source filament_id values (PMPL21) and normalized to P376a789
+- Polymaker:Polymaker PolyLite PLA Starlight: ignored incompatible source filament_id values (PMPL22) and normalized to P56c5c96
+- Polymaker:Polymaker PolyLite PLA Translucent: ignored incompatible source filament_id values (PMPL23) and normalized to P12a5e1a
+- Polymaker:Polymaker PolyLite PLA-CF: ignored incompatible source filament_id values (PMPL31) and normalized to Pe56b69e
+- Polymaker:Polymaker PolyMax PC: ignored incompatible source filament_id values (PMPC02) and normalized to P365e8bf
+- Polymaker:Polymaker PolyMax PETG: ignored incompatible source filament_id values (PMPE09) and normalized to P247d2f1
+- Polymaker:Polymaker PolyMax PLA: ignored incompatible source filament_id values (PMPL32) and normalized to P8272d59
+- Polymaker:Polymaker PolySmooth: ignored incompatible source filament_id values (PMPV01) and normalized to P4373add
+- Polymaker:Polymaker PolySupport: ignored incompatible source filament_id values (PMPL33) and normalized to Pc279cfa
+- Polymaker:Polymaker PolySupport for PA12: ignored incompatible source filament_id values (PMPA06) and normalized to Pd63d11e
+- Polymaker:Polymaker PolyTerra PLA: ignored incompatible source filament_id values (PMPL27) and normalized to Pef3a2a0
+- Polymaker:Polymaker PolyTerra PLA Marble: ignored incompatible source filament_id values (PMPL28) and normalized to P770acef
+- Polymaker:Polymaker PolyTerra PLA+: ignored incompatible source filament_id values (PMPL29) and normalized to P200df2f

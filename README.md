@@ -83,6 +83,72 @@ This repository is built for ongoing maintenance by a coding agent:
 | eSUN | eSUN TPU-95A | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-95A.bbsflmt |
 | eSUN | eSUN TPU-LW | TPU | 11 | dist/bbsflmt/esun/eSUN TPU-LW.bbsflmt |
 | eSUN | eSUN UV Rock PLA | PLA | 6 | dist/bbsflmt/esun/eSUN UV Rock PLA.bbsflmt |
+| Polymaker | Polymaker ABS Max | ABS | 6 | dist/bbsflmt/polymaker/Polymaker ABS Max.bbsflmt |
+| Polymaker | Polymaker ABS Pro | ABS | 8 | dist/bbsflmt/polymaker/Polymaker ABS Pro.bbsflmt |
+| Polymaker | Polymaker ABS Pro Galaxy | ABS | 8 | dist/bbsflmt/polymaker/Polymaker ABS Pro Galaxy.bbsflmt |
+| Polymaker | Polymaker ASA | ASA | 3 | dist/bbsflmt/polymaker/Polymaker ASA.bbsflmt |
+| Polymaker | Polymaker Fiberon ASA-CF08 | ASA | 5 | dist/bbsflmt/polymaker/Polymaker Fiberon ASA-CF08.bbsflmt |
+| Polymaker | Polymaker Fiberon PA12-CF10 | PA-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA12-CF10.bbsflmt |
+| Polymaker | Polymaker Fiberon PA6-CF20 | PA6-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA6-CF20.bbsflmt |
+| Polymaker | Polymaker Fiberon PA6-GF25 | PA-GF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA6-GF25.bbsflmt |
+| Polymaker | Polymaker Fiberon PA612-CF15 | PA-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PA612-CF15.bbsflmt |
+| Polymaker | Polymaker Fiberon PA612-ESD | PA-CF | 5 | dist/bbsflmt/polymaker/Polymaker Fiberon PA612-ESD.bbsflmt |
+| Polymaker | Polymaker Fiberon PET-CF17 | PET-CF | 9 | dist/bbsflmt/polymaker/Polymaker Fiberon PET-CF17.bbsflmt |
+| Polymaker | Polymaker Fiberon PET-GF15 | PET-CF | 5 | dist/bbsflmt/polymaker/Polymaker Fiberon PET-GF15.bbsflmt |
+| Polymaker | Polymaker Fiberon PETG-ESD | PETG | 8 | dist/bbsflmt/polymaker/Polymaker Fiberon PETG-ESD.bbsflmt |
+| Polymaker | Polymaker Fiberon PETG-rCF08 | PETG-CF | 8 | dist/bbsflmt/polymaker/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| Polymaker | Polymaker Fiberon PPS-CF10 | PPS-CF | 2 | dist/bbsflmt/polymaker/Polymaker Fiberon PPS-CF10.bbsflmt |
+| Polymaker | Polymaker Fiberon PPS-GF20 | PPS-CF | 3 | dist/bbsflmt/polymaker/Polymaker Fiberon PPS-GF20.bbsflmt |
+| Polymaker | Polymaker HT-PLA | PLA | 9 | dist/bbsflmt/polymaker/Polymaker HT-PLA.bbsflmt |
+| Polymaker | Polymaker HT-PLA-GF | PLA | 5 | dist/bbsflmt/polymaker/Polymaker HT-PLA-GF.bbsflmt |
+| Polymaker | Polymaker Panchroma CoPE | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma CoPE.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA | PLA | 11 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Celestial | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Celestial.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Galaxy | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Glow | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Glow.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Luminous | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Luminous.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Marble | PLA | 10 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Marble.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Matte | PLA | 10 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Matte.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Metallic | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Metallic.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Neon | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Neon.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Satin | PLA | 11 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Satin.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Silk | PLA | 11 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Silk.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Starlight | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Starlight.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA Translucent | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA Translucent.bbsflmt |
+| Polymaker | Polymaker Panchroma PLA UV Shift | PLA | 12 | dist/bbsflmt/polymaker/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| Polymaker | Polymaker PETG | PETG | 11 | dist/bbsflmt/polymaker/Polymaker PETG.bbsflmt |
+| Polymaker | Polymaker PETG Galaxy | PETG | 11 | dist/bbsflmt/polymaker/Polymaker PETG Galaxy.bbsflmt |
+| Polymaker | Polymaker PLA | PLA | 5 | dist/bbsflmt/polymaker/Polymaker PLA.bbsflmt |
+| Polymaker | Polymaker PLA Pro | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PLA Pro.bbsflmt |
+| Polymaker | Polymaker PLA Pro Metallic | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PLA Pro Metallic.bbsflmt |
+| Polymaker | Polymaker PolyCast | PLA | 1 | dist/bbsflmt/polymaker/Polymaker PolyCast.bbsflmt |
+| Polymaker | Polymaker PolyFlex TPU95 | TPU | 5 | dist/bbsflmt/polymaker/Polymaker PolyFlex TPU95.bbsflmt |
+| Polymaker | Polymaker PolyFlex TPU95-HF | TPU | 2 | dist/bbsflmt/polymaker/Polymaker PolyFlex TPU95-HF.bbsflmt |
+| Polymaker | Polymaker PolyLite ABS | ABS | 2 | dist/bbsflmt/polymaker/Polymaker PolyLite ABS.bbsflmt |
+| Polymaker | Polymaker PolyLite CosPLA | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PolyLite CosPLA.bbsflmt |
+| Polymaker | Polymaker PolyLite LW-PLA | PLA | 2 | dist/bbsflmt/polymaker/Polymaker PolyLite LW-PLA.bbsflmt |
+| Polymaker | Polymaker PolyLite PC | PC | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PC.bbsflmt |
+| Polymaker | Polymaker PolyLite PETG | PETG | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PETG.bbsflmt |
+| Polymaker | Polymaker PolyLite PETG Translucent | PETG | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PETG Translucent.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Galaxy | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Glow | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Glow.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Luminous | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Luminous.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Neon | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Neon.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Pro | PLA | 5 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Pro.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Pro Metallic | PLA | 5 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Starlight | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Starlight.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA Translucent | PLA | 12 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA Translucent.bbsflmt |
+| Polymaker | Polymaker PolyLite PLA-CF | PLA-CF | 1 | dist/bbsflmt/polymaker/Polymaker PolyLite PLA-CF.bbsflmt |
+| Polymaker | Polymaker PolyMax PC | PC | 1 | dist/bbsflmt/polymaker/Polymaker PolyMax PC.bbsflmt |
+| Polymaker | Polymaker PolyMax PETG | PETG | 1 | dist/bbsflmt/polymaker/Polymaker PolyMax PETG.bbsflmt |
+| Polymaker | Polymaker PolyMax PLA | PLA | 4 | dist/bbsflmt/polymaker/Polymaker PolyMax PLA.bbsflmt |
+| Polymaker | Polymaker PolySmooth | PVB | 1 | dist/bbsflmt/polymaker/Polymaker PolySmooth.bbsflmt |
+| Polymaker | Polymaker PolySupport | PLA | 1 | dist/bbsflmt/polymaker/Polymaker PolySupport.bbsflmt |
+| Polymaker | Polymaker PolySupport for PA12 | PA | 1 | dist/bbsflmt/polymaker/Polymaker PolySupport for PA12.bbsflmt |
+| Polymaker | Polymaker PolyTerra PLA | PLA | 10 | dist/bbsflmt/polymaker/Polymaker PolyTerra PLA.bbsflmt |
+| Polymaker | Polymaker PolyTerra PLA Marble | PLA | 10 | dist/bbsflmt/polymaker/Polymaker PolyTerra PLA Marble.bbsflmt |
+| Polymaker | Polymaker PolyTerra PLA+ | PLA | 11 | dist/bbsflmt/polymaker/Polymaker PolyTerra PLA+.bbsflmt |
 | SUNLU | SUNLU ASA BASIC | ASA | 7 | dist/bbsflmt/sunlu/SUNLU ASA BASIC.bbsflmt |
 | SUNLU | SUNLU PETG BASIC | PETG | 8 | dist/bbsflmt/sunlu/SUNLU PETG BASIC.bbsflmt |
 | SUNLU | SUNLU PETG HS Matte | PETG | 6 | dist/bbsflmt/sunlu/SUNLU PETG HS Matte.bbsflmt |

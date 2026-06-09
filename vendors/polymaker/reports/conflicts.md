@@ -1,0 +1,58 @@
+# Conflicts
+
+- Duplicate identical profile kept once: Polymaker Panchroma PLA @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA @Bambu Lab P1S 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA @Bambu Lab X1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA @Bambu Lab X1 Carbon 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA @Bambu Lab X1E 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma CoPE @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma CoPE @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Celestial @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Celestial @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Galaxy @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Galaxy @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Glow @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Glow @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Luminous @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Luminous @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Marble @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Marble @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Matte @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Matte @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Metallic @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Metallic @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Neon @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Neon @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Satin @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Satin @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Silk @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Silk @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Starlight @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Starlight @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Translucent @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA Translucent @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA UV Shift @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker Panchroma PLA UV Shift @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite CosPLA @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite CosPLA @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Galaxy @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Galaxy @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Glow @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Glow @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Luminous @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Luminous @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Neon @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Neon @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Starlight @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Starlight @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Translucent @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyLite PLA Translucent @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyTerra PLA @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyTerra PLA @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyTerra PLA Marble @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyTerra PLA Marble @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyTerra PLA+ @Bambu Lab A1 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
+- Duplicate identical profile kept once: Polymaker PolyTerra PLA+ @Bambu Lab A1 mini 0.4 nozzle from polymaker-preset-json and polymaker-preset-json
