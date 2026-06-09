@@ -7,3 +7,8 @@ sources:
     priority: 100
     formats:
       - json
+    include:
+      - preset/**/BBL/**/BambuStudio/*.json
+    exclude:
+      - preset/**/Orcaslicer/*.json
+      - preset/**/OrcaSlicer/*.json

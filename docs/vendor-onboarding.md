@@ -40,3 +40,26 @@ Do not create vendor-specific material/printer rewrite tables as the default. Th
 Higher `priority` indicates which source should be preferred when the AI/user decision says two sources describe the same vendor/material/printer/nozzle profile.
 
 Use priority as evidence, not as silent authority. If two changed inputs conflict, record the conflict and ask unless a prior decision log already covers the same case.
+
+## Source Path Filters
+
+For upstream repositories that mix Bambu Studio presets with other slicer or printer-vendor profiles, add `include` / `exclude` globs to the source definition. Filters are evaluated against repository-relative paths before format handling. Profile-like files filtered this way are reported in `.work/extracted/<vendor>/reports/filtered-out.md` and are not collected as inputs or artifact candidates.
+
+Example:
+
+```yml
+vendor: Polymaker
+sources:
+  - id: polymaker-preset-json
+    label: Polymaker preset repository
+    repo: https://github.com/Polymaker3D/Polymaker-Preset.git
+    branch: main
+    priority: 100
+    formats:
+      - json
+    include:
+      - preset/**/BBL/**/BambuStudio/*.json
+    exclude:
+      - preset/**/Orcaslicer/*.json
+      - preset/**/OrcaSlicer/*.json
+```

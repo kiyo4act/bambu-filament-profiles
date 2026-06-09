@@ -158,6 +158,7 @@ async function vendorCollect(options) {
     sources: {},
     inputs: [],
     artifactCandidates: [],
+    filteredOut: [],
     bundleErrors: [],
   };
 
@@ -177,6 +178,8 @@ async function vendorCollect(options) {
         commit,
         priority: Number(source.priority ?? 0),
         formats: source.formats ?? ['json', 'bbsflmt', 'zip'],
+        include: pathPatterns(source.include),
+        exclude: pathPatterns(source.exclude),
       };
       const inputs = await readDirectoryInputs(sourceDir, {
         vendor: config.vendor,
@@ -186,9 +189,12 @@ async function vendorCollect(options) {
         sourcePriority: Number(source.priority ?? 0),
         sourceCommit: commit,
         allowedFormats: new Set(source.formats ?? ['json', 'bbsflmt', 'zip']),
+        pathInclude: pathPatterns(source.include),
+        pathExclude: pathPatterns(source.exclude),
       }, { includeArtifactCandidates: true });
       await appendCollectedInputs(manifest, inputs.profiles, collectionRoot);
       await appendArtifactCandidates(manifest, inputs.artifactCandidates, collectionRoot);
+      appendFilteredOut(manifest, inputs.filteredOut);
     }
   }
 
@@ -245,7 +251,7 @@ async function vendorCollect(options) {
   await writeJson(collectionManifestPath(vendorKey), manifest);
   await writeCollectionReport(manifest);
   console.log(
-    `OK: collected ${manifest.inputs.length} JSON profile(s) and ${manifest.artifactCandidates.length} artifact candidate(s) for ${config.vendor} into ${path.relative(repoRoot, collectionRoot)}.`,
+    `OK: collected ${manifest.inputs.length} JSON profile(s), ${manifest.artifactCandidates.length} artifact candidate(s), and ${manifest.filteredOut.length} filtered-out profile-like file(s) for ${config.vendor} into ${path.relative(repoRoot, collectionRoot)}.`,
   );
 }
 
@@ -1160,8 +1166,16 @@ async function readDirectoryInputs(root, sourceMeta, options = {}) {
   const files = await walkFiles(root).catch(() => []);
   const profiles = [];
   const artifactCandidates = [];
+  const filteredOut = [];
   for (const filePath of files) {
     const format = formatForPath(filePath);
+    const relativePath = path.relative(root, filePath).replaceAll(path.sep, '/');
+    const filterReason = sourcePathFilterReason(relativePath, sourceMeta);
+    if (filterReason) {
+      const filtered = await filteredOutProfileLikeFile(filePath, root, sourceMeta, format, filterReason);
+      if (filtered) filteredOut.push(filtered);
+      continue;
+    }
     if (format === 'json') {
       if (!sourceMeta.allowedFormats.has(format)) {
         if (options.includeArtifactCandidates) {
@@ -1176,7 +1190,7 @@ async function readDirectoryInputs(root, sourceMeta, options = {}) {
         ...sourceMeta,
         format,
         filePath,
-        relativePath: path.relative(root, filePath).replaceAll(path.sep, '/'),
+        relativePath,
         sourceFileHash: hash(bytes),
         profileHash: stableHash(profile),
         profile,
@@ -1193,7 +1207,41 @@ async function readDirectoryInputs(root, sourceMeta, options = {}) {
       artifactCandidates.push(...(await probeArtifactCandidates(filePath, root, sourceMeta, format)));
     }
   }
-  return { profiles, artifactCandidates };
+  filteredOut.sort((a, b) =>
+    `${a.sourceId}:${a.relativePath}:${a.reason}`.localeCompare(`${b.sourceId}:${b.relativePath}:${b.reason}`, 'en'),
+  );
+  return { profiles, artifactCandidates, filteredOut };
+}
+
+async function filteredOutProfileLikeFile(filePath, root, sourceMeta, format, reason) {
+  if (!profileCandidateFormats.has(format)) return null;
+  const bytes = await fs.readFile(filePath).catch(() => null);
+  const relativePath = path.relative(root, filePath).replaceAll(path.sep, '/');
+  const base = {
+    ...sourceMeta,
+    format,
+    relativePath,
+    reason,
+    include: sourceMeta.pathInclude ?? [],
+    exclude: sourceMeta.pathExclude ?? [],
+    sourceFileHash: bytes ? hash(bytes) : '',
+    profileName: '',
+    profileHash: '',
+  };
+
+  if (format !== 'json') return base;
+  if (!bytes) return null;
+  try {
+    const profile = JSON.parse(bytes.toString('utf8'));
+    if (!isFilamentProfile(profile)) return null;
+    return {
+      ...base,
+      profileName: profile.name ?? '',
+      profileHash: stableHash(profile),
+    };
+  } catch {
+    return null;
+  }
 }
 
 function formatForPath(filePath) {
@@ -1593,6 +1641,27 @@ async function appendArtifactCandidates(manifest, rawCandidates, collectionRoot)
   );
 }
 
+function appendFilteredOut(manifest, rawItems = []) {
+  manifest.filteredOut.push(...rawItems.map((raw) => ({
+    sourceId: raw.sourceId,
+    sourceLabel: raw.sourceLabel,
+    sourceRepo: raw.sourceRepo,
+    sourceCommit: raw.sourceCommit ?? '',
+    sourcePriority: raw.sourcePriority,
+    format: raw.format,
+    relativePath: raw.relativePath,
+    sourceFileHash: raw.sourceFileHash ?? '',
+    profileHash: raw.profileHash ?? '',
+    profileName: raw.profileName ?? '',
+    reason: raw.reason,
+    include: raw.include ?? [],
+    exclude: raw.exclude ?? [],
+  })));
+  manifest.filteredOut.sort((a, b) =>
+    `${a.sourceId}:${a.relativePath}:${a.reason}`.localeCompare(`${b.sourceId}:${b.relativePath}:${b.reason}`, 'en'),
+  );
+}
+
 async function incomingRootsFor(vendorKey) {
   const root = path.join(repoRoot, 'incoming');
   if (!(await exists(root))) return [];
@@ -1656,6 +1725,7 @@ async function writeCollectionReport(manifest) {
     `Vendor: ${manifest.vendor}`,
     `Inputs: ${manifest.inputs.length}`,
     `Artifact candidates: ${(manifest.artifactCandidates ?? []).length}`,
+    `Filtered out: ${(manifest.filteredOut ?? []).length}`,
     `Bundle errors: ${manifest.bundleErrors.length}`,
     '',
     '| Source | Format | Path | Inner path | Profile name | Hash | Extracted JSON |',
@@ -1681,6 +1751,12 @@ async function writeCollectionReport(manifest) {
     artifactCandidatesMarkdown(manifest.artifactCandidates ?? []),
     'utf8',
   );
+  await writeJson(path.join(reportsDir, 'filtered-out.json'), manifest.filteredOut ?? []);
+  await fs.writeFile(
+    path.join(reportsDir, 'filtered-out.md'),
+    filteredOutMarkdown(manifest.filteredOut ?? []),
+    'utf8',
+  );
 }
 
 function artifactCandidatesMarkdown(candidates) {
@@ -1701,6 +1777,30 @@ function artifactCandidatesMarkdown(candidates) {
   for (const candidate of candidates) {
     lines.push(
       `| ${md(candidate.sourceId)} | ${md(candidate.candidateType)} | ${md(candidate.format)} | ${md(candidate.relativePath)} | ${md(candidate.innerPath)} | ${md(candidate.profileName)} | ${md(String(candidate.profileHash ?? candidate.sourceFileHash ?? '').slice(0, 12))} | ${md(candidate.promoteFromPath)} | ${md((candidate.notes ?? []).join('<br>'))} |`,
+    );
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
+function filteredOutMarkdown(items) {
+  const lines = [
+    '# Filtered Out',
+    '',
+    'These profile-like files matched a source path `include` / `exclude` filter and were not collected as inputs or artifact candidates.',
+    '',
+  ];
+  if (!items.length) {
+    lines.push('No profile-like files were filtered out.', '');
+    return lines.join('\n');
+  }
+  lines.push(
+    '| Source | Format | Path | Profile | Hash | Reason | Include | Exclude |',
+    '|---|---|---|---|---|---|---|---|',
+  );
+  for (const item of items) {
+    lines.push(
+      `| ${md(item.sourceId)} | ${md(item.format)} | ${md(item.relativePath)} | ${md(item.profileName)} | ${md(String(item.profileHash ?? item.sourceFileHash ?? '').slice(0, 12))} | ${md(item.reason)} | ${md((item.include ?? []).join('<br>'))} | ${md((item.exclude ?? []).join('<br>'))} |`,
     );
   }
   lines.push('');
@@ -2901,6 +3001,61 @@ async function git(args, cwd) {
 function requireVendor(options) {
   if (!options.vendor) throw new Error('Missing --vendor <vendor>');
   return slug(options.vendor);
+}
+
+function pathPatterns(value) {
+  if (!value) return [];
+  return (Array.isArray(value) ? value : [value])
+    .map((item) => String(item).replaceAll('\\', '/').trim())
+    .filter(Boolean);
+}
+
+function sourcePathFilterReason(relativePath, sourceMeta) {
+  const include = sourceMeta.pathInclude ?? [];
+  const exclude = sourceMeta.pathExclude ?? [];
+  if (include.length && !pathMatchesAny(relativePath, include)) {
+    return 'path did not match source include';
+  }
+  if (exclude.length && pathMatchesAny(relativePath, exclude)) {
+    return 'path matched source exclude';
+  }
+  return '';
+}
+
+function pathMatchesAny(relativePath, patterns) {
+  const normalized = String(relativePath).replaceAll('\\', '/');
+  return patterns.some((pattern) => globToRegExp(pattern).test(normalized));
+}
+
+function globToRegExp(pattern) {
+  const normalized = String(pattern).replaceAll('\\', '/');
+  let source = '^';
+  for (let index = 0; index < normalized.length;) {
+    const char = normalized[index];
+    if (char === '*') {
+      if (normalized[index + 1] === '*') {
+        index += 2;
+        if (normalized[index] === '/') {
+          source += '(?:[^/]+/)*';
+          index += 1;
+        } else {
+          source += '.*';
+        }
+      } else {
+        source += '[^/]*';
+        index += 1;
+      }
+      continue;
+    }
+    if (char === '?') {
+      source += '[^/]';
+      index += 1;
+      continue;
+    }
+    source += escapeRegex(char);
+    index += 1;
+  }
+  return new RegExp(`${source}$`);
 }
 
 async function walkFiles(root) {
