@@ -13,7 +13,7 @@
     "vendor:lock-inputs": "node scripts/bambu-profiles.mjs vendor:lock-inputs",
     "profiles:expand-inherits": "node scripts/bambu-profiles.mjs profiles:expand-inherits",
     "reports:vendor-state": "node scripts/bambu-profiles.mjs reports:vendor-state",
-    "verify": "node scripts/verify-raw-zip-filament-fixture.mjs && node scripts/verify-input-lock-dedupe-fixture.mjs && node scripts/verify-source-path-filter-fixture.mjs && node scripts/bambu-profiles.mjs verify",
+    "verify": "node scripts/verify-raw-zip-filament-fixture.mjs && node scripts/verify-input-lock-dedupe-fixture.mjs && node scripts/verify-source-path-filter-fixture.mjs && node scripts/bambu-profiles.mjs verify && node scripts/bambu-profiles.mjs generate:readme --check",
     "build:bbsflmt": "node scripts/bambu-profiles.mjs build:bbsflmt",
     "generate:readme": "node scripts/bambu-profiles.mjs generate:readme",
     "pr:mergeability": "node scripts/check-pr-mergeability.mjs",

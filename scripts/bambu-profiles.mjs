@@ -44,7 +44,7 @@ try {
   } else if (command === 'build:bbsflmt') {
     await buildBbsflmt();
   } else if (command === 'generate:readme') {
-    await generateReadme();
+    await generateReadme(args);
   } else {
     usage();
     process.exit(command ? 1 : 0);
@@ -67,7 +67,7 @@ function usage() {
   node scripts/bambu-profiles.mjs reports:vendor-state --vendor <vendor>
   node scripts/bambu-profiles.mjs verify
   node scripts/bambu-profiles.mjs build:bbsflmt
-  node scripts/bambu-profiles.mjs generate:readme`);
+  node scripts/bambu-profiles.mjs generate:readme [--check]`);
 }
 
 function parseArgs(argv) {
@@ -2728,27 +2728,41 @@ async function validateUserBaseDist(profiles) {
   return errors;
 }
 
-async function generateReadme() {
+async function generateReadme(options = {}) {
   const profiles = await readAllNormalizedProfiles().catch(() => []);
   const lines = [];
   if (!profiles.length) {
     lines.push('No normalized profiles are committed yet. Use `vendor:collect`, `vendor:diff`, and `vendor:propose` to prepare an AI-reviewed update.');
   } else {
-    lines.push('| Vendor | Printer | Nozzles | Material | Type | Profiles | Release artifact |');
-    lines.push('|---|---|---|---|---|---:|---|');
-    for (const group of bundleGroupsForProfiles(profiles)) {
-      const { vendor, familyName, printerNozzle, items } = group;
-      const nozzles = unique(items.map((item) => printerNozzleForProfile(item.profile).nozzle).filter(Boolean))
-        .sort((a, b) => Number(a) - Number(b));
-      const artifact = [
-        'dist/bbsflmt',
-        slug(vendor),
-        printerNozzle.printerKey,
-        `${safeFileName(familyName)}.bbsflmt`,
-      ].join('/');
+    const vendorSummaries = readmeVendorSummaries(bundleGroupsForProfiles(profiles));
+    lines.push('| Vendor | Bundles | Materials | Printers | Profiles |');
+    lines.push('|---|---:|---:|---:|---:|');
+    for (const summary of vendorSummaries) {
+      lines.push(`| ${md(summary.vendor)} | ${summary.bundles} | ${summary.materials} | ${summary.printers} | ${summary.profiles} |`);
+    }
+
+    for (const summary of vendorSummaries) {
       lines.push(
-        `| ${vendor} | ${printerNozzle.printer} | ${nozzles.join(', ')} | ${familyName} | ${items[0].profile.filament_type?.[0] ?? ''} | ${items.length} | ${artifact} |`,
+        '',
+        '<details>',
+        `<summary>${escapeHtml(summary.vendor)} details: ${summary.bundles} bundles, ${summary.materials} materials, ${summary.printers} printers, ${summary.profiles} profiles</summary>`,
+        '',
       );
+      for (const printerSummary of readmePrinterSummaries(summary.groups)) {
+        lines.push(
+          `### ${printerSummary.printer}`,
+          '',
+          '| Nozzles | Material | Type | Profiles | Release artifact |',
+          '|---|---|---|---:|---|',
+        );
+        for (const group of printerSummary.groups) {
+          lines.push(
+            `| ${md(readmeNozzlesForBundle(group).join(', '))} | ${md(group.familyName)} | ${md(group.items[0].profile.filament_type?.[0] ?? '')} | ${group.items.length} | ${md(readmeArtifactForBundle(group))} |`,
+          );
+        }
+        lines.push('');
+      }
+      lines.push('</details>');
     }
   }
 
@@ -2758,8 +2772,65 @@ async function generateReadme() {
   const end = '<!-- PROFILE_TABLE_END -->';
   const replacement = `${start}\n\n${lines.join('\n')}\n\n${end}`;
   const next = current.replace(new RegExp(`${escapeRegex(start)}[\\s\\S]*${escapeRegex(end)}`), replacement);
+  if (options.check) {
+    if (next !== current) {
+      throw new Error('README.md generated profile table is out of date. Run `npm run generate:readme`.');
+    }
+    console.log('OK: README generated profile table is up to date.');
+    return;
+  }
   await fs.writeFile(readmePath, next, 'utf8');
   console.log(`OK: updated README with ${profiles.length} profiles.`);
+}
+
+function readmeVendorSummaries(bundleGroups) {
+  const byVendor = new Map();
+  for (const group of bundleGroups) {
+    if (!byVendor.has(group.vendor)) byVendor.set(group.vendor, []);
+    byVendor.get(group.vendor).push(group);
+  }
+  return [...byVendor.entries()].map(([vendor, groups]) => ({
+    vendor,
+    groups,
+    bundles: groups.length,
+    materials: new Set(groups.map((group) => group.familyName)).size,
+    printers: new Set(groups.map((group) => group.printerNozzle.printer)).size,
+    profiles: groups.reduce((sum, group) => sum + group.items.length, 0),
+  }));
+}
+
+function readmePrinterSummaries(bundleGroups) {
+  const byPrinter = new Map();
+  for (const group of bundleGroups) {
+    const printer = group.printerNozzle.printer;
+    if (!byPrinter.has(printer)) byPrinter.set(printer, []);
+    byPrinter.get(printer).push(group);
+  }
+  return [...byPrinter.entries()].map(([printer, groups]) => ({
+    printer,
+    groups,
+  }));
+}
+
+function readmeNozzlesForBundle(group) {
+  return unique(group.items.map((item) => printerNozzleForProfile(item.profile).nozzle).filter(Boolean))
+    .sort((a, b) => Number(a) - Number(b));
+}
+
+function readmeArtifactForBundle(group) {
+  return [
+    'dist/bbsflmt',
+    slug(group.vendor),
+    group.printerNozzle.printerKey,
+    `${safeFileName(group.familyName)}.bbsflmt`,
+  ].join('/');
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 async function readAllNormalizedProfiles() {
