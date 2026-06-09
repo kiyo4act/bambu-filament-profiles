@@ -10,6 +10,7 @@ This repository manages Bambu Studio filament profiles as reviewable JSON source
 - Let the local AI workflow collect inputs, inspect diffs, propose normalization decisions, ask the user when a new decision is needed, then commit normalized JSON.
 - After local verification, default to pushing an `agent/update/**` branch so GitHub Actions creates a candidate prerelease, then create a GitHub PR for human import testing and merge review. Ask before deviating from this default.
 - Let GitHub Actions validate and package committed JSON only.
+- Generate `.bbsflmt` release bundles by vendor, printer, and material so users can install only the machine-specific presets they need. Keep nozzle variants for the same printer and material in the same bundle.
 
 ## Standard Commands
 
@@ -37,9 +38,9 @@ Run `npm run verify` before reporting work complete. Run `npm run build:bbsflmt`
 - `vendor:collect`, `vendor:diff`, and `vendor:propose` write to `.work/extracted/<vendor>/`; those reports are review material, not committed source by default.
 - `vendor:ingest` writes accepted incoming profiles into committed normalized JSON after AI/user review.
 - After AI/user acceptance and normalized JSON updates, `vendor:lock-inputs` may commit the accepted input hashes so unchanged inputs are not re-reviewed next time.
-- Generated `.bbsflmt` files go under `dist/` and GitHub Release assets, not `main`.
-- GitHub Releases upload aggregate archives and manifest only: `all-bbsflmt.zip`, `all-json.zip`, and `manifest.json`.
-- Release notes must include expected Bambu Studio import count, vendor counts, printer counts, and bundle count.
+- Generated `.bbsflmt` files go under `dist/bbsflmt/<vendor>/<printer>/<material>.bbsflmt` and GitHub Release assets, not `main`.
+- GitHub Releases upload aggregate archives and manifest only: `all-bbsflmt.zip`, `all-json.zip`, `all-user-base.zip`, and `manifest.json`.
+- Release notes must include expected Bambu Studio import count, vendor counts, printer counts, and machine-scoped bundle count.
 
 ## Normalization Principles
 
