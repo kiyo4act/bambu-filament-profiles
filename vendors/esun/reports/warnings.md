@@ -1,0 +1,650 @@
+# Warnings
+
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1M 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1M 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1M 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1M 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1M 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Silk @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1M 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1M
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Silk @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL A1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ASA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ASA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA-CF @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA-CF @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA6-CF @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PET-CF @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG-CF @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ASA @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ASA @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Fiberon PA6-CF @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL H2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL H2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PET-CF @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL H2D
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL H2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL H2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL H2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL H2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS-GF @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS-GF @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ASA @BBL X1C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ASA @BBL X1C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PET-CF @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Silk @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Silk @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Silk @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Silk @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1P
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC @BBL P1S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC @BBL P1S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Fiberon PET-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Fiberon PA6-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA-CF
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Fiberon PA6-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic ABS
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P1S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> eSUN PLA+ @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ASA @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ASA @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA6-CF @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PET-CF @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG HF @BBL P2S 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU @BBL P2S
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS-GF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS-GF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA6-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PET-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> PolyLite PLA @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Matte @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic TPU
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ASA @BBL X1C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ASA @BBL X1C 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA6-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PC
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PET-CF @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PETG
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X1C
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Generic PLA
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PLA Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 95A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu ABS @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA-CF @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PA6-CF @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PC @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu PETG Basic @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle
+- Kept unresolved inherits from legacy JSON: HS-Parameters-for-Bambu-Lab-20260511.zip -> Bambu TPU 90A @BBL X2D 0.4 nozzle

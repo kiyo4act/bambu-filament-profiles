@@ -17,6 +17,72 @@ This repository is built for ongoing maintenance by a coding agent:
 
 | Vendor | Material | Type | Profiles | Release artifact |
 |---|---|---:|---:|---|
+| eSUN | eSUN ABS | ABS | 11 | dist/bbsflmt/esun/eSUN ABS.bbsflmt |
+| eSUN | eSUN ABS-CF | ABS-GF | 9 | dist/bbsflmt/esun/eSUN ABS-CF.bbsflmt |
+| eSUN | eSUN ABS-ESD | ABS | 11 | dist/bbsflmt/esun/eSUN ABS-ESD.bbsflmt |
+| eSUN | eSUN ABS-FR | ABS | 11 | dist/bbsflmt/esun/eSUN ABS-FR.bbsflmt |
+| eSUN | eSUN ABS-GF | ABS | 9 | dist/bbsflmt/esun/eSUN ABS-GF.bbsflmt |
+| eSUN | eSUN ABS-HT | ABS | 1 | dist/bbsflmt/esun/eSUN ABS-HT.bbsflmt |
+| eSUN | eSUN ABS+ | ABS | 11 | dist/bbsflmt/esun/eSUN ABS+.bbsflmt |
+| eSUN | eSUN ABS+CF | ABS | 2 | dist/bbsflmt/esun/eSUN ABS+CF.bbsflmt |
+| eSUN | eSUN ABS+GF | ABS | 2 | dist/bbsflmt/esun/eSUN ABS+GF.bbsflmt |
+| eSUN | eSUN ABS+HS | ABS | 11 | dist/bbsflmt/esun/eSUN ABS+HS.bbsflmt |
+| eSUN | eSUN ASA-LW | ASA | 9 | dist/bbsflmt/esun/eSUN ASA-LW.bbsflmt |
+| eSUN | eSUN ASA+ | ASA | 9 | dist/bbsflmt/esun/eSUN ASA+.bbsflmt |
+| eSUN | eSUN Marble PLA | PLA | 1 | dist/bbsflmt/esun/eSUN Marble PLA.bbsflmt |
+| eSUN | eSUN PA | PA | 8 | dist/bbsflmt/esun/eSUN PA.bbsflmt |
+| eSUN | eSUN PA-CF | PA-CF | 13 | dist/bbsflmt/esun/eSUN PA-CF.bbsflmt |
+| eSUN | eSUN PA12-CF | PA-CF | 1 | dist/bbsflmt/esun/eSUN PA12-CF.bbsflmt |
+| eSUN | eSUN PA12+CF | PA-CF | 12 | dist/bbsflmt/esun/eSUN PA12+CF.bbsflmt |
+| eSUN | eSUN PA6-CF | PA-CF | 9 | dist/bbsflmt/esun/eSUN PA6-CF.bbsflmt |
+| eSUN | eSUN PC | PC | 7 | dist/bbsflmt/esun/eSUN PC.bbsflmt |
+| eSUN | eSUN PC-ESD | PC | 9 | dist/bbsflmt/esun/eSUN PC-ESD.bbsflmt |
+| eSUN | eSUN PC-HT | PC | 2 | dist/bbsflmt/esun/eSUN PC-HT.bbsflmt |
+| eSUN | eSUN PEBA | TPU | 1 | dist/bbsflmt/esun/eSUN PEBA.bbsflmt |
+| eSUN | eSUN PEBA-85A | TPU | 15 | dist/bbsflmt/esun/eSUN PEBA-85A.bbsflmt |
+| eSUN | eSUN PEBA-90A | TPU | 15 | dist/bbsflmt/esun/eSUN PEBA-90A.bbsflmt |
+| eSUN | eSUN PEBA-LW | TPU | 15 | dist/bbsflmt/esun/eSUN PEBA-LW.bbsflmt |
+| eSUN | eSUN PET-CF | PET-CF | 7 | dist/bbsflmt/esun/eSUN PET-CF.bbsflmt |
+| eSUN | eSUN PETG | PETG | 11 | dist/bbsflmt/esun/eSUN PETG.bbsflmt |
+| eSUN | eSUN PETG Basic | PETG | 1 | dist/bbsflmt/esun/eSUN PETG Basic.bbsflmt |
+| eSUN | eSUN PETG Luminous | PETG | 1 | dist/bbsflmt/esun/eSUN PETG Luminous.bbsflmt |
+| eSUN | eSUN PETG-Basic | PETG | 10 | dist/bbsflmt/esun/eSUN PETG-Basic.bbsflmt |
+| eSUN | eSUN PETG-CF | PETG-CF | 11 | dist/bbsflmt/esun/eSUN PETG-CF.bbsflmt |
+| eSUN | eSUN PETG-ESD | PETG | 11 | dist/bbsflmt/esun/eSUN PETG-ESD.bbsflmt |
+| eSUN | eSUN PETG-Luminous | PETG | 8 | dist/bbsflmt/esun/eSUN PETG-Luminous.bbsflmt |
+| eSUN | eSUN PETG-Matte | PETG | 10 | dist/bbsflmt/esun/eSUN PETG-Matte.bbsflmt |
+| eSUN | eSUN PETG+HS | PETG | 11 | dist/bbsflmt/esun/eSUN PETG+HS.bbsflmt |
+| eSUN | eSUN PLA Magic | PLA | 2 | dist/bbsflmt/esun/eSUN PLA Magic.bbsflmt |
+| eSUN | eSUN PLA Metal | PLA | 1 | dist/bbsflmt/esun/eSUN PLA Metal.bbsflmt |
+| eSUN | eSUN PLA-Basic | PLA | 11 | dist/bbsflmt/esun/eSUN PLA-Basic.bbsflmt |
+| eSUN | eSUN PLA-CF | PLA-CF | 12 | dist/bbsflmt/esun/eSUN PLA-CF.bbsflmt |
+| eSUN | eSUN PLA-Clear | PLA | 11 | dist/bbsflmt/esun/eSUN PLA-Clear.bbsflmt |
+| eSUN | eSUN PLA-HS | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-HS.bbsflmt |
+| eSUN | eSUN PLA-Lite | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Lite.bbsflmt |
+| eSUN | eSUN PLA-Luminous | PLA | 11 | dist/bbsflmt/esun/eSUN PLA-Luminous.bbsflmt |
+| eSUN | eSUN PLA-LW | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-LW.bbsflmt |
+| eSUN | eSUN PLA-Magic | PLA | 9 | dist/bbsflmt/esun/eSUN PLA-Magic.bbsflmt |
+| eSUN | eSUN PLA-Marble | PLA | 10 | dist/bbsflmt/esun/eSUN PLA-Marble.bbsflmt |
+| eSUN | eSUN PLA-Matte | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Matte.bbsflmt |
+| eSUN | eSUN PLA-Metal | PLA | 10 | dist/bbsflmt/esun/eSUN PLA-Metal.bbsflmt |
+| eSUN | eSUN PLA-Silk | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Silk.bbsflmt |
+| eSUN | eSUN PLA-ST | PLA | 8 | dist/bbsflmt/esun/eSUN PLA-ST.bbsflmt |
+| eSUN | eSUN PLA-Twinking | PLA | 1 | dist/bbsflmt/esun/eSUN PLA-Twinking.bbsflmt |
+| eSUN | eSUN PLA-Twinkle | PLA | 6 | dist/bbsflmt/esun/eSUN PLA-Twinkle.bbsflmt |
+| eSUN | eSUN PLA-Twinkling | PLA | 4 | dist/bbsflmt/esun/eSUN PLA-Twinkling.bbsflmt |
+| eSUN | eSUN PLA-UV Rock | PLA | 5 | dist/bbsflmt/esun/eSUN PLA-UV Rock.bbsflmt |
+| eSUN | eSUN PLA-Wood | PLA | 12 | dist/bbsflmt/esun/eSUN PLA-Wood.bbsflmt |
+| eSUN | eSUN PLA+ | PLA | 15 | dist/bbsflmt/esun/eSUN PLA+.bbsflmt |
+| eSUN | eSUN PLA+HS | PLA | 11 | dist/bbsflmt/esun/eSUN PLA+HS.bbsflmt |
+| eSUN | eSUN TPE-83A | TPU | 15 | dist/bbsflmt/esun/eSUN TPE-83A.bbsflmt |
+| eSUN | eSUN TPU | TPU | 1 | dist/bbsflmt/esun/eSUN TPU.bbsflmt |
+| eSUN | eSUN TPU-64D | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-64D.bbsflmt |
+| eSUN | eSUN TPU-80A | TPU | 1 | dist/bbsflmt/esun/eSUN TPU-80A.bbsflmt |
+| eSUN | eSUN TPU-85A | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-85A.bbsflmt |
+| eSUN | eSUN TPU-90A | TPU | 15 | dist/bbsflmt/esun/eSUN TPU-90A.bbsflmt |
+| eSUN | eSUN TPU-95A | TPU | 13 | dist/bbsflmt/esun/eSUN TPU-95A.bbsflmt |
+| eSUN | eSUN TPU-LW | TPU | 11 | dist/bbsflmt/esun/eSUN TPU-LW.bbsflmt |
+| eSUN | eSUN UV Rock PLA | PLA | 6 | dist/bbsflmt/esun/eSUN UV Rock PLA.bbsflmt |
 | SUNLU | SUNLU ASA BASIC | ASA | 7 | dist/bbsflmt/sunlu/SUNLU ASA BASIC.bbsflmt |
 | SUNLU | SUNLU PETG BASIC | PETG | 8 | dist/bbsflmt/sunlu/SUNLU PETG BASIC.bbsflmt |
 | SUNLU | SUNLU PETG HS Matte | PETG | 6 | dist/bbsflmt/sunlu/SUNLU PETG HS Matte.bbsflmt |
