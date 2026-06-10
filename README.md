@@ -20,7 +20,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | eSUN | 507 | 66 | 11 | 572 |
 | Polymaker | 503 | 66 | 12 | 503 |
 | SUNLU | 18 | 9 | 2 | 63 |
-| TINMORRY | 154 | 28 | 12 | 155 |
+| TINMORRY | 155 | 28 | 12 | 156 |
 
 <details>
 <summary>eSUN details: 507 bundles, 66 materials, 11 printers, 572 profiles</summary>
@@ -1191,7 +1191,7 @@ This repository is built for ongoing maintenance by a coding agent:
 </details>
 
 <details>
-<summary>TINMORRY details: 154 bundles, 28 materials, 12 printers, 155 profiles</summary>
+<summary>TINMORRY details: 155 bundles, 28 materials, 12 printers, 156 profiles</summary>
 
 ### Bambu Lab A1
 
@@ -1237,6 +1237,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG ECO.bbsflmt |
 | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG GF.bbsflmt |
 | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Marble.bbsflmt |
+| 0.4 | TINMORRY PETG Matte | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Matte.bbsflmt |
 | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Metallic.bbsflmt |
 | 0.4 | TINMORRY PLA Rapid | PLA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA Rapid.bbsflmt |
 | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA Silk.bbsflmt |
