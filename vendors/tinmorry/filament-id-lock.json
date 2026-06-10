@@ -118,7 +118,7 @@
     {
       "family": "TINMORRY PETG Matte",
       "filament_id": "P8a43bf1",
-      "profile_count": 2,
+      "profile_count": 3,
       "strategy": "bambu-studio-md5",
       "source": "generated with Bambu Studio new-filament MD5 rule"
     },
