@@ -71,8 +71,7 @@
   ],
   "filament_id": "Pfe7c6dd",
   "filament_long_retractions_when_cut": [
-    "nil",
-    "nil"
+    "0"
   ],
   "filament_max_volumetric_speed": [
     "12",
@@ -162,7 +161,9 @@
   "hot_plate_temp_initial_layer": [
     "70"
   ],
-  "idle_temperature": 0,
+  "idle_temperature": [
+    "0"
+  ],
   "inherits": "",
   "long_retractions_when_ec": [
     "0",

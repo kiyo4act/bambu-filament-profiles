@@ -14,7 +14,9 @@ const vendorKey = 'verify-source-path-filter-fixture';
 const vendorDir = path.join(repoRoot, 'vendors', vendorKey);
 const fixtureRoot = path.join(repoRoot, '.work', 'verify-fixtures', 'source-path-filter');
 const sourceRepo = path.join(fixtureRoot, 'mixed-upstream');
+const fixtureHooksDir = path.join(fixtureRoot, 'empty-hooks');
 const extractedRoot = path.join(repoRoot, '.work', 'extracted', vendorKey);
+const clonedUpstreamRoot = path.join(repoRoot, '.work', 'upstreams', vendorKey);
 
 try {
   await resetFixture();
@@ -46,6 +48,18 @@ try {
     profileFor('Fixture PLA @Elegoo CC2', ['Elegoo Centauri Carbon 2 0.4 nozzle']),
   );
   await writeJson(path.join(sourceRepo, 'index.json'), { note: 'not a filament profile' });
+  const longTrackedPath = path.join(
+    sourceRepo,
+    'non-profile-fixture',
+    'long-segment-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    'long-segment-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
+    'long-segment-cccccccccccccccccccccccccccccccccccccccccccccccc',
+    'long-segment-dddddddddddddddddddddddddddddddddddddddddddddddd',
+    'tracked-long-path.txt',
+  );
+  assert.ok(longTrackedPath.length > 260, 'fixture path must exercise Windows paths longer than 260 characters');
+  await fs.mkdir(path.dirname(longTrackedPath), { recursive: true });
+  await fs.writeFile(longTrackedPath, 'tracked long-path clone fixture\n', 'utf8');
 
   await git(['init', '--initial-branch', 'main'], sourceRepo);
   await git(['add', '.'], sourceRepo);
@@ -119,6 +133,7 @@ async function resetFixture() {
   await fs.rm(vendorDir, { recursive: true, force: true });
   await fs.rm(fixtureRoot, { recursive: true, force: true });
   await fs.rm(extractedRoot, { recursive: true, force: true });
+  await fs.rm(clonedUpstreamRoot, { recursive: true, force: true });
 }
 
 async function runBambuProfiles(args) {
@@ -129,7 +144,14 @@ async function runBambuProfiles(args) {
 }
 
 async function git(args, cwd) {
-  await execFileAsync('git', args, {
+  await fs.mkdir(fixtureHooksDir, { recursive: true });
+  await execFileAsync('git', [
+    '-c',
+    `core.hooksPath=${fixtureHooksDir.replaceAll('\\', '/')}`,
+    '-c',
+    'core.longpaths=true',
+    ...args,
+  ], {
     cwd,
     windowsHide: true,
   });

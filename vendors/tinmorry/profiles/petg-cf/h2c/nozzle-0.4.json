@@ -90,7 +90,9 @@
   "filament_change_length_nc": [
     "4"
   ],
+  "filament_contact_safe": "1",
   "filament_cooling_before_tower": [
+    "10",
     "10",
     "10"
   ],
@@ -137,6 +139,7 @@
   "filament_diameter": [
     "1.75"
   ],
+  "filament_emission_safe": "1",
   "filament_enable_overhang_speed": [
     "1"
   ],
@@ -157,10 +160,14 @@
   "filament_flush_temp": [
     "0"
   ],
+  "filament_flush_temp_fast": [
+    "0"
+  ],
   "filament_flush_volumetric_speed": [
     "0"
   ],
   "filament_id": "Pb00c434",
+  "filament_ingredients_safe": "1",
   "filament_is_support": [
     "0"
   ],
@@ -171,6 +178,7 @@
     "nil"
   ],
   "filament_max_volumetric_speed": [
+    "11.5",
     "11.5",
     "11.5"
   ],
@@ -200,9 +208,11 @@
   ],
   "filament_pre_cooling_temperature_nc": [
     "215",
+    "215",
     "215"
   ],
   "filament_preheat_temperature_delta": [
+    "20",
     "20",
     "20"
   ],
@@ -217,9 +227,11 @@
   ],
   "filament_ramming_travel_time": [
     "0",
+    "0",
     "0"
   ],
   "filament_ramming_travel_time_nc": [
+    "1",
     "1",
     "1"
   ],
@@ -348,7 +360,7 @@
     "10"
   ],
   "include": [
-    "fdm_filament_template_direct_dual"
+    "fdm_filament_template_direct_dual_e3d"
   ],
   "inherits": "",
   "long_retractions_when_ec": [

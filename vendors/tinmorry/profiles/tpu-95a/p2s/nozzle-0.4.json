@@ -165,7 +165,7 @@
     "Direct Drive High Flow"
   ],
   "filament_flow_ratio": [
-    "0.95",
+    "0.94",
     "1"
   ],
   "filament_flush_temp": [
@@ -222,6 +222,10 @@
   "filament_pre_cooling_temperature_nc": [
     "0",
     "0"
+  ],
+  "filament_preheat_temperature_delta": [
+    "10",
+    "10"
   ],
   "filament_prime_volume": [
     "45"
@@ -370,7 +374,7 @@
     "0.088"
   ],
   "hot_plate_temp": [
-    "45"
+    "35"
   ],
   "hot_plate_temp_initial_layer": [
     "45"
@@ -399,7 +403,7 @@
     "230"
   ],
   "nozzle_temperature_range_high": [
-    "250"
+    "240"
   ],
   "nozzle_temperature_range_low": [
     "210"
@@ -458,7 +462,7 @@
   "textured_plate_temp_initial_layer": [
     "45"
   ],
-  "version": "2.6.0.5",
+  "version": "2.6.0.3",
   "volumetric_speed_coefficients": [
     "0 0 0 0 0 0",
     "0 0 0 0 0 0"

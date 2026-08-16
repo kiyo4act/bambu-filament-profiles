@@ -88,7 +88,9 @@
   "filament_change_length": [
     "10"
   ],
+  "filament_contact_safe": "1",
   "filament_cooling_before_tower": [
+    "10",
     "10",
     "10"
   ],
@@ -135,6 +137,7 @@
   "filament_diameter": [
     "1.75"
   ],
+  "filament_emission_safe": "1",
   "filament_enable_overhang_speed": [
     "1"
   ],
@@ -150,15 +153,20 @@
   ],
   "filament_flow_ratio": [
     "0.98",
+    "0.98",
     "0.98"
   ],
   "filament_flush_temp": [
+    "0"
+  ],
+  "filament_flush_temp_fast": [
     "0"
   ],
   "filament_flush_volumetric_speed": [
     "0"
   ],
   "filament_id": "P19bd2ea",
+  "filament_ingredients_safe": "1",
   "filament_is_support": [
     "0"
   ],
@@ -212,6 +220,7 @@
     "3"
   ],
   "filament_ramming_travel_time": [
+    "0",
     "0",
     "0"
   ],
@@ -343,10 +352,11 @@
     "10.0"
   ],
   "include": [
-    "fdm_filament_template_direct_dual"
+    "fdm_filament_template_direct_dual_e3d"
   ],
   "inherits": "",
   "long_retractions_when_ec": [
+    "0",
     "0",
     "0"
   ],
@@ -385,6 +395,7 @@
   ],
   "retraction_distances_when_ec": [
     "0",
+    "0",
     "0"
   ],
   "slow_down_for_layer_cooling": [
@@ -394,6 +405,7 @@
     "8"
   ],
   "slow_down_min_speed": [
+    "20",
     "20",
     "20"
   ],
