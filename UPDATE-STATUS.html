@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PolymakerとTINMORRYの更新をPR #16へ反映し、全checksとcandidate公開まで完了しました。次はBambu Studioで1,405 configsのインポート確認です。">
+  <title>全メーカー更新状況</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-strong: #edf3fb;
+      --text: #172033;
+      --muted: #5e6b82;
+      --line: #d7e0ed;
+      --accent: #1769aa;
+      --accent-strong: #0b4e82;
+      --warning-bg: #fff5d9;
+      --warning-text: #704d00;
+      --shadow: 0 18px 48px rgba(30, 53, 85, 0.11);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --bg: #101722;
+        --surface: #182231;
+        --surface-strong: #202d3f;
+        --text: #edf4ff;
+        --muted: #adbbce;
+        --line: #34445a;
+        --accent: #72b7f1;
+        --accent-strong: #a6d5fb;
+        --warning-bg: #493b18;
+        --warning-text: #ffe29a;
+        --shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      }
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-strong: #edf3fb;
+      --text: #172033;
+      --muted: #5e6b82;
+      --line: #d7e0ed;
+      --accent: #1769aa;
+      --accent-strong: #0b4e82;
+      --warning-bg: #fff5d9;
+      --warning-text: #704d00;
+      --shadow: 0 18px 48px rgba(30, 53, 85, 0.11);
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #101722;
+      --surface: #182231;
+      --surface-strong: #202d3f;
+      --text: #edf4ff;
+      --muted: #adbbce;
+      --line: #34445a;
+      --accent: #72b7f1;
+      --accent-strong: #a6d5fb;
+      --warning-bg: #493b18;
+      --warning-text: #ffe29a;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 36rem),
+        var(--bg);
+      color: var(--text);
+      font-family: "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+      line-height: 1.7;
+    }
+    button, a { font: inherit; }
+    a { color: var(--accent); }
+    .shell { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
+    .hero { padding: 56px 0 30px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: start; }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-weight: 800; letter-spacing: .08em; font-size: .82rem; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.65rem); line-height: 1.15; letter-spacing: -.035em; }
+    .summary { max-width: 760px; margin: 18px 0 0; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: end; }
+    .button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 9px 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(20, 40, 70, .07);
+    }
+    .button:hover, .button:focus-visible { border-color: var(--accent); outline: none; }
+    .meta { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+    .pill { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 11px; color: var(--muted); font-size: .9rem; }
+    .pill.status { background: var(--warning-bg); color: var(--warning-text); border-color: color-mix(in srgb, var(--warning-text) 28%, transparent); font-weight: 800; }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 26px; padding: 16px 18px; border-block: 1px solid var(--line); }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+    .nav a:hover { color: var(--accent-strong); text-decoration: underline; }
+    main { display: grid; gap: 18px; padding: 18px 0 60px; }
+    .card { scroll-margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+    .card-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 19px 22px; background: var(--surface-strong); border-bottom: 1px solid var(--line); }
+    h2 { margin: 0; font-size: 1.25rem; line-height: 1.35; }
+    h3 { margin: 1.4em 0 .45em; font-size: 1.05rem; }
+    .section-body { padding: 20px 22px 22px; }
+    .section-body > :first-child { margin-top: 0; }
+    .section-body > :last-child { margin-bottom: 0; }
+    p, ul, ol, blockquote { margin: 0 0 1rem; }
+    ul, ol { padding-left: 1.4rem; }
+    li + li { margin-top: .45rem; }
+    blockquote { margin-inline: 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: var(--surface-strong); color: var(--muted); }
+    code { font-family: "Cascadia Mono", Consolas, monospace; padding: .1em .35em; background: var(--surface-strong); border-radius: 5px; }
+    .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 13px; }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: .94rem; }
+    th, td { padding: 11px 13px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { background: var(--surface-strong); color: var(--muted); font-size: .82rem; letter-spacing: .03em; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+    footer { padding: 0 0 42px; color: var(--muted); font-size: .82rem; }
+    .hash { font-family: "Cascadia Mono", Consolas, monospace; overflow-wrap: anywhere; }
+    .toast { position: fixed; right: 18px; bottom: 18px; background: var(--accent-strong); color: var(--bg); padding: 10px 14px; border-radius: 10px; box-shadow: var(--shadow); opacity: 0; transform: translateY(8px); pointer-events: none; transition: .18s ease; }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 720px) {
+      .hero { padding-top: 34px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .actions { justify-content: start; }
+      .card-header, .section-body { padding-inline: 17px; }
+    }
+    @media print {
+      :root { color-scheme: light; --bg: #fff; --surface: #fff; --surface-strong: #f2f4f7; --text: #111; --muted: #444; --line: #bbb; --shadow: none; }
+      body { background: #fff; }
+      .shell { width: 100%; }
+      .hero { padding-top: 0; }
+      .actions, .nav, .copy-section, .toast { display: none !important; }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero shell">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">BAMBU FILAMENT PROFILES</p>
+        <h1>全メーカー更新状況</h1>
+        <p class="summary">PolymakerとTINMORRYの更新をPR #16へ反映し、全checksとcandidate公開まで完了しました。次はBambu Studioで1,405 configsのインポート確認です。</p>
+      </div>
+      <div class="actions" aria-label="ページ操作">
+        <button class="button" id="copy-all" type="button">全体をコピー</button>
+        <button class="button" id="theme-toggle" type="button">配色を切替</button>
+      </div>
+    </div>
+    <div class="meta" aria-label="更新メタデータ">
+      <span class="pill status">状態: candidate公開済み（Bambu Studio確認待ち）</span>
+      <span class="pill">基準日: 2026-08-16</span>
+    </div>
+    <nav class="nav" aria-label="ページ内目次">
+          <a href="#section-1">前回からの変化</a>
+          <a href="#section-2">各メーカー状況</a>
+          <a href="#section-3">判断待ち</a>
+          <a href="#section-4">次にすること</a>
+    </nav>
+  </header>
+  <main class="shell" id="content">
+    <section class="card" id="section-1">
+      <div class="card-header">
+        <h2>前回からの変化</h2>
+        <button class="button copy-section" type="button">この欄をコピー</button>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li><strong>「TINMORRYの通常入力」という表現を訂正</strong>しました。手動配置ではなく、<code>sources.yml</code> に登録済みの2つの公式リポジトリから、許可形式として収集した入力を指していました。今回の新しい <code>incoming/</code> 手動配置は0件です。</li>
+          <li><strong>Polymaker公式更新を反映</strong>しました。503→605プロファイル、66→68材料、12→13機種となり、既存503件も公式値へ更新しました。</li>
+          <li><strong>TINMORRY公式リポジトリ更新を反映</strong>しました。156→165プロファイルとなり、H2S PETG-CFの置換値と、ZIP内のX2D Galaxy PETGも採用しました。</li>
+          <li>TINMORRYの既採用P2S PETG Matteとリポジトリ校正版H2C PETG Matteは保持しました。H2Cは更新前とバイト差分がありません。</li>
+          <li>新機種 <strong>Bambu Lab A2L</strong> の認識、未知プリンターの判断依頼化、採用済み配布物の保持、Windows長パス処理を回帰検証へ追加しました。</li>
+          <li>全1,405 normalized JSONの検証と、1,294 machine-scoped <code>.bbsflmt</code> bundleの実生成が成功しました。</li>
+          <li>[PR #16](https://github.com/kiyo4act/bambu-filament-profiles/pull/16) はmerge可能かつchecks成功です。candidateから再取得したmanifestとZIPでも1,405 profiles／1,294 bundlesを確認しました。</li>
+        </ul>
+      </div>
+    </section>
+    <section class="card" id="section-2">
+      <div class="card-header">
+        <h2>各メーカー状況</h2>
+        <button class="button copy-section" type="button">この欄をコピー</button>
+      </div>
+      <div class="section-body">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">メーカー</th><th scope="col">状態</th><th scope="col">今回の扱い</th><th scope="col">最終構成・差分</th></tr></thead>
+            <tbody>
+              <tr><td>eSUN</td><td><strong>差分なし</strong></td><td>公式配布ZIP（2026-05-11）が採用済み入力とバイト単位・SHA-256一致のため現状維持</td><td>572プロファイル</td></tr>
+              <tr><td>Polymaker</td><td><strong>公式更新を反映済み</strong></td><td><code>a3d6d8b2</code>（2026-08-14）を採用し、Bambu system presetへの継承342件を展開</td><td>605プロファイル。追加102・変更503・削除0。68材料、13機種、A2L 47件</td></tr>
+              <tr><td>SUNLU</td><td><strong>手動管理を継続</strong></td><td>公式sourceが未設定のため、設定されるまでは既存の手動採用セットを維持</td><td>63プロファイル、H2C/P2S。今回差分なし</td></tr>
+              <tr><td>TINMORRY</td><td><strong>公式リポジトリ更新を反映済み</strong></td><td>Bambu側 <code>59dd16f4</code> を採用、legacy側は不変。H2S PETG-CFとX2D Galaxy PETGを含む</td><td>165プロファイル。追加9・変更131・削除0。28材料、13機種</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Polymakerで反映した主な内容</h3>
+        <ul>
+          <li>新材料は <strong>HT-PLA Pro</strong> 12件と <strong>Polylite ASA for TYC Americas</strong> 4件です。</li>
+          <li>新機種A2Lは47件。ほかにH2S 17件、H2D 12件、P2S 9件などが追加されました。</li>
+          <li>追加だけでなく既存503件も公式更新へ追従しています。継承342件はローカルのBambu system presetから展開し、最終成果物の <code>inherits</code> はすべて空です。</li>
+          <li>公式入力自体の注意点として、PolyMax PETGのH2D/H2S/X2DはPC presetを継承しており、最終 <code>filament_type</code> もPCです。X2Dは今回、PETG設定からPC設定（bed 70→110℃など）へ変わりました。正規化の誤りではないため公式値を保持し、candidateで重点確認します。</li>
+          <li>Fiberon PET-CF17 H2Sは、公式入力でもnozzle温度70℃に対して許容範囲270–300℃です。今回の回帰ではなく既存値ですが、確認が済むまで実機利用時の注意対象とします。</li>
+        </ul>
+        <h3>TINMORRYを詳しく確認した結果</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">入力経路</th><th scope="col">優先度</th><th scope="col">件数</th><th scope="col">今回の意味</th></tr></thead>
+            <tbody>
+              <tr><td>登録済みBambuStudioリポジトリの <code>.bbsflmt</code></td><td>100</td><td>34</td><td>追加9・不変25。手動入力ではありません</td></tr>
+              <tr><td>登録済みlegacy JSONリポジトリ</td><td>50</td><td>91</td><td>全91件不変。手動入力ではありません</td></tr>
+              <tr><td>公式リポジトリ内のZIP配布物</td><td>個別レビュー</td><td>2</td><td>P2S PETG Matteは既採用、X2D Galaxy PETGを今回追加採用</td></tr>
+              <tr><td><code>incoming/</code> の新規手動配置</td><td>200</td><td>0</td><td>今回は何も置かれていません</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li>BambuStudio公式リポジトリのGit差分は<strong>追加10ファイル、変更0、削除0</strong>です。通常収集できる <code>.bbsflmt</code> が9件、ZIP内配布物のX2D Galaxy PETGが1件でした。</li>
+          <li>9件の通常追加は、A2L 5件、A1 mini TPU95A、H2C ASA、H2C PLA-CF、H2S PETG-CFです。H2S PETG-CFは同じnormalized出力を持つため、優先度100の新Bambu版が優先度50のlegacy版を置き換えました。</li>
+          <li>X2D Galaxy PETGは名前の語順が上流では <code>PETG Galaxy</code> ですが、既存の <code>galaxy-petg/x2d</code> familyへ正規化しています。</li>
+          <li>H2C PETG Matteは上流入力ではなく、過去にリポジトリで採用・校正したプロファイルです。上流側に削除はないため今回も明示保持し、更新前との完全一致を確認しました。</li>
+        </ul>
+        <h3>TINMORRY H2S PETG-CFの主な置換値</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">設定</th><th scope="col">更新前</th><th scope="col">更新後</th></tr></thead>
+            <tbody>
+              <tr><td>最大体積速度</td><td>11.5</td><td>12</td></tr>
+              <tr><td>flow ratio</td><td>0.96 / nil</td><td>0.95 / 0.95</td></tr>
+              <tr><td>hot plate温度</td><td>70</td><td>80</td></tr>
+              <tr><td>nozzle温度</td><td>260 / nil</td><td>260 / 255</td></tr>
+              <tr><td>nozzle温度上限</td><td>280</td><td>270</td></tr>
+              <tr><td>required nozzle HRC</td><td>40</td><td>3</td></tr>
+              <tr><td>version</td><td>2.2.0.3</td><td>2.7.0.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>材料familyの整合性を守るため、最終normalized JSONの <code>filament_type</code> は従来どおり <code>PETG-CF</code> です。それ以外の上記公式値は反映しています。</p>
+      </div>
+    </section>
+    <section class="card" id="section-3">
+      <div class="card-header">
+        <h2>判断待ち</h2>
+        <button class="button copy-section" type="button">この欄をコピー</button>
+      </div>
+      <div class="section-body">
+        <p>入力採用についての追加判断はありません。Polymaker公式更新、TINMORRY公式更新、H2S PETG-CF、X2D Galaxy PETGはすべて反映済みです。</p>
+        <p>Bambu Studioでのインポート確認が必要です。特にPolymakerの広範な既存設定更新と、TINMORRY H2S PETG-CFのrequired nozzle HRC 3を実機利用前に確認対象とします。</p>
+      </div>
+    </section>
+    <section class="card" id="section-4">
+      <div class="card-header">
+        <h2>次にすること</h2>
+        <button class="button copy-section" type="button">この欄をコピー</button>
+      </div>
+      <div class="section-body">
+        <ol>
+          <li>[GitHub Releases](https://github.com/kiyo4act/bambu-filament-profiles/releases) の最新candidateから <code>all-bbsflmt.zip</code> を取得する。</li>
+          <li>Bambu Studioへ必要なprinter folderをインポートし、期待件数、表示、代表プロファイルを確認する。</li>
+          <li>PolyMax PETG H2D/H2S/X2D、Fiberon PET-CF17 H2S、TINMORRY H2S PETG-CFを重点確認し、問題なければ[PR #16](https://github.com/kiyo4act/bambu-filament-profiles/pull/16)をmergeする。</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+  <footer class="shell">
+    <p>このページは更新状況の正本から機械生成されています。内容識別子: <span class="hash">b56d34e4ed491c40169fcf72c87d3eeef1a56dd694eca1b470f28cbbcafd14b0</span></p>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">コピーしました</div>
+  <script>
+    const root = document.documentElement;
+    const toast = document.getElementById('toast');
+    let toastTimer;
+
+    try {
+      const savedTheme = localStorage.getItem('update-status-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
+    } catch {}
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isDark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = isDark ? 'light' : 'dark';
+      try { localStorage.setItem('update-status-theme', root.dataset.theme); } catch {}
+    });
+
+    document.getElementById('copy-all').addEventListener('click', async () => {
+      const text = [...document.querySelectorAll('#content > section')]
+        .map((section) => section.querySelector('h2').innerText + '\n\n' + section.querySelector('.section-body').innerText)
+        .join('\n\n');
+      await copyText(text);
+    });
+
+    for (const button of document.querySelectorAll('.copy-section')) {
+      button.addEventListener('click', async () => {
+        const section = button.closest('section');
+        const title = section.querySelector('h2').innerText;
+        const body = section.querySelector('.section-body').innerText;
+        await copyText(title + '\n\n' + body);
+      });
+    }
+
+    async function copyText(value) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+        } else {
+          const field = document.createElement('textarea');
+          field.value = value;
+          field.setAttribute('readonly', '');
+          field.style.position = 'fixed';
+          field.style.opacity = '0';
+          document.body.appendChild(field);
+          field.select();
+          if (!document.execCommand('copy')) throw new Error('copy command failed');
+          field.remove();
+        }
+        showToast('コピーしました');
+      } catch {
+        showToast('コピーできませんでした');
+      }
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('visible'), 1800);
+    }
+  </script>
+</body>
+</html>

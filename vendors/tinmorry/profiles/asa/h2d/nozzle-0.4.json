@@ -88,7 +88,9 @@
   "filament_change_length": [
     "10"
   ],
+  "filament_contact_safe": "1",
   "filament_cooling_before_tower": [
+    "10",
     "10",
     "10"
   ],
@@ -134,6 +136,7 @@
   "filament_diameter": [
     "1.75"
   ],
+  "filament_emission_safe": "1",
   "filament_enable_overhang_speed": [
     "1"
   ],
@@ -153,10 +156,14 @@
   "filament_flush_temp": [
     "0"
   ],
+  "filament_flush_temp_fast": [
+    "0"
+  ],
   "filament_flush_volumetric_speed": [
     "0"
   ],
   "filament_id": "P72e5684",
+  "filament_ingredients_safe": "1",
   "filament_is_support": [
     "0"
   ],
@@ -167,6 +174,7 @@
     "nil"
   ],
   "filament_max_volumetric_speed": [
+    "12",
     "12",
     "12"
   ],
@@ -210,6 +218,7 @@
     "3"
   ],
   "filament_ramming_travel_time": [
+    "0",
     "0",
     "0"
   ],
@@ -338,7 +347,7 @@
     "4.9"
   ],
   "include": [
-    "fdm_filament_template_direct_dual"
+    "fdm_filament_template_direct_dual_e3d"
   ],
   "inherits": "",
   "long_retractions_when_ec": [
@@ -353,6 +362,7 @@
     "nil"
   ],
   "nozzle_temperature_initial_layer": [
+    "260",
     "260",
     "260"
   ],
@@ -387,6 +397,7 @@
     "12"
   ],
   "slow_down_min_speed": [
+    "20",
     "20",
     "20"
   ],

@@ -1,12 +1,13 @@
 {
   "vendor": "TINMORRY",
-  "generatedAt": "2026-06-08T13:22:01.740Z",
-  "normalizedProfileCount": 155,
+  "generatedAt": "2026-08-16T03:59:36.603Z",
+  "normalizedProfileCount": 165,
   "materialCount": 28,
   "printerCounts": {
     "Bambu Lab A1": 14,
-    "Bambu Lab A1 mini": 11,
-    "Bambu Lab H2C": 9,
+    "Bambu Lab A1 mini": 12,
+    "Bambu Lab A2L": 5,
+    "Bambu Lab H2C": 12,
     "Bambu Lab H2D": 10,
     "Bambu Lab H2S": 13,
     "Bambu Lab P1P": 16,
@@ -15,7 +16,7 @@
     "Bambu Lab X1": 14,
     "Bambu Lab X1 Carbon": 20,
     "Bambu Lab X1E": 2,
-    "Bambu Lab X2D": 10
+    "Bambu Lab X2D": 11
   },
   "unresolvedInheritsCount": 0,
   "validationErrors": [],
@@ -26,7 +27,7 @@
       "family": "TINMORRY ABS Pro",
       "type": "ABS",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 139
+      "keyCount": 143
     },
     {
       "name": "TINMORRY ABS Pro @Bambu Lab H2D 0.4 nozzle",
@@ -42,7 +43,7 @@
       "family": "TINMORRY ABS Pro",
       "type": "ABS",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY ABS Pro @Bambu Lab P1S 0.4 nozzle",
@@ -50,7 +51,7 @@
       "family": "TINMORRY ABS Pro",
       "type": "ABS",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY ABS Pro @Bambu Lab P2S 0.4 nozzle",
@@ -66,7 +67,7 @@
       "family": "TINMORRY ABS Pro",
       "type": "ABS",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY ABS Pro @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -74,7 +75,7 @@
       "family": "TINMORRY ABS Pro",
       "type": "ABS",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY ABS Pro @Bambu Lab X2D 0.4 nozzle",
@@ -85,12 +86,20 @@
       "keyCount": 145
     },
     {
+      "name": "TINMORRY ASA @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/asa/h2c/nozzle-0.4.json",
+      "family": "TINMORRY ASA",
+      "type": "ASA",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 147
+    },
+    {
       "name": "TINMORRY ASA @Bambu Lab H2D 0.4 nozzle",
       "path": "profiles/asa/h2d/nozzle-0.4.json",
       "family": "TINMORRY ASA",
       "type": "ASA",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY ASA @Bambu Lab H2S 0.4 nozzle",
@@ -98,7 +107,7 @@
       "family": "TINMORRY ASA",
       "type": "ASA",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY ASA @Bambu Lab P1S 0.4 nozzle",
@@ -106,7 +115,7 @@
       "family": "TINMORRY ASA",
       "type": "ASA",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY ASA @Bambu Lab P2S 0.4 nozzle",
@@ -114,7 +123,7 @@
       "family": "TINMORRY ASA",
       "type": "ASA",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY ASA @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -122,7 +131,7 @@
       "family": "TINMORRY ASA",
       "type": "ASA",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY ASA Basic @Bambu Lab X2D 0.4 nozzle",
@@ -154,7 +163,15 @@
       "family": "TINMORRY Galaxy PETG",
       "type": "PETG",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
+    },
+    {
+      "name": "TINMORRY Galaxy PETG @Bambu Lab X2D 0.4 nozzle",
+      "path": "profiles/galaxy-petg/x2d/nozzle-0.4.json",
+      "family": "TINMORRY Galaxy PETG",
+      "type": "PETG",
+      "printer": "Bambu Lab X2D 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY Galaxy PLA @Bambu Lab A1 0.4 nozzle",
@@ -162,7 +179,7 @@
       "family": "TINMORRY Galaxy PLA",
       "type": "PLA",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY Galaxy PLA @Bambu Lab P2S 0.4 nozzle",
@@ -170,7 +187,7 @@
       "family": "TINMORRY Galaxy PLA",
       "type": "PLA",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 138
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PA CF @Bambu Lab P1S 0.4 nozzle",
@@ -178,7 +195,7 @@
       "family": "TINMORRY PA CF",
       "type": "PA-CF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PA CF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -186,7 +203,7 @@
       "family": "TINMORRY PA CF",
       "type": "PA-CF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PAHT CF @Bambu Lab P1S 0.4 nozzle",
@@ -194,7 +211,7 @@
       "family": "TINMORRY PAHT CF",
       "type": "PAHT-CF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PAHT CF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -202,7 +219,7 @@
       "family": "TINMORRY PAHT CF",
       "type": "PAHT-CF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PC GF @Bambu Lab A1 0.4 nozzle",
@@ -210,7 +227,7 @@
       "family": "TINMORRY PC GF",
       "type": "PC-GF",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PC GF @Bambu Lab P1P 0.4 nozzle",
@@ -218,7 +235,7 @@
       "family": "TINMORRY PC GF",
       "type": "PC-GF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PC GF @Bambu Lab P1S 0.4 nozzle",
@@ -226,7 +243,7 @@
       "family": "TINMORRY PC GF",
       "type": "PC-GF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PC GF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -234,7 +251,7 @@
       "family": "TINMORRY PC GF",
       "type": "PC-GF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PET CF @Bambu Lab H2S 0.4 nozzle",
@@ -242,7 +259,7 @@
       "family": "TINMORRY PET CF",
       "type": "PET-CF",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PET CF @Bambu Lab P1P 0.4 nozzle",
@@ -250,7 +267,7 @@
       "family": "TINMORRY PET CF",
       "type": "PET-CF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PET CF @Bambu Lab P1S 0.4 nozzle",
@@ -258,7 +275,7 @@
       "family": "TINMORRY PET CF",
       "type": "PET-CF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PET CF @Bambu Lab X1 0.4 nozzle",
@@ -266,7 +283,7 @@
       "family": "TINMORRY PET CF",
       "type": "PET-CF",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PET CF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -274,7 +291,7 @@
       "family": "TINMORRY PET CF",
       "type": "PET-CF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PET GF @Bambu Lab A1 0.4 nozzle",
@@ -282,7 +299,7 @@
       "family": "TINMORRY PET GF",
       "type": "PET-GF",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PET GF @Bambu Lab H2S 0.4 nozzle",
@@ -290,7 +307,7 @@
       "family": "TINMORRY PET GF",
       "type": "PET-GF",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PET GF @Bambu Lab P1P 0.4 nozzle",
@@ -298,7 +315,7 @@
       "family": "TINMORRY PET GF",
       "type": "PET-GF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PET GF @Bambu Lab P1S 0.4 nozzle",
@@ -306,7 +323,7 @@
       "family": "TINMORRY PET GF",
       "type": "PET-GF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PET GF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -314,7 +331,7 @@
       "family": "TINMORRY PET GF",
       "type": "PET-GF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab A1 0.4 nozzle",
@@ -322,7 +339,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab A1 mini 0.4 nozzle",
@@ -330,7 +347,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab H2C 0.4 nozzle",
@@ -338,7 +355,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 138
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab H2D 0.4 nozzle",
@@ -346,7 +363,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab H2S 0.4 nozzle",
@@ -354,7 +371,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 147
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab P1P 0.4 nozzle",
@@ -362,7 +379,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab P1S 0.4 nozzle",
@@ -370,7 +387,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab P2S 0.4 nozzle",
@@ -378,7 +395,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab X1 0.4 nozzle",
@@ -386,7 +403,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -394,7 +411,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab X1E 0.4 nozzle",
@@ -402,7 +419,7 @@
       "family": "TINMORRY PETG CF",
       "type": "PETG-CF",
       "printer": "Bambu Lab X1E 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG CF @Bambu Lab X2D 0.4 nozzle",
@@ -418,7 +435,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab A1 mini 0.4 nozzle",
@@ -426,7 +443,15 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
+    },
+    {
+      "name": "TINMORRY PETG ECO @Bambu Lab A2L 0.4 nozzle",
+      "path": "profiles/petg-eco/a2l/nozzle-0.4.json",
+      "family": "TINMORRY PETG ECO",
+      "type": "PETG",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab H2C 0.4 nozzle",
@@ -434,7 +459,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 139
+      "keyCount": 143
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab H2D 0.4 nozzle",
@@ -442,7 +467,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab H2S 0.4 nozzle",
@@ -450,7 +475,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab P1P 0.4 nozzle",
@@ -458,7 +483,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab P1S 0.4 nozzle",
@@ -466,7 +491,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab P2S 0.4 nozzle",
@@ -474,7 +499,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab X1 0.4 nozzle",
@@ -482,7 +507,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -490,7 +515,7 @@
       "family": "TINMORRY PETG ECO",
       "type": "PETG",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PETG ECO @Bambu Lab X2D 0.4 nozzle",
@@ -506,7 +531,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab A1 mini 0.4 nozzle",
@@ -514,7 +539,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab H2C 0.4 nozzle",
@@ -522,7 +547,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 138
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab H2D 0.4 nozzle",
@@ -530,7 +555,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab H2S 0.4 nozzle",
@@ -538,7 +563,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab P1P 0.4 nozzle",
@@ -546,7 +571,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab P1S 0.4 nozzle",
@@ -554,7 +579,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab P1S 0.6 nozzle",
@@ -562,7 +587,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab P1S 0.6 nozzle",
-      "keyCount": 138
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab P2S 0.4 nozzle",
@@ -578,7 +603,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -586,7 +611,7 @@
       "family": "TINMORRY PETG GF",
       "type": "PETG-GF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG GF @Bambu Lab X2D 0.4 nozzle",
@@ -602,7 +627,7 @@
       "family": "TINMORRY PETG HS",
       "type": "PETG",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG HS @Bambu Lab P1P 0.4 nozzle",
@@ -610,7 +635,7 @@
       "family": "TINMORRY PETG HS",
       "type": "PETG",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG HS @Bambu Lab P1S 0.4 nozzle",
@@ -618,7 +643,7 @@
       "family": "TINMORRY PETG HS",
       "type": "PETG",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG HS @Bambu Lab X1 0.4 nozzle",
@@ -626,7 +651,7 @@
       "family": "TINMORRY PETG HS",
       "type": "PETG",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG HS @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -634,7 +659,7 @@
       "family": "TINMORRY PETG HS",
       "type": "PETG",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab A1 0.4 nozzle",
@@ -642,7 +667,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab A1 mini 0.4 nozzle",
@@ -650,7 +675,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab H2C 0.4 nozzle",
@@ -658,7 +683,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 139
+      "keyCount": 143
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab H2D 0.4 nozzle",
@@ -666,7 +691,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab H2S 0.4 nozzle",
@@ -674,7 +699,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab P1P 0.4 nozzle",
@@ -682,7 +707,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab P1S 0.4 nozzle",
@@ -690,7 +715,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab P2S 0.4 nozzle",
@@ -706,7 +731,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -714,7 +739,7 @@
       "family": "TINMORRY PETG Marble",
       "type": "PETG",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Marble @Bambu Lab X2D 0.4 nozzle",
@@ -733,6 +758,14 @@
       "keyCount": 145
     },
     {
+      "name": "TINMORRY PETG Matte @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/petg-matte/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PETG Matte",
+      "type": "PETG",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 150
+    },
+    {
       "name": "TINMORRY PETG Matte @Bambu Lab P2S 0.4 nozzle",
       "path": "profiles/petg-matte/p2s/nozzle-0.4.json",
       "family": "TINMORRY PETG Matte",
@@ -746,7 +779,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab A1 mini 0.4 nozzle",
@@ -754,7 +787,15 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
+    },
+    {
+      "name": "TINMORRY PETG Metallic @Bambu Lab A2L 0.4 nozzle",
+      "path": "profiles/petg-metallic/a2l/nozzle-0.4.json",
+      "family": "TINMORRY PETG Metallic",
+      "type": "PETG",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab H2C 0.4 nozzle",
@@ -762,7 +803,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 139
+      "keyCount": 143
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab H2S 0.4 nozzle",
@@ -770,7 +811,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab P1P 0.4 nozzle",
@@ -778,7 +819,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab P1S 0.4 nozzle",
@@ -786,7 +827,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab P2S 0.4 nozzle",
@@ -802,7 +843,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -810,7 +851,7 @@
       "family": "TINMORRY PETG Metallic",
       "type": "PETG",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PETG Metallic @Bambu Lab X2D 0.4 nozzle",
@@ -826,7 +867,7 @@
       "family": "TINMORRY PLA",
       "type": "PLA",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA @Bambu Lab A1 mini 0.4 nozzle",
@@ -834,7 +875,7 @@
       "family": "TINMORRY PLA",
       "type": "PLA",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA @Bambu Lab P1P 0.4 nozzle",
@@ -842,7 +883,7 @@
       "family": "TINMORRY PLA",
       "type": "PLA",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PLA @Bambu Lab P1S 0.4 nozzle",
@@ -850,7 +891,7 @@
       "family": "TINMORRY PLA",
       "type": "PLA",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA @Bambu Lab X1 0.4 nozzle",
@@ -858,7 +899,7 @@
       "family": "TINMORRY PLA",
       "type": "PLA",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -866,7 +907,7 @@
       "family": "TINMORRY PLA",
       "type": "PLA",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab A1 0.4 nozzle",
@@ -874,7 +915,7 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab A1 mini 0.4 nozzle",
@@ -882,7 +923,15 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
+    },
+    {
+      "name": "TINMORRY PLA CF @Bambu Lab H2C 0.4 nozzle",
+      "path": "profiles/pla-cf/h2c/nozzle-0.4.json",
+      "family": "TINMORRY PLA CF",
+      "type": "PLA-CF",
+      "printer": "Bambu Lab H2C 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab H2D 0.4 nozzle",
@@ -890,7 +939,7 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab P1P 0.4 nozzle",
@@ -898,7 +947,7 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab P1S 0.4 nozzle",
@@ -906,7 +955,7 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab X1 0.4 nozzle",
@@ -914,7 +963,7 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PLA CF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -922,7 +971,7 @@
       "family": "TINMORRY PLA CF",
       "type": "PLA-CF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab A1 0.4 nozzle",
@@ -930,7 +979,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab A1 mini 0.4 nozzle",
@@ -938,7 +987,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab H2D 0.4 nozzle",
@@ -954,7 +1003,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab P1P 0.4 nozzle",
@@ -962,7 +1011,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab P1S 0.4 nozzle",
@@ -970,7 +1019,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab P2S 0.4 nozzle",
@@ -978,7 +1027,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 138
+      "keyCount": 142
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab X1 0.4 nozzle",
@@ -986,7 +1035,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -994,7 +1043,7 @@
       "family": "TINMORRY PLA Matte",
       "type": "PLA",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Matte @Bambu Lab X2D 0.4 nozzle",
@@ -1003,6 +1052,14 @@
       "type": "PLA",
       "printer": "Bambu Lab X2D 0.4 nozzle",
       "keyCount": 146
+    },
+    {
+      "name": "TINMORRY PLA Rapid @Bambu Lab A2L 0.4 nozzle",
+      "path": "profiles/pla-rapid/a2l/nozzle-0.4.json",
+      "family": "TINMORRY PLA Rapid",
+      "type": "PLA",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY PLA Rapid @Bambu Lab H2C 0.4 nozzle",
@@ -1026,7 +1083,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab A1 mini 0.4 nozzle",
@@ -1034,7 +1091,15 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
+    },
+    {
+      "name": "TINMORRY PLA Silk @Bambu Lab A2L 0.4 nozzle",
+      "path": "profiles/pla-silk/a2l/nozzle-0.4.json",
+      "family": "TINMORRY PLA Silk",
+      "type": "PLA",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab H2C 0.4 nozzle",
@@ -1042,7 +1107,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 140
+      "keyCount": 144
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab H2S 0.4 nozzle",
@@ -1050,7 +1115,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab H2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab P1P 0.4 nozzle",
@@ -1058,7 +1123,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab P1S 0.4 nozzle",
@@ -1066,7 +1131,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab X1 0.4 nozzle",
@@ -1074,7 +1139,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PLA Silk @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -1082,7 +1147,7 @@
       "family": "TINMORRY PLA Silk",
       "type": "PLA",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY PP CF @Bambu Lab P1P 0.4 nozzle",
@@ -1090,7 +1155,7 @@
       "family": "TINMORRY PP CF",
       "type": "PP-CF",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PP CF @Bambu Lab P1S 0.4 nozzle",
@@ -1098,7 +1163,7 @@
       "family": "TINMORRY PP CF",
       "type": "PP-CF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PP CF @Bambu Lab P2S 0.4 nozzle",
@@ -1114,7 +1179,7 @@
       "family": "TINMORRY PP CF",
       "type": "PP-CF",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY PP CF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -1122,7 +1187,7 @@
       "family": "TINMORRY PP CF",
       "type": "PP-CF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 135
+      "keyCount": 139
     },
     {
       "name": "TINMORRY Sparkly PETG @Bambu Lab P2S 0.4 nozzle",
@@ -1130,7 +1195,7 @@
       "family": "TINMORRY Sparkly PETG",
       "type": "PETG",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY Sparkly PETG @Bambu Lab X2D 0.4 nozzle",
@@ -1146,7 +1211,7 @@
       "family": "TINMORRY TPU",
       "type": "TPU",
       "printer": "Bambu Lab A1 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY TPU @Bambu Lab A1 mini 0.4 nozzle",
@@ -1154,7 +1219,7 @@
       "family": "TINMORRY TPU",
       "type": "TPU",
       "printer": "Bambu Lab A1 mini 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     },
     {
       "name": "TINMORRY TPU @Bambu Lab P1P 0.4 nozzle",
@@ -1162,7 +1227,7 @@
       "family": "TINMORRY TPU",
       "type": "TPU",
       "printer": "Bambu Lab P1P 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY TPU @Bambu Lab P1S 0.4 nozzle",
@@ -1170,7 +1235,7 @@
       "family": "TINMORRY TPU",
       "type": "TPU",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY TPU @Bambu Lab X1 0.4 nozzle",
@@ -1178,7 +1243,7 @@
       "family": "TINMORRY TPU",
       "type": "TPU",
       "printer": "Bambu Lab X1 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY TPU @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -1186,7 +1251,23 @@
       "family": "TINMORRY TPU",
       "type": "TPU",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab A1 mini 0.4 nozzle",
+      "path": "profiles/tpu-95a/a1-mini/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab A1 mini 0.4 nozzle",
+      "keyCount": 147
+    },
+    {
+      "name": "TINMORRY TPU 95A @Bambu Lab A2L 0.4 nozzle",
+      "path": "profiles/tpu-95a/a2l/nozzle-0.4.json",
+      "family": "TINMORRY TPU 95A",
+      "type": "TPU",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "keyCount": 147
     },
     {
       "name": "TINMORRY TPU 95A @Bambu Lab H2C 0.4 nozzle",
@@ -1194,7 +1275,7 @@
       "family": "TINMORRY TPU 95A",
       "type": "TPU",
       "printer": "Bambu Lab H2C 0.4 nozzle",
-      "keyCount": 140
+      "keyCount": 144
     },
     {
       "name": "TINMORRY TPU 95A @Bambu Lab H2D 0.4 nozzle",
@@ -1202,7 +1283,7 @@
       "family": "TINMORRY TPU 95A",
       "type": "TPU",
       "printer": "Bambu Lab H2D 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY TPU 95A @Bambu Lab H2S 0.4 nozzle",
@@ -1218,7 +1299,7 @@
       "family": "TINMORRY TPU 95A",
       "type": "TPU",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 145
+      "keyCount": 146
     },
     {
       "name": "TINMORRY TPU 95A @Bambu Lab X2D 0.4 nozzle",
@@ -1234,7 +1315,7 @@
       "family": "TINMORRY TPU GF",
       "type": "TPU-GF",
       "printer": "Bambu Lab P1S 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY TPU GF @Bambu Lab P2S 0.4 nozzle",
@@ -1242,7 +1323,7 @@
       "family": "TINMORRY TPU GF",
       "type": "TPU-GF",
       "printer": "Bambu Lab P2S 0.4 nozzle",
-      "keyCount": 138
+      "keyCount": 142
     },
     {
       "name": "TINMORRY TPU GF @Bambu Lab X1 Carbon 0.4 nozzle",
@@ -1250,7 +1331,7 @@
       "family": "TINMORRY TPU GF",
       "type": "TPU-GF",
       "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
-      "keyCount": 137
+      "keyCount": 141
     },
     {
       "name": "TINMORRY TPU GF @Bambu Lab X1E 0.4 nozzle",
@@ -1258,7 +1339,7 @@
       "family": "TINMORRY TPU GF",
       "type": "TPU-GF",
       "printer": "Bambu Lab X1E 0.4 nozzle",
-      "keyCount": 136
+      "keyCount": 140
     }
   ]
 }

@@ -49,6 +49,9 @@
     "0.98"
   ],
   "filament_id": "Pea29799",
+  "filament_long_retractions_when_cut": [
+    "0"
+  ],
   "filament_max_volumetric_speed": [
     "22"
   ],
@@ -80,7 +83,9 @@
   "hot_plate_temp_initial_layer": [
     "60"
   ],
-  "idle_temperature": 0,
+  "idle_temperature": [
+    "0"
+  ],
   "inherits": "",
   "name": "Polymaker Panchroma PLA Marble @Bambu Lab A1 mini 0.4 nozzle",
   "nozzle_temperature": [

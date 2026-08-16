@@ -79,6 +79,7 @@
   "filament_adaptive_volumetric_speed": [
     "0",
     "0",
+    "0",
     "0"
   ],
   "filament_adhesiveness_category": [
@@ -87,12 +88,15 @@
   "filament_bridge_speed": [
     "25",
     "25",
+    "25",
     "25"
   ],
   "filament_change_length": [
     "10"
   ],
+  "filament_contact_safe": "1",
   "filament_cooling_before_tower": [
+    "10",
     "10",
     "10",
     "10"
@@ -104,6 +108,7 @@
     "1.24"
   ],
   "filament_deretraction_speed": [
+    "nil",
     "nil",
     "nil",
     "nil"
@@ -141,7 +146,9 @@
   "filament_diameter": [
     "1.75"
   ],
+  "filament_emission_safe": "1",
   "filament_enable_overhang_speed": [
+    "1",
     "1",
     "1",
     "1"
@@ -163,18 +170,25 @@
   "filament_flush_temp": [
     "0",
     "0",
+    "0",
+    "0"
+  ],
+  "filament_flush_temp_fast": [
     "0"
   ],
   "filament_flush_volumetric_speed": [
     "0",
     "0",
+    "0",
     "0"
   ],
   "filament_id": "P22871a8",
+  "filament_ingredients_safe": "1",
   "filament_is_support": [
     "0"
   ],
   "filament_long_retractions_when_cut": [
+    "nil",
     "nil",
     "nil",
     "nil"
@@ -195,9 +209,11 @@
   "filament_overhang_1_4_speed": [
     "0",
     "0",
+    "0",
     "0"
   ],
   "filament_overhang_2_4_speed": [
+    "50",
     "50",
     "50",
     "50"
@@ -205,9 +221,11 @@
   "filament_overhang_3_4_speed": [
     "30",
     "30",
+    "30",
     "30"
   ],
   "filament_overhang_4_4_speed": [
+    "10",
     "10",
     "10",
     "10"
@@ -215,9 +233,11 @@
   "filament_overhang_totally_speed": [
     "10",
     "10",
+    "10",
     "10"
   ],
   "filament_pre_cooling_temperature": [
+    "210",
     "210",
     "210",
     "210"
@@ -225,9 +245,11 @@
   "filament_pre_cooling_temperature_nc": [
     "0",
     "0",
+    "0",
     "0"
   ],
   "filament_preheat_temperature_delta": [
+    "10",
     "10",
     "10",
     "10"
@@ -244,9 +266,11 @@
   "filament_ramming_travel_time": [
     "20",
     "20",
+    "20",
     "20"
   ],
   "filament_ramming_travel_time_nc": [
+    "0",
     "0",
     "0",
     "0"
@@ -254,9 +278,11 @@
   "filament_ramming_volumetric_speed": [
     "0.8",
     "0.8",
+    "0.8",
     "0.8"
   ],
   "filament_ramming_volumetric_speed_nc": [
+    "-1",
     "-1",
     "-1",
     "-1"
@@ -264,9 +290,11 @@
   "filament_retract_before_wipe": [
     "nil",
     "nil",
+    "nil",
     "nil"
   ],
   "filament_retract_length_nc": [
+    "14",
     "14",
     "14",
     "14"
@@ -274,14 +302,17 @@
   "filament_retract_restart_extra": [
     "nil",
     "nil",
+    "nil",
     "nil"
   ],
   "filament_retract_when_changing_layer": [
     "nil",
     "nil",
+    "nil",
     "nil"
   ],
   "filament_retraction_distances_when_cut": [
+    "nil",
     "nil",
     "nil",
     "nil"
@@ -296,9 +327,11 @@
   "filament_retraction_minimum_travel": [
     "nil",
     "nil",
+    "nil",
     "nil"
   ],
   "filament_retraction_speed": [
+    "nil",
     "nil",
     "nil",
     "nil"
@@ -354,9 +387,11 @@
   "filament_wipe": [
     "nil",
     "nil",
+    "nil",
     "nil"
   ],
   "filament_wipe_distance": [
+    "nil",
     "nil",
     "nil",
     "nil"
@@ -364,9 +399,11 @@
   "filament_z_hop": [
     "nil",
     "nil",
+    "nil",
     "nil"
   ],
   "filament_z_hop_types": [
+    "nil",
     "nil",
     "nil",
     "nil"
@@ -406,6 +443,7 @@
   "long_retractions_when_ec": [
     "1",
     "1",
+    "1",
     "1"
   ],
   "name": "TINMORRY TPU 95A @Bambu Lab H2D 0.4 nozzle",
@@ -435,6 +473,7 @@
   "override_process_overhang_speed": [
     "0",
     "0",
+    "0",
     "0"
   ],
   "reduce_fan_stop_start_freq": [
@@ -446,6 +485,7 @@
   "retraction_distances_when_ec": [
     "0",
     "0",
+    "0",
     "0"
   ],
   "slow_down_for_layer_cooling": [
@@ -455,6 +495,7 @@
     "8"
   ],
   "slow_down_min_speed": [
+    "10",
     "10",
     "10",
     "10"
@@ -476,6 +517,7 @@
   ],
   "version": "2.4.0.8",
   "volumetric_speed_coefficients": [
+    "0 0 0 0 0 0",
     "0 0 0 0 0 0",
     "0 0 0 0 0 0",
     "0 0 0 0 0 0"

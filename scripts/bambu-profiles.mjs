@@ -569,15 +569,24 @@ async function vendorLockInputs(options) {
   const vendorKey = requireVendor(options);
   const config = await readVendorConfig(vendorKey);
   const manifest = await readCollectionManifest(vendorKey);
+  const previousLock = await readJsonIfExists(path.join(config.dir, 'input-lock.json'));
+  const previousReviewedArtifactCandidates = previousLock?.reviewedArtifactCandidates ?? [];
+  const previousReviewedByIdentity = new Map(
+    previousReviewedArtifactCandidates.map((candidate) => [artifactCandidateIdentity(candidate), candidate]),
+  );
   const artifactCandidates = manifest.artifactCandidates ?? [];
+  const unresolvedArtifactCandidates = artifactCandidates.filter((candidate) => {
+    const previous = previousReviewedByIdentity.get(artifactCandidateIdentity(candidate));
+    return !previous || artifactCandidateReviewHash(previous) !== artifactCandidateReviewHash(candidate);
+  });
   const deferArtifactCandidates = Boolean(options.deferArtifactCandidates);
   const lockArtifactCandidates = Boolean(options.lockArtifactCandidates);
 
-  if (artifactCandidates.length && !deferArtifactCandidates && !lockArtifactCandidates) {
+  if (unresolvedArtifactCandidates.length && !deferArtifactCandidates && !lockArtifactCandidates) {
     const error = new Error(
-      `${manifest.vendor} has ${artifactCandidates.length} artifact candidate(s); review them before locking inputs, or rerun with --defer-artifact-candidates to lock normal inputs only.`,
+      `${manifest.vendor} has ${unresolvedArtifactCandidates.length} new or changed artifact candidate(s); review them before locking inputs, or rerun with --defer-artifact-candidates to lock normal inputs only.`,
     );
-    error.details = artifactCandidates.map((candidate) =>
+    error.details = unresolvedArtifactCandidates.map((candidate) =>
       `- ${candidate.sourceId}: ${candidate.relativePath}${candidate.innerPath ? ` :: ${candidate.innerPath}` : ''}`,
     ).join('\n');
     throw error;
@@ -614,32 +623,40 @@ async function vendorLockInputs(options) {
   };
 
   if (lockArtifactCandidates) {
-    lock.reviewedArtifactCandidates = artifactCandidates.map((candidate) => ({
-      identity: artifactCandidateIdentity(candidate),
-      sourceId: candidate.sourceId,
-      sourceRepo: candidate.sourceRepo,
-      sourceCommit: candidate.sourceCommit,
-      format: candidate.format,
-      candidateType: candidate.candidateType,
-      relativePath: candidate.relativePath,
-      innerPath: candidate.innerPath,
-      sourceFileHash: candidate.sourceFileHash,
-      profileHash: candidate.profileHash,
-      bundleHash: candidate.bundleHash,
-      reviewHash: artifactCandidateReviewHash(candidate),
-      profileName: candidate.profileName,
-      sourceFamilyName: candidate.sourceFamilyName ?? '',
-      sourceFamilySource: candidate.sourceFamilySource ?? '',
-      extractedPath: candidate.extractedPath,
-      promoteFromPath: candidate.promoteFromPath,
-    }));
+    lock.reviewedArtifactCandidates = [];
+    for (const candidate of artifactCandidates) {
+      lock.reviewedArtifactCandidates.push({
+        identity: artifactCandidateIdentity(candidate),
+        sourceId: candidate.sourceId,
+        sourceRepo: candidate.sourceRepo,
+        sourceCommit: candidate.sourceCommit,
+        format: candidate.format,
+        candidateType: candidate.candidateType,
+        relativePath: candidate.relativePath,
+        innerPath: candidate.innerPath,
+        sourceFileHash: candidate.sourceFileHash,
+        profileHash: candidate.profileHash,
+        bundleHash: candidate.bundleHash,
+        reviewHash: artifactCandidateReviewHash(candidate),
+        profileName: candidate.profileName,
+        normalizedProfileNames: await normalizedArtifactProfileNames(config, candidate),
+        sourceFamilyName: candidate.sourceFamilyName ?? '',
+        sourceFamilySource: candidate.sourceFamilySource ?? '',
+        extractedPath: candidate.extractedPath,
+        promoteFromPath: candidate.promoteFromPath,
+      });
+    }
+  } else if (previousReviewedArtifactCandidates.length) {
+    lock.reviewedArtifactCandidates = previousReviewedArtifactCandidates;
   }
 
   await writeJson(path.join(config.dir, 'input-lock.json'), lock);
   const artifactMessage = lockArtifactCandidates
     ? ` and ${lock.reviewedArtifactCandidates.length} reviewed artifact candidate(s)`
-    : deferArtifactCandidates && artifactCandidates.length
-      ? `; deferred ${artifactCandidates.length} artifact candidate(s)`
+    : deferArtifactCandidates && unresolvedArtifactCandidates.length
+      ? `; preserved ${previousReviewedArtifactCandidates.length} reviewed and deferred ${unresolvedArtifactCandidates.length} new or changed artifact candidate(s)`
+      : previousReviewedArtifactCandidates.length
+        ? ` and preserved ${previousReviewedArtifactCandidates.length} reviewed artifact candidate(s)`
       : '';
   console.log(`OK: locked ${lock.inputs.length} accepted input(s)${artifactMessage} for ${manifest.vendor}.`);
 }
@@ -774,14 +791,24 @@ async function vendorIngest(options) {
     if (!sourceProfiles.length) {
       throw new Error(`No upstream profiles found for ${config.vendor}`);
     }
-    const result = await normalizeAndWriteVendor(config, sourceProfiles, { upstreamHeads });
+    const reviewedArtifactProfiles = await readReviewedArtifactProfiles(config);
+    const result = await normalizeAndWriteVendor(
+      config,
+      [...sourceProfiles, ...reviewedArtifactProfiles],
+      { upstreamHeads },
+    );
     await writeJson(path.join(config.dir, 'upstream-lock.json'), {
       vendor: config.vendor,
       updatedAt: new Date().toISOString(),
       sources: upstreamHeads,
     });
     await generateReadme();
-    console.log(`OK: ${config.vendor} ingested from upstream with ${result.profileCount} normalized profiles.`);
+    const preservedMessage = reviewedArtifactProfiles.length
+      ? `; preserved ${reviewedArtifactProfiles.length} reviewed artifact profile(s)`
+      : '';
+    console.log(
+      `OK: ${config.vendor} ingested from upstream with ${result.profileCount} normalized profiles${preservedMessage}.`,
+    );
     return;
   }
   const inputRoots = from === 'incoming' ? await incomingRootsFor(vendorKey) : [path.resolve(repoRoot, from)];
@@ -820,6 +847,86 @@ async function vendorIngest(options) {
   });
   await generateReadme();
   console.log(`OK: ${config.vendor} ingested with ${result.profileCount} normalized profiles.`);
+}
+
+async function readReviewedArtifactProfiles(config) {
+  const inputLock = await readJsonIfExists(path.join(config.dir, 'input-lock.json'));
+  const reviewedNames = new Set(
+    (inputLock?.reviewedArtifactCandidates ?? [])
+      .flatMap(reviewedArtifactProfileNames)
+      .filter(Boolean),
+  );
+  if (!reviewedNames.size) return [];
+
+  const existingProfiles = await readProfilesFromDirectory(path.join(config.dir, 'profiles'), {
+    vendor: config.vendor,
+    sourceId: 'reviewed-artifact',
+    sourceLabel: 'Reviewed artifact normalized profiles',
+    sourceRepo: path.relative(repoRoot, path.join(config.dir, 'input-lock.json')).replaceAll(path.sep, '/'),
+    sourcePriority: 300,
+    allowedFormats: new Set(['json']),
+  });
+  const reviewedProfiles = existingProfiles.filter((item) => reviewedNames.has(item.profile.name));
+  const foundNames = new Set(reviewedProfiles.map((item) => item.profile.name));
+  const missingNames = [...reviewedNames].filter((name) => !foundNames.has(name));
+  if (missingNames.length) {
+    const error = new Error(
+      `${config.vendor} has ${missingNames.length} reviewed artifact profile(s) missing from normalized profiles; refusing destructive upstream ingest.`,
+    );
+    error.details = missingNames.map((name) => `- ${name}`).join('\n');
+    throw error;
+  }
+  return reviewedProfiles;
+}
+
+async function normalizedArtifactProfileNames(config, candidate) {
+  if (!candidate.profileName && !candidate.extractedPath) return [];
+  if (!candidate.extractedPath) {
+    throw new Error(
+      `${config.vendor} artifact candidate cannot be locked without an extracted profile: ${candidate.identity ?? candidate.profileName}`,
+    );
+  }
+
+  const collectionRoot = path.resolve(collectionRootFor(config.key));
+  const extractedPath = path.resolve(collectionRoot, candidate.extractedPath);
+  if (extractedPath !== collectionRoot && !extractedPath.startsWith(`${collectionRoot}${path.sep}`)) {
+    throw new Error(`${config.vendor} artifact candidate extractedPath escapes its collection root: ${candidate.extractedPath}`);
+  }
+  const profile = await readJsonIfExists(extractedPath);
+  if (!profile) {
+    throw new Error(
+      `${config.vendor} artifact candidate extracted profile is missing: ${path.relative(repoRoot, extractedPath).replaceAll(path.sep, '/')}`,
+    );
+  }
+
+  const reports = {
+    errors: [],
+    warnings: [],
+    conflicts: [],
+    classifications: [],
+    normalizedNames: [],
+    rejected: [],
+  };
+  const normalized = normalizeRawProfile(config, { ...candidate, profile }, reports);
+  if (reports.errors.length || !normalized.length) {
+    const error = new Error(
+      `${config.vendor} artifact candidate cannot be mapped to normalized profile names: ${candidate.profileName ?? candidate.identity}`,
+    );
+    error.details = reports.errors.map((item) => `- ${item}`).join('\n');
+    throw error;
+  }
+  return unique(normalized.map((item) => item.outputName).filter(Boolean)).sort((a, b) =>
+    a.localeCompare(b, 'en'),
+  );
+}
+
+function reviewedArtifactProfileNames(candidate) {
+  const normalizedNames = Array.isArray(candidate.normalizedProfileNames)
+    ? unique(candidate.normalizedProfileNames.map((name) => String(name ?? '').trim()).filter(Boolean))
+    : [];
+  if (normalizedNames.length) return normalizedNames;
+  const rawName = String(candidate.profileName ?? '').trim();
+  return rawName ? [rawName] : [];
 }
 
 async function normalizeAndWriteVendor(config, rawProfiles, { upstreamHeads }) {
@@ -1977,7 +2084,7 @@ function proposalIssuesFor(input, material, printers, familySuggestion, knownFam
   if (material.hasPet && material.hasCf && material.hasGf && !material.hasPetg) {
     issues.push('PET CF GF appears; propose split/handling and confirm with user');
   }
-  if (!printers.length && !input.compatiblePrinters.length) {
+  if (!printers.length) {
     issues.push('printer/nozzle is unclear');
   }
   if (familySuggestion && !knownFamilies.has(familySuggestion) && !options.trustedSourceFamily) {
@@ -2003,7 +2110,7 @@ function artifactCandidateIssuesFor(candidate, material, printers, familySuggest
   if (material.hasPet && material.hasCf && material.hasGf && !material.hasPetg) {
     issues.push('PET CF GF appears; propose split/handling and confirm with user');
   }
-  if (!printers.length && !(candidate.compatiblePrinters ?? []).length && candidate.profileHash) {
+  if (!printers.length && candidate.profileHash) {
     issues.push('printer/nozzle is unclear');
   }
   if (familySuggestion && !knownFamilies.has(familySuggestion) && !options.trustedSourceFamily) {
@@ -2277,6 +2384,7 @@ function printerNamesFromText(text) {
     remaining = remaining.replace(pattern, ' ');
   };
 
+  add(/A2L/g, 'Bambu Lab A2L');
   add(/A1\s*MINI|A1MINI|A1M/g, 'Bambu Lab A1 mini');
   add(/X1\s*CARBON|X1C/g, 'Bambu Lab X1 Carbon');
   add(/X1E/g, 'Bambu Lab X1E');
@@ -2488,12 +2596,13 @@ async function validateLockedArtifactCandidates(profiles) {
     const vendorKey = slug(lock.vendor ?? path.basename(vendorDir));
     const vendorProfiles = profilesByVendor.get(vendorKey) ?? new Map();
     for (const candidate of lock.reviewedArtifactCandidates ?? []) {
-      if (!candidate.profileName) continue;
-      if (!vendorProfiles.has(candidate.profileName)) {
-        const label = path.relative(repoRoot, lockPath).replaceAll(path.sep, '/');
-        errors.push(
-          `${label}: reviewed artifact candidate is missing from normalized profiles: ${candidate.profileName} (${candidate.identity ?? 'unknown identity'})`,
-        );
+      for (const profileName of reviewedArtifactProfileNames(candidate)) {
+        if (!vendorProfiles.has(profileName)) {
+          const label = path.relative(repoRoot, lockPath).replaceAll(path.sep, '/');
+          errors.push(
+            `${label}: reviewed artifact candidate is missing from normalized profiles: ${profileName} (${candidate.identity ?? 'unknown identity'})`,
+          );
+        }
       }
     }
   }
@@ -3235,7 +3344,10 @@ async function cloneSource(vendorKey, source) {
   const target = path.join(workRoot, 'upstreams', vendorKey, source.id);
   await fs.rm(target, { recursive: true, force: true });
   await fs.mkdir(path.dirname(target), { recursive: true });
-  await git(['clone', '--depth', '1', '--branch', source.branch ?? 'main', source.repo, target], repoRoot);
+  await git(
+    ['-c', 'core.longpaths=true', 'clone', '--depth', '1', '--branch', source.branch ?? 'main', source.repo, target],
+    repoRoot,
+  );
   return target;
 }
 
