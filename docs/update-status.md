@@ -1,8 +1,8 @@
 ---
 title: 全メーカー更新状況
-status: ローカル検証完了（candidate確認待ち）
+status: candidate公開済み（Bambu Studio確認待ち）
 updated: 2026-08-16
-summary: eSUNとSUNLUは現状維持、Polymaker公式更新とTINMORRY公式リポジトリ更新を反映し、全1,405 JSONの検証と1,294 bundleの生成まで完了しました。
+summary: PolymakerとTINMORRYの更新をPR #16へ反映し、全checksとcandidate公開まで完了しました。次はBambu Studioで1,405 configsのインポート確認です。
 ---
 
 ## 前回からの変化
@@ -13,6 +13,7 @@ summary: eSUNとSUNLUは現状維持、Polymaker公式更新とTINMORRY公式リ
 - TINMORRYの既採用P2S PETG Matteとリポジトリ校正版H2C PETG Matteは保持しました。H2Cは更新前とバイト差分がありません。
 - 新機種 **Bambu Lab A2L** の認識、未知プリンターの判断依頼化、採用済み配布物の保持、Windows長パス処理を回帰検証へ追加しました。
 - 全1,405 normalized JSONの検証と、1,294 machine-scoped `.bbsflmt` bundleの実生成が成功しました。
+- [PR #16](https://github.com/kiyo4act/bambu-filament-profiles/pull/16) はmerge可能かつchecks成功です。candidateから再取得したmanifestとZIPでも1,405 profiles／1,294 bundlesを確認しました。
 
 ## 各メーカー状況
 
@@ -63,10 +64,10 @@ summary: eSUNとSUNLUは現状維持、Polymaker公式更新とTINMORRY公式リ
 
 入力採用についての追加判断はありません。Polymaker公式更新、TINMORRY公式更新、H2S PETG-CF、X2D Galaxy PETGはすべて反映済みです。
 
-candidate作成後は、Bambu Studioでのインポート確認が必要です。特にPolymakerの広範な既存設定更新と、TINMORRY H2S PETG-CFのrequired nozzle HRC 3を実機利用前に確認対象とします。
+Bambu Studioでのインポート確認が必要です。特にPolymakerの広範な既存設定更新と、TINMORRY H2S PETG-CFのrequired nozzle HRC 3を実機利用前に確認対象とします。
 
 ## 次にすること
 
-1. `agent/update/all-vendors-20260816` をcommit・pushし、PRとcandidateリリースを作成する。
-2. candidateの集約アーカイブをBambu Studioへインポートし、期待件数、表示、代表プロファイルを確認する。
-3. PolyMax PETG H2D/H2S/X2D、Fiberon PET-CF17 H2S、TINMORRY H2S PETG-CFを重点確認する。
+1. [GitHub Releases](https://github.com/kiyo4act/bambu-filament-profiles/releases) の最新candidateから `all-bbsflmt.zip` を取得する。
+2. Bambu Studioへ必要なprinter folderをインポートし、期待件数、表示、代表プロファイルを確認する。
+3. PolyMax PETG H2D/H2S/X2D、Fiberon PET-CF17 H2S、TINMORRY H2S PETG-CFを重点確認し、問題なければ[PR #16](https://github.com/kiyo4act/bambu-filament-profiles/pull/16)をmergeする。

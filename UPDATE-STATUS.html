@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="eSUNとSUNLUは現状維持、Polymaker公式更新とTINMORRY公式リポジトリ更新を反映し、全1,405 JSONの検証と1,294 bundleの生成まで完了しました。">
+  <meta name="description" content="PolymakerとTINMORRYの更新をPR #16へ反映し、全checksとcandidate公開まで完了しました。次はBambu Studioで1,405 configsのインポート確認です。">
   <title>全メーカー更新状況</title>
   <style>
     :root {
@@ -145,7 +145,7 @@
       <div>
         <p class="eyebrow">BAMBU FILAMENT PROFILES</p>
         <h1>全メーカー更新状況</h1>
-        <p class="summary">eSUNとSUNLUは現状維持、Polymaker公式更新とTINMORRY公式リポジトリ更新を反映し、全1,405 JSONの検証と1,294 bundleの生成まで完了しました。</p>
+        <p class="summary">PolymakerとTINMORRYの更新をPR #16へ反映し、全checksとcandidate公開まで完了しました。次はBambu Studioで1,405 configsのインポート確認です。</p>
       </div>
       <div class="actions" aria-label="ページ操作">
         <button class="button" id="copy-all" type="button">全体をコピー</button>
@@ -153,7 +153,7 @@
       </div>
     </div>
     <div class="meta" aria-label="更新メタデータ">
-      <span class="pill status">状態: ローカル検証完了（candidate確認待ち）</span>
+      <span class="pill status">状態: candidate公開済み（Bambu Studio確認待ち）</span>
       <span class="pill">基準日: 2026-08-16</span>
     </div>
     <nav class="nav" aria-label="ページ内目次">
@@ -177,6 +177,7 @@
           <li>TINMORRYの既採用P2S PETG Matteとリポジトリ校正版H2C PETG Matteは保持しました。H2Cは更新前とバイト差分がありません。</li>
           <li>新機種 <strong>Bambu Lab A2L</strong> の認識、未知プリンターの判断依頼化、採用済み配布物の保持、Windows長パス処理を回帰検証へ追加しました。</li>
           <li>全1,405 normalized JSONの検証と、1,294 machine-scoped <code>.bbsflmt</code> bundleの実生成が成功しました。</li>
+          <li>[PR #16](https://github.com/kiyo4act/bambu-filament-profiles/pull/16) はmerge可能かつchecks成功です。candidateから再取得したmanifestとZIPでも1,405 profiles／1,294 bundlesを確認しました。</li>
         </ul>
       </div>
     </section>
@@ -248,7 +249,7 @@
       </div>
       <div class="section-body">
         <p>入力採用についての追加判断はありません。Polymaker公式更新、TINMORRY公式更新、H2S PETG-CF、X2D Galaxy PETGはすべて反映済みです。</p>
-        <p>candidate作成後は、Bambu Studioでのインポート確認が必要です。特にPolymakerの広範な既存設定更新と、TINMORRY H2S PETG-CFのrequired nozzle HRC 3を実機利用前に確認対象とします。</p>
+        <p>Bambu Studioでのインポート確認が必要です。特にPolymakerの広範な既存設定更新と、TINMORRY H2S PETG-CFのrequired nozzle HRC 3を実機利用前に確認対象とします。</p>
       </div>
     </section>
     <section class="card" id="section-4">
@@ -258,15 +259,15 @@
       </div>
       <div class="section-body">
         <ol>
-          <li><code>agent/update/all-vendors-20260816</code> をcommit・pushし、PRとcandidateリリースを作成する。</li>
-          <li>candidateの集約アーカイブをBambu Studioへインポートし、期待件数、表示、代表プロファイルを確認する。</li>
-          <li>PolyMax PETG H2D/H2S/X2D、Fiberon PET-CF17 H2S、TINMORRY H2S PETG-CFを重点確認する。</li>
+          <li>[GitHub Releases](https://github.com/kiyo4act/bambu-filament-profiles/releases) の最新candidateから <code>all-bbsflmt.zip</code> を取得する。</li>
+          <li>Bambu Studioへ必要なprinter folderをインポートし、期待件数、表示、代表プロファイルを確認する。</li>
+          <li>PolyMax PETG H2D/H2S/X2D、Fiberon PET-CF17 H2S、TINMORRY H2S PETG-CFを重点確認し、問題なければ[PR #16](https://github.com/kiyo4act/bambu-filament-profiles/pull/16)をmergeする。</li>
         </ol>
       </div>
     </section>
   </main>
   <footer class="shell">
-    <p>このページは更新状況の正本から機械生成されています。内容識別子: <span class="hash">3273652832aad786daa732b50f511f58e1740358ad9c4a2c5fb5dd88269f7385</span></p>
+    <p>このページは更新状況の正本から機械生成されています。内容識別子: <span class="hash">b56d34e4ed491c40169fcf72c87d3eeef1a56dd694eca1b470f28cbbcafd14b0</span></p>
   </footer>
   <div class="toast" id="toast" role="status" aria-live="polite">コピーしました</div>
   <script>
