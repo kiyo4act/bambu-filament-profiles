@@ -75,7 +75,7 @@
     "100"
   ],
   "filament_adaptive_volumetric_speed": [
-    "0"
+    "1"
   ],
   "filament_adhesiveness_category": [
     "0"
@@ -93,7 +93,7 @@
     "0"
   ],
   "filament_density": [
-    "1.32"
+    "1.17"
   ],
   "filament_diameter": [
     "1.75"
@@ -118,7 +118,7 @@
     "0"
   ],
   "filament_long_retractions_when_cut": [
-    "1"
+    "0"
   ],
   "filament_max_volumetric_speed": [
     "16"
@@ -221,7 +221,9 @@
   "hot_plate_temp_initial_layer": [
     "55"
   ],
-  "idle_temperature": 0,
+  "idle_temperature": [
+    "0"
+  ],
   "impact_strength_z": [
     "0"
   ],
@@ -285,7 +287,7 @@
     "45"
   ],
   "temperature_vitrification": [
-    "62.5"
+    "61"
   ],
   "textured_plate_temp": [
     "55"

@@ -2,6 +2,12 @@
 
 Reviewable Bambu Studio filament profiles with generated `.bbsflmt` release bundles.
 
+## Reader Map / 読者マップ
+
+- **あなたが見る:** [全メーカー更新状況](UPDATE-STATUS.html) — 前回からの変化、各メーカー状況、判断待ち、次の作業を1ページで確認できます。
+- **更新内容の正本:** [docs/update-status.md](docs/update-status.md) — 調査結果や判断待ちはここを更新します。
+- **AI・検証用:** `npm run generate:update-cockpit` でHTMLを再生成し、`npm run check:update-cockpit` で鮮度を確認します。
+
 This repository is built for ongoing maintenance by a coding agent:
 
 - JSON under `vendors/<vendor>/profiles/` is the source of truth.
@@ -18,9 +24,9 @@ This repository is built for ongoing maintenance by a coding agent:
 | Vendor | Bundles | Materials | Printers | Profiles |
 |---|---:|---:|---:|---:|
 | eSUN | 507 | 66 | 11 | 572 |
-| Polymaker | 503 | 66 | 12 | 503 |
+| Polymaker | 605 | 68 | 13 | 605 |
 | SUNLU | 18 | 9 | 2 | 63 |
-| TINMORRY | 155 | 28 | 12 | 156 |
+| TINMORRY | 164 | 28 | 13 | 165 |
 
 <details>
 <summary>eSUN details: 507 bundles, 66 materials, 11 printers, 572 profiles</summary>
@@ -590,12 +596,13 @@ This repository is built for ongoing maintenance by a coding agent:
 </details>
 
 <details>
-<summary>Polymaker details: 503 bundles, 66 materials, 12 printers, 503 profiles</summary>
+<summary>Polymaker details: 605 bundles, 68 materials, 13 printers, 605 profiles</summary>
 
 ### Bambu Lab A1
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/a1/Polymaker Panchroma PLA Celestial.bbsflmt |
@@ -631,6 +638,7 @@ This repository is built for ongoing maintenance by a coding agent:
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker Panchroma PLA Celestial.bbsflmt |
@@ -662,10 +670,63 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyTerra PLA Marble.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/a1-mini/Polymaker PolyTerra PLA+.bbsflmt |
 
+### Bambu Lab A2L
+
+| Nozzles | Material | Type | Profiles | Release artifact |
+|---|---|---|---:|---|
+| 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Fiberon PETG-ESD.bbsflmt |
+| 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker HT-PLA Pro.bbsflmt |
+| 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker HT-PLA-GF.bbsflmt |
+| 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma CoPE.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Celestial.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Galaxy.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Glow.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Luminous.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Marble.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Matte.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Metallic.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Neon.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Silk.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Starlight.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA Translucent.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker Panchroma PLA UV Shift.bbsflmt |
+| 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PETG.bbsflmt |
+| 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PETG Galaxy.bbsflmt |
+| 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PLA.bbsflmt |
+| 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PLA Pro.bbsflmt |
+| 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PLA Pro Metallic.bbsflmt |
+| 0.4 | Polymaker PolyCast | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyCast.bbsflmt |
+| 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyFlex TPU95.bbsflmt |
+| 0.4 | Polymaker PolyFlex TPU95-HF | TPU | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyFlex TPU95-HF.bbsflmt |
+| 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite CosPLA.bbsflmt |
+| 0.4 | Polymaker PolyLite LW-PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite LW-PLA.bbsflmt |
+| 0.4 | Polymaker PolyLite PETG | PETG | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PETG.bbsflmt |
+| 0.4 | Polymaker PolyLite PETG Translucent | PETG | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PETG Translucent.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Galaxy.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Glow.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Luminous.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Neon.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Pro.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Starlight.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA Translucent.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA-CF | PLA-CF | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyLite PLA-CF.bbsflmt |
+| 0.4 | Polymaker PolyMax PETG | PETG | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyMax PETG.bbsflmt |
+| 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyMax PLA.bbsflmt |
+| 0.4 | Polymaker PolySmooth | PVB | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolySmooth.bbsflmt |
+| 0.4 | Polymaker PolySupport | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolySupport.bbsflmt |
+| 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyTerra PLA.bbsflmt |
+| 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/a2l/Polymaker PolyTerra PLA Marble.bbsflmt |
+
 ### Bambu Lab H2C
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
+| 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/h2c/Polymaker ABS Max.bbsflmt |
 | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/h2c/Polymaker ABS Pro.bbsflmt |
 | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/h2c/Polymaker ABS Pro Galaxy.bbsflmt |
 | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon ASA-CF08.bbsflmt |
@@ -681,8 +742,10 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PPS-CF10 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PPS-CF10.bbsflmt |
 | 0.4 | Polymaker Fiberon PPS-GF20 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Fiberon PPS-GF20.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker HT-PLA-GF.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma CoPE.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Celestial.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Galaxy.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker Panchroma PLA Glow.bbsflmt |
@@ -711,6 +774,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Starlight.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyLite PLA Translucent.bbsflmt |
+| 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyMax PLA.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyTerra PLA.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyTerra PLA Marble.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/h2c/Polymaker PolyTerra PLA+.bbsflmt |
@@ -733,8 +797,10 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PET-GF15.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PETG-rCF08.bbsflmt |
+| 0.4 | Polymaker Fiberon PPS-CF10 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PPS-CF10.bbsflmt |
 | 0.4 | Polymaker Fiberon PPS-GF20 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Fiberon PPS-GF20.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker HT-PLA-GF.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA.bbsflmt |
@@ -742,6 +808,8 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Panchroma PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Galaxy.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Glow.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Luminous | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Luminous.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Marble.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Matte | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Matte.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Metallic.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Neon.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Panchroma PLA Silk.bbsflmt |
@@ -754,6 +822,10 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyFlex TPU95-HF | TPU | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyFlex TPU95-HF.bbsflmt |
+| 0.4 | Polymaker PolyLite ABS | ABS | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite ABS.bbsflmt |
+| 0.4 | Polymaker Polylite ASA for TYC Americas | ASA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker Polylite ASA for TYC Americas.bbsflmt |
+| 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite CosPLA.bbsflmt |
+| 0.4 | Polymaker PolyLite PC | PC | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PC.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Galaxy.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Glow.bbsflmt |
@@ -763,13 +835,20 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Starlight.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyLite PLA Translucent.bbsflmt |
+| 0.4 | Polymaker PolyMax PC | PC | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyMax PC.bbsflmt |
+| 0.4 | Polymaker PolyMax PETG | PC | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyMax PETG.bbsflmt |
 | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyMax PLA.bbsflmt |
+| 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyTerra PLA.bbsflmt |
+| 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/h2d/Polymaker PolyTerra PLA Marble.bbsflmt |
 
 ### Bambu Lab H2S
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
 | 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/h2s/Polymaker ABS Max.bbsflmt |
+| 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/h2s/Polymaker ABS Pro.bbsflmt |
+| 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/h2s/Polymaker ABS Pro Galaxy.bbsflmt |
+| 0.4 | Polymaker ASA | ASA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker ASA.bbsflmt |
 | 0.4 | Polymaker Fiberon ASA-CF08 | ASA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon ASA-CF08.bbsflmt |
 | 0.4 | Polymaker Fiberon PA12-CF10 | PA-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA12-CF10.bbsflmt |
 | 0.4 | Polymaker Fiberon PA6-CF20 | PA6-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PA6-CF20.bbsflmt |
@@ -782,6 +861,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PPS-CF10 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PPS-CF10.bbsflmt |
 | 0.4 | Polymaker Fiberon PPS-GF20 | PPS-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Fiberon PPS-GF20.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker HT-PLA-GF.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA.bbsflmt |
@@ -792,6 +872,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Panchroma PLA Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Metallic.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Neon | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Neon.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Satin | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Satin.bbsflmt |
+| 0.4 | Polymaker Panchroma PLA Silk | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Silk.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Starlight.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA Translucent.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Panchroma PLA UV Shift.bbsflmt |
@@ -800,8 +881,14 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PLA.bbsflmt |
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PLA Pro Metallic.bbsflmt |
+| 0.4 | Polymaker PolyCast | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyCast.bbsflmt |
+| 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyFlex TPU95.bbsflmt |
+| 0.4 | Polymaker PolyFlex TPU95-HF | TPU | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyFlex TPU95-HF.bbsflmt |
+| 0.4 | Polymaker PolyLite ABS | ABS | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite ABS.bbsflmt |
+| 0.4 | Polymaker Polylite ASA for TYC Americas | ASA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker Polylite ASA for TYC Americas.bbsflmt |
 | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite CosPLA.bbsflmt |
 | 0.4 | Polymaker PolyLite LW-PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite LW-PLA.bbsflmt |
+| 0.4 | Polymaker PolyLite PC | PC | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PC.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Galaxy.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Glow.bbsflmt |
@@ -811,7 +898,13 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Starlight.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA Translucent.bbsflmt |
+| 0.4 | Polymaker PolyLite PLA-CF | PLA-CF | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyLite PLA-CF.bbsflmt |
+| 0.4 | Polymaker PolyMax PC | PC | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyMax PC.bbsflmt |
+| 0.4 | Polymaker PolyMax PETG | PC | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyMax PETG.bbsflmt |
 | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyMax PLA.bbsflmt |
+| 0.4 | Polymaker PolySmooth | PVB | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolySmooth.bbsflmt |
+| 0.4 | Polymaker PolySupport | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolySupport.bbsflmt |
+| 0.4 | Polymaker PolySupport for PA12 | PA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolySupport for PA12.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/h2s/Polymaker PolyTerra PLA+.bbsflmt |
 
 ### Bambu Lab P1P
@@ -860,6 +953,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Fiberon PETG-rCF08.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA Celestial.bbsflmt |
@@ -877,6 +971,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker Panchroma PLA UV Shift.bbsflmt |
 | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PETG.bbsflmt |
 | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PETG Galaxy.bbsflmt |
+| 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PLA.bbsflmt |
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/p1s/Polymaker PolyFlex TPU95.bbsflmt |
@@ -896,6 +991,7 @@ This repository is built for ongoing maintenance by a coding agent:
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
+| 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ABS Max.bbsflmt |
 | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ABS Pro.bbsflmt |
 | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ABS Pro Galaxy.bbsflmt |
 | 0.4 | Polymaker ASA | ASA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker ASA.bbsflmt |
@@ -909,6 +1005,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PET-GF15 | PET-CF | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PET-GF15.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker HT-PLA-GF.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Panchroma PLA.bbsflmt |
@@ -930,8 +1027,13 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PLA.bbsflmt |
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PLA Pro Metallic.bbsflmt |
+| 0.4 | Polymaker PolyCast | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyCast.bbsflmt |
+| 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyFlex TPU95.bbsflmt |
 | 0.4 | Polymaker PolyLite ABS | ABS | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite ABS.bbsflmt |
+| 0.4 | Polymaker Polylite ASA for TYC Americas | ASA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker Polylite ASA for TYC Americas.bbsflmt |
 | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite CosPLA.bbsflmt |
+| 0.4 | Polymaker PolyLite PETG | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PETG.bbsflmt |
+| 0.4 | Polymaker PolyLite PETG Translucent | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PETG Translucent.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Galaxy | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Galaxy.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Glow | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Glow.bbsflmt |
@@ -941,7 +1043,9 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyLite PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Starlight | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Starlight.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyLite PLA Translucent.bbsflmt |
+| 0.4 | Polymaker PolyMax PETG | PETG | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyMax PETG.bbsflmt |
 | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyMax PLA.bbsflmt |
+| 0.4 | Polymaker PolySupport for PA12 | PA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolySupport for PA12.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyTerra PLA.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA Marble | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyTerra PLA Marble.bbsflmt |
 | 0.4 | Polymaker PolyTerra PLA+ | PLA | 1 | dist/bbsflmt/polymaker/p2s/Polymaker PolyTerra PLA+.bbsflmt |
@@ -961,6 +1065,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x1/Polymaker Fiberon PETG-rCF08.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA Celestial.bbsflmt |
@@ -978,6 +1083,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker Panchroma PLA UV Shift.bbsflmt |
 | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x1/Polymaker PETG.bbsflmt |
 | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x1/Polymaker PETG Galaxy.bbsflmt |
+| 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PLA.bbsflmt |
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1/Polymaker PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x1/Polymaker PolyFlex TPU95.bbsflmt |
@@ -1008,6 +1114,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Fiberon PETG-rCF08.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA Celestial.bbsflmt |
@@ -1025,6 +1132,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker Panchroma PLA UV Shift.bbsflmt |
 | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PETG.bbsflmt |
 | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PETG Galaxy.bbsflmt |
+| 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PLA.bbsflmt |
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x1-carbon/Polymaker PolyFlex TPU95.bbsflmt |
@@ -1055,6 +1163,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Fiberon PETG-rCF08.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA Celestial | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA Celestial.bbsflmt |
@@ -1072,6 +1181,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Panchroma PLA UV Shift | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker Panchroma PLA UV Shift.bbsflmt |
 | 0.4 | Polymaker PETG | PETG | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PETG.bbsflmt |
 | 0.4 | Polymaker PETG Galaxy | PETG | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PETG Galaxy.bbsflmt |
+| 0.4 | Polymaker PLA | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PLA.bbsflmt |
 | 0.4 | Polymaker PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PLA Pro.bbsflmt |
 | 0.4 | Polymaker PLA Pro Metallic | PLA | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PLA Pro Metallic.bbsflmt |
 | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x1e/Polymaker PolyFlex TPU95.bbsflmt |
@@ -1091,6 +1201,7 @@ This repository is built for ongoing maintenance by a coding agent:
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
+| 0.4 | Polymaker ABS Max | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ABS Max.bbsflmt |
 | 0.4 | Polymaker ABS Pro | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ABS Pro.bbsflmt |
 | 0.4 | Polymaker ABS Pro Galaxy | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ABS Pro Galaxy.bbsflmt |
 | 0.4 | Polymaker ASA | ASA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker ASA.bbsflmt |
@@ -1105,6 +1216,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker Fiberon PETG-ESD | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PETG-ESD.bbsflmt |
 | 0.4 | Polymaker Fiberon PETG-rCF08 | PETG-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Fiberon PETG-rCF08.bbsflmt |
 | 0.4 | Polymaker HT-PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker HT-PLA.bbsflmt |
+| 0.4 | Polymaker HT-PLA Pro | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker HT-PLA Pro.bbsflmt |
 | 0.4 | Polymaker HT-PLA-GF | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker HT-PLA-GF.bbsflmt |
 | 0.4 | Polymaker Panchroma CoPE | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma CoPE.bbsflmt |
 | 0.4 | Polymaker Panchroma PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Panchroma PLA.bbsflmt |
@@ -1130,6 +1242,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyFlex TPU95 | TPU | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyFlex TPU95.bbsflmt |
 | 0.4 | Polymaker PolyFlex TPU95-HF | TPU | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyFlex TPU95-HF.bbsflmt |
 | 0.4 | Polymaker PolyLite ABS | ABS | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite ABS.bbsflmt |
+| 0.4 | Polymaker Polylite ASA for TYC Americas | ASA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker Polylite ASA for TYC Americas.bbsflmt |
 | 0.4 | Polymaker PolyLite CosPLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite CosPLA.bbsflmt |
 | 0.4 | Polymaker PolyLite LW-PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite LW-PLA.bbsflmt |
 | 0.4 | Polymaker PolyLite PC | PC | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PC.bbsflmt |
@@ -1146,7 +1259,7 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | Polymaker PolyLite PLA Translucent | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA Translucent.bbsflmt |
 | 0.4 | Polymaker PolyLite PLA-CF | PLA-CF | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyLite PLA-CF.bbsflmt |
 | 0.4 | Polymaker PolyMax PC | PC | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PC.bbsflmt |
-| 0.4 | Polymaker PolyMax PETG | PETG | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PETG.bbsflmt |
+| 0.4 | Polymaker PolyMax PETG | PC | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PETG.bbsflmt |
 | 0.4 | Polymaker PolyMax PLA | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolyMax PLA.bbsflmt |
 | 0.4 | Polymaker PolySmooth | PVB | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolySmooth.bbsflmt |
 | 0.4 | Polymaker PolySupport | PLA | 1 | dist/bbsflmt/polymaker/x2d/Polymaker PolySupport.bbsflmt |
@@ -1191,7 +1304,7 @@ This repository is built for ongoing maintenance by a coding agent:
 </details>
 
 <details>
-<summary>TINMORRY details: 155 bundles, 28 materials, 12 printers, 156 profiles</summary>
+<summary>TINMORRY details: 164 bundles, 28 materials, 13 printers, 165 profiles</summary>
 
 ### Bambu Lab A1
 
@@ -1227,18 +1340,31 @@ This repository is built for ongoing maintenance by a coding agent:
 | 0.4 | TINMORRY PLA Matte | PLA | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PLA Matte.bbsflmt |
 | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY PLA Silk.bbsflmt |
 | 0.4 | TINMORRY TPU | TPU | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY TPU.bbsflmt |
+| 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/a1-mini/TINMORRY TPU 95A.bbsflmt |
+
+### Bambu Lab A2L
+
+| Nozzles | Material | Type | Profiles | Release artifact |
+|---|---|---|---:|---|
+| 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/a2l/TINMORRY PETG ECO.bbsflmt |
+| 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/a2l/TINMORRY PETG Metallic.bbsflmt |
+| 0.4 | TINMORRY PLA Rapid | PLA | 1 | dist/bbsflmt/tinmorry/a2l/TINMORRY PLA Rapid.bbsflmt |
+| 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/a2l/TINMORRY PLA Silk.bbsflmt |
+| 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/a2l/TINMORRY TPU 95A.bbsflmt |
 
 ### Bambu Lab H2C
 
 | Nozzles | Material | Type | Profiles | Release artifact |
 |---|---|---|---:|---|
 | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY ABS Pro.bbsflmt |
+| 0.4 | TINMORRY ASA | ASA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY ASA.bbsflmt |
 | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG CF.bbsflmt |
 | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG ECO.bbsflmt |
 | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG GF.bbsflmt |
 | 0.4 | TINMORRY PETG Marble | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Marble.bbsflmt |
 | 0.4 | TINMORRY PETG Matte | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Matte.bbsflmt |
 | 0.4 | TINMORRY PETG Metallic | PETG | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PETG Metallic.bbsflmt |
+| 0.4 | TINMORRY PLA CF | PLA-CF | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA CF.bbsflmt |
 | 0.4 | TINMORRY PLA Rapid | PLA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA Rapid.bbsflmt |
 | 0.4 | TINMORRY PLA Silk | PLA | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY PLA Silk.bbsflmt |
 | 0.4 | TINMORRY TPU 95A | TPU | 1 | dist/bbsflmt/tinmorry/h2c/TINMORRY TPU 95A.bbsflmt |
@@ -1399,6 +1525,7 @@ This repository is built for ongoing maintenance by a coding agent:
 |---|---|---|---:|---|
 | 0.4 | TINMORRY ABS Pro | ABS | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY ABS Pro.bbsflmt |
 | 0.4 | TINMORRY ASA Basic | ASA | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY ASA Basic.bbsflmt |
+| 0.4 | TINMORRY Galaxy PETG | PETG | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY Galaxy PETG.bbsflmt |
 | 0.4 | TINMORRY PETG CF | PETG-CF | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG CF.bbsflmt |
 | 0.4 | TINMORRY PETG ECO | PETG | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG ECO.bbsflmt |
 | 0.4 | TINMORRY PETG GF | PETG-GF | 1 | dist/bbsflmt/tinmorry/x2d/TINMORRY PETG GF.bbsflmt |

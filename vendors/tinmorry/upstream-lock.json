@@ -1,11 +1,11 @@
 {
   "vendor": "TINMORRY",
-  "updatedAt": "2026-06-07T07:19:45.881Z",
+  "updatedAt": "2026-08-16T03:58:59.235Z",
   "sources": {
     "tinmorry-bambu-studio": {
       "repo": "https://github.com/TINMORRY/Tinmorry-Bambu_BambuStudio.git",
       "branch": "main",
-      "commit": "2a0cf3bd8b2499ff574447a6d8c06972c542d964"
+      "commit": "59dd16f4a7b5530257d585228674a033ff1ceb80"
     },
     "tinmorry-json-legacy": {
       "repo": "https://github.com/TINMORRY/TINMORRY-filament-profile-for-Bambu-printers.git",

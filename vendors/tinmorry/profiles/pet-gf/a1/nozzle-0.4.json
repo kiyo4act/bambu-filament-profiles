@@ -88,11 +88,12 @@
   "filament_change_length": [
     "10"
   ],
+  "filament_contact_safe": "1",
   "filament_cooling_before_tower": [
     "0"
   ],
   "filament_cost": [
-    "84.99"
+    "81.99"
   ],
   "filament_density": [
     "1.29"
@@ -133,6 +134,7 @@
   "filament_diameter": [
     "1.75"
   ],
+  "filament_emission_safe": "1",
   "filament_enable_overhang_speed": [
     "1"
   ],
@@ -146,15 +148,19 @@
     "Direct Drive Standard"
   ],
   "filament_flow_ratio": [
-    "1"
+    "0.9555"
   ],
   "filament_flush_temp": [
+    "0"
+  ],
+  "filament_flush_temp_fast": [
     "0"
   ],
   "filament_flush_volumetric_speed": [
     "0"
   ],
   "filament_id": "P60543c4",
+  "filament_ingredients_safe": "1",
   "filament_is_support": [
     "0"
   ],
@@ -165,7 +171,7 @@
     "nil"
   ],
   "filament_max_volumetric_speed": [
-    "8"
+    "5"
   ],
   "filament_metal_stickiness": [
     "High"
@@ -177,10 +183,10 @@
     "0"
   ],
   "filament_overhang_2_4_speed": [
-    "50"
+    "35"
   ],
   "filament_overhang_3_4_speed": [
-    "30"
+    "35"
   ],
   "filament_overhang_4_4_speed": [
     "10"
@@ -354,13 +360,16 @@
     "260"
   ],
   "overhang_fan_speed": [
-    "40"
+    "75"
   ],
   "overhang_fan_threshold": [
     "0%"
   ],
   "override_process_overhang_speed": [
-    "0"
+    "1"
+  ],
+  "pre_start_fan_time": [
+    "2"
   ],
   "reduce_fan_stop_start_freq": [
     "0"
@@ -378,7 +387,7 @@
     "5"
   ],
   "slow_down_min_speed": [
-    "20"
+    "35"
   ],
   "supertack_plate_temp": [
     "80"

@@ -49,6 +49,9 @@
     "0.95"
   ],
   "filament_id": "P200df2f",
+  "filament_long_retractions_when_cut": [
+    "0"
+  ],
   "filament_max_volumetric_speed": [
     "16"
   ],
@@ -80,7 +83,9 @@
   "hot_plate_temp_initial_layer": [
     "60"
   ],
-  "idle_temperature": 0,
+  "idle_temperature": [
+    "0"
+  ],
   "inherits": "",
   "name": "Polymaker PolyTerra PLA+ @Bambu Lab X1 0.4 nozzle",
   "nozzle_temperature": [
